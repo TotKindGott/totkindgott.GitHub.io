@@ -62,13 +62,15 @@ body {
 }
 
 #search {
-    display: block; 
-    height: 16px; width: 50%;
-    margin: auto; margin-top: 10px; margin-bottom: 0px;
-    border-radius: 10px;
     font: "Inconsolata"; font-size: 16px; color: black;
+    border-radius: 10px;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    height: 16px; width: 50%;
+    margin: auto;
+    
 }
-
 ::placeholder {
     color: gray;
     text-align: center;
@@ -78,7 +80,6 @@ div.float {
     display: block;
     float: left; width: 100%; margin: auto;
 }
-
 
 .series {
 	font-family: "Courier", monospace; font: "Inconsolata"; font-size: 16px; letter-spacing: 0.05em; text-align: center; color: rgba(255,255,255,1); text-transform: uppercase;
@@ -107,7 +108,6 @@ details {
 
 .wrapper {
 	position: relative; width=100%;
-	background-image: linear-gradient(circle, rgba(255,0,0,0), rgba(255,0,0,1));
 }
 
 img.logo {
@@ -126,10 +126,6 @@ table {
 tr {
 	padding: 10px; 
 }
-
-/*th, td {
-	border: 1px solid #ddd;
-}*/
 
 td:not(.grayed) {
 	font-family: "Courier", monospace;
@@ -172,14 +168,14 @@ details[open] summary ~ * {
 
 
     </style>
+    <style id="search_style"></style>
     <meta name="format-detection" content="telephone=no" />
     <meta name="viewport" 
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 </head>
 <body>
     <header></header>
-    
-    <input type="text" id="search" placeholder="filter collection" />
+    <input type="text" id="search" placeholder="filter" />
     <style id="search_style"></style>
     <script type="text/javascript">
         const inputs = document.querySelectorAll('input');
@@ -201,1155 +197,7 @@ details[open] summary ~ * {
             // beware of CSS injections!
         });
     </script>
-    
     <div id='results'>
-    <div class="searchable float" data-index="1940s woodie 1998 first editions 1998 flea market">
-        <details>
-            <summary>
-                <h1>1940s Woodie</h1>
-            </summary>
-            <table>
-                <tr>
-                    <td class="grayed">series:</td>
-                    <td>1998 First Editions</td>
-                    <td class="grayed">part:</td>
-                    <td class="right"></td>
-                </tr>
-                <tr>
-                    <td class="grayed">number:</td>
-                    <td>217</td>
-                    <td class="grayed">year:</td>
-                    <td class="right">1998</td>
-                </tr>
-                <tr>
-                    <td class="grayed">origin:</td>
-                    <td>Flea Market</td>
-                </tr>
-                <tr>
-                    <td class="grayed">status:</td>
-                    <td>New on card</td>
-                    <td colspan=2 class="tag"></td>
-                </tr>
-            </table>
-        </details>
-        <div class="wrapper"><a><img class="photo" src="Images/1940s Woodie (1998 First Editions).JPG" alt="1940s Woodie" width="640px" /></a></div>
-    </div>
-    <div class="searchable float" data-index="super comp dragster 1998 first editions 1998 flea market">
-        <details>
-            <summary>
-                <h1>Super Comp Dragster</h1>
-            </summary>
-            <table>
-                <tr>
-                    <td class="grayed">series:</td>
-                    <td>1998 First Editions</td>
-                    <td class="grayed">part:</td>
-                    <td class="right">22/40</td>
-                </tr>
-                <tr>
-                    <td class="grayed">number:</td>
-                    <td>655</td>
-                    <td class="grayed">year:</td>
-                    <td class="right">1998</td>
-                </tr>
-                <tr>
-                    <td class="grayed">origin:</td>
-                    <td>Flea Market</td>
-                </tr>
-                <tr>
-                    <td class="grayed">status:</td>
-                    <td>New on card</td>
-                    <td colspan=2 class="tag"></td>
-                </tr>
-            </table>
-        </details>
-        <div class="wrapper"><a><img class="photo" src="Images/Super Comp Dragster (1998 First Editions).JPG" alt="Super Comp Dragster" width="640px" /></a></div>
-    </div>
-    <div class="searchable float" data-index="tow jam 1998 first editions 1998 flea market">
-        <details>
-            <summary>
-                <h1>Tow Jam</h1>
-            </summary>
-            <table>
-                <tr>
-                    <td class="grayed">series:</td>
-                    <td>1998 First Editions</td>
-                    <td class="grayed">part:</td>
-                    <td class="right">25/40</td>
-                </tr>
-                <tr>
-                    <td class="grayed">number:</td>
-                    <td></td>
-                    <td class="grayed">year:</td>
-                    <td class="right">1998</td>
-                </tr>
-                <tr>
-                    <td class="grayed">origin:</td>
-                    <td>Flea Market</td>
-                </tr>
-                <tr>
-                    <td class="grayed">status:</td>
-                    <td>New on card</td>
-                    <td colspan=2 class="tag"></td>
-                </tr>
-            </table>
-        </details>
-        <div class="wrapper"><a><img class="photo" src="Images/Tow Jam (1998 First Editions).JPG" alt="Tow Jam" width="640px" /></a></div>
-    </div>
-    <div class="searchable float" data-index="chaparral 2 1998 first editions 1998 flea market">
-        <details>
-            <summary>
-                <h1>Chaparral 2</h1>
-            </summary>
-            <table>
-                <tr>
-                    <td class="grayed">series:</td>
-                    <td>1998 First Editions</td>
-                    <td class="grayed">part:</td>
-                    <td class="right">28/40</td>
-                </tr>
-                <tr>
-                    <td class="grayed">number:</td>
-                    <td>669</td>
-                    <td class="grayed">year:</td>
-                    <td class="right">1998</td>
-                </tr>
-                <tr>
-                    <td class="grayed">origin:</td>
-                    <td>Flea Market</td>
-                </tr>
-                <tr>
-                    <td class="grayed">status:</td>
-                    <td>New on card</td>
-                    <td colspan=2 class="tag"></td>
-                </tr>
-            </table>
-        </details>
-        <div class="wrapper"><a><img class="photo" src="Images/Chaparral 2 (1998 First Editions).JPG" alt="Chaparral 2" width="640px" /></a></div>
-    </div>
-    <div class="searchable float" data-index="bad mudder 1998 first editions 1998 flea market">
-        <details>
-            <summary>
-                <h1>Bad Mudder</h1>
-            </summary>
-            <table>
-                <tr>
-                    <td class="grayed">series:</td>
-                    <td>1998 First Editions</td>
-                    <td class="grayed">part:</td>
-                    <td class="right">33/40</td>
-                </tr>
-                <tr>
-                    <td class="grayed">number:</td>
-                    <td>662</td>
-                    <td class="grayed">year:</td>
-                    <td class="right">1998</td>
-                </tr>
-                <tr>
-                    <td class="grayed">origin:</td>
-                    <td>Flea Market</td>
-                </tr>
-                <tr>
-                    <td class="grayed">status:</td>
-                    <td>New on card</td>
-                    <td colspan=2 class="tag"></td>
-                </tr>
-            </table>
-        </details>
-        <div class="wrapper"><a><img class="photo" src="Images/Bad Mudder (1998 First Editions).JPG" alt="Bad Mudder" width="640px" /></a></div>
-    </div>
-    <div class="searchable float" data-index="olds aurora gts-1 1999 first editions 1999 flea market">
-        <details>
-            <summary>
-                <h1>Olds Aurora GTS-1</h1>
-            </summary>
-            <table>
-                <tr>
-                    <td class="grayed">series:</td>
-                    <td>1999 First Editions</td>
-                    <td class="grayed">part:</td>
-                    <td class="right">5/26</td>
-                </tr>
-                <tr>
-                    <td class="grayed">number:</td>
-                    <td>911</td>
-                    <td class="grayed">year:</td>
-                    <td class="right">1999</td>
-                </tr>
-                <tr>
-                    <td class="grayed">origin:</td>
-                    <td>Flea Market</td>
-                </tr>
-                <tr>
-                    <td class="grayed">status:</td>
-                    <td>New on card</td>
-                    <td colspan=2 class="tag"></td>
-                </tr>
-            </table>
-        </details>
-        <div class="wrapper"><a><img class="photo" src="Images/Olds Aurora GTS-1 (1999 First Editions).JPG" alt="Olds Aurora GTS-1" width="640px" /></a></div>
-    </div>
-    <div class="searchable float" data-index="deora ii 2000 first editions 2000 flea market">
-        <details open>
-            <summary>
-                <h1>Deora II</h1>
-            </summary>
-            <table>
-                <tr>
-                    <td class="grayed">series:</td>
-                    <td>2000 First Editions</td>
-                    <td class="grayed">part:</td>
-                    <td class="right">5/36</td>
-                </tr>
-                <tr>
-                    <td class="grayed">number:</td>
-                    <td>065</td>
-                    <td class="grayed">year:</td>
-                    <td class="right">2000</td>
-                </tr>
-                <tr>
-                    <td class="grayed">origin:</td>
-                    <td>Flea Market</td>
-                </tr>
-                <tr>
-                    <td class="grayed">status:</td>
-                    <td>New on card</td>
-                    <td colspan=2 class="tag"></td>
-                </tr>
-            </table>
-        </details>
-        <div class="wrapper"></div>
-    </div>
-    <div class="searchable float" data-index="phantastique 2000 first editions 2000 flea market">
-        <details>
-            <summary>
-                <h1>Phantastique</h1>
-            </summary>
-            <table>
-                <tr>
-                    <td class="grayed">series:</td>
-                    <td>2000 First Editions</td>
-                    <td class="grayed">part:</td>
-                    <td class="right">9/36</td>
-                </tr>
-                <tr>
-                    <td class="grayed">number:</td>
-                    <td></td>
-                    <td class="grayed">year:</td>
-                    <td class="right">2000</td>
-                </tr>
-                <tr>
-                    <td class="grayed">origin:</td>
-                    <td>Flea Market</td>
-                </tr>
-                <tr>
-                    <td class="grayed">status:</td>
-                    <td>New on card</td>
-                    <td colspan=2 class="tag"></td>
-                </tr>
-            </table>
-        </details>
-        <div class="wrapper"><a><img class="photo" src="Images/Phantastique (2000 First Editions).JPG" alt="Phantastique" width="640px" /></a></div>
-    </div>
-    <div class="searchable float" data-index="thomassima 3 2000 first editions 2000 flea market">
-        <details>
-            <summary>
-                <h1>Thomassima 3</h1>
-            </summary>
-            <table>
-                <tr>
-                    <td class="grayed">series:</td>
-                    <td>2000 First Editions</td>
-                    <td class="grayed">part:</td>
-                    <td class="right">10/36</td>
-                </tr>
-                <tr>
-                    <td class="grayed">number:</td>
-                    <td></td>
-                    <td class="grayed">year:</td>
-                    <td class="right">2000</td>
-                </tr>
-                <tr>
-                    <td class="grayed">origin:</td>
-                    <td>Flea Market</td>
-                </tr>
-                <tr>
-                    <td class="grayed">status:</td>
-                    <td>New on card</td>
-                    <td colspan=2 class="tag"></td>
-                </tr>
-            </table>
-        </details>
-        <div class="wrapper"><a><img class="photo" src="Images/Thomassima 3 (2000 First Editions).JPG" alt="Thomassima 3" width="640px" /></a></div>
-    </div>
-    <div class="searchable float" data-index="thomassima 3 2000 first editions 2000 flea market">
-        <details>
-            <summary>
-                <h1>Thomassima 3</h1>
-            </summary>
-            <table>
-                <tr>
-                    <td class="grayed">series:</td>
-                    <td>2000 First Editions</td>
-                    <td class="grayed">part:</td>
-                    <td class="right">10/36</td>
-                </tr>
-                <tr>
-                    <td class="grayed">number:</td>
-                    <td></td>
-                    <td class="grayed">year:</td>
-                    <td class="right">2000</td>
-                </tr>
-                <tr>
-                    <td class="grayed">origin:</td>
-                    <td>Flea Market</td>
-                </tr>
-                <tr>
-                    <td class="grayed">status:</td>
-                    <td>New (open)</td>
-                    <td colspan=2 class="tag"></td>
-                </tr>
-            </table>
-        </details>
-        <div class="wrapper"><a><img class="photo" src="Images/Thomassima 3 (2000 First Editions).JPG" alt="Thomassima 3" width="640px" /></a></div>
-    </div>
-    <div class="searchable float" data-index="anglia panel truck 2000 first editions 2000 flea market">
-        <details>
-            <summary>
-                <h1>Anglia Panel Truck</h1>
-            </summary>
-            <table>
-                <tr>
-                    <td class="grayed">series:</td>
-                    <td>2000 First Editions</td>
-                    <td class="grayed">part:</td>
-                    <td class="right">17/36</td>
-                </tr>
-                <tr>
-                    <td class="grayed">number:</td>
-                    <td>077</td>
-                    <td class="grayed">year:</td>
-                    <td class="right">2000</td>
-                </tr>
-                <tr>
-                    <td class="grayed">origin:</td>
-                    <td>Flea Market</td>
-                </tr>
-                <tr>
-                    <td class="grayed">status:</td>
-                    <td>New on card</td>
-                    <td colspan=2 class="tag"></td>
-                </tr>
-            </table>
-        </details>
-        <div class="wrapper"><a><img class="photo" src="Images/Anglia Panel Truck (2000 First Editions).JPG" alt="Anglia Panel Truck" width="640px" /></a></div>
-    </div>
-    <div class="searchable float" data-index="cabbin’ fever 2000 first editions 2000 flea market">
-        <details>
-            <summary>
-                <h1>Cabbin’ Fever</h1>
-            </summary>
-            <table>
-                <tr>
-                    <td class="grayed">series:</td>
-                    <td>2000 First Editions</td>
-                    <td class="grayed">part:</td>
-                    <td class="right">22/36</td>
-                </tr>
-                <tr>
-                    <td class="grayed">number:</td>
-                    <td>082</td>
-                    <td class="grayed">year:</td>
-                    <td class="right">2000</td>
-                </tr>
-                <tr>
-                    <td class="grayed">origin:</td>
-                    <td>Flea Market</td>
-                </tr>
-                <tr>
-                    <td class="grayed">status:</td>
-                    <td>New on card</td>
-                    <td colspan=2 class="tag"></td>
-                </tr>
-            </table>
-        </details>
-        <div class="wrapper"><a><img class="photo" src="Images/Cabbin’ Fever (2000 First Editions).JPG" alt="Cabbin’ Fever" width="640px" /></a></div>
-    </div>
-    <div class="searchable float" data-index="shoe box 2000 first editions 2000 flea market">
-        <details>
-            <summary>
-                <h1>Shoe Box</h1>
-            </summary>
-            <table>
-                <tr>
-                    <td class="grayed">series:</td>
-                    <td>2000 First Editions</td>
-                    <td class="grayed">part:</td>
-                    <td class="right">26/36</td>
-                </tr>
-                <tr>
-                    <td class="grayed">number:</td>
-                    <td>086</td>
-                    <td class="grayed">year:</td>
-                    <td class="right">2000</td>
-                </tr>
-                <tr>
-                    <td class="grayed">origin:</td>
-                    <td>Flea Market</td>
-                </tr>
-                <tr>
-                    <td class="grayed">status:</td>
-                    <td>New on card</td>
-                    <td colspan=2 class="tag"></td>
-                </tr>
-            </table>
-        </details>
-        <div class="wrapper"><a><img class="photo" src="Images/Shoe Box (2000 First Editions).JPG" alt="Shoe Box" width="640px" /></a></div>
-    </div>
-    <div class="searchable float" data-index="roll cage 2000 first editions 2000 flea market">
-        <details open>
-            <summary>
-                <h1>Roll Cage</h1>
-            </summary>
-            <table>
-                <tr>
-                    <td class="grayed">series:</td>
-                    <td>2000 First Editions</td>
-                    <td class="grayed">part:</td>
-                    <td class="right">31/36</td>
-                </tr>
-                <tr>
-                    <td class="grayed">number:</td>
-                    <td>091</td>
-                    <td class="grayed">year:</td>
-                    <td class="right">2000</td>
-                </tr>
-                <tr>
-                    <td class="grayed">origin:</td>
-                    <td>Flea Market</td>
-                </tr>
-                <tr>
-                    <td class="grayed">status:</td>
-                    <td>New on card</td>
-                    <td colspan=2 class="tag"></td>
-                </tr>
-            </table>
-        </details>
-        <div class="wrapper"></div>
-    </div>
-    <div class="searchable float" data-index="arachnorod 2000 first editions 2000 flea market">
-        <details>
-            <summary>
-                <h1>Arachnorod</h1>
-            </summary>
-            <table>
-                <tr>
-                    <td class="grayed">series:</td>
-                    <td>2000 First Editions</td>
-                    <td class="grayed">part:</td>
-                    <td class="right">34/36</td>
-                </tr>
-                <tr>
-                    <td class="grayed">number:</td>
-                    <td>094</td>
-                    <td class="grayed">year:</td>
-                    <td class="right">2000</td>
-                </tr>
-                <tr>
-                    <td class="grayed">origin:</td>
-                    <td>Flea Market</td>
-                </tr>
-                <tr>
-                    <td class="grayed">status:</td>
-                    <td>New on card</td>
-                    <td colspan=2 class="tag"></td>
-                </tr>
-            </table>
-        </details>
-        <div class="wrapper"><a><img class="photo" src="Images/Arachnorod (2000 First Editions).JPG" alt="Arachnorod" width="640px" /></a></div>
-    </div>
-    <div class="searchable float" data-index="shredster 2001 first editions 2001 flea market">
-        <details open>
-            <summary>
-                <h1>Shredster</h1>
-            </summary>
-            <table>
-                <tr>
-                    <td class="grayed">series:</td>
-                    <td>2001 First Editions</td>
-                    <td class="grayed">part:</td>
-                    <td class="right">10/36</td>
-                </tr>
-                <tr>
-                    <td class="grayed">number:</td>
-                    <td>022</td>
-                    <td class="grayed">year:</td>
-                    <td class="right">2001</td>
-                </tr>
-                <tr>
-                    <td class="grayed">origin:</td>
-                    <td>Flea Market</td>
-                </tr>
-                <tr>
-                    <td class="grayed">status:</td>
-                    <td>New on card</td>
-                    <td colspan=2 class="tag"></td>
-                </tr>
-            </table>
-        </details>
-        <div class="wrapper"></div>
-    </div>
-    <div class="searchable float" data-index="hooligan 2001 first editions 2001 flea market">
-        <details>
-            <summary>
-                <h1>Hooligan</h1>
-            </summary>
-            <table>
-                <tr>
-                    <td class="grayed">series:</td>
-                    <td>2001 First Editions</td>
-                    <td class="grayed">part:</td>
-                    <td class="right">18/36</td>
-                </tr>
-                <tr>
-                    <td class="grayed">number:</td>
-                    <td>018</td>
-                    <td class="grayed">year:</td>
-                    <td class="right">2001</td>
-                </tr>
-                <tr>
-                    <td class="grayed">origin:</td>
-                    <td>Flea Market</td>
-                </tr>
-                <tr>
-                    <td class="grayed">status:</td>
-                    <td>New on card</td>
-                    <td colspan=2 class="tag"></td>
-                </tr>
-            </table>
-        </details>
-        <div class="wrapper"><a><img class="photo" src="Images/Hooligan (2001 First Editions).JPG" alt="Hooligan" width="640px" /></a></div>
-    </div>
-    <div class="searchable float" data-index="jaded 2002 first editions 2002 flea market">
-        <details>
-            <summary>
-                <h1>Jaded</h1>
-            </summary>
-            <table>
-                <tr>
-                    <td class="grayed">series:</td>
-                    <td>2002 First Editions</td>
-                    <td class="grayed">part:</td>
-                    <td class="right">22/42</td>
-                </tr>
-                <tr>
-                    <td class="grayed">number:</td>
-                    <td>034</td>
-                    <td class="grayed">year:</td>
-                    <td class="right">2002</td>
-                </tr>
-                <tr>
-                    <td class="grayed">origin:</td>
-                    <td>Flea Market</td>
-                </tr>
-                <tr>
-                    <td class="grayed">status:</td>
-                    <td>New on card</td>
-                    <td colspan=2 class="tag"></td>
-                </tr>
-            </table>
-        </details>
-        <div class="wrapper"><a><img class="photo" src="Images/Jaded (2002 First Editions).JPG" alt="Jaded" width="640px" /></a></div>
-    </div>
-    <div class="searchable float" data-index="side draft 2002 first editions 2002 flea market">
-        <details>
-            <summary>
-                <h1>Side Draft</h1>
-            </summary>
-            <table>
-                <tr>
-                    <td class="grayed">series:</td>
-                    <td>2002 First Editions</td>
-                    <td class="grayed">part:</td>
-                    <td class="right">40/42</td>
-                </tr>
-                <tr>
-                    <td class="grayed">number:</td>
-                    <td>052</td>
-                    <td class="grayed">year:</td>
-                    <td class="right">2002</td>
-                </tr>
-                <tr>
-                    <td class="grayed">origin:</td>
-                    <td>Flea Market</td>
-                </tr>
-                <tr>
-                    <td class="grayed">status:</td>
-                    <td>New on card</td>
-                    <td colspan=2 class="tag"></td>
-                </tr>
-            </table>
-        </details>
-        <div class="wrapper"><a><img class="photo" src="Images/Side Draft (2002 First Editions).JPG" alt="Side Draft" width="640px" /></a></div>
-    </div>
-    <div class="searchable float" data-index="ground fx 2003 first editions 2003 flea market">
-        <details>
-            <summary>
-                <h1>Ground FX</h1>
-            </summary>
-            <table>
-                <tr>
-                    <td class="grayed">series:</td>
-                    <td>2003 First Editions</td>
-                    <td class="grayed">part:</td>
-                    <td class="right">37/42</td>
-                </tr>
-                <tr>
-                    <td class="grayed">number:</td>
-                    <td>049</td>
-                    <td class="grayed">year:</td>
-                    <td class="right">2003</td>
-                </tr>
-                <tr>
-                    <td class="grayed">origin:</td>
-                    <td>Flea Market</td>
-                </tr>
-                <tr>
-                    <td class="grayed">status:</td>
-                    <td>New on card</td>
-                    <td colspan=2 class="tag"></td>
-                </tr>
-            </table>
-        </details>
-        <div class="wrapper"><a><img class="photo" src="Images/Ground FX (2003 First Editions).JPG" alt="Ground FX" width="640px" /></a></div>
-    </div>
-    <div class="searchable float" data-index="blings dairy delivery 2004 first editions 2004 flea market">
-        <details>
-            <summary>
-                <h1>Blings Dairy Delivery</h1>
-            </summary>
-            <table>
-                <tr>
-                    <td class="grayed">series:</td>
-                    <td>2004 First Editions</td>
-                    <td class="grayed">part:</td>
-                    <td class="right">12/100</td>
-                </tr>
-                <tr>
-                    <td class="grayed">number:</td>
-                    <td>012</td>
-                    <td class="grayed">year:</td>
-                    <td class="right">2004</td>
-                </tr>
-                <tr>
-                    <td class="grayed">origin:</td>
-                    <td>Flea Market</td>
-                </tr>
-                <tr>
-                    <td class="grayed">status:</td>
-                    <td>New on card</td>
-                    <td colspan=2 class="tag"></td>
-                </tr>
-            </table>
-        </details>
-        <div class="wrapper"><a><img class="photo" src="Images/Blings Dairy Delivery (2004 First Editions).JPG" alt="Blings Dairy Delivery" width="640px" /></a></div>
-    </div>
-    <div class="searchable float" data-index="blings hummer h2 2004 first editions 2004 flea market">
-        <details>
-            <summary>
-                <h1>Blings Hummer H2</h1>
-            </summary>
-            <table>
-                <tr>
-                    <td class="grayed">series:</td>
-                    <td>2004 First Editions</td>
-                    <td class="grayed">part:</td>
-                    <td class="right">34/100</td>
-                </tr>
-                <tr>
-                    <td class="grayed">number:</td>
-                    <td>034</td>
-                    <td class="grayed">year:</td>
-                    <td class="right">2004</td>
-                </tr>
-                <tr>
-                    <td class="grayed">origin:</td>
-                    <td>Flea Market</td>
-                </tr>
-                <tr>
-                    <td class="grayed">status:</td>
-                    <td>New on card</td>
-                    <td colspan=2 class="tag"></td>
-                </tr>
-            </table>
-        </details>
-        <div class="wrapper"><a><img class="photo" src="Images/Blings Hummer H2 (2004 First Editions).JPG" alt="Blings Hummer H2" width="640px" /></a></div>
-    </div>
-    <div class="searchable float" data-index="crooze low flow 2004 first editions 2004 flea market">
-        <details>
-            <summary>
-                <h1>Crooze Low Flow</h1>
-            </summary>
-            <table>
-                <tr>
-                    <td class="grayed">series:</td>
-                    <td>2004 First Editions</td>
-                    <td class="grayed">part:</td>
-                    <td class="right">48/100</td>
-                </tr>
-                <tr>
-                    <td class="grayed">number:</td>
-                    <td>049</td>
-                    <td class="grayed">year:</td>
-                    <td class="right">2004</td>
-                </tr>
-                <tr>
-                    <td class="grayed">origin:</td>
-                    <td>Flea Market</td>
-                </tr>
-                <tr>
-                    <td class="grayed">status:</td>
-                    <td>New on card</td>
-                    <td colspan=2 class="tag"></td>
-                </tr>
-            </table>
-        </details>
-        <div class="wrapper"><a><img class="photo" src="Images/Crooze Low Flow (2004 First Editions).JPG" alt="Crooze Low Flow" width="640px" /></a></div>
-    </div>
-    <div class="searchable float" data-index="dodge tomahawk 2004 first editions 2004 flea market">
-        <details open>
-            <summary>
-                <h1>Dodge Tomahawk</h1>
-            </summary>
-            <table>
-                <tr>
-                    <td class="grayed">series:</td>
-                    <td>2004 First Editions</td>
-                    <td class="grayed">part:</td>
-                    <td class="right">80/100</td>
-                </tr>
-                <tr>
-                    <td class="grayed">number:</td>
-                    <td>080</td>
-                    <td class="grayed">year:</td>
-                    <td class="right">2004</td>
-                </tr>
-                <tr>
-                    <td class="grayed">origin:</td>
-                    <td>Flea Market</td>
-                </tr>
-                <tr>
-                    <td class="grayed">status:</td>
-                    <td>New on card</td>
-                    <td colspan=2 class="tag"></td>
-                </tr>
-            </table>
-        </details>
-        <div class="wrapper"></div>
-    </div>
-    <div class="searchable float" data-index="hummer h3t 2004 first editions 2004 flea market">
-        <details>
-            <summary>
-                <h1>Hummer H3T</h1>
-            </summary>
-            <table>
-                <tr>
-                    <td class="grayed">series:</td>
-                    <td>2004 First Editions</td>
-                    <td class="grayed">part:</td>
-                    <td class="right">60/100</td>
-                </tr>
-                <tr>
-                    <td class="grayed">number:</td>
-                    <td>060</td>
-                    <td class="grayed">year:</td>
-                    <td class="right">2004</td>
-                </tr>
-                <tr>
-                    <td class="grayed">origin:</td>
-                    <td>Flea Market</td>
-                </tr>
-                <tr>
-                    <td class="grayed">status:</td>
-                    <td>New on card</td>
-                    <td colspan=2 class="tag"></td>
-                </tr>
-            </table>
-        </details>
-        <div class="wrapper"><a><img class="photo" src="Images/Hummer H3T (2004 First Editions).JPG" alt="Hummer H3T" width="640px" /></a></div>
-    </div>
-    <div class="searchable float" data-index="cool-one 2004 first editions 2004 flea market">
-        <details>
-            <summary>
-                <h1>Cool-One</h1>
-            </summary>
-            <table>
-                <tr>
-                    <td class="grayed">series:</td>
-                    <td>2004 First Editions</td>
-                    <td class="grayed">part:</td>
-                    <td class="right">100/100</td>
-                </tr>
-                <tr>
-                    <td class="grayed">number:</td>
-                    <td>100</td>
-                    <td class="grayed">year:</td>
-                    <td class="right">2004</td>
-                </tr>
-                <tr>
-                    <td class="grayed">origin:</td>
-                    <td>Flea Market</td>
-                </tr>
-                <tr>
-                    <td class="grayed">status:</td>
-                    <td>New on card</td>
-                    <td colspan=2 class="tag"></td>
-                </tr>
-            </table>
-        </details>
-        <div class="wrapper"><a><img class="photo" src="Images/Cool-One (2004 First Editions).JPG" alt="Cool-One" width="640px" /></a></div>
-    </div>
-    <div class="searchable float" data-index="hummer h3 2005 first editions - blings 2005 flea market">
-        <details open>
-            <summary>
-                <h1>Hummer H3</h1>
-            </summary>
-            <table>
-                <tr>
-                    <td class="grayed">series:</td>
-                    <td>2005 First Editions - Blings</td>
-                    <td class="grayed">part:</td>
-                    <td class="right">7/10</td>
-                </tr>
-                <tr>
-                    <td class="grayed">number:</td>
-                    <td>037</td>
-                    <td class="grayed">year:</td>
-                    <td class="right">2005</td>
-                </tr>
-                <tr>
-                    <td class="grayed">origin:</td>
-                    <td>Flea Market</td>
-                </tr>
-                <tr>
-                    <td class="grayed">status:</td>
-                    <td>New on card</td>
-                    <td colspan=2 class="tag"></td>
-                </tr>
-            </table>
-        </details>
-        <div class="wrapper"></div>
-    </div>
-    <div class="searchable float" data-index="slider 2005 first editions - torpedoes 2005 flea market">
-        <details>
-            <summary>
-                <h1>Slider</h1>
-            </summary>
-            <table>
-                <tr>
-                    <td class="grayed">series:</td>
-                    <td>2005 First Editions - Torpedoes</td>
-                    <td class="grayed">part:</td>
-                    <td class="right">7/10</td>
-                </tr>
-                <tr>
-                    <td class="grayed">number:</td>
-                    <td>047</td>
-                    <td class="grayed">year:</td>
-                    <td class="right">2005</td>
-                </tr>
-                <tr>
-                    <td class="grayed">origin:</td>
-                    <td>Flea Market</td>
-                </tr>
-                <tr>
-                    <td class="grayed">status:</td>
-                    <td>New on card</td>
-                    <td colspan=2 class="tag"></td>
-                </tr>
-            </table>
-        </details>
-        <div class="wrapper"><a><img class="photo" src="Images/Slider (2005 First Editions - Torpedoes).JPG" alt="Slider" width="640px" /></a></div>
-    </div>
-    <div class="searchable float" data-index="qombee 2006 first editions 2006 flea market">
-        <details>
-            <summary>
-                <h1>Qombee</h1>
-            </summary>
-            <table>
-                <tr>
-                    <td class="grayed">series:</td>
-                    <td>2006 First Editions</td>
-                    <td class="grayed">part:</td>
-                    <td class="right">17/38</td>
-                </tr>
-                <tr>
-                    <td class="grayed">number:</td>
-                    <td>017</td>
-                    <td class="grayed">year:</td>
-                    <td class="right">2006</td>
-                </tr>
-                <tr>
-                    <td class="grayed">origin:</td>
-                    <td>Flea Market</td>
-                </tr>
-                <tr>
-                    <td class="grayed">status:</td>
-                    <td>New on card</td>
-                    <td colspan=2 class="tag"></td>
-                </tr>
-            </table>
-        </details>
-        <div class="wrapper"><a><img class="photo" src="Images/Qombee (2006 First Editions).JPG" alt="Qombee" width="640px" /></a></div>
-    </div>
-    <div class="searchable float" data-index="flight 2003 2007 all stars 2007 flea market">
-        <details>
-            <summary>
-                <h1>Flight 2003</h1>
-            </summary>
-            <table>
-                <tr>
-                    <td class="grayed">series:</td>
-                    <td>2007 All Stars</td>
-                    <td class="grayed">part:</td>
-                    <td class="right"></td>
-                </tr>
-                <tr>
-                    <td class="grayed">number:</td>
-                    <td>185/223</td>
-                    <td class="grayed">year:</td>
-                    <td class="right">2007</td>
-                </tr>
-                <tr>
-                    <td class="grayed">origin:</td>
-                    <td>Flea Market</td>
-                </tr>
-                <tr>
-                    <td class="grayed">status:</td>
-                    <td>New on card</td>
-                    <td colspan=2 class="tag"></td>
-                </tr>
-            </table>
-        </details>
-        <div class="wrapper"><a><img class="photo" src="Images/Flight 2003 (2007 All Stars).JPG" alt="Flight 2003" width="640px" /></a></div>
-    </div>
-    <div class="searchable float" data-index="ford shelby gr-1 concept 2007 all stars 2007 flea market">
-        <details>
-            <summary>
-                <h1>Ford Shelby GR-1 Concept</h1>
-            </summary>
-            <table>
-                <tr>
-                    <td class="grayed">series:</td>
-                    <td>2007 All Stars</td>
-                    <td class="grayed">part:</td>
-                    <td class="right"></td>
-                </tr>
-                <tr>
-                    <td class="grayed">number:</td>
-                    <td>206/223</td>
-                    <td class="grayed">year:</td>
-                    <td class="right">2007</td>
-                </tr>
-                <tr>
-                    <td class="grayed">origin:</td>
-                    <td>Flea Market</td>
-                </tr>
-                <tr>
-                    <td class="grayed">status:</td>
-                    <td>New on card</td>
-                    <td colspan=2 class="tag"></td>
-                </tr>
-            </table>
-        </details>
-        <div class="wrapper"><a><img class="photo" src="Images/Ford Shelby GR-1 Concept (2007 All Stars).JPG" alt="Ford Shelby GR-1 Concept" width="640px" /></a></div>
-    </div>
-    <div class="searchable float" data-index="twin mill iii 2008 first editions 2008 flea market">
-        <details>
-            <summary>
-                <h1>Twin Mill III</h1>
-            </summary>
-            <table>
-                <tr>
-                    <td class="grayed">series:</td>
-                    <td>2008 First Editions</td>
-                    <td class="grayed">part:</td>
-                    <td class="right">40/40</td>
-                </tr>
-                <tr>
-                    <td class="grayed">number:</td>
-                    <td>40/172</td>
-                    <td class="grayed">year:</td>
-                    <td class="right">2008</td>
-                </tr>
-                <tr>
-                    <td class="grayed">origin:</td>
-                    <td>Flea Market</td>
-                </tr>
-                <tr>
-                    <td class="grayed">status:</td>
-                    <td>New on card</td>
-                    <td colspan=2 class="tag"></td>
-                </tr>
-            </table>
-        </details>
-        <div class="wrapper"><a><img class="photo" src="Images/Twin Mill III (2008 First Editions).JPG" alt="Twin Mill III" width="640px" /></a></div>
-    </div>
-    <div class="searchable float" data-index="blastous moto 2012 new models 2012 flea market">
-        <details open>
-            <summary>
-                <h1>Blastous Moto</h1>
-            </summary>
-            <table>
-                <tr>
-                    <td class="grayed">series:</td>
-                    <td>2012 New Models</td>
-                    <td class="grayed">part:</td>
-                    <td class="right">41/50</td>
-                </tr>
-                <tr>
-                    <td class="grayed">number:</td>
-                    <td></td>
-                    <td class="grayed">year:</td>
-                    <td class="right">2012</td>
-                </tr>
-                <tr>
-                    <td class="grayed">origin:</td>
-                    <td>Flea Market</td>
-                </tr>
-                <tr>
-                    <td class="grayed">status:</td>
-                    <td>New on card</td>
-                    <td colspan=2 class="tag"></td>
-                </tr>
-            </table>
-        </details>
-        <div class="wrapper"></div>
-    </div>
-    <div class="searchable float" data-index="twin mill 50 hot wheels  flea market">
-        <details>
-            <summary>
-                <h1>Twin Mill</h1>
-            </summary>
-            <table>
-                <tr>
-                    <td class="grayed">series:</td>
-                    <td>50 Hot Wheels</td>
-                    <td class="grayed">part:</td>
-                    <td class="right">2/6</td>
-                </tr>
-                <tr>
-                    <td class="grayed">number:</td>
-                    <td></td>
-                    <td class="grayed">year:</td>
-                    <td class="right"></td>
-                </tr>
-                <tr>
-                    <td class="grayed">origin:</td>
-                    <td>Flea Market</td>
-                </tr>
-                <tr>
-                    <td class="grayed">status:</td>
-                    <td>New on card</td>
-                    <td colspan=2 class="tag"></td>
-                </tr>
-            </table>
-        </details>
-        <div class="wrapper"><a><img class="photo" src="Images/Twin Mill (50 Hot Wheels).JPG" alt="Twin Mill" width="640px" /></a></div>
-    </div>
-    <div class="searchable float" data-index="1967 chevy c10 55th anniversary mix 2 2023 walgreens">
-        <details open>
-            <summary>
-                <h1>1967 Chevy C10</h1>
-            </summary>
-            <table>
-                <tr>
-                    <td class="grayed">series:</td>
-                    <td>55th Anniversary Mix 2</td>
-                    <td class="grayed">part:</td>
-                    <td class="right">1/6</td>
-                </tr>
-                <tr>
-                    <td class="grayed">number:</td>
-                    <td></td>
-                    <td class="grayed">year:</td>
-                    <td class="right">2023</td>
-                </tr>
-                <tr>
-                    <td class="grayed">origin:</td>
-                    <td>Walgreens</td>
-                </tr>
-                <tr>
-                    <td class="grayed">status:</td>
-                    <td>New on card</td>
-                    <td colspan=2 class="tag"></td>
-                </tr>
-            </table>
-        </details>
-        <div class="wrapper"></div>
-    </div>
-    <div class="searchable float" data-index="twin mill 55th anniversary mix 2 2023 walgreens">
-        <details open>
-            <summary>
-                <h1>Twin Mill</h1>
-            </summary>
-            <table>
-                <tr>
-                    <td class="grayed">series:</td>
-                    <td>55th Anniversary Mix 2</td>
-                    <td class="grayed">part:</td>
-                    <td class="right">2/6</td>
-                </tr>
-                <tr>
-                    <td class="grayed">number:</td>
-                    <td></td>
-                    <td class="grayed">year:</td>
-                    <td class="right">2023</td>
-                </tr>
-                <tr>
-                    <td class="grayed">origin:</td>
-                    <td>Walgreens</td>
-                </tr>
-                <tr>
-                    <td class="grayed">status:</td>
-                    <td>New on card</td>
-                    <td colspan=2 class="tag"></td>
-                </tr>
-            </table>
-        </details>
-        <div class="wrapper"></div>
-    </div>
-    <div class="searchable float" data-index="1967 camaro 55th anniversary mix 2 2023 walgreens">
-        <details open>
-            <summary>
-                <h1>1967 Camaro</h1>
-            </summary>
-            <table>
-                <tr>
-                    <td class="grayed">series:</td>
-                    <td>55th Anniversary Mix 2</td>
-                    <td class="grayed">part:</td>
-                    <td class="right">6/6</td>
-                </tr>
-                <tr>
-                    <td class="grayed">number:</td>
-                    <td></td>
-                    <td class="grayed">year:</td>
-                    <td class="right">2023</td>
-                </tr>
-                <tr>
-                    <td class="grayed">origin:</td>
-                    <td>Walgreens</td>
-                </tr>
-                <tr>
-                    <td class="grayed">status:</td>
-                    <td>New on card</td>
-                    <td colspan=2 class="tag"></td>
-                </tr>
-            </table>
-        </details>
-        <div class="wrapper"></div>
-    </div>
     <div class="searchable float" data-index="geoterra baja blazers 2020 flea market">
         <details>
             <summary>
@@ -1629,6 +477,37 @@ details[open] summary ~ * {
         </details>
         <div class="wrapper"></div>
     </div>
+    <div class="searchable float" data-index="jeep scrambler baja blazers  target">
+        <details open>
+            <summary>
+                <h1>Jeep Scrambler</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>Baja Blazers</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">8/10</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>233/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right"></td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Target</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"></div>
+    </div>
     <div class="searchable float" data-index="batman forever batmobile batman 2023 family dollar">
         <details>
             <summary>
@@ -1898,6 +777,37 @@ details[open] summary ~ * {
                 <tr>
                     <td class="grayed">origin:</td>
                     <td>Big Lots</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"></div>
+    </div>
+    <div class="searchable float" data-index="brickin' delivery brick rides 2023 dollar tree">
+        <details open>
+            <summary>
+                <h1>Brickin' Delivery</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>Brick Rides</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">3/5</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>58/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2023</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Dollar Tree</td>
                 </tr>
                 <tr>
                     <td class="grayed">status:</td>
@@ -2527,6 +1437,37 @@ details[open] summary ~ * {
             </table>
         </details>
         <div class="wrapper"><a><img class="photo" src="Images/1957 Nomad (2005 First Editions - Drop Tops).JPG" alt="1957 Nomad" width="640px" /></a></div>
+    </div>
+    <div class="searchable float" data-index="blings mercedes-benz g500 dropstars  flea market">
+        <details open>
+            <summary>
+                <h1>Blings Mercedes-Benz G500</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>Dropstars</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">3/5</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>058</td>
+                    <td class="grayed">year:</td>
+                    <td class="right"></td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Flea Market</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"></div>
     </div>
     <div class="searchable float" data-index="heavy hitcher experimotors  flea market">
         <details>
@@ -4791,6 +3732,68 @@ details[open] summary ~ * {
         </details>
         <div class="wrapper"></div>
     </div>
+    <div class="searchable float" data-index="lamborghini reventon hw exotics 2023 publix">
+        <details open>
+            <summary>
+                <h1>Lamborghini Reventon</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>HW Exotics</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">8/10</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>224/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2023</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Publix</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"></div>
+    </div>
+    <div class="searchable float" data-index="porsche 935 hw exotics  target">
+        <details open>
+            <summary>
+                <h1>Porsche 935</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>HW Exotics</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">7/10</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>223/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right"></td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Target</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"></div>
+    </div>
     <div class="searchable float" data-index="mr11 hw games  flea market">
         <details>
             <summary>
@@ -5742,6 +4745,37 @@ details[open] summary ~ * {
                 <tr>
                     <td class="grayed">origin:</td>
                     <td>Walmart</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"></div>
+    </div>
+    <div class="searchable float" data-index="land rover defender 90 hw hot trucks  dollar tree">
+        <details open>
+            <summary>
+                <h1>Land Rover Defender 90</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>HW Hot Trucks</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">10/10</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>227/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right"></td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Dollar Tree</td>
                 </tr>
                 <tr>
                     <td class="grayed">status:</td>
@@ -7581,6 +6615,37 @@ details[open] summary ~ * {
         </details>
         <div class="wrapper"></div>
     </div>
+    <div class="searchable float" data-index="the beatles yellow submarine hw screen time  family dollar">
+        <details open>
+            <summary>
+                <h1>The Beatles Yellow Submarine</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>HW Screen Time</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">6/10</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>127/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right"></td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Family Dollar</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"></div>
+    </div>
     <div class="searchable float" data-index="1964 corvette sting ray hw showroom  flea market">
         <details>
             <summary>
@@ -8309,6 +7374,37 @@ details[open] summary ~ * {
                 <tr>
                     <td class="grayed">number:</td>
                     <td>222/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right"></td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Target</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"></div>
+    </div>
+    <div class="searchable float" data-index="datsun bluebird wagon [510] hw wagons  target">
+        <details open>
+            <summary>
+                <h1>Datsun Bluebird Wagon [510]</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>HW Wagons</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">4/5</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>235/250</td>
                     <td class="grayed">year:</td>
                     <td class="right"></td>
                 </tr>
@@ -10650,6 +9746,37 @@ details[open] summary ~ * {
         </details>
         <div class="wrapper"></div>
     </div>
+    <div class="searchable float" data-index="1969 shelby gt-500 muscle mania  family dollar">
+        <details open>
+            <summary>
+                <h1>1969 Shelby GT-500</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>Muscle Mania</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">9/10</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>195/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right"></td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Family Dollar</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"></div>
+    </div>
     <div class="searchable float" data-index="silhouette mystery models 2019 offerup">
         <details open>
             <summary>
@@ -12190,6 +11317,37 @@ details[open] summary ~ * {
                 <tr>
                     <td class="grayed">origin:</td>
                     <td>Dollar Tree</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"></div>
+    </div>
+    <div class="searchable float" data-index="1969 dodge charger 500 then and now  target">
+        <details open>
+            <summary>
+                <h1>1969 Dodge Charger 500</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>Then and Now</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">8/10</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>240/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right"></td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Target</td>
                 </tr>
                 <tr>
                     <td class="grayed">status:</td>
@@ -14395,6 +13553,1308 @@ details[open] summary ~ * {
                 <tr>
                     <td class="grayed">status:</td>
                     <td>Used</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"></div>
+    </div>
+    <div class="searchable float" data-index="1940s woodie 1998 first editions 1998 flea market">
+        <details>
+            <summary>
+                <h1>1940s Woodie</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>1998 First Editions</td>
+                    <td class="grayed">part:</td>
+                    <td class="right"></td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>217</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">1998</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Flea Market</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" src="Images/1940s Woodie (1998 First Editions).JPG" alt="1940s Woodie" width="640px" /></a></div>
+    </div>
+    <div class="searchable float" data-index="super comp dragster 1998 first editions 1998 flea market">
+        <details>
+            <summary>
+                <h1>Super Comp Dragster</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>1998 First Editions</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">22/40</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>655</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">1998</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Flea Market</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" src="Images/Super Comp Dragster (1998 First Editions).JPG" alt="Super Comp Dragster" width="640px" /></a></div>
+    </div>
+    <div class="searchable float" data-index="tow jam 1998 first editions 1998 flea market">
+        <details>
+            <summary>
+                <h1>Tow Jam</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>1998 First Editions</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">25/40</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td></td>
+                    <td class="grayed">year:</td>
+                    <td class="right">1998</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Flea Market</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" src="Images/Tow Jam (1998 First Editions).JPG" alt="Tow Jam" width="640px" /></a></div>
+    </div>
+    <div class="searchable float" data-index="chaparral 2 1998 first editions 1998 flea market">
+        <details>
+            <summary>
+                <h1>Chaparral 2</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>1998 First Editions</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">28/40</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>669</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">1998</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Flea Market</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" src="Images/Chaparral 2 (1998 First Editions).JPG" alt="Chaparral 2" width="640px" /></a></div>
+    </div>
+    <div class="searchable float" data-index="bad mudder 1998 first editions 1998 flea market">
+        <details>
+            <summary>
+                <h1>Bad Mudder</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>1998 First Editions</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">33/40</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>662</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">1998</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Flea Market</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" src="Images/Bad Mudder (1998 First Editions).JPG" alt="Bad Mudder" width="640px" /></a></div>
+    </div>
+    <div class="searchable float" data-index="olds aurora gts-1 1999 first editions 1999 flea market">
+        <details>
+            <summary>
+                <h1>Olds Aurora GTS-1</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>1999 First Editions</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">5/26</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>911</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">1999</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Flea Market</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" src="Images/Olds Aurora GTS-1 (1999 First Editions).JPG" alt="Olds Aurora GTS-1" width="640px" /></a></div>
+    </div>
+    <div class="searchable float" data-index="deora ii 2000 first editions 2000 flea market">
+        <details open>
+            <summary>
+                <h1>Deora II</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>2000 First Editions</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">5/36</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>065</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2000</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Flea Market</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"></div>
+    </div>
+    <div class="searchable float" data-index="phantastique 2000 first editions 2000 flea market">
+        <details>
+            <summary>
+                <h1>Phantastique</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>2000 First Editions</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">9/36</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td></td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2000</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Flea Market</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" src="Images/Phantastique (2000 First Editions).JPG" alt="Phantastique" width="640px" /></a></div>
+    </div>
+    <div class="searchable float" data-index="thomassima 3 2000 first editions 2000 flea market">
+        <details>
+            <summary>
+                <h1>Thomassima 3</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>2000 First Editions</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">10/36</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td></td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2000</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Flea Market</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" src="Images/Thomassima 3 (2000 First Editions).JPG" alt="Thomassima 3" width="640px" /></a></div>
+    </div>
+    <div class="searchable float" data-index="thomassima 3 2000 first editions 2000 flea market">
+        <details>
+            <summary>
+                <h1>Thomassima 3</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>2000 First Editions</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">10/36</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td></td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2000</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Flea Market</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New (open)</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" src="Images/Thomassima 3 (2000 First Editions).JPG" alt="Thomassima 3" width="640px" /></a></div>
+    </div>
+    <div class="searchable float" data-index="anglia panel truck 2000 first editions 2000 flea market">
+        <details>
+            <summary>
+                <h1>Anglia Panel Truck</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>2000 First Editions</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">17/36</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>077</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2000</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Flea Market</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" src="Images/Anglia Panel Truck (2000 First Editions).JPG" alt="Anglia Panel Truck" width="640px" /></a></div>
+    </div>
+    <div class="searchable float" data-index="cabbin’ fever 2000 first editions 2000 flea market">
+        <details>
+            <summary>
+                <h1>Cabbin’ Fever</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>2000 First Editions</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">22/36</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>082</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2000</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Flea Market</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" src="Images/Cabbin’ Fever (2000 First Editions).JPG" alt="Cabbin’ Fever" width="640px" /></a></div>
+    </div>
+    <div class="searchable float" data-index="shoe box 2000 first editions 2000 flea market">
+        <details>
+            <summary>
+                <h1>Shoe Box</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>2000 First Editions</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">26/36</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>086</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2000</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Flea Market</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" src="Images/Shoe Box (2000 First Editions).JPG" alt="Shoe Box" width="640px" /></a></div>
+    </div>
+    <div class="searchable float" data-index="roll cage 2000 first editions 2000 flea market">
+        <details open>
+            <summary>
+                <h1>Roll Cage</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>2000 First Editions</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">31/36</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>091</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2000</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Flea Market</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"></div>
+    </div>
+    <div class="searchable float" data-index="arachnorod 2000 first editions 2000 flea market">
+        <details>
+            <summary>
+                <h1>Arachnorod</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>2000 First Editions</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">34/36</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>094</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2000</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Flea Market</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" src="Images/Arachnorod (2000 First Editions).JPG" alt="Arachnorod" width="640px" /></a></div>
+    </div>
+    <div class="searchable float" data-index="shredster 2001 first editions 2001 flea market">
+        <details open>
+            <summary>
+                <h1>Shredster</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>2001 First Editions</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">10/36</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>022</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2001</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Flea Market</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"></div>
+    </div>
+    <div class="searchable float" data-index="hooligan 2001 first editions 2001 flea market">
+        <details>
+            <summary>
+                <h1>Hooligan</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>2001 First Editions</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">18/36</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>018</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2001</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Flea Market</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" src="Images/Hooligan (2001 First Editions).JPG" alt="Hooligan" width="640px" /></a></div>
+    </div>
+    <div class="searchable float" data-index="jaded 2002 first editions 2002 flea market">
+        <details>
+            <summary>
+                <h1>Jaded</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>2002 First Editions</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">22/42</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>034</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2002</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Flea Market</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" src="Images/Jaded (2002 First Editions).JPG" alt="Jaded" width="640px" /></a></div>
+    </div>
+    <div class="searchable float" data-index="side draft 2002 first editions 2002 flea market">
+        <details>
+            <summary>
+                <h1>Side Draft</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>2002 First Editions</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">40/42</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>052</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2002</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Flea Market</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" src="Images/Side Draft (2002 First Editions).JPG" alt="Side Draft" width="640px" /></a></div>
+    </div>
+    <div class="searchable float" data-index="ground fx 2003 first editions 2003 flea market">
+        <details>
+            <summary>
+                <h1>Ground FX</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>2003 First Editions</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">37/42</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>049</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2003</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Flea Market</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" src="Images/Ground FX (2003 First Editions).JPG" alt="Ground FX" width="640px" /></a></div>
+    </div>
+    <div class="searchable float" data-index="blings dairy delivery 2004 first editions 2004 flea market">
+        <details>
+            <summary>
+                <h1>Blings Dairy Delivery</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>2004 First Editions</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">12/100</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>012</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2004</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Flea Market</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" src="Images/Blings Dairy Delivery (2004 First Editions).JPG" alt="Blings Dairy Delivery" width="640px" /></a></div>
+    </div>
+    <div class="searchable float" data-index="blings dodge ram pickup 2004 first editions 2004 flea market">
+        <details open>
+            <summary>
+                <h1>Blings Dodge Ram Pickup</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>2004 First Editions</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">15/100</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>015</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2004</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Flea Market</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"></div>
+    </div>
+    <div class="searchable float" data-index="blings hummer h2 2004 first editions 2004 flea market">
+        <details>
+            <summary>
+                <h1>Blings Hummer H2</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>2004 First Editions</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">34/100</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>034</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2004</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Flea Market</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" src="Images/Blings Hummer H2 (2004 First Editions).JPG" alt="Blings Hummer H2" width="640px" /></a></div>
+    </div>
+    <div class="searchable float" data-index="crooze low flow 2004 first editions 2004 flea market">
+        <details>
+            <summary>
+                <h1>Crooze Low Flow</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>2004 First Editions</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">48/100</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>049</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2004</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Flea Market</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" src="Images/Crooze Low Flow (2004 First Editions).JPG" alt="Crooze Low Flow" width="640px" /></a></div>
+    </div>
+    <div class="searchable float" data-index="dodge tomahawk 2004 first editions 2004 flea market">
+        <details open>
+            <summary>
+                <h1>Dodge Tomahawk</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>2004 First Editions</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">80/100</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>080</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2004</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Flea Market</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"></div>
+    </div>
+    <div class="searchable float" data-index="hummer h3t 2004 first editions 2004 flea market">
+        <details>
+            <summary>
+                <h1>Hummer H3T</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>2004 First Editions</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">60/100</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>060</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2004</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Flea Market</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" src="Images/Hummer H3T (2004 First Editions).JPG" alt="Hummer H3T" width="640px" /></a></div>
+    </div>
+    <div class="searchable float" data-index="cool-one 2004 first editions 2004 flea market">
+        <details>
+            <summary>
+                <h1>Cool-One</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>2004 First Editions</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">100/100</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>100</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2004</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Flea Market</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" src="Images/Cool-One (2004 First Editions).JPG" alt="Cool-One" width="640px" /></a></div>
+    </div>
+    <div class="searchable float" data-index="chrysler 300c 2005 first editions - blings 2005 flea market">
+        <details open>
+            <summary>
+                <h1>Chrysler 300C</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>2005 First Editions - Blings</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">1/10</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>031</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2005</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Flea Market</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"></div>
+    </div>
+    <div class="searchable float" data-index="ford bronco concept 2005 first editions - blings 2005 flea market">
+        <details open>
+            <summary>
+                <h1>Ford Bronco Concept</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>2005 First Editions - Blings</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">2/10</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>032</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2005</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Flea Market</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"></div>
+    </div>
+    <div class="searchable float" data-index="hummer h3 2005 first editions - blings 2005 flea market">
+        <details open>
+            <summary>
+                <h1>Hummer H3</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>2005 First Editions - Blings</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">7/10</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>037</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2005</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Flea Market</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"></div>
+    </div>
+    <div class="searchable float" data-index="slider 2005 first editions - torpedoes 2005 flea market">
+        <details>
+            <summary>
+                <h1>Slider</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>2005 First Editions - Torpedoes</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">7/10</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>047</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2005</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Flea Market</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" src="Images/Slider (2005 First Editions - Torpedoes).JPG" alt="Slider" width="640px" /></a></div>
+    </div>
+    <div class="searchable float" data-index="qombee 2006 first editions 2006 flea market">
+        <details>
+            <summary>
+                <h1>Qombee</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>2006 First Editions</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">17/38</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>017</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2006</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Flea Market</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" src="Images/Qombee (2006 First Editions).JPG" alt="Qombee" width="640px" /></a></div>
+    </div>
+    <div class="searchable float" data-index="flight 2003 2007 all stars 2007 flea market">
+        <details>
+            <summary>
+                <h1>Flight 2003</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>2007 All Stars</td>
+                    <td class="grayed">part:</td>
+                    <td class="right"></td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>185/223</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2007</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Flea Market</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" src="Images/Flight 2003 (2007 All Stars).JPG" alt="Flight 2003" width="640px" /></a></div>
+    </div>
+    <div class="searchable float" data-index="ford shelby gr-1 concept 2007 all stars 2007 flea market">
+        <details>
+            <summary>
+                <h1>Ford Shelby GR-1 Concept</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>2007 All Stars</td>
+                    <td class="grayed">part:</td>
+                    <td class="right"></td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>206/223</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2007</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Flea Market</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" src="Images/Ford Shelby GR-1 Concept (2007 All Stars).JPG" alt="Ford Shelby GR-1 Concept" width="640px" /></a></div>
+    </div>
+    <div class="searchable float" data-index="twin mill iii 2008 first editions 2008 flea market">
+        <details>
+            <summary>
+                <h1>Twin Mill III</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>2008 First Editions</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">40/40</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>40/172</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2008</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Flea Market</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" src="Images/Twin Mill III (2008 First Editions).JPG" alt="Twin Mill III" width="640px" /></a></div>
+    </div>
+    <div class="searchable float" data-index="dodge charger drift car 2010 new models 2010 flea market">
+        <details open>
+            <summary>
+                <h1>Dodge Charger Drift Car</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>2010 New Models</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">43/44</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>43/240</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2010</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Flea Market</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"></div>
+    </div>
+    <div class="searchable float" data-index="blastous moto 2012 new models 2012 flea market">
+        <details open>
+            <summary>
+                <h1>Blastous Moto</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>2012 New Models</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">41/50</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td></td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2012</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Flea Market</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"></div>
+    </div>
+    <div class="searchable float" data-index="twin mill 50th anniversary 2018 flea market">
+        <details>
+            <summary>
+                <h1>Twin Mill</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>50th Anniversary</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">2/6</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td></td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2018</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Flea Market</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" src="Images/Twin Mill (50th Anniversary 2018).JPG" alt="Twin Mill" width="640px" /></a></div>
+    </div>
+    <div class="searchable float" data-index="1967 chevy c10 55th anniversary mix 2 2023 walgreens">
+        <details open>
+            <summary>
+                <h1>1967 Chevy C10</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>55th Anniversary Mix 2</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">1/6</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td></td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2023</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Walgreens</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"></div>
+    </div>
+    <div class="searchable float" data-index="twin mill 55th anniversary mix 2 2023 walgreens">
+        <details open>
+            <summary>
+                <h1>Twin Mill</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>55th Anniversary Mix 2</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">2/6</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td></td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2023</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Walgreens</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"></div>
+    </div>
+    <div class="searchable float" data-index="porsche 993 gt2 55th anniversary mix 2 2023 family dollar">
+        <details open>
+            <summary>
+                <h1>Porsche 993 GT2</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>55th Anniversary Mix 2</td>
+                    <td class="grayed">part:</td>
+                    <td class="right"></td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td></td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2023</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Family Dollar</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"></div>
+    </div>
+    <div class="searchable float" data-index="1967 camaro 55th anniversary mix 2 2023 walgreens">
+        <details open>
+            <summary>
+                <h1>1967 Camaro</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>55th Anniversary Mix 2</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">6/6</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td></td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2023</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Walgreens</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
                     <td colspan=2 class="tag"></td>
                 </tr>
             </table>
