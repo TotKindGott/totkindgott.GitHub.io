@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <title>Hot Wheels</title>
     <style type="text/css">
+/* ------- RESET STYLES ------- */
+
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -55,71 +57,270 @@ table {
 
 /* ------- END RESET STYLES ------- */
 
-
 body {
-	background-color: #262b2f; font-family: monospace; font-size: 18px; width: 390; height: 844; color: #FFFFFF; padding-left: 10px; padding-right: 10px; padding-bottom: 20px;
+	background-color: #f7f7f7; 
+	width: 390; height: 844; 
+	padding-left: 10px; 
+	padding-right: 10px; 
+	padding-bottom: 20px;
+	padding-top: 20px;
+	font-family: monospace; 
+	font-size: 18px; 
+	color: #000000; 
 	-webkit-text-size-adjust: none;
 }
 
+.dark-mode {
+    background-color: rgba(0,0,0,0.925);
+    color: white;
+}
+
+/* ------- TOP MENU BAR ------- */
+
+#topbar {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    background: none;
+    margin: auto;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+
 #search {
-    font: "Inconsolata"; font-size: 16px; color: black;
+    font: "Inconsolata"; 
+    font-size: 16px; 
+    color: black;
     border-radius: 10px;
     position: relative; 
     left: 50%;
+    top: 5px;
     transform: translate(-50%);
-    height: 16px; width: 50%;
+    height: 16px; 
+    width: 50%;
     margin: auto;
-    
+    box-shadow: 0 0 5px 1px #ffffff;
 }
+
+#left_button {
+    background-image: url(/Images/Icons/Ionic-Ionicons-Menu.16.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 24px;
+    width: 24px;
+    position: fixed;
+    left: 15px;
+    top: 5px;
+    background-color: #ffffff;
+    border: 1px solid gray;
+    border-radius: 12px;
+    margin: 0; 
+    box-shadow: 0 0 5px 1px #ffffff;
+}
+
+#right_button {
+    background-image: url(/Images/Icons/Ionic-Ionicons-Toggle.16.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 24px;
+    width: 24px;
+    position: fixed;
+    right: 15px;
+    top: 5px;
+    background-color: #ffffff;
+    border: 1px solid gray;
+    border-radius: 12px;
+    margin: 0; 
+    box-shadow: 0 0 5px 1px #ffffff;
+}
+
+body.dark-mode #right_button
+{
+    background-image: url(/Images/Icons/Ionic-Ionicons-Toggle-outline.16.png);
+    transform: rotateY(180deg);
+}
+
 ::placeholder {
     color: gray;
     text-align: center;
 }
 
+/* ------- END TOP MENU BAR */
+
+div {
+	background-color: #ffffff;
+}
+
 div.float {
+	width: 100%; 
     display: block;
-    float: left; width: 100%; margin: auto;
+    float: left; 
+    background-color: #ffffff:
+    margin: auto;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eaeaea;
+    border-top: 1px solid #eaeaea;
+    border-radius: 10px;
+    padding-bottom: 20px;
 }
 
 .series {
-	font-family: "Courier", monospace; font: "Inconsolata"; font-size: 16px; letter-spacing: 0.05em; text-align: center; color: rgba(255,255,255,1); text-transform: uppercase;
+	font-family: "Courier", monospace; 
+	font: "Inconsolata"; 
+	font-size: 16px; 
+	letter-spacing: 0.05em; 
+	text-align: center; 
+	color: #000000; 
+	text-transform: uppercase;
 }
 
 summary > h1 {
-	font-family: "Courier", monospace; font: "Inconsolata"; font-size: 16px; font-weight: bolder; text-transform: uppercase;
-	text-align: center; text-wrap: balance; color: rgba(255,255,255,1);
-	background-color: rgba(0,0,0,1); padding-top: 5px; padding-bottom: 5px; padding: 5px;
-	border-radius: 3px; 
-	border-bottom: 3px solid rgba(200,200,200,0.5); border-top: 3px solid rgba(200,200,200,0.5); 
-	letter-spacing: 0.1em;
+	width: 100%;
+	font-family: "Courier", monospace; 
+	font: "Inconsolata"; 
+	font-size: 16px; 
+	font-weight: bolder; 
+	text-transform: uppercase;
+	text-align: center; 
+	text-wrap-style: auto; 
+	text-decoration: underline;
+	text-decoration-style: solid;
+	text-decoration-color: #000000;
+	text-decoration-thickness: 2px;
+	text-underline-offset: 3px;
+	background-color: #ffffff; padding-top: 5px; 
+	padding-bottom: 5px; 
+	/*padding: 5px;*/
+	margin: auto;
 	margin-top: 20px;
+	border-radius: 7px;
 }
 
 details {
 	background-color: none;
+	width: 100%;
 }
 
 .photo {
-	width: 75%; display: block; margin-left: auto; margin-right: auto; margin-top: 20px; margin-bottom: 10px;
-	border: 2px solid #cbcfd5;
-	border-radius: 7px; padding: 7px;
-	box-shadow: 0px 0px 10px 5px rgba(255,255,255,0.3);
+	width: 75%; 
+	display: block; 
+	margin-left: auto; 
+	margin-right: auto;
+	margin-top: 20px; 
+	margin-bottom: 10px;
+	border-radius: 7px; 
+	padding: 7px;
+	box-shadow: 3px 3px 10px 2px rgba(50,50,50,0.3);
+	padding-bottom: 40px;
+	background-color: #ffffff;
 }
 
 .wrapper {
-	position: relative; width=100%;
+	position: relative; 
+	width: 100%;
 }
 
 img.logo {
-	position: absolute; top: 15px; right: 55px;
+	position: absolute; 
+	top: 15px; 
+	right: 55px;
+}
+
+p.comment {
+	position: absolute;
+	bottom: 10px;
+    right: 50px;
+	font-family: cursive;
+	font-size: 22px;
+	font-weight: bold;
+	text-decoration: underline;
+	text-underline-offset: 3px;
+	color: #000000;
+}
+
+p.tag {
+	position: absolute;
+    bottom: 10px;
+    right: 50px;
+	font-family: monospace;
+	font-size: 18px;
+	font-weight: bold;
+	text-decoration: underline;
+	text-underline-offset: 3px;
+	color: #ffe363;
+	text-shadow: 1px 1px 1px #000000;
 }
 
 #results {
-	width: 100%; height: 100%; 
+	width: 100%; 
+	height: 100%;
+	margin-top: 30px;
+}
+
+
+/* HIDE ARROW FROM SUMMARY ELEMENT */
+summary {
+	list-style-type: none;
+}
+
+details > summary::marker, /* Latest Chrome, Edge, Firefox */ 
+details > summary::-webkit-details-marker, /* Safari */ {
+	display: none;
+}
+
+details[close] > summary {
+	width: 0; margin-top: -20px;
+}
+
+details[open] > summary ~ * {
+	animation: sweep .25s ease-in-out;
+}
+
+@keyframes sweep {
+	0%    {opacity: 0; transform: translateY(-20px)}
+    100%  {opacity: 1; transform: translateY(0)}
+}
+/* END */
+
+
+body.dark-mode body {
+    background-color: rgba(0,0,0,0.92.5);
+}
+
+body.dark-mode h1,
+body.dark-mode #results,
+body.dark-mode .searchable,
+body.dark-mode .wrapper {
+    background-color: #000000;
+}
+
+body.dark-mode .searchable {
+    box-shadow: 0 0 10px 1px rgba(255,255,255,0.25);
+    border-top: 1px solid rgba(255,255,255,0.5);
+    border-bottom: 1px solid rgba(255,255,255,0.5);
+}
+
+body.dark-mode h1 { 
+    text-decoration-color: #ffffff;
+}
+
+body.dark-mode img {
+    filter: brightness(0.75);
+}
+
+body.dark-mode td:not(.tag) {
+    color: #ffffff;
+} 
+
+body.dark-mode td.grayed {
+    color: gray;
 }
 
 table {
-	width: 100%; margin-top: 15px;
+	width: 100%; 
+	margin-top: 15px;
 	font-family: "Courier", monospace; 
 }
 
@@ -129,14 +330,21 @@ tr {
 
 td:not(.grayed) {
 	font-family: "Courier", monospace;
-	font: "Inconsolata"; font-size: 14px; color: #FEFEFE; font-weight: bolder; text-transform: uppercase;
+	font: "Inconsolata"; 
+	font-size: 14px; 
+	color: #000000; 
+	font-weight: bolder; 
+	text-transform: uppercase;
 	padding: 5px;
 }
 
 td.grayed {
 	font-family: "Courier", monospace;
-	font: "Inconsolata"; font-size: 14px; color: #c1c1c1;
-	padding: 5px; padding-right: 10px;
+	font: "Inconsolata"; 
+	font-size: 14px; 
+	color: #c1c1c1;
+	padding: 5px; 
+	padding-right: 10px;
 }
 
 td.right {
@@ -144,26 +352,124 @@ td.right {
 }
 
 td.tag {
-	color: #d1db6a;
+	font: 'Inconsolata';
+	font-size: 14px; 
+	color: #ffe363;
+	text-shadow: 1px 1px 1px #000000;
 }
 
-/* HIDE ARROW FROM SUMMARY ELEMENT */
-details > summary::marker, /* Latest Chrome, Edge, Firefox */ 
-details > summary::-webkit-details-marker /* Safari */ {
-	display: none;
+/* ------- MENU OVERLAY ------- */
+#menu {
+    background-color: transparent;
 }
 
-details[close] > summary {
-	width: 0; margin-top: -20px;
+#menu .overlay-content {
+    background-color: rgba(0,0,0,0.9);
 }
 
-details[open] summary ~ * {
-	animation: sweep .25s ease-in-out;
+.overlay {
+  height: auto;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 36px;
+  left: 0;
+  overflow-x: hidden;
+  transition: 0.5s;
 }
 
-@keyframes sweep {
-	0%    {opacity: 0; transform: translateY(-20px)}
-    100%  {opacity: 1; transform: translateY(0)}
+.overlay-content {
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+  margin-top: 0px;
+  padding-top: 10px;
+  padding-bottom: 28px;
+  background-color: none;
+}
+
+.overlay a {
+  text-decoration: none;
+  font-size: 24px;
+  color: #818181;
+  display: block;
+  padding: 8px;
+  /*animation-delay: 0.5s;
+  transition: 0.5s;
+  opacity: 0.5;
+  transition: opacity 0.5s ease-in;*/
+}
+
+.overlay a:hover, .overlay a:focus {
+  color: #f1f1f1;
+}
+
+.overlay .close_button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 60px;
+  color: white;
+  z-index: 1;
+}
+
+/*@media screen and (max-height: 450px) {
+  .overlay a {font-size: 16px}
+  .overlay .closebtn {
+  font-size: 20px;
+  top: 15px;
+  right: 35px;
+  }
+}*/
+
+#menu > .overlay-content > p.subheader {
+    text-transform: uppercase;
+    text-align: center;
+    font-family: monospace;
+    font-size: 24px;
+    color: white;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: gray;
+    letter-spacing: 0.25em;
+    padding-top: 18px;
+}
+
+#menu > .overlay-content > .separator {
+    color: gray;
+    width: 75%;
+    height: 8px;
+    margin: auto;
+    text-align: center;
+}
+
+#menu_list p, #menu_list a {
+    opacity: 1;
+}
+
+.fade-out { 
+    animation-name: fade_out;
+    animation-iteration-count: 1;
+	animation-duration: 0.5s;
+}
+
+@keyframes fade_out {
+    0% {opacity: 1; width: 100%;}
+    100% {opacity: 0; width: 75%;}
+}
+
+.fade-in p, .fade-in a {
+    animation-name: fade_in;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-duration: 1s;
+    animation-direction: forwards;
+}
+
+@keyframes fade_in {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
 }
 
 
@@ -175,9 +481,21 @@ details[open] summary ~ * {
 </head>
 <body>
     <header></header>
-    <input type="text" id="search" placeholder="filter" />
-    <style id="search_style"></style>
+    <div id="topbar">
+        <input type="button" onclick="openNav()" id="left_button" />
+        <script>
+            
+            function openNav() {
+            document.getElementById("menu").style.width = "100%";
+            document.getElementById("menu_list").classList.remove("fade-out")
+            document.getElementById("menu_list").classList.add("fade-in")
+            }
+
+        </script>
+        <input type="text" id="search" placeholder="filter" /
+        <style id="search_style"></style>
     <script type="text/javascript">
+
         const inputs = document.querySelectorAll('input');
 
             inputs.forEach(input => {
@@ -196,7 +514,43 @@ details[open] summary ~ * {
             searchStyle.innerHTML = ".searchable:not([data-index*=\"" + this.value.toLowerCase() + "\"]) { display: none; }";
             // beware of CSS injections!
         });
+
     </script>
+        <input type="button" onclick="toggle_dark_mode()" id="right_button" />
+        <script type="text/javascript">
+
+            function toggle_dark_mode() {
+                var element = document.body;
+                element.classList.toggle("dark-mode");
+            };
+
+        </script>
+    </div>
+
+    <div id="menu" class="overlay">
+        <a href="javascript:void(0)" class="close_button" onclick="closeMenu()">&times;</a>
+        <script type="text/javascript">
+
+            function closeMenu() {
+            document.getElementById("menu_list").classList.remove("fade-in")
+            document.getElementById("menu_list").classList.add("fade-out")
+             document.getElementById("menu").style.width = "0%";
+            }
+
+    </script>
+        <div id="menu_list"  class="overlay-content">
+            <p class="subheader">Collection</p>
+            <p class="separator"></p>
+            <a href="index.html">All Owned</a>
+            <a href="#">Gifts *</a>
+            <a href="#">Statistics *</a>
+            <p class="subheader">Other</p>
+            <p class="separator"></p>
+            <a href="treasures.html">Treasures</a>
+            <a href="#">About *</a>
+        </div>
+    </div>
+    
 
     <div id='results'>
     <div class="searchable float" data-index="2018 camaro ss hw dream garage 2024  ">
@@ -228,8 +582,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/24-18-Camaro-SS-US-Card.jpg" alt="2018 Camaro SS" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/24-18-Camaro-SS-US-Card.jpg" alt="2018 Camaro SS" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="ford escort rs2000 factory fresh 2024  ">
         <details>
             <summary>
@@ -259,8 +614,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/24-Ford-Escort-RS2000-Int-Card.jpg" alt="Ford Escort RS2000" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/24-Ford-Escort-RS2000-Int-Card.jpg" alt="Ford Escort RS2000" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="bmw 507 hw roadsters 2024  ">
         <details>
             <summary>
@@ -290,8 +646,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/24-BMW-507-Int-Card.jpg" alt="BMW 507" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/24-BMW-507-Int-Card.jpg" alt="BMW 507" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="1989 mercedes-benz 560 sec amg hw modified 2024  ">
         <details>
             <summary>
@@ -321,8 +678,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/24-89-Mercedes-Benz-560-SEC-AMG-US-Card.jpg" alt="1989 Mercedes-Benz 560 SEC AMG" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/24-89-Mercedes-Benz-560-SEC-AMG-US-Card.jpg" alt="1989 Mercedes-Benz 560 SEC AMG" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="1960s fiat 500d modificado compact kings 2024  ">
         <details>
             <summary>
@@ -352,8 +710,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/24-60s-Fiat-500D-Modificado-US-Card.jpg" alt="1960s Fiat 500D Modificado" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/24-60s-Fiat-500D-Modificado-US-Card.jpg" alt="1960s Fiat 500D Modificado" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="1971 el camino hw hot trucks 2024  ">
         <details>
             <summary>
@@ -383,8 +742,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/24-71-El-Camino-US-Card.jpg" alt="1971 El Camino" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/24-71-El-Camino-US-Card.jpg" alt="1971 El Camino" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="audi 90 quattro hw turbo 2024  ">
         <details>
             <summary>
@@ -414,8 +774,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/2024-Audi-90-quattro-US-Card.jpg" alt="Audi 90 Quattro" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/2024-Audi-90-quattro-US-Card.jpg" alt="Audi 90 Quattro" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="volvo p1800 gasser hw reverse rake 2024  ">
         <details>
             <summary>
@@ -445,8 +806,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/2024-Volvo-P1800-Gasser-US-Card.jpg" alt="Volvo P1800 Gasser" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/2024-Volvo-P1800-Gasser-US-Card.jpg" alt="Volvo P1800 Gasser" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="mitsubishi pajero evolution hw j-imports 2024  ">
         <details>
             <summary>
@@ -476,8 +838,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/24-Mitsubishi-Pajero-Evolution-US-Card.jpg" alt="Mitsubishi Pajero Evolution" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/24-Mitsubishi-Pajero-Evolution-US-Card.jpg" alt="Mitsubishi Pajero Evolution" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="mazda 787b hw race day 2024  ">
         <details>
             <summary>
@@ -507,8 +870,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/24-Mazda-787B-US-Card.jpg" alt="Mazda 787B" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/24-Mazda-787B-US-Card.jpg" alt="Mazda 787B" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="1977 pontiac firebird muscle mania 2024  ">
         <details>
             <summary>
@@ -538,8 +902,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/24-77-Pontiac-Firebird-TA-US-Card.jpg" alt="1977 Pontiac Firebird" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/24-77-Pontiac-Firebird-TA-US-Card.jpg" alt="1977 Pontiac Firebird" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="1996 nissan 180sx type x hw the 90s 2024  ">
         <details>
             <summary>
@@ -569,8 +934,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/24-96-Nissan-180SX-Type-X-US-Card.jpg" alt="1996 Nissan 180SX Type X" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/24-96-Nissan-180SX-Type-X-US-Card.jpg" alt="1996 Nissan 180SX Type X" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="celero gt quarter mile heroes 2024  ">
         <details>
             <summary>
@@ -600,8 +966,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/24-Celero-GT-US-Card.jpg" alt="Celero GT" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/24-Celero-GT-US-Card.jpg" alt="Celero GT" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="lamborghini huracan lp 620-2 super trofeo hw exotics 2024  ">
         <details>
             <summary>
@@ -631,8 +998,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/24-Lamborghini-Huracan-LP-620-2-Super-Trofeo-INT-Card.jpg" alt="Lamborghini Huracan LP 620-2 Super Trofeo" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/24-Lamborghini-Huracan-LP-620-2-Super-Trofeo-INT-Card.jpg" alt="Lamborghini Huracan LP 620-2 Super Trofeo" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="1947 chevy fleetline hw first responders 2024  ">
         <details>
             <summary>
@@ -662,8 +1030,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/24-47-Chevy-Fleetline-1.jpg" alt="1947 Chevy Fleetline" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/24-47-Chevy-Fleetline-1.jpg" alt="1947 Chevy Fleetline" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="ain't fare hw fast transit 2024  ">
         <details>
             <summary>
@@ -693,8 +1062,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/24-Aint-Fare-1.jpg" alt="Ain't Fare" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/24-Aint-Fare-1.jpg" alt="Ain't Fare" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="tooligan experimotors 2024  ">
         <details>
             <summary>
@@ -724,8 +1094,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/24-Tooligan-1.jpg" alt="Tooligan" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/24-Tooligan-1.jpg" alt="Tooligan" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="custom 1953 chevy rod squad 2024  ">
         <details>
             <summary>
@@ -755,8 +1126,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/24-Custom-53-Chevy-1.jpg" alt="Custom 1953 Chevy" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/24-Custom-53-Chevy-1.jpg" alt="Custom 1953 Chevy" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="batman forever batmobile batman 2024  ">
         <details>
             <summary>
@@ -786,8 +1158,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/24-Batman-Forever-Batmobile-1.jpg" alt="Batman Forever Batmobile" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/24-Batman-Forever-Batmobile-1.jpg" alt="Batman Forever Batmobile" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="ford mustang mach-e 1400 hw green speed 2024  ">
         <details>
             <summary>
@@ -817,8 +1190,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/24-Ford-Mustang-Mach-E-1400-1.jpg" alt="Ford Mustang Mach-E 1400" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/24-Ford-Mustang-Mach-E-1400-1.jpg" alt="Ford Mustang Mach-E 1400" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="classic tv series batmobile batman 2023  ">
         <details>
             <summary>
@@ -848,8 +1222,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/23-Classic-TV-Series-Batmobile-Tooned-STH-Card.jpg" alt="Classic TV Series Batmobile" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/23-Classic-TV-Series-Batmobile-Tooned-STH-Card.jpg" alt="Classic TV Series Batmobile" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="mercedes-benz 300 sl retro racers 2023  ">
         <details>
             <summary>
@@ -879,8 +1254,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/23-Mercedes-Benz-300-SL-STH-US.jpg" alt="Mercedes-Benz 300 SL" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/23-Mercedes-Benz-300-SL-STH-US.jpg" alt="Mercedes-Benz 300 SL" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="1968 copo camaro hw art cars 2023  ">
         <details>
             <summary>
@@ -910,8 +1286,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/23-68-COPO-Camaro-US-Card.jpg" alt="1968 COPO Camaro" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/23-68-COPO-Camaro-US-Card.jpg" alt="1968 COPO Camaro" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="lotus evija hw green speed 2023  ">
         <details>
             <summary>
@@ -941,8 +1318,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/23-Lotus-Evija-US-Card.jpg" alt="Lotus Evija" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/23-Lotus-Evija-US-Card.jpg" alt="Lotus Evija" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="1968 mazda cosmo sport hw j-imports 2023  ">
         <details>
             <summary>
@@ -972,8 +1350,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/23-1968-Mazda-Cosmo-Sport-US-Card.jpg" alt="1968 Mazda Cosmo Sport" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/23-1968-Mazda-Cosmo-Sport-US-Card.jpg" alt="1968 Mazda Cosmo Sport" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="renault sport r.s. 01 hw turbo 2023  ">
         <details>
             <summary>
@@ -1003,8 +1382,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/Renault-Sport-RS01-US-Card.jpg" alt="Renault Sport R.S. 01" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/Renault-Sport-RS01-US-Card.jpg" alt="Renault Sport R.S. 01" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="1968 corvette - gas monkey garage hw dream garage 2023  ">
         <details>
             <summary>
@@ -1034,8 +1414,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/68-Corvette-Gas-Monkey-Garage-US-1.jpg" alt="1968 Corvette - Gas Monkey Garage" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/68-Corvette-Gas-Monkey-Garage-US-1.jpg" alt="1968 Corvette - Gas Monkey Garage" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="glory chaser roadsters 2023  ">
         <details>
             <summary>
@@ -1065,8 +1446,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/23-Glory-Chaser-US-Card-1.jpg" alt="Glory Chaser" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/23-Glory-Chaser-US-Card-1.jpg" alt="Glory Chaser" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="1982 toyota supra hw: the 80s 2023  ">
         <details>
             <summary>
@@ -1096,8 +1478,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/82-Toyota-Supra-US.jpg" alt="1982 Toyota Supra" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/82-Toyota-Supra-US.jpg" alt="1982 Toyota Supra" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="1969 shelby gt-500 muscle mania 2023  ">
         <details>
             <summary>
@@ -1127,8 +1510,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/69-Shelby-GT-500-Int.jpg" alt="1969 Shelby GT-500" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/69-Shelby-GT-500-Int.jpg" alt="1969 Shelby GT-500" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="1965 mercury comet cyclone hw gassers 2023  ">
         <details>
             <summary>
@@ -1158,8 +1542,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/65-Mercury-Comet-Cyclone-Int-Card.jpg" alt="1965 Mercury Comet Cyclone" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/65-Mercury-Comet-Cyclone-Int-Card.jpg" alt="1965 Mercury Comet Cyclone" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="mighty k hw hot trucks 2023  ">
         <details>
             <summary>
@@ -1189,8 +1574,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/23-Mighty-K-US-Card.jpg" alt="Mighty K" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/23-Mighty-K-US-Card.jpg" alt="Mighty K" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="porsche 935 hw exotics 2023  ">
         <details>
             <summary>
@@ -1220,8 +1606,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/23-Porsche-935-Int-Card.jpg" alt="Porsche 935" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/23-Porsche-935-Int-Card.jpg" alt="Porsche 935" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="datsun 510 wagon hw wagons 2023  ">
         <details>
             <summary>
@@ -1251,8 +1638,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/23-Datsun-510-Wagon.jpg" alt="Datsun 510 Wagon" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/23-Datsun-510-Wagon.jpg" alt="Datsun 510 Wagon" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="volvo 240 drift wagon hw slammed 2023  ">
         <details>
             <summary>
@@ -1282,8 +1670,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/Volvo-240-Drift-Wagon-US-Card.jpg" alt="Volvo 240 Drift Wagon" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/Volvo-240-Drift-Wagon-US-Card.jpg" alt="Volvo 240 Drift Wagon" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="1955 chevy chevy bel air 2022  ">
         <details>
             <summary>
@@ -1313,8 +1702,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/2022-55-Chevy-Card.jpg" alt="1955 Chevy" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/2022-55-Chevy-Card.jpg" alt="1955 Chevy" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="1973 bmw 3.0 csl race car retro racers 2022  ">
         <details>
             <summary>
@@ -1344,8 +1734,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/2022-73-BMW-30-CSL-Race-Car.jpg" alt="1973 BMW 3.0 CSL Race Car" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/2022-73-BMW-30-CSL-Race-Car.jpg" alt="1973 BMW 3.0 CSL Race Car" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="dodge van hw metro 2022  ">
         <details>
             <summary>
@@ -1375,8 +1766,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/2022-Dodge-Van-Card.jpg" alt="Dodge Van" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/2022-Dodge-Van-Card.jpg" alt="Dodge Van" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="1963 studebaker champ hw hot trucks 2022  ">
         <details>
             <summary>
@@ -1406,8 +1798,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/2022-63-Studebaker-Champ-Card.jpg" alt="1963 Studebaker Champ" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/2022-63-Studebaker-Champ-Card.jpg" alt="1963 Studebaker Champ" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="2020 corvette factory fresh 2022  ">
         <details>
             <summary>
@@ -1437,8 +1830,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/2022-2020-Corvette-Card.jpg" alt="2020 Corvette" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/2022-2020-Corvette-Card.jpg" alt="2020 Corvette" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="1999 honda civic type r (ek9) hw hatchbacks 2022  ">
         <details>
             <summary>
@@ -1468,8 +1862,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/2022-99-Honda-Civic-Type-R-EK9-Card.jpg" alt="1999 Honda Civic Type R (EK9)" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/2022-99-Honda-Civic-Type-R-EK9-Card.jpg" alt="1999 Honda Civic Type R (EK9)" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="volkswagen kafer racer hw contoured 2022  ">
         <details>
             <summary>
@@ -1499,8 +1894,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/2022-VW-Kafer-Racer-Card.jpg" alt="Volkswagen Kafer Racer" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/2022-VW-Kafer-Racer-Card.jpg" alt="Volkswagen Kafer Racer" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="jaguar f-type hw turbo 2022  ">
         <details>
             <summary>
@@ -1530,8 +1926,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/2022-2020-Jaguar-F-Type-US-Card.jpg" alt="Jaguar F-Type" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/2022-2020-Jaguar-F-Type-US-Card.jpg" alt="Jaguar F-Type" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="custom 2018 ford mustang gt spoiler alert 2022  ">
         <details>
             <summary>
@@ -1561,8 +1958,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/Custom-18-Ford-Mustang-GT-Card.jpg" alt="Custom 2018 Ford Mustang GT" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/Custom-18-Ford-Mustang-GT-Card.jpg" alt="Custom 2018 Ford Mustang GT" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="nissan skyline h/t 2000gt-x hw j-imports 2022  ">
         <details>
             <summary>
@@ -1592,8 +1990,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/2022-Nissan-Skyline-HT-2000GT-X-Card.jpg" alt="Nissan Skyline H/T 2000GT-X" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/2022-Nissan-Skyline-HT-2000GT-X-Card.jpg" alt="Nissan Skyline H/T 2000GT-X" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="1971 lamborghini miura sv hw exotics 2022  ">
         <details>
             <summary>
@@ -1623,8 +2022,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/22-STH-Miura-US.jpg" alt="1971 Lamborghini Miura SV" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/22-STH-Miura-US.jpg" alt="1971 Lamborghini Miura SV" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="1984 mustang svo muscle mania 2022  ">
         <details>
             <summary>
@@ -1654,8 +2054,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/2022-84-Mustang-SVO-Card.jpg" alt="1984 Mustang SVO" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/2022-84-Mustang-SVO-Card.jpg" alt="1984 Mustang SVO" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="1994 audi avant rs2 hw wagons 2022  ">
         <details>
             <summary>
@@ -1685,8 +2086,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/22-94-Audi-Avant-RS2-Int-Card.jpg" alt="1994 Audi Avant RS2" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/22-94-Audi-Avant-RS2-Int-Card.jpg" alt="1994 Audi Avant RS2" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="1932 ford rod squad 2022  ">
         <details>
             <summary>
@@ -1716,8 +2118,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/22-32-Ford-Card.jpg" alt="1932 Ford" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/22-32-Ford-Card.jpg" alt="1932 Ford" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="1981 camaro then and now 2022  ">
         <details>
             <summary>
@@ -1747,8 +2150,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/22-81-Camaro-US-Card.jpg" alt="1981 Camaro" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/22-81-Camaro-US-Card.jpg" alt="1981 Camaro" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="raijin express hw haulers 2023  ">
         <details>
             <summary>
@@ -1778,8 +2182,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/Raijin-Express-23-TH-1.jpg" alt="Raijin Express" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/Raijin-Express-23-TH-1.jpg" alt="Raijin Express" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="surf crate surf's up 2023  ">
         <details>
             <summary>
@@ -1809,8 +2214,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/23-Surf-Crate-1.jpg" alt="Surf Crate" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/23-Surf-Crate-1.jpg" alt="Surf Crate" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="bmw r ninet racer hw moto 2023  ">
         <details>
             <summary>
@@ -1840,8 +2246,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/23-BMW-R-nineT-Racer-TH-1.jpg" alt="BMW R nineT Racer" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/23-BMW-R-nineT-Racer-TH-1.jpg" alt="BMW R nineT Racer" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="mad propz sky show 2023  ">
         <details>
             <summary>
@@ -1871,8 +2278,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/23-Mad-Propz-1.jpg" alt="Mad Propz" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/23-Mad-Propz-1.jpg" alt="Mad Propz" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="mod rod hw 55 race team 2023  ">
         <details>
             <summary>
@@ -1902,8 +2310,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/23-Mod-Rod-1.jpg" alt="Mod Rod" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/23-Mod-Rod-1.jpg" alt="Mod Rod" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="donut drifter sweet rides 2023  ">
         <details>
             <summary>
@@ -1933,8 +2342,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/Donut-Drifter-TH-0.jpg" alt="Donut Drifter" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/Donut-Drifter-TH-0.jpg" alt="Donut Drifter" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="rise 'n climb hw sports 2023  ">
         <details>
             <summary>
@@ -1964,8 +2374,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/Rise-N-Climb-C-0.jpg" alt="Rise 'N Climb" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/Rise-N-Climb-C-0.jpg" alt="Rise 'N Climb" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="ducati 1199 panigale factory fresh 2023  ">
         <details>
             <summary>
@@ -1995,8 +2406,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/Ducati-1199-Panigale-1.jpg" alt="Ducati 1199 Panigale" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/Ducati-1199-Panigale-1.jpg" alt="Ducati 1199 Panigale" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="1995 jeep cherokee mud studs 2023  ">
         <details>
             <summary>
@@ -2026,8 +2438,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/95-Jeep-Cherokee-TH-0.jpg" alt="1995 Jeep Cherokee" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/95-Jeep-Cherokee-TH-0.jpg" alt="1995 Jeep Cherokee" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="toyota land cruiser then and now 2023  ">
         <details>
             <summary>
@@ -2057,8 +2470,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/Toyota-Land-Cruiser-1-1.jpg" alt="Toyota Land Cruiser" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/Toyota-Land-Cruiser-1-1.jpg" alt="Toyota Land Cruiser" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="madfast hw drag strip 2023  ">
         <details>
             <summary>
@@ -2088,8 +2502,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/Madfast-1.jpg" alt="Madfast" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/Madfast-1.jpg" alt="Madfast" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="time shifter metro series 2023  ">
         <details>
             <summary>
@@ -2119,8 +2534,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/23-Time-Shifter-0.jpg" alt="Time Shifter" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/23-Time-Shifter-0.jpg" alt="Time Shifter" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="tooned volkswagen golf mk1 tooned 2023  ">
         <details>
             <summary>
@@ -2150,8 +2566,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/23-Tooned-Volkswagen-Golf-Mk1-1.jpg" alt="Tooned Volkswagen Golf Mk1" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/23-Tooned-Volkswagen-Golf-Mk1-1.jpg" alt="Tooned Volkswagen Golf Mk1" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="2020 ram 1500 rebel hw rescue 2023  ">
         <details>
             <summary>
@@ -2181,8 +2598,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/23-2020-Ram-1500-Rebel-1.jpg" alt="2020 Ram 1500 Rebel" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/23-2020-Ram-1500-Rebel-1.jpg" alt="2020 Ram 1500 Rebel" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="volkswagen baja bug baja blazers 2023  ">
         <details>
             <summary>
@@ -2212,8 +2630,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/23-Volkswagen-Baja-Bug.jpg" alt="Volkswagen Baja Bug" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/23-Volkswagen-Baja-Bug.jpg" alt="Volkswagen Baja Bug" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="the dark knight batmobile batman 2022  ">
         <details>
             <summary>
@@ -2243,8 +2662,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/2022-The-Dark-Knight-Batmobile-Card.jpg" alt="The Dark Knight Batmobile" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/2022-The-Dark-Knight-Batmobile-Card.jpg" alt="The Dark Knight Batmobile" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="quick bite fast foodie 2022  ">
         <details>
             <summary>
@@ -2274,8 +2694,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/2022-Quick-Bite-Card.jpg" alt="Quick Bite" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/2022-Quick-Bite-Card.jpg" alt="Quick Bite" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="pixel shaker hw ride-ons 2022  ">
         <details>
             <summary>
@@ -2305,8 +2726,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/2022-Pixel-Shaker-Card.jpg" alt="Pixel Shaker" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/2022-Pixel-Shaker-Card.jpg" alt="Pixel Shaker" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="tooned twin mill tooned 2022  ">
         <details>
             <summary>
@@ -2336,8 +2758,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/2022-Tooned-Twin-Mill-Card.jpg" alt="Tooned Twin Mill" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/2022-Tooned-Twin-Mill-Card.jpg" alt="Tooned Twin Mill" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="draftnator hw speed team 2022  ">
         <details>
             <summary>
@@ -2367,8 +2790,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/2022-Draftnator-Card.jpg" alt="Draftnator" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/2022-Draftnator-Card.jpg" alt="Draftnator" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="2017 jeep wrangler mud studs 2022  ">
         <details>
             <summary>
@@ -2398,8 +2822,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/2022-17-Jeep-Wrangler-Card.jpg" alt="2017 Jeep Wrangler" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/2022-17-Jeep-Wrangler-Card.jpg" alt="2017 Jeep Wrangler" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="duck n' roll street beasts 2022  ">
         <details>
             <summary>
@@ -2429,8 +2854,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/2022-Duck-N-Roll-Int-Card.jpg" alt="Duck N' Roll" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/2022-Duck-N-Roll-Int-Card.jpg" alt="Duck N' Roll" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="morris mini compact kings 2022  ">
         <details>
             <summary>
@@ -2460,8 +2886,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/2022-Morris-Mini-Card.jpg)" alt="Morris Mini" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/2022-Morris-Mini-Card.jpg)" alt="Morris Mini" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="gotta go experimotors 2022  ">
         <details>
             <summary>
@@ -2491,8 +2918,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/22-Gotta-Go-Card.jpg" alt="Gotta Go" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/22-Gotta-Go-Card.jpg" alt="Gotta Go" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="1987 dodge d100 hw daredevils 2022  ">
         <details>
             <summary>
@@ -2522,8 +2950,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/22-87-Dodge-D100-Card.jpg" alt="1987 Dodge D100" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/22-87-Dodge-D100-Card.jpg" alt="1987 Dodge D100" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="1958 impala hw art cars 2022  ">
         <details>
             <summary>
@@ -2553,8 +2982,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/22-58-Impala-Int-Card.jpg" alt="1958 Impala" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/22-58-Impala-Int-Card.jpg" alt="1958 Impala" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="hw warp speeder x-raycers 2022  ">
         <details>
             <summary>
@@ -2584,8 +3014,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/22-HW-Warp-Speeder-Int-Card.jpg" alt="HW Warp Speeder" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/22-HW-Warp-Speeder-Int-Card.jpg" alt="HW Warp Speeder" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="1998 subaru impreza 22b sti-version rally champs 2022  ">
         <details>
             <summary>
@@ -2615,8 +3046,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/22-98-Subaru-Impreza-22B-STI-Version-Card.jpg" alt="1998 Subaru Impreza 22B STI-Version" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/22-98-Subaru-Impreza-22B-STI-Version-Card.jpg" alt="1998 Subaru Impreza 22B STI-Version" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="muscle and blown hw drift 2022  ">
         <details>
             <summary>
@@ -2646,8 +3078,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/22-Muscle-and-Blown-Card.jpg" alt="Muscle and Blown" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/22-Muscle-and-Blown-Card.jpg" alt="Muscle and Blown" width="640px" /></a><p class="tag"></p></div>
     </div>
+
     <div class="searchable float" data-index="1971 mustang funny car drag strip 2022  ">
         <details>
             <summary>
@@ -2677,8 +3110,9 @@ details[open] summary ~ * {
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/22-71-Mustang-Funny-Car-LR.jpg" alt="1971 Mustang Funny Car" width="640px" /></a></div>
+        <div class="wrapper"><a><img class="photo" src="Images/TreasureHunts/Images/22-71-Mustang-Funny-Car-LR.jpg" alt="1971 Mustang Funny Car" width="640px" /></a><p class="tag"></p></div>
     </div>
+
 
     </div>
 </body>
