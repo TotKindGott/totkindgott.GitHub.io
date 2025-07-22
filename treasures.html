@@ -522,6 +522,12 @@ td.tag {
             function toggle_dark_mode() {
                 var element = document.body;
                 element.classList.toggle("dark-mode");
+                if (localStorage.getItem("mode") !== "dark") {
+                    localStorage.setItem("mode", "dark");
+                }
+                else {
+                    localStorage.setItem("mode", "light")
+                }
             };
 
         </script>
@@ -550,6 +556,13 @@ td.tag {
             <a href="#">About</a>
         </div>
     </div>
+    
+    <script type="text/javascript">
+        if (localStorage.getItem("mode") == "dark") {
+            var element = document.body;
+                element.classList.toggle("dark-mode");
+        }
+    </script>
     
 
     <div id='results'>
