@@ -79,7 +79,7 @@ body {
     position: fixed; 
     top: 0;
     left: 0;
-    z-index: 10;
+    z-index: 9;
     width: 100%;
     background: none;
     margin: auto;
@@ -87,7 +87,10 @@ body {
     padding-bottom: 20px;
 }
 
-#search {
+#search_bar {
+    background-image: url(Images/Icons/Ionic-Ionicons-Search.16.png);
+    background-position: left 5px top 50%;
+    background-repeat: no-repeat;
     font: "Inconsolata"; 
     font-size: 16px; 
     color: black;
@@ -100,10 +103,12 @@ body {
     width: 50%;
     margin: auto;
     box-shadow: 0 0 5px 1px #ffffff;
+    text-indent: 16px;
+    text-align: left;
 }
 
 #left_button {
-    background-image: url(/Images/Icons/Ionic-Ionicons-Menu.16.png);
+    background-image: url(Images/Icons/Ionic-Ionicons-Menu.16.png);
     background-position: center;
     background-repeat: no-repeat;
     height: 24px;
@@ -119,7 +124,7 @@ body {
 }
 
 #right_button {
-    background-image: url(/Images/Icons/Ionic-Ionicons-Toggle-outline.16.png);
+    background-image: url(Images/Icons/Ionic-Ionicons-Toggle-outline.16.png);
     transform: rotateY(180deg);
     background-position: center;
     background-repeat: no-repeat;
@@ -137,13 +142,49 @@ body {
 
 body.dark-mode #right_button
 {
-    background-image: url(/Images/Icons/Ionic-Ionicons-Toggle.16.png);
+    background-image: url(Images/Icons/Ionic-Ionicons-Toggle.16.png);
     transform: rotateY(0deg);
 }
 
 ::placeholder {
     color: gray;
     text-align: center;
+}
+
+#counter  {
+    font: monospace "Inconsolata"; 
+    font-size: 16px; 
+    color: black;
+    border-radius: 10px;
+    position: fixed; 
+    right: 20%;
+    top: 5px;
+    transform: translate(-50%);
+    height: 24px; 
+    margin: auto;
+    text-align: right;
+    width: 40px;
+    border: none;
+    z-index: 10;
+    margin: auto;
+    padding: 0;
+    background-color: transparent;
+}
+
+#clear_button {
+    position: fixed; 
+    right: 20%;
+    top: 5px;
+    transform: translate(-50%);
+    height: 24px; 
+    margin: auto;
+    text-align: right;
+    width: 40px;
+    border: none;
+    z-index: 11;
+    margin: auto;
+    padding: 0;
+    background-color: transparent;
 }
 
 /* ------- END TOP MENU BAR */
@@ -484,3 +525,4 @@ td.tag {
     0% {opacity: 0;}
     100% {opacity: 1;}
 }
+

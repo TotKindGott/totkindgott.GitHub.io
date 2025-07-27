@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <title>Hot Wheels</title>
     <link type="text/css" href="styles.css" rel="stylesheet" />
-    <style id="search_style"></style>
+    <script src="scripts.js"></script>
     <meta name="format-detection" content="telephone=no" />
     <meta name="viewport" 
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -15,71 +15,21 @@
 
 <body>
 
+    <script type="text/javascript">
+        checkMode();
+    </script>
+
     <header>  <!-- NAVIGATION -->
     
     <div id="topbar">
-        <input type="button" onclick="openNav()" id="left_button" />
-        <script>
-            
-            function openNav() {
-            document.getElementById("menu").style.width = "100%";
-            document.getElementById("menu_list").classList.remove("fade-out")
-            document.getElementById("menu_list").classList.add("fade-in")
-            }
-
-        </script>
-        <input type="text" id="search" placeholder="filter" /
-        <style id="search_style"></style>
-    <script type="text/javascript">
-
-        const inputs = document.querySelectorAll('input');
-
-            inputs.forEach(input => {
-            input.setAttribute('autocomplete', 'off')
-            input.setAttribute('autocorrect', 'off')
-            input.setAttribute('autocapitalize', 'off')
-            input.setAttribute('spellcheck', false)
-            })
-        
-        var searchStyle = document.getElementById('search_style');
-        document.getElementById('search').addEventListener('input', function() {
-            if (!this.value) {
-                searchStyle.innerHTML = "";
-                return;
-            }
-            searchStyle.innerHTML = ".searchable:not([data-index*=\"" + this.value.toLowerCase() + "\"]) { display: none; }";
-            // beware of CSS injections!
-        });
-
-    </script>
-        <input type="button" onclick="toggle_dark_mode()" id="right_button" />
-        <script type="text/javascript">
-
-            function toggle_dark_mode() {
-                var element = document.body;
-                element.classList.toggle("dark-mode");
-                if (localStorage.getItem("mode") !== "dark") {
-                    localStorage.setItem("mode", "dark");
-                }
-                else {
-                    localStorage.setItem("mode", "light")
-                }
-            };
-
-        </script>
+        <input type="button" src="Images/Icons/Ionic-Ionicons-Menu.16.png" onclick="toggleMenu()" id="left_button" />
+        <input type="text" id="search_bar" onkeyup="searchModels()"  src="Images/Icons/Ionic-Ionicons-Search.16.png" />
+        <input type="button" src="Images/Icons/Ionic-Ionicons-Toggle.16.png" onclick="toggleDarkMode()" id="right_button" />
+        <input type="number" name="result counter" value="871" disabled="True" id="counter" />
     </div>
 
     <div id="menu" class="overlay">
-        <a href="javascript:void(0)" class="close_button" onclick="closeMenu()">&times;</a>
-        <script type="text/javascript">
-
-            function closeMenu() {
-            document.getElementById("menu_list").classList.remove("fade-in")
-            document.getElementById("menu_list").classList.add("fade-out")
-             document.getElementById("menu").style.width = "0%";
-            }
-
-    </script>
+        <a class="close_button" onclick="closeMenu()">&times;</a>
         <div id="menu_list"  class="overlay-content">
             <p class="subheader">Collection</p>
             <p class="separator"></p>
@@ -92,14 +42,7 @@
             <a href="#">About</a>
         </div>
     </div>
-    
-    <script type="text/javascript">
-        if (localStorage.getItem("mode") == "dark") {
-            var element = document.body;
-                element.classList.toggle("dark-mode");
-        }
-    </script>
-    
+
 
 
     </header>  <!-- END NAVIGATION -->
@@ -27837,6 +27780,166 @@
             </table>
         </details>
         <div class="wrapper"></div>
+    </div>
+
+    <div class="searchable float" data-index="cone shaker hw metro 2025 mommy ">
+        <details>
+            <summary>
+                <h1>Cone Shaker</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>HW Metro</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">5/5</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>148/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Mommy</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>Opened</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" src="Images/Cone Shaker (HW Metro 2025).JPG" alt="Cone Shaker" width="640px" /></a><p class="comment">from Mommy</p></div>
+    </div>
+
+    <div class="searchable float" data-index="pixel shaker hw ride-ons 2025 mommy ">
+        <details>
+            <summary>
+                <h1>Pixel Shaker</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>HW Ride-Ons</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">5/5</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>138/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Mommy</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>Opened</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" src="Images/Pixel Shaker (HW Ride-Ons 2025).JPG" alt="Pixel Shaker" width="640px" /></a><p class="comment">from Mommy</p></div>
+    </div>
+
+    <div class="searchable float" data-index="mattel dream mobile hw celebration racers 2025 mommy ">
+        <details open>
+            <summary>
+                <h1>Mattel Dream Mobile</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>HW Celebration Racers</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">6/10</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>167/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Mommy</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"></div>
+    </div>
+
+    <div class="searchable float" data-index="honda cb750 cafe hw moto 2025 dollar tree ">
+        <details>
+            <summary>
+                <h1>Honda CB750 Cafe</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>HW Moto</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">1/5</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>150/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Dollar Tree</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>Opened</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" src="Images/Honda CB750 Cafe (HW Moto 2025).JPG" alt="Honda CB750 Cafe" width="640px" /></a><p class="tag"></p></div>
+    </div>
+
+    <div class="searchable float" data-index="ravenger s/t muscle mania 2025 grandpa ">
+        <details>
+            <summary>
+                <h1>Ravenger S/T</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>Muscle Mania</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">4/10</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>207/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Grandpa</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>Opened</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" src="Images/Ravenger S_T (Muscle Mania 2025).JPG" alt="Ravenger S/T" width="640px" /></a><p class="comment">from Grandpa</p></div>
     </div>
 
 
