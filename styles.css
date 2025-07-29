@@ -51,11 +51,16 @@ table {
 
 /* ------- END RESET STYLES ------- */
 
+html {
+    height: 100%;
+}
+
 body {
     transition-property: background-color;
     transition-duration: 0.5s;
 	background-color: #f7f7f7; 
-	width: 390; height: 844; 
+	width: 390; 
+    /*height: 844;*/
 	padding-left: 10px; 
 	padding-right: 10px; 
 	padding-bottom: 20px;
@@ -91,7 +96,7 @@ body {
     background-image: url(Images/Icons/Ionic-Ionicons-Search.16.png);
     background-position: left 5px top 50%;
     background-repeat: no-repeat;
-    font: "Inconsolata"; 
+    font-family: monospace, "Inconsolata"; 
     font-size: 16px; 
     color: black;
     border-radius: 10px;
@@ -99,12 +104,20 @@ body {
     left: 50%;
     top: 5px;
     transform: translate(-50%);
-    height: 16px; 
+    height: 16px;
     width: 50%;
     margin: auto;
     box-shadow: 0 0 5px 1px #ffffff;
     text-indent: 16px;
     text-align: left;
+    outline: none;
+    vertical-align: center;
+    justify-content: center;
+    text-transform: uppercase;
+    text-decoration: underline;
+    text-decoration-thickness: 4px;
+    text-decoration-color: #000000;
+    text-underline-offset: 3px;
 }
 
 #left_button {
@@ -152,7 +165,7 @@ body.dark-mode #right_button
 }
 
 #counter  {
-    font: monospace "Inconsolata"; 
+    font: monospace, "Inconsolata"; 
     font-size: 16px; 
     color: black;
     border-radius: 10px;
@@ -301,10 +314,9 @@ p.tag {
 
 #results {
 	width: 100%; 
-	height: 100%;
+	/*height: 100%;*/
 	margin-top: 30px;
 }
-
 
 /* HIDE ARROW FROM SUMMARY ELEMENT */
 summary {
@@ -522,7 +534,58 @@ td.tag {
 }
 
 @keyframes fade_in {
-    0% {opacity: 0;}
-    100% {opacity: 1;}
+    0% {opacity: 0};
+    100% {opacity: 1};
 }
 
+#page_footer { 
+    display: block;
+    margin: auto;
+    padding: 0px;
+	width: 75%;
+    height: auto;
+	font-family: monospace; 
+	font-size: 14px; 
+	color: gray; 
+    text-align: center;
+    border: none;
+    background-color: transparent;
+}
+
+#page_footer > a, #page_footer > p > a {
+    transition-property: color;
+    transition-duration: 0.5s;
+    color: black;
+    font-weight: bolder;
+    text-decoration: none;
+    margin: auto;
+    transition-property: background-color;
+    background-color: white;
+    text-transform: uppercase;
+    border-radius: 10px;
+    padding: 1px 3px;
+}
+
+#empty_space {
+    width: 100%;
+    height: 20px;
+    margin: auto;
+    margin-top: 20px;
+    display: block;
+    clear: both;
+    float: none;
+    background: none;
+}
+
+body.dark-mode #page_footer > a, body.dark-mode #page_footer > p > a {
+    background-color: black;
+    color: white;
+}
+
+#page_footer.fixed-position {
+    position: fixed;
+    bottom: 0;
+    transform: translateX(12.5%);
+    padding-bottom: 20px;
+    margin: auto;
+}

@@ -23,8 +23,9 @@
     
     <div id="topbar">
         <input type="button" src="Images/Icons/Ionic-Ionicons-Menu.16.png" onclick="toggleMenu()" id="left_button" />
-        <input type="text" id="search_bar" onkeyup="searchModels()"  src="Images/Icons/Ionic-Ionicons-Search.16.png" />
+        <input type="text" id="search_bar" onkeyup="setTimeout(searchModels(), 250)"  src="Images/Icons/Ionic-Ionicons-Search.16.png" />
         <input type="button" src="Images/Icons/Ionic-Ionicons-Toggle.16.png" onclick="toggleDarkMode()" id="right_button" />
+        <!-- hardcoded at webpage generation, updated with Javascript on search -->
         <input type="number" name="result counter" value="871" disabled="True" id="counter" />
     </div>
 
@@ -42,7 +43,6 @@
             <a href="#">About</a>
         </div>
     </div>
-
 
 
     </header>  <!-- END NAVIGATION -->
@@ -27946,6 +27946,24 @@
 
     </div>  <!-- END BODY -->
     
+    <div id="empty_space"></div>
+
+    <footer id="page_footer">
+        <p>Last update: <a href="">2025-07-28</a></p>
+        <p>Site design: Konstantin A Kolosov</p>
+        <hr />
+            <a href="index.html">Owned</a>
+            <a href="#">Gifts</a>
+            <a href="#">Statistics</a>
+            <a href="treasures.html">Treasures</a>
+            <a href="#">About</a>
+            <a href="#">Extras</a>
+
+        <br />
+        
+    </footer>
+
+
 </body>
 
 </html>

@@ -52,7 +52,13 @@ inputs.forEach(input => {
 
 function countResults() {
     // gets a count of visible carDivs
-    return document.querySelectorAll(".visible").length;
+    let result_count =  document.querySelectorAll(".visible").length;
+    if (result_count == "0") {
+        document.getElementById("page_footer").classList.add("fixed-position")
+        } else {
+        document.getElementById("page_footer").classList.remove("fixed-position")
+    };
+    return result_count
 };
 
 function updateCount() {
@@ -75,12 +81,43 @@ function searchModels() {
             carDivs[i].style.display = "none";
             carDivs[i].classList.remove("visible");
         }
-    }
+    };
     updateCount();
 };
 
 function clearSearch() {
-    document.getElementById('search_bar').value = "";
+    document.getElementById("search_bar").setAttribute('value', '')
     searchModels();
-}
+};
+
+function searchFor(search_query) {
+    // searches through data-index attribute of every carDiv for specified query passed as argument
+    clearSearch()
+    search_query = search_query.toLowerCase();
+    document.getElementById('search_bar').setAttribute("value", search_query)
+    let carDivs = document.getElementsByClassName('searchable');
+    for (i = 0; i < carDivs.length; i++) {
+        if (
+        carDivs[i].getAttribute("data-index").toLowerCase().includes(search_query)) {
+                carDivs[i].style.display = "list-item";
+            carDivs[i].classList.add("visible");
+        }
+        else {
+            carDivs[i].style.display = "none";
+            carDivs[i].classList.remove("visible");
+        };
+    };
+    updateCount();
+};
+
+function parseURL() {
+    // search by parsing url parameter
+    // add ?search= + query at url end
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    if (urlParams.has('search') == true) {
+        const searchQuery = urlParams.get('search');
+        searchFor(searchQuery);
+    };
+};
 
