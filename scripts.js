@@ -23,12 +23,15 @@ function openMenu() {
     document.getElementById("menu").style.width = "100%";
     document.getElementById("menu_list").classList.remove("fade-out");
     document.getElementById("menu_list").classList.add("fade-in");
+   
+    document.getElementById("menu_close_button").classList.remove("closed");
 };
 
 function closeMenu() {
     // closes main navigation menu
-    document.getElementById("menu_list").classList.remove("fade-in");
+    document.getElementById("menu_close_button").classList.add("closed");
     document.getElementById("menu_list").classList.add("fade-out");
+    document.getElementById("menu_list").classList.remove("fade-in");
     document.getElementById("menu").style.width = "0%";
 };
 
@@ -50,14 +53,17 @@ inputs.forEach(input => {
     input.setAttribute('spellcheck', false)
 });
 
+function positionFooter() {
+    if (countResults() == 0) {
+        document.getElementById("page_footer").classList.add("fixed-position");
+    } else {
+        document.getElementById("page_footer").classList.remove("fixed-position");
+    }
+};
+
 function countResults() {
     // gets a count of visible carDivs
     let result_count =  document.querySelectorAll(".visible").length;
-    if (result_count == "0") {
-        document.getElementById("page_footer").classList.add("fixed-position")
-        } else {
-        document.getElementById("page_footer").classList.remove("fixed-position")
-    };
     return result_count
 };
 
@@ -121,3 +127,7 @@ function parseURL() {
     };
 };
 
+function loadingSequence() {
+    parseURL();
+    positionFooter();
+}

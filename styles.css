@@ -78,6 +78,13 @@ body {
     color: white;
 }
 
+body.logo {
+    background-image: url("Images/Logos/TH Logo.PNG");
+    background-position: 50% 50%;
+    background-size: 300px;
+    background-repeat: no-repeat;
+}
+
 /* ------- TOP MENU BAR ------- */
 
 #topbar {
@@ -93,9 +100,10 @@ body {
 }
 
 #search_bar {
-    background-image: url(Images/Icons/Ionic-Ionicons-Search.16.png);
+    background-image: url("Images/Icons/Ionic-Ionicons-Search.16.png");
     background-position: left 5px top 50%;
     background-repeat: no-repeat;
+    background-color: rgba(255,255,255,0.9);
     font-family: monospace, "Inconsolata"; 
     font-size: 16px; 
     color: black;
@@ -201,6 +209,38 @@ body.dark-mode #right_button
 }
 
 /* ------- END TOP MENU BAR */
+
+#site_name_part1, #site_name_part2 {
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    animation-name: fade_in;
+    animation-duration: 2s;
+    background: transparent;
+    margin: 0px;
+    padding: 0px;
+}
+
+#site_name_part1 {
+    font-family: cursive;
+    font-size: 64px;
+    margin-top: 24px;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 7px;
+}
+
+#site_name_part2 {
+    font-family: Copperplate, Papyrus, fantasy;
+    font-size: 16px;
+    margin-bottom: 24px;
+    letter-spacing: 0.8em;
+    text-indent: 0.8em;
+}
+
+body.dark-mode #site_name_part1, body.dark-mode #site_name_part2 {
+    color: white;
+}
 
 div {
     transition-property: background-color;
@@ -427,6 +467,14 @@ td.tag {
     background-color: rgba(0,0,0,0.9);
 }
 
+#main_page_menu {
+    display: block;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    background-color: rgba(0,0,0,0.9);
+}
+
 .overlay {
   height: auto;
   width: 0;
@@ -465,19 +513,19 @@ td.tag {
   color: #f1f1f1;
 }
 
-.overlay .close_button {
+#menu_close_button {
   position: absolute;
   top: 0;
   right: 0;
   font-size: 60px;
   transition-property: color;
-    transition-duration: 0.5s;
+  transition-duration: 5s;
   color: white;
   z-index: 1;
 }
 
-#menu_close_button .fade-out {
-    
+#menu_close_button.closed {
+    display: none;
 }
 
 /*@media screen and (max-height: 450px) {
@@ -489,7 +537,7 @@ td.tag {
   }
 }*/
 
-#menu > .overlay-content > p.subheader {
+#menu > .overlay-content > p.subheader, #main_page_menu > .overlay-content > p.subheader {
     text-transform: uppercase;
     text-align: center;
     font-family: monospace;
@@ -499,10 +547,11 @@ td.tag {
     text-underline-offset: 4px;
     text-decoration-color: gray;
     letter-spacing: 0.25em;
+    text-indent: 0.5em;
     padding-top: 18px;
 }
 
-#menu > .overlay-content > .separator {
+#menu > .overlay-content > .separator, #main_page_menu > .overlay-content > .separator {
     color: gray;
     width: 75%;
     height: 8px;
@@ -521,15 +570,15 @@ td.tag {
 }
 
 @keyframes fade_out {
-    0% {opacity: 1; width: 100%;}
-    100% {opacity: 0; width: 75%;}
+    0% {opacity: 1;}
+    100% {opacity: 0;}
 }
 
 .fade-in p, .fade-in a {
     animation-name: fade_in;
     animation-delay: 0s;
     animation-iteration-count: 1;
-    animation-duration: 1s;
+    animation-duration: 0.5s;
     animation-direction: forwards;
 }
 
@@ -538,7 +587,9 @@ td.tag {
     100% {opacity: 1};
 }
 
-#page_footer { 
+#page_footer {
+    animation-name: fade_in;
+    animation-duration: 2s;
     display: block;
     margin: auto;
     padding: 0px;
