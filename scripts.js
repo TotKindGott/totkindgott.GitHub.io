@@ -164,6 +164,7 @@ function getCollection() {
 
 function loadingSequence() {
     parseURL();
+    setSearchRedirect();
     positionFooter();
 };
 
