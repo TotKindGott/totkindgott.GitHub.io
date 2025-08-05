@@ -72,6 +72,19 @@ function updateCount() {
         document.getElementById("counter").setAttribute("value", countResults());
 };
 
+function hideDivsOnEmpty() {
+    // if search is cleared hides every searchable visible div
+    if (document.getElementById("search_bar").value == "") {
+        cardivs = document.getElementsByClassName('searchable');
+        for (let i = 0; i < cardivs.length; i++) {
+            cardiv = cardivs[i];
+            cardiv.style.display =  "none";
+            cardiv.classList.remove('visible');
+        };
+        updateCount();
+    };
+};
+
 function searchModels() {
     // searches through data-index attribute of every carDiv
     let search_query = document.getElementById('search_bar').value;
@@ -122,12 +135,42 @@ function parseURL() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     if (urlParams.has('search') == true) {
-        const searchQuery = urlParams.get('search');
+        var searchQuery = urlParams.get('search');
         searchFor(searchQuery);
     };
+    if (urlParams.has('mode') == true) {
+        var mode = urlParams.get('mode');
+        if (mode == 'dark') {
+            document.body.classList.add('dark-mode');
+        };
+    };
+};
+
+const collection_url = 'https://totkindgott.github.io/collection.html';
+    
+function getCollection() {
+    // parses collection.html and loads it into a div id=frame
+    fetch(collection_url)
+        .then(response =>  response.text())
+        .then(htmlContent => {
+                var parser = new DOMParser();
+                var full_html = parser.parseFromString(htmlContent, "text/html");
+                var models_html = full_html.getElementById("results");
+                var result_html = models_html.innerHTML;
+                document.getElementById("frame").innerHTML = result_html;
+            })
+        .catch(error => console.error('Error fetching file:', error));
 };
 
 function loadingSequence() {
     parseURL();
     positionFooter();
-}
+};
+
+function setSearchRedirect() {
+    document.getElementById("search_bar").addEventListener("change", function event() {
+        let search_query = document.getElementById("search_bar").value;
+        let search_url = "https://totkindgott.github.io/search.html?search=" + encodeURI(search_query)
+            window.open(search_url, '_self');
+        });
+};

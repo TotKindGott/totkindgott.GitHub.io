@@ -13,7 +13,7 @@
     
 </head>
 
-<body class="logo" onload="loadingSequence()">
+<body onload='getCollection(); positionFooter()'>
 
     <script type="text/javascript">
         checkMode();
@@ -23,7 +23,7 @@
     
     <div id="topbar">
         <input type="button" src="Images/Icons/Ionic-Ionicons-Menu.16.png" onclick="toggleMenu()" id="left_button" />
-        <input type="text" id="search_bar" onkeyup="setTimeout(searchModels(), 250)"  src="Images/Icons/Ionic-Ionicons-Search.16.png" />
+        <input type="text" id="search_bar" onkeyup="setTimeout(searchModels(), 250); hideDivsOnEmpty()"  src="Images/Icons/Ionic-Ionicons-Search.16.png" />
         <input type="button" src="Images/Icons/Ionic-Ionicons-Toggle.16.png" onclick="toggleDarkMode()" id="right_button" />
         <!-- hardcoded at webpage generation, updated with Javascript on search -->
         <input type="number" name="result counter" value="871" disabled="True" id="counter" />
@@ -46,11 +46,11 @@
     
     </header>  <!-- END NAVIGATION -->
 
-    <h1 id="site_name_part1">Archer's</h1>
+        <h1 id="site_name_part1">Archer's</h1>
         <h1 id="site_name_part2">COLLECTION</h1>
     
-    <div id="empty_space"></div>
-
+    <div id="frame"></div>
+    
     <footer id="page_footer">
         <p>Last update: <a href="">2025-07-28</a></p>
         <p>Site design: Konstantin A Kolosov</p>
@@ -61,16 +61,7 @@
             <a href="treasures.html">Treasures</a>
             <a href="index.html">About</a>
             <a href="#">Extras</a>
-    </footer>
-    </body>
     
-    <script>
-        openMenu();
-        document.getElementById("menu_close_button").classList.add("closed");
-        document.getElementById("menu").style.top = "25%";
-        document.getElementById("menu_list").style.backgroundColor = "rgba(0,0,0,0.8)"
-        document.getElementById("counter").style.display = "none";
-        setSearchRedirect();
-    </script>
-    
+</body>
+
 </html>
