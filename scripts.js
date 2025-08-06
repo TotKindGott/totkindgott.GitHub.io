@@ -137,7 +137,7 @@ function parseURL() {
     const urlParams = new URLSearchParams(queryString);
     if (urlParams.has('search') == true) {
         var searchQuery = urlParams.get('search');
-        document.getElementById('search_bar').value = searchQuery;
+        document.getElementById('search_bar').setAttribute("value", searchQuery);
         searchModels();
         //searchFor(searchQuery);
     };
