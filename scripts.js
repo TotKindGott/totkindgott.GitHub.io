@@ -1,3 +1,15 @@
+const collection_url = 'https://totkindgott.github.io/collection.html';
+const search_url = 'https://totkindgott.github.io/search.html?search='
+    
+const inputs = document.querySelectorAll('input');
+
+inputs.forEach(input => {
+    input.setAttribute('autocomplete', 'off')
+    input.setAttribute('autocorrect', 'off')
+    input.setAttribute('autocapitalize', 'off')
+    input.setAttribute('spellcheck', false)
+});
+
 function checkMode() {
     // checks if dark mode was previously selected
     if (localStorage.getItem("mode") == "dark") {
@@ -43,15 +55,6 @@ function toggleMenu() {
         openMenu();
     }
 };
-
-const inputs = document.querySelectorAll('input');
-
-inputs.forEach(input => {
-    input.setAttribute('autocomplete', 'off')
-    input.setAttribute('autocorrect', 'off')
-    input.setAttribute('autocapitalize', 'off')
-    input.setAttribute('spellcheck', false)
-});
 
 function positionFooter() {
     if (countResults() == 0) {
@@ -149,8 +152,6 @@ function parseURL() {
     };
 };
 
-const collection_url = 'https://totkindgott.github.io/collection.html';
-    
 function getCollection() {
     // parses collection.html and loads it into a div id=frame
     fetch(collection_url)
@@ -174,7 +175,7 @@ function setSearchRedirect() {
     // passes search text as URL arguments to search.html
     document.getElementById("search_bar").addEventListener("change", function event() {
         let search_query = document.getElementById("search_bar").value;
-        let search_url = "https://totkindgott.github.io/search.html?search=" + encodeURI(search_query);
-        window.open(search_url, '_self');
+        let parsing_url = search_url + encodeURI(search_query);
+        window.open(parsing_url, '_self');
         });
 };
