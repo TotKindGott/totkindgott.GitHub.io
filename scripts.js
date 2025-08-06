@@ -179,3 +179,8 @@ function setSearchRedirect() {
         window.open(parsing_url, '_self');
         });
 };
+
+async function parseAndSearch() {
+    await getCollection();
+    searchModels();
+};
