@@ -182,6 +182,6 @@ function setSearchRedirect() {
 
 async function parseAndSearch() {
     await getCollection();
-    setTimeout(parseURL(), 1000);
-    setTimeout(searchModels(), 1000);
+    await setTimeout(parseURL(), 1000);
+    await setTimeout(searchModels(), 1000);
 };
