@@ -182,5 +182,6 @@ function setSearchRedirect() {
 
 async function parseAndSearch() {
     await getCollection();
+    parseURL();
     searchModels();
 };
