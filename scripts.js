@@ -111,9 +111,9 @@ function clearSearch() {
 
 function searchFor(search_query) {
     // searches through data-index attribute of every carDiv for specified query passed as argument
-    clearSearch()
+    //clearSearch()
     search_query = search_query.toLowerCase();
-    document.getElementById('search_bar').setAttribute("value", search_query)
+    document.getElementById('search_bar').setAttribute("value", search_query);
     let carDivs = document.getElementsByClassName('searchable');
     for (i = 0; i < carDivs.length; i++) {
         if (
@@ -168,9 +168,10 @@ function loadingSequence() {
 };
 
 function setSearchRedirect() {
+    // passes search text as URL arguments to search.html
     document.getElementById("search_bar").addEventListener("change", function event() {
         let search_query = document.getElementById("search_bar").value;
-        let search_url = "https://totkindgott.github.io/search.html?search=" + encodeURI(search_query)
-            window.open(search_url, '_self');
+        let search_url = "https://totkindgott.github.io/search.html?search=" + encodeURI(search_query);
+        window.open(search_url, '_self');
         });
 };
