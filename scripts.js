@@ -115,6 +115,7 @@ function searchFor(search_query) {
     search_query = search_query.toLowerCase();
     document.getElementById('search_bar').setAttribute("value", search_query);
     let carDivs = document.getElementsByClassName('searchable');
+    console.log('carDivs.length')
     for (i = 0; i < carDivs.length; i++) {
         if (
         carDivs[i].getAttribute("data-index").toLowerCase().includes(search_query)) {
@@ -136,7 +137,9 @@ function parseURL() {
     const urlParams = new URLSearchParams(queryString);
     if (urlParams.has('search') == true) {
         var searchQuery = urlParams.get('search');
-        searchFor(searchQuery);
+        document.getElementById('search_bar').value = searchQuery;
+        searchModels();
+        //searchFor(searchQuery);
     };
     if (urlParams.has('mode') == true) {
         var mode = urlParams.get('mode');
