@@ -1,5 +1,5 @@
 const collection_url = 'https://totkindgott.github.io/collection.html';
-const search_url = 'https://totkindgott.github.io/search.html?search='
+const search_url = 'https://totkindgott.github.io/search.html?search=';
     
 const inputs = document.querySelectorAll('input');
 
@@ -182,6 +182,7 @@ function setSearchRedirect() {
 
 async function parseAndSearch() {
     await getCollection();
-    await setTimeout(parseURL(), 1000);
-    await setTimeout(searchModels(), 1000);
+    parseURL();
+    searchModels();
+    positionFooter();
 };
