@@ -117,8 +117,9 @@ function searchFor(search_query) {
     //clearSearch()
     search_query = search_query.toLowerCase();
     document.getElementById('search_bar').setAttribute("value", search_query);
+    const urlParams = new URLSearchParams(window.location.search);
+    urlParams.set("search", search_query);
     let carDivs = document.getElementsByClassName('searchable');
-    console.log('carDivs.length')
     for (i = 0; i < carDivs.length; i++) {
         if (
         carDivs[i].getAttribute("data-index").toLowerCase().includes(search_query)) {
