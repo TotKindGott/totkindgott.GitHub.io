@@ -182,7 +182,7 @@ function setSearchRedirect() {
 
 async function parseAndSearch() {
     await getCollection();
-    parseURL();
+    await parseURL();
     searchModels();
     positionFooter();
 };
