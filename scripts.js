@@ -141,7 +141,7 @@ function parseURL() {
     if (urlParams.has('search') == true) {
         var searchQuery = urlParams.get('search');
         document.getElementById('search_bar').setAttribute("value", searchQuery);
-        //searchModels();
+        searchModels();
         //searchFor(searchQuery);
     };
     if (urlParams.has('mode') == true) {
@@ -183,6 +183,6 @@ function setSearchRedirect() {
 async function parseAndSearch() {
     await getCollection();
     await parseURL();
-    searchModels();
+    //searchModels();
     positionFooter();
 };
