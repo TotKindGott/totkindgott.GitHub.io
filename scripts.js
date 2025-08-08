@@ -141,8 +141,8 @@ function parseURL() {
     if (urlParams.has('search') == true) {
         var searchQuery = urlParams.get('search');
         document.getElementById('search_bar').setAttribute("value", searchQuery);
-        searchModels();
-        //searchFor(searchQuery);
+        //searchModels();
+        searchFor(searchQuery);
     };
     if (urlParams.has('mode') == true) {
         var mode = urlParams.get('mode');
@@ -175,7 +175,7 @@ function setSearchRedirect() {
     // passes search text as URL arguments to search.html
     document.getElementById("search_bar").addEventListener("change", function event() {
         let search_query = document.getElementById("search_bar").value;
-        let parsing_url = search_url + encodeURI(search_query);
+        let parsing_url = search_url + encodeURI(search_query.toLowerCase());
         window.open(parsing_url, '_self');
         });
 };
