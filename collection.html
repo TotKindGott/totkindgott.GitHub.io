@@ -7,48 +7,41 @@
     <title>Hot Wheels</title>
     <link type="text/css" href="styles.css" rel="stylesheet" />
     <script src="scripts.js"></script>
-    <meta name="format-detection" content="telephone=no" />
     <meta name="viewport" 
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     
 </head>
 
-<body onload="parseURL(); positionFooter();">
-
-    <script type="text/javascript">
-        checkMode();
-    </script>
-
-    <header>  <!-- NAVIGATION -->
+<body>
+    
+        <header>  <!-- NAVIGATION -->
     
     <div id="topbar">
         <input type="button" src="Images/Icons/Ionic-Ionicons-Menu.16.png" onclick="toggleMenu()" id="left_button" />
-        <input type="text" id="search_bar" onkeyup="setTimeout(searchModels(), 250)"  src="Images/Icons/Ionic-Ionicons-Search.16.png" />
+        <input type="text" id="search_bar" onkeyup="searchModels(); hideDivsOnEmpty(); positionFooter();"  src="Images/Icons/Ionic-Ionicons-Search.16.png" />
         <input type="button" src="Images/Icons/Ionic-Ionicons-Toggle.16.png" onclick="toggleDarkMode()" id="right_button" />
         <!-- hardcoded at webpage generation, updated with Javascript on search -->
         <input type="number" name="result counter" value="871" disabled="True" id="counter" />
     </div>
 
     <div id="menu" class="overlay">
-        <a id="menu_close_button" class="close_button" onclick="closeMenu()">&times;</a>
+        <a id="menu_close_button" onclick="closeMenu()">&times;</a>
         <div id="menu_list"  class="overlay-content">
             <p class="subheader">Collection</p>
             <p class="separator"></p>
+            <a href="slideshow.html">Home</a>
+            <a href="index.html">Menu</a>
             <a href="collection.html">Owned</a>
-            <a href="#">Gifts</a>
-            <a href="#">Statistics</a>
             <p class="subheader">Other</p>
             <p class="separator"></p>
             <a href="treasures.html">Treasures</a>
             <a href="index.html">About</a>
         </div>
     </div>
-
-
+    
     </header>  <!-- END NAVIGATION -->
 
-    <div id='results'>  <!-- BODY -->
-    
+
     <div class="searchable float" data-index="alfa romeo gtv6 3.0 car culture: world tour 2024 target chase ">
         <details>
             <summary>
@@ -27940,30 +27933,18 @@
             </table>
         </details>
         <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Ravenger S_T (Muscle Mania 2025).JPG" alt="Ravenger S/T" width="640px" /></a><p class="comment">from Grandpa</p></div>
-    </div>
 
-
-
-    </div>  <!-- END BODY -->
-    
-    <div id="empty_space"></div>
-
-    <footer id="page_footer">
-        <p>Last update: <a href="">2025-07-29</a></p>
+        <footer id="page_footer">
+        <p>Last update: <a href="">2025-08-09</a></p>
         <p>Site design: Konstantin A Kolosov</p>
         <hr />
+            <a href="slideshow.html">Home</a>
+            <a href="index.html">Menu</a>
             <a href="collection.html">Owned</a>
-            <a href="#">Gifts</a>
-            <a href="#">Statistics</a>
             <a href="treasures.html">Treasures</a>
             <a href="index.html">About</a>
-            <a href="#">Extras</a>
-
-        <br />
-        
     </footer>
-
-
+    
 </body>
 
 </html>
