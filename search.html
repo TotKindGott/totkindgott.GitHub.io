@@ -13,10 +13,10 @@
     
 </head>
 
-<body onload='parseAndSearch()'>
+<body onload='parseAndSearch(); setTimeout(() => {searchModels()}, 1000)'>
 
     <script type="text/javascript">
-        checkMode(); parseURL();
+        checkMode();
     </script>
 
     <header>  <!-- NAVIGATION -->

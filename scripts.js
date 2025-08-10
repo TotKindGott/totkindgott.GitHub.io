@@ -142,8 +142,8 @@ function parseURL() {
     if (urlParams.has('search') == true) {
         var searchQuery = urlParams.get('search');
         document.getElementById('search_bar').setAttribute("value", searchQuery);
-        //searchModels();
-        searchFor(searchQuery);
+        searchModels();
+        //searchFor(searchQuery);
     };
     if (urlParams.has('mode') == true) {
         var mode = urlParams.get('mode');
