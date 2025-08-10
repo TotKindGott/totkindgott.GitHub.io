@@ -187,5 +187,5 @@ async function parseAndSearch() {
     setTimeout(() => {
         searchModels();
         positionFooter();
-    }, 1000);
+    }, 500);
 };
