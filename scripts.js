@@ -186,7 +186,7 @@ async function parseAndSearch() {
     await parseURL();
     setTimeout(() => {
         searchModels();
-        //hideDivsOnEmpty();
+        hideDivsOnEmpty();
         positionFooter();
     }, 500);
 };
