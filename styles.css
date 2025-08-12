@@ -214,8 +214,8 @@ body.dark-mode #right_button
     color: black;
     font-weight: bold;
     text-align: center;
-    animation-name: fade_in;
-    animation-duration: 2s;
+    /*animation-name: fade_in;
+    animation-duration: 2s;*/
     background: transparent;
     margin: 0px;
     padding: 0px;
