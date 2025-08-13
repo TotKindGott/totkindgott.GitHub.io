@@ -13,7 +13,7 @@
     
 </head>
 
-<body onload='parseAndSearch();'>
+<body onload='setSearchRedirect();'>
 
     <script type="text/javascript">
         checkMode();
@@ -23,7 +23,7 @@
     
     <div id="topbar">
         <input type="button" src="Images/Icons/Ionic-Ionicons-Menu.16.png" onclick="toggleMenu()" id="left_button" />
-        <input type="text" id="search_bar" onkeyup="searchModels(); hideDivsOnEmpty(); positionFooter();"  src="Images/Icons/Ionic-Ionicons-Search.16.png" />
+        <input type="text" id="search_bar" src="Images/Icons/Ionic-Ionicons-Search.16.png" />
         <input type="button" src="Images/Icons/Ionic-Ionicons-Toggle.16.png" onclick="toggleDarkMode()" id="right_button" />
         <!-- hardcoded at webpage generation, updated with Javascript on search -->
         <input type="number" name="result counter" value="871" disabled="True" id="counter" />
@@ -43,15 +43,22 @@
             <a href="about.html">About</a>
         </div>
     </div>
-
+    
     </header>  <!-- END NAVIGATION -->
 
-        <h1 id="site_name_part1">Archer's</h1>
-        <h1 id="site_name_part2">COLLECTION</h1>
+    <h1 id="site_name_part1">Archer's</h1>
+    <h1 id="site_name_part2">COLLECTION</h1>
     
-    <div id="frame"></div>
+    <div id="about">
+        <div class="wrapper">
+            <img src="Archer.jpg" class="photo"/>
+            <p class="facts" style="">Archer, March 2025</p>
+        </div>
+    </div>
     
-    <footer id="page_footer" class="fixed-position">
+    <div id="empty_space" style="height: 48px;"></div>
+    
+    <footer id="page_footer">
         <p>Last update: <a href="">2025-08-12</a></p>
         <p>Site design: Konstantin A Kolosov</p>
         <hr />
