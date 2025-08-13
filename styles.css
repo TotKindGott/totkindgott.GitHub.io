@@ -645,6 +645,7 @@ td.tag {
     transition-duration: 0.5s;
     color: black;
     font-weight: bolder;
+    font-size: 12px;
     text-decoration: none;
     margin: auto;
     transition-property: background-color;
@@ -673,9 +674,8 @@ body.dark-mode #page_footer > a, body.dark-mode #page_footer > p > a {
 #page_footer.fixed-position {
     position: fixed;
     bottom: 0;
-    transform: translateX(12.5%);
     padding-bottom: 20px;
-    margin: auto;
+    transform: translateX(12.5%);
 }
 
 /*      ---- SLIDESHOW ----        */
