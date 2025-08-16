@@ -70,10 +70,14 @@ function countResults() {
     return result_count
 };
 
-function updateCount() {
+function updateCount(count = 0) {
     // outputs count in #counter
+       if (count === 0) {
         document.getElementById("counter").setAttribute("value", countResults());
-};
+        } else {
+            document.getElementById("counter").setAttribute("value", count);
+        };
+    };
 
 function hideDivsOnEmpty() {
     // if search is cleared hides every searchable visible div
@@ -190,3 +194,21 @@ async function parseAndSearch() {
         positionFooter();
     }, 500);
 };
+
+function scrollShow() {
+    slides = document.getElementsByClassName('gallery__img');
+    let i = 1;
+    function nextSlide() {
+        if (i < slides.length) {
+            i++;
+        } else {
+            i = 1;
+        };
+        let slideID = '#image-' + i.toString();
+        document.location.href = slideID;
+        //document.getElementById('img-link-' + i).classList.add("hovered");
+        //document.getElementById(slideID).classList.add("fade-in");
+        
+    };
+    setInterval(nextSlide, 2000);
+}
