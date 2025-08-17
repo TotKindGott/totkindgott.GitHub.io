@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <title>Hot Wheels</title>
+    <link type="text/css" href="styles.css" rel="stylesheet" />
+    <script src="scripts.js"></script>
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" 
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    
+</head>
+
+<body onload="setSearchRedirect()">
+
+    <script type="text/javascript">
+        checkMode();
+    </script>
+
+    <header>  <!-- NAVIGATION -->
+    
+    <div id="topbar">
+        <input type="button" src="Images/Icons/Ionic-Ionicons-Menu.16.png" onclick="toggleMenu()" id="left_button" />
+        <input type="text" id="search_bar" onkeyup="setTimeout(searchModels(), 250)"  src="Images/Icons/Ionic-Ionicons-Search.16.png" />
+        <input type="button" src="Images/Icons/Ionic-Ionicons-Toggle.16.png" onclick="toggleDarkMode()" id="right_button" />
+        <!-- hardcoded at webpage generation, updated with Javascript on search -->
+        <input type="number" name="result counter" value="" disabled="True" id="counter" />
+    </div>
+
+    <div id="menu" class="overlay">
+        <a id="menu_close_button" onclick="closeMenu()">&times;</a>
+        <div id="menu_list"  class="overlay-content">
+            <p class="subheader">Collection</p>
+            <p class="separator"></p>
+            <a href="slideshow.html">Home</a>
+            <a href="index.html">Menu</a>
+            <a href="collection.html">Owned</a>
+            <p class="subheader">Other</p>
+            <p class="separator"></p>
+            <a href="treasures.html">Treasures</a>
+            <a href="about.html">About</a>
+        </div>
+    </div>
+    
+    </header>  <!-- END NAVIGATION -->
+
+    <h1 id="site_name_part1">Archer's</h1>
+        <h1 id="site_name_part2">COLLECTION</h1>
+    
+    <h1 class="section_header">Facts & Statistics</h1>
+    
+    
+    
+    <table class="stats" id="stats_by_year">
+       <tbody>
+           <tr class="subheader">
+               <td colspan="6" style="text-align: center;">Models by Year</td>
+           </tr>
+           
+           <tr>
+               <td class="key"></td>
+               <td class="value">090</td>
+               <td class="key">1999</td>
+               <td class="value">006</td>
+               <td class="key">2013</td>
+               <td class="value">003</td>
+           </tr>
+            
+           <tr>
+               <td class="key">1981</td>
+               <td class="value">001</td>
+               <td class="key">2000</td>
+               <td class="value">018</td>
+               <td class="key">2014</td>
+               <td class="value">003</td>
+           </tr>
+            
+           <tr>
+               <td class="key">1982</td>
+               <td class="value">001</td>
+               <td class="key">2001</td>
+               <td class="value">007</td>
+               <td class="key">2015</td>
+               <td class="value">001</td>
+           </tr>
+            
+           <tr>
+               <td class="key">1984</td>
+               <td class="value">004</td>
+               <td class="key">2002</td>
+               <td class="value">005</td>
+               <td class="key">2016</td>
+               <td class="value">003</td>
+           </tr>
+            
+           <tr>
+               <td class="key">1986</td>
+               <td class="value">002</td>
+               <td class="key">2003</td>
+               <td class="value">005</td>
+               <td class="key">2017</td>
+               <td class="value">011</td>
+           </tr>
+            
+           <tr>
+               <td class="key">1987</td>
+               <td class="value">001</td>
+               <td class="key">2004</td>
+               <td class="value">012</td>
+               <td class="key">2018</td>
+               <td class="value">016</td>
+           </tr>
+            
+           <tr>
+               <td class="key">1988</td>
+               <td class="value">003</td>
+               <td class="key">2005</td>
+               <td class="value">008</td>
+               <td class="key">2019</td>
+               <td class="value">065</td>
+           </tr>
+            
+           <tr>
+               <td class="key">1989</td>
+               <td class="value">003</td>
+               <td class="key">2006</td>
+               <td class="value">010</td>
+               <td class="key">2020</td>
+               <td class="value">019</td>
+           </tr>
+            
+           <tr>
+               <td class="key">1990</td>
+               <td class="value">001</td>
+               <td class="key">2007</td>
+               <td class="value">003</td>
+               <td class="key">2021</td>
+               <td class="value">010</td>
+           </tr>
+            
+           <tr>
+               <td class="key">1991</td>
+               <td class="value">001</td>
+               <td class="key">2008</td>
+               <td class="value">006</td>
+               <td class="key">2022</td>
+               <td class="value">090</td>
+           </tr>
+            
+           <tr>
+               <td class="key">1994</td>
+               <td class="value">003</td>
+               <td class="key">2009</td>
+               <td class="value">005</td>
+               <td class="key">2023</td>
+               <td class="value">207</td>
+           </tr>
+            
+           <tr>
+               <td class="key">1996</td>
+               <td class="value">005</td>
+               <td class="key">2010</td>
+               <td class="value">004</td>
+               <td class="key">2024</td>
+               <td class="value">179</td>
+           </tr>
+            
+           <tr>
+               <td class="key">1997</td>
+               <td class="value">008</td>
+               <td class="key">2011</td>
+               <td class="value">001</td>
+               <td class="key">2025</td>
+               <td class="value">041</td>
+           </tr>
+            
+           <tr>
+               <td class="key">1998</td>
+               <td class="value">013</td>
+               <td class="key">2012</td>
+               <td class="value">004</td>
+               <td class="key"></td>
+               <td class="value"></td>
+           </tr>
+            
+       </tbody>
+   </table>
+    
+
+    <table class="stats" id="stats_by_source">
+        <tbody>
+        <colgroup>
+            <col style="width: 40%">
+            <col style="width: 10%">
+            <col style="width: 40%">
+            <col style="width: 10%"
+        </colgroup>
+            <tr class="subheader">
+                <td colspan="4" style="text-align: center;">Models by Source</td>
+            </tr>
+            
+            <tr>
+                <td class="key">Flea Market</td>
+                <td class="value">169</td>
+                <td class="key">Trade</td>
+                <td class="value">009</td>
+            </tr>
+            
+            <tr>
+                <td class="key">Walmart</td>
+                <td class="value">119</td>
+                <td class="key">DD’s Discount</td>
+                <td class="value">005</td>
+            </tr>
+            
+            <tr>
+                <td class="key">Dollar Tree</td>
+                <td class="value">085</td>
+                <td class="key">Lidl</td>
+                <td class="value">005</td>
+            </tr>
+            
+            <tr>
+                <td class="key">Dollar General</td>
+                <td class="value">074</td>
+                <td class="key">Walgreens</td>
+                <td class="value">003</td>
+            </tr>
+            
+            <tr>
+                <td class="key">Grandpa</td>
+                <td class="value">066</td>
+                <td class="key">Community Thrift</td>
+                <td class="value">003</td>
+            </tr>
+            
+            <tr>
+                <td class="key">Family Dollar</td>
+                <td class="value">064</td>
+                <td class="key">CVS</td>
+                <td class="value">002</td>
+            </tr>
+            
+            <tr>
+                <td class="key">OfferUp</td>
+                <td class="value">050</td>
+                <td class="key">Found</td>
+                <td class="value">002</td>
+            </tr>
+            
+            <tr>
+                <td class="key">Target</td>
+                <td class="value">043</td>
+                <td class="key">Big Lots</td>
+                <td class="value">001</td>
+            </tr>
+            
+            <tr>
+                <td class="key">Mommy</td>
+                <td class="value">043</td>
+                <td class="key">Ollie’s</td>
+                <td class="value">001</td>
+            </tr>
+            
+            <tr>
+                <td class="key">Goodwill</td>
+                <td class="value">030</td>
+                <td class="key">Sissy</td>
+                <td class="value">001</td>
+            </tr>
+            
+            <tr>
+                <td class="key">Ross</td>
+                <td class="value">023</td>
+                <td class="key">Grandma</td>
+                <td class="value">001</td>
+            </tr>
+            
+            <tr>
+                <td class="key">Marketplace</td>
+                <td class="value">023</td>
+                <td class="key">Brother</td>
+                <td class="value">001</td>
+            </tr>
+            
+            <tr>
+                <td class="key">Publix</td>
+                <td class="value">022</td>
+                <td class="key">Dima</td>
+                <td class="value">001</td>
+            </tr>
+            
+            <tr>
+                <td class="key"></td>
+                <td class="value">021</td>
+                <td class="key">Isa</td>
+                <td class="value">001</td>
+            </tr>
+            
+            <tr>
+                <td class="key">Gina</td>
+                <td class="value">010</td>
+                <td class="key"></td>
+                <td class="value"></td>
+            </tr>
+            
+        </tbody>
+    </table>
+    
+
+    <table class="stats" id="stats_by_condition">
+        <tbody>
+        <colgroup>
+            <col style="width: 40%">
+            <col style="width: 10%">
+            <col style="width: 40%">
+            <col style="width: 10%"
+        </colgroup>
+            <tr class="subheader">
+                <td colspan="4" style="text-align: center;">Models by Condition</td>
+            </tr>
+            
+            <tr>
+                <td class="key">New on card</td>
+                <td class="value">548</td>
+                <td class="key">New in 5-pack</td>
+                <td class="value">030</td>
+            </tr>
+            
+            <tr>
+                <td class="key">Opened</td>
+                <td class="value">134</td>
+                <td class="key">New (open)</td>
+                <td class="value">012</td>
+            </tr>
+            
+            <tr>
+                <td class="key">Used</td>
+                <td class="value">095</td>
+                <td class="key">New in 6-pack</td>
+                <td class="value">006</td>
+            </tr>
+            
+            <tr>
+                <td class="key">New in 50-pack</td>
+                <td class="value">050</td>
+                <td class="key">New in 3-pack</td>
+                <td class="value">003</td>
+            </tr>
+            
+        </tbody>
+    </table>
+    
+
+    <table class="stats" id="stats_by_tag">
+        <tbody>
+        <colgroup>
+            <col style="width: 40%">
+            <col style="width: 10%">
+            <col style="width: 40%">
+            <col style="width: 10%"
+        </colgroup>
+            <tr class="subheader">
+                <td colspan="4" style="text-align: center;">Models by Tag</td>
+            </tr>
+            
+            <tr>
+                <td class="key">Mainline</td>
+                <td class="value">793</td>
+                <td class="key">$TH</td>
+                <td class="value">007</td>
+            </tr>
+            
+            <tr>
+                <td class="key">TH</td>
+                <td class="value">031</td>
+                <td class="key">Chase</td>
+                <td class="value">004</td>
+            </tr>
+            
+            <tr>
+                <td class="key">PREMIUM</td>
+                <td class="value">025</td>
+                <td class="key">ID</td>
+                <td class="value">002</td>
+            </tr>
+            
+            <tr>
+                <td class="key">ZAMAC</td>
+                <td class="value">015</td>
+                <td class="key">Monster</td>
+                <td class="value">001</td>
+            </tr>
+            
+        </tbody>
+    </table>
+    
+
+
+    
+    
+    <div id="empty_space"></div>
+
+    <footer id="page_footer">
+        <p>Last update: <a href="">2025-08-12</a></p>
+        <p>Site design: Konstantin A Kolosov</p>
+        <hr />
+            <a href="slideshow.html">Home</a>
+            <a href="index.html">Menu</a>
+            <a href="collection.html">Owned</a>
+            <a href="treasures.html">Treasures</a>
+            <a href="about.html">About</a>
+    </footer>
+    </body>
+</html>
