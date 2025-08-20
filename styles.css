@@ -466,7 +466,9 @@ body.dark-mode img {
 
 div.collection_status,
 body.dark-mode div.collection_status,
-div.collection_status > table.collection_status {
+div.collection_status > table.collection_status,
+div.searchable > table.store,
+body.dark-mode div.searchable {
     background: transparent;
     box-shadow: none;
     border: none;
@@ -486,7 +488,7 @@ table {
 	font-family: "Courier", monospace; 
 }
 
-table.collection_status {
+table.collection_status, table.store {
     width: 100%;
     overflow: hidden;
 }
@@ -544,14 +546,25 @@ table.collection_status td.bold {
     font-weight: bold;
 }
 
-tr.subheader {
+td.day {
+    font-weight: normal;
+    text-align: left;
+    color: #000000;
+}
+
+td.date {
+    font-weight: normal;
+    text-align: right;
+    color: #000000;
+}
+
+tr.subheader, body.dark-mode tr.subheader {
     background-color: #000000;
     width: 100%;
 }
 
 tr.subheader > td {
     vertical-align: middle;
-    height: 18px;
     font-weight: bold;
 }
 
@@ -567,20 +580,49 @@ tr.subheader > td {
     color: #ffffff;
 }
 
-tr.subheader > td.full_collection {
+tr.subheader > td.full_collection, 
+td.full,
+body.dark-mode td.full {
     color: limegreen;
 }
 
-tr.subheader > td.almost_full_collection {
+tr.subheader > td.almost_full_collection, 
+td.almost_full,
+body.dark-mode td.almost_full {
     color: lightblue;
 }
 
-tr.subheader > td.half_full_collection {
+tr.subheader > td.half_full_collection, 
+td.half_full,
+body.dark-mode td.half_full {
     color: orange;
 }
 
-tr.subheader > td.barely_full_collection {
+tr.subheader > td.barely_full_collection, 
+td.barely_full, 
+body.dark-mode td.barely_full {
     color: red;
+}
+
+tr.subheader > td.store_name {
+    color: #ffffff;
+    /*letter-spacing: 2px;*/
+    font-weight: bolder;
+}
+
+tr.subheader > td.address {
+    color: gray;
+    font-weight: normal;
+}
+
+td.inventory {
+    text-align: right;
+}
+
+td.timelapse {
+    text-align: right;
+    color: gray;
+    font-weight: normal;
 }
 
 /* ------- MENU OVERLAY ------- */
