@@ -147,7 +147,6 @@ function parseURL() {
         var searchQuery = urlParams.get('search');
         document.getElementById('search_bar').setAttribute("value", searchQuery);
         searchModels();
-        //searchFor(searchQuery);
     };
     if (urlParams.has('mode') == true) {
         var mode = urlParams.get('mode');
@@ -196,6 +195,7 @@ async function parseAndSearch() {
 };
 
 function scrollShow() {
+    // simple slideshow
     slides = document.getElementsByClassName('gallery__img');
     let i = 1;
     function nextSlide() {
@@ -206,9 +206,26 @@ function scrollShow() {
         };
         let slideID = '#image-' + i.toString();
         document.location.href = slideID;
-        //document.getElementById('img-link-' + i).classList.add("hovered");
-        //document.getElementById(slideID).classList.add("fade-in");
-        
     };
     setInterval(nextSlide, 2000);
-}
+};
+
+function replaceDaysSince() {
+        var today = Date.now();
+        var stores = document.getElementsByClassName('store');
+        
+        for (s = 0; s < stores.length; s++) {
+            calcDays(stores[s]);
+        };
+        
+         function calcDays(store) {
+             var rows = store.getElementsByTagName("tr");
+             for (r = 0; r < rows.length; r++) {
+                 if (rows[r].className != "subheader") {
+                     let date = rows[r].getElementsByClassName("date")[0].innerText;
+                     let diff = parseInt((today - Date.parse(date)) / (1000 * 60 * 60 * 24));
+                rows[r].getElementsByClassName("timelapse")[0].innerHTML =  diff + ' days ago';
+                     };
+                 };
+             };
+        };
