@@ -194,7 +194,7 @@ async function parseAndSearch() {
     }, 500);
 };
 
-function scrollShow() {
+function scrollShow(interval = 2000) {
     // simple slideshow
     slides = document.getElementsByClassName('gallery__img');
     let i = 1;
@@ -207,7 +207,7 @@ function scrollShow() {
         let slideID = '#image-' + i.toString();
         document.location.href = slideID;
     };
-    setInterval(nextSlide, 2000);
+    setInterval(nextSlide, interval);
 };
 
 function replaceDaysSince() {

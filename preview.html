@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <title>Hot Wheels</title>
+    <link type="text/css" href="styles.css" rel="stylesheet" />
+    <script src="scripts.js"></script>
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" 
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    
+</head>
+
+<body onload='replaceDaysSince(); setSearchRedirect()'>
+
+    <script type="text/javascript">
+        checkMode();
+    </script>
+
+    <header>  <!-- NAVIGATION -->
+    
+    <div id="topbar">
+        <input type="button" src="Images/Icons/Ionic-Ionicons-Menu.16.png" onclick="toggleMenu()" id="left_button" />
+        <input type="text" id="search_bar" src="Images/Icons/Ionic-Ionicons-Search.16.png" />
+        <input type="button" src="Images/Icons/Ionic-Ionicons-Toggle.16.png" onclick="toggleDarkMode()" id="right_button" />
+        <!-- hardcoded at webpage generation, updated with Javascript on search -->
+        <input type="number" name="result counter" value="871" disabled="True" id="counter" />
+    </div>
+
+    <div id="menu" class="overlay">
+        <a id="menu_close_button" onclick="closeMenu()">&times;</a>
+        <div id="menu_list"  class="overlay-content">
+            <p class="subheader">Collection</p>
+            <p class="separator"></p>
+            <a href="slideshow.html">Home</a>
+            <a href="index.html">Menu</a>
+            <a href="collection.html">Owned</a>
+            <p class="subheader">Other</p>
+            <p class="separator"></p>
+            <a href="treasures.html">Treasures</a>
+            <a href="about.html">About</a>
+        </div>
+    </div>
+    
+    </header>  <!-- END NAVIGATION -->
+
+    <h1 id="site_name_part1">Archer's</h1>
+    <h1 id="site_name_part2">COLLECTION</h1>
+    
+    
+    
+    <style>
+    
+    div.preview {
+        font-family: Verdana;
+        width: 100%;
+        background: transparent;
+        height: 128px;
+        border: none;
+        overflow: hidden;
+        padding: 0;
+        box-shadow: 3px 3px 10px gray;
+        margin-bottom: 36px;
+    }
+    
+   div.preview > div:not(label), div.preview > table {
+        opacity: 0.35;
+        top: 0; left: 0;
+        width: 100%;
+        position: relative;
+        top: -16px;
+    }
+    
+    div.preview > a.label {
+        z-index: 2;
+        opacity: 1.0;
+        width: 75%;
+        font-size: 28px;
+        color: #000000;
+        background-color: transparent;
+        position: absolute;
+        border: none;
+        border-radius: 25px;
+        display: block;
+        /*justify-content: space-around;*/
+        top: 25%; left: 12.5%;
+        font-weight: normal;
+        text-transform: uppercase;
+        text-align: center;
+        text-shadow: 2px 2px 5px rgba(0,0,0,0.25);
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: #000000;
+        text-decoration: none;
+    }
+    
+    body.dark-mode div.preview > a.label {
+        color: black;
+        text-shadow: 2px 2px 5px rgba(255,255,255,0.25);
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: #ffffff;
+    }
+    
+    body.dark-mode div.preview {
+        box-shadow: none;
+        box-shadow: 0px 0px 1px white;
+    }
+    
+    </style>
+    
+    <div class="preview">
+        
+        <a class="label" href="stats.html" style="top: 200px;">Year, source and condition</a>
+        
+        
+        <table class="stats" id="stats_by_year">
+        <tbody>
+           <tr class="subheader">
+               <td colspan="6" style="text-align: center;">Models by Year</td>
+           </tr>
+            
+           <tr>
+               <td class="key">1981</td>
+               <td class="value">001</td>
+               <td class="key">2000</td>
+               <td class="value">018</td>
+               <td class="key">2014</td>
+               <td class="value">003</td>
+           </tr>
+            
+           <tr>
+               <td class="key">1982</td>
+               <td class="value">001</td>
+               <td class="key">2001</td>
+               <td class="value">007</td>
+               <td class="key">2015</td>
+               <td class="value">001</td>
+           </tr>
+            
+           <tr>
+               <td class="key">1984</td>
+               <td class="value">004</td>
+               <td class="key">2002</td>
+               <td class="value">005</td>
+               <td class="key">2016</td>
+               <td class="value">003</td>
+           </tr>
+            
+           <tr>
+               <td class="key">1986</td>
+               <td class="value">002</td>
+               <td class="key">2003</td>
+               <td class="value">005</td>
+               <td class="key">2017</td>
+               <td class="value">011</td>
+           </tr>
+            
+           <tr>
+               <td class="key">1987</td>
+               <td class="value">001</td>
+               <td class="key">2004</td>
+               <td class="value">012</td>
+               <td class="key">2018</td>
+               <td class="value">016</td>
+           </tr>
+            
+           <tr>
+               <td class="key">1988</td>
+               <td class="value">003</td>
+               <td class="key">2005</td>
+               <td class="value">008</td>
+               <td class="key">2019</td>
+               <td class="value">065</td>
+           </tr>
+            
+           <tr>
+               <td class="key">1989</td>
+               <td class="value">003</td>
+               <td class="key">2006</td>
+               <td class="value">010</td>
+               <td class="key">2020</td>
+               <td class="value">019</td>
+           </tr>
+            
+           <tr>
+               <td class="key">1990</td>
+               <td class="value">001</td>
+               <td class="key">2007</td>
+               <td class="value">003</td>
+               <td class="key">2021</td>
+               <td class="value">010</td>
+           </tr>
+            
+           <tr>
+               <td class="key">1991</td>
+               <td class="value">001</td>
+               <td class="key">2008</td>
+               <td class="value">006</td>
+               <td class="key">2022</td>
+               <td class="value">090</td>
+           </tr>
+            
+           <tr>
+               <td class="key">1994</td>
+               <td class="value">003</td>
+               <td class="key">2009</td>
+               <td class="value">005</td>
+               <td class="key">2023</td>
+               <td class="value">207</td>
+           </tr>
+            
+           <tr>
+               <td class="key">1996</td>
+               <td class="value">005</td>
+               <td class="key">2010</td>
+               <td class="value">004</td>
+               <td class="key">2024</td>
+               <td class="value">179</td>
+           </tr>
+            
+           <tr>
+               <td class="key">1997</td>
+               <td class="value">008</td>
+               <td class="key">2011</td>
+               <td class="value">001</td>
+               <td class="key">2025</td>
+               <td class="value">041</td>
+           </tr>
+            
+           <tr>
+               <td class="key">1998</td>
+               <td class="value">013</td>
+               <td class="key">2012</td>
+               <td class="value">004</td>
+               <td class="key"></td>
+               <td class="value"></td>
+           </tr>
+            
+        </tbody>
+        </table>
+    
+    </div>
+    
+    <div class="preview">
+        
+        <a class="label" href="inventories.html" style="top: 360px;">Date and store inventory</a>
+        
+         <div class="searchable" data-index="Dollar General Hollywood 6261 SC-162">
+    <table class="store">
+        <tbody>
+            <colgroup>
+                <col style="width: 10%">
+                <col style="width: 30%">
+                <col style="width: 35%">
+                <col style="width: 25%"
+            </colgroup>
+            <tr class="subheader">
+                <td colspan="2" class="store_name">Dollar General</td> 
+                <td colspan="2" class="right address">6261 SC-162, Hollywood</td>
+            </tr>
+            
+            <tr>
+                <td class="inventory half_full">50%</td>   
+                <td class="date">2025-07-25</td>  
+                <td class="timelapse">{days_since}</td>
+                <td class="day">Friday</td> 
+            </tr>
+        
+            <tr>
+                <td class="inventory barely_full">25%</td>   
+                <td class="date">2025-05-10</td>  
+                <td class="timelapse">{days_since}</td>
+                <td class="day">Saturday</td> 
+            </tr>
+        
+            <tr>
+                <td class="inventory almost_full">75%</td>   
+                <td class="date">2025-02-25</td>  
+                <td class="timelapse">{days_since}</td>
+                <td class="day">Tuesday</td> 
+            </tr>
+        
+            <tr>
+                <td class="inventory almost_full">70%</td>   
+                <td class="date">2024-12-20</td>  
+                <td class="timelapse">{days_since}</td>
+                <td class="day">Friday</td> 
+            </tr>
+        
+            <tr>
+                <td class="inventory full">100%</td>   
+                <td class="date">2024-10-17</td>  
+                <td class="timelapse">{days_since}</td>
+                <td class="day">Thursday</td> 
+            </tr>
+        
+            <tr>
+                <td class="inventory barely_full">1%</td>   
+                <td class="date">2024-09-11</td>  
+                <td class="timelapse">{days_since}</td>
+                <td class="day">Wednesday</td> 
+            </tr>
+        
+        </tbody>
+    </table>
+    </div>
+        
+    </div>
+    
+    
+    <div class="preview">
+        
+        <a class="label" href="completions.html" style="top: 525px;">Completions of annual series</a>
+        
+    <div class="searchable collection_status" data-index="Car Culture: Ronin Run 2022">
+        <table class="collection_status">
+        <colgroup>
+            <col style="width: 10%">
+            <col style="width: 10%">
+            <col style="width: 70%">
+            <col style="width: 10%"
+        </colgroup>
+        <tbody>
+            <tr class="subheader">
+                <td class="full_collection">100%</td>
+                <td class="right">2022</td>
+                <td>CAR CULTURE: RONIN RUN</td>
+                <td class="right grayed">5/5</td>
+            </tr>
+        
+        <tr>
+            <td class="grayed">-i</td>
+			<td class="right">1/5</td>
+			<td class="bold">1995 Mazda RX7</td><td class="right tag">PREMIUM</td>
+        </tr>
+        
+        <tr>
+            <td class="grayed">-i</td>
+			<td class="right">2/5</td>
+			<td class="bold">Nissan 300ZX Twin Turbo</td><td class="right tag">PREMIUM</td>
+        </tr>
+        
+        <tr>
+            <td class="grayed">-i</td>
+			<td class="right">3/5</td>
+			<td class="bold">1981 Toyota Starlet KP61</td><td class="right tag">PREMIUM</td>
+        </tr>
+        
+        <tr>
+            <td class="grayed">-i</td>
+			<td class="right">4/5</td>
+			<td class="bold">1998 Subaru Impreza 22B-STi Version</td><td class="right tag">PREMIUM</td>
+        </tr>
+        
+        <tr>
+            <td class="grayed">-i</td>
+			<td class="right">5/5</td>
+			<td class="bold">Mazda RX7 FC Pandemic</td><td class="right tag">PREMIUM</td>
+        </tr>
+        
+            </tbody>
+        </table>
+    </div>
+        
+    </div>
+    
+    
+    <footer id="page_footer">
+        <p>Last update: <a href="">2025-08-22</a></p>
+        <p>Site design: Konstantin A Kolosov</p>
+        <hr />
+            <a href="slideshow.html">Home</a>
+            <a href="preview.html">Statistics</a>
+            <a href="treasures.html">Treasures</a>
+            <a href="about.html">About</a>
+    </footer>
+    
+</body>
+
+</html>
