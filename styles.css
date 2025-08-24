@@ -545,12 +545,16 @@ td.tag {
 
 table.stats td.key {
     text-align: right;
-    color: gray;
+    color: black;
     font-weight: normal;
 }
 
+body.dark-mode table.stats td.key {
+    color: white;
+}
+
 table.stats td.value {
-    color: darkgreen;
+    color: green;
     font-weight: bold;
 }
 
@@ -922,4 +926,55 @@ body.dark-mode #page_footer > a, body.dark-mode #page_footer > p > a {
     color: black;
     margin-top: 24px;
     margin-bottom: 24px;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  25% { transform: scale(.9); }
+  50% { transform: scale(1); }
+  75% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+div.faq {
+    width: 100%;
+    clear: both;
+    border: none;
+    box-shadow: 0px 3px 5px #333;
+    background: transparent;
+}
+
+div.faq > div.question {
+    float: left;
+    width: 80%;
+    margin-bottom: 12px;
+    padding: 10px;
+    background: black;
+    margin-left: 12px;
+    color: white;
+    border-radius: 15px;
+}
+
+div.faq > div.answer {
+    float: right;
+    width: 80%;
+    margin-bottom: 12px;
+    padding: 10px;
+    background: transparent;
+    margin-right: 12px;
+    border: 1px solid #999;
+    border-radius: 15px;
+}
+
+div.faq > div.question > p {
+    font-weight: bold;
+}
+
+div.faq > div.question > p,
+div.faq > div.answer > p {
+    font: 18px Verdana;
+}
+
+div.faq > div.answer > p:nth {
+    margin-top: 12px;
 }
