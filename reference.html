@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <title>Hot Wheels</title>
+    <link type="text/css" href="styles.css" rel="stylesheet" />
+    <script src="scripts.js"></script>
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" 
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    
+</head>
+
+<body onload="">
+
+    <script type="text/javascript">
+        checkMode();
+    </script>
+
+    <header>  <!-- NAVIGATION -->
+    
+    <div id="topbar">
+        <input type="button" src="Images/Icons/Ionic-Ionicons-Menu.16.png" onclick="toggleMenu()" id="left_button" />
+        <input type="text" id="search_bar" onkeyup="setTimeout(searchModels(), 250)"  src="Images/Icons/Ionic-Ionicons-Search.16.png" />
+        <input type="button" src="Images/Icons/Ionic-Ionicons-Toggle.16.png" onclick="toggleDarkMode()" id="right_button" />
+        <!-- hardcoded at webpage generation, updated with Javascript on search -->
+        <input type="number" name="result counter" value="" disabled="True" id="counter" />
+    </div>
+
+    <div id="menu" class="overlay">
+        <a id="menu_close_button" onclick="closeMenu()">&times;</a>
+        <div id="menu_list"  class="overlay-content">
+            <p class="subheader">Collection</p>
+            <p class="separator"></p>
+            <a href="slideshow.html">Home</a>
+            <a href="index.html">Menu</a>
+            <a href="collection.html">Owned</a>
+            <p class="subheader">Other</p>
+            <p class="separator"></p>
+            <a href="treasures.html">Treasures</a>
+            <a href="about.html">About</a>
+        </div>
+    </div>
+    
+    </header>  <!-- END NAVIGATION -->
+
+    <h1 id="site_name_part1">Python</h1>
+        <h1 id="site_name_part2">Reference</h1>
+    
+    <h1 class="section_header">Module Reference</h1>
+    
+    <h2 class="section_subheader">Coding since August 2023</h2>
+
+
+    <style>
+    
+    h3.section_subheader {
+        width: 100%;
+        font-family: monospace;
+        font-size: 16px;
+        font-weight: normal;
+        margin: auto;
+        text-transform: uppercase;
+        text-align: center;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        padding: 16px 0px;
+        text-decoration: underline;
+    }
+    
+    span.codeline {
+        background: black;
+        color: white;
+        padding: 0px 3px;
+        font: normal 14px monospace;
+    }
+    
+    div.reference {
+        font: normal 16px monospace;
+        text-indent: 16px;
+        background: transparent;
+        margin: auto;
+    }
+    
+    div.syntax {
+        width: 100%;
+        background: black;
+        font: normal 14px monospace;
+    }
+    
+    body.dark-mode div.syntax {
+        box-shadow: 0px 0px 1px #fff;
+    }
+    
+    div.syntax table.codeblock td {
+        font-weight: normal;
+        color: white;
+        text-transform: none;
+        overflow-wrap: anywhere;
+        font: normal 14px monospace;
+    }
+    
+    div.syntax table.codeblock td.line,
+    div.syntax table.codeblock td.chevron {
+        color: gray;
+        border-right: 1px solid gray;
+        text-align: right;
+    }
+    
+    div.syntax table.codeblock td.line {
+        color: gray;
+        font: normal 14px monospace;
+    }
+    
+    div.syntax table.codeblock td.chevron {
+        color: lightblue;
+        font: normal 14px monospace;
+    }
+    
+    div.syntax table.codeblock td span.function, span.codeline > span.function {
+        color: lime;
+        font: normal 14px monospace;
+    }
+    
+    div.syntax table.codeblock td span.comment, span.codeline > span.comment {
+        color: gray;
+        font: normal 14px monospace;
+    }
+    
+    div.syntax table.codeblock td span.keyword, span.codeline > span.keyword, span.keyword {
+        color: red;
+        font: normal 14px monospace;
+    }
+    
+    div.syntax table.codeblock td span.string, 
+    span.codeline > span.string, 
+    span.string {
+        color: orange;
+        font: normal 14px monospace;
+    }
+    
+    div.reference > p {
+        margin: 12px auto;
+        font: normal 14px Verdana;
+    }
+    
+    div.reference ul > li {
+        margin: auto;
+        font: normal 14px Verdana;
+    }
+    
+    div.note {
+        /*width: 200px;
+        height: 200px;
+        background-color: yellow;*/
+        padding: 20px;
+        font: italic 14px monospace;
+        margin: auto;
+        box-shadow: 3px 3px 3px #333;
+    }
+    
+    body.dark-mode div.note {
+        padding: 10px;
+        border: 10px solid yellow;
+        background-color: black;
+        box-shadow: 0px 0px 5px yellow;
+    }
+    
+    #csv_struct {
+        list-style-type: disc;
+    }
+    
+    span.description {
+        color: gray;
+    }
+    </style>
+    
+<div class="reference">
+<h3 class="section_subheader">Initializing module</h3>
+    <p>Top-level module is called HotWheels. A simple import statement starts it up.</p>
+<div class="syntax">
+    <table class="codeblock">
+        <colgroup>
+            <col style="width: 10%">
+            <col style="width: 90%">
+        </colgroup>
+        <tbody>
+            <tr>
+                <td class="chevron">>>></td>
+                <td><span class="keyword">import </span><span class="function">HotWheels</span> <span class="comment"># main module</span></td>
+            </tr>
+            <tr>
+                <td class="chevron">>>></td>
+                <td>cars = HotWheels.<span class="function">Collection</span>() <span class="comment"># initialize data</span></td>
+            </tr>
+            <tr>
+                <td class="line">001</td>
+            <td>&lt;HotWheels.main.CarList object at 0x1165ecfd0&gt; <span class="comment"> # returns an object of custom class CarList</span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p>CarList is just a List class with extra methods defined:</p>
+<p><span class="codeline"><span class="keyword">self</span>.<span class="function">filter</span>(<span class="comment">query</span>)</span> - returns CarList object with matching search results.</p>
+<p><span class="codeline"><span class="keyword">self</span>.<span class="function">exclude</span>(<span class="comment">query</span>)</span> - returns CarList object with non-matching search results.</p>
+<p><span class="codeline"><span class="keyword">self</span>.<span class="function">view</span>(<span class="comment">view=<span class="string">"compact"</span></span>)</span> - view can be compact, expanded or full.</p>
+<p>CarList consists of objects of type ModelCar, which also has following methods defined:</p>
+<p><span class="codeline"><span class="keyword">self</span>.<span class="function">view</span>(<span class="comment">view=<span class="string">"expanded"</span>, count=<span class="keyword">None</span></span>)</span> - view can be compact, expanded or full, count prints sequential numbers.</p>
+<p><span class="codeline"><span class="keyword">self</span>.<span class="function">generate_image_name</span>()</span> - generates image name according to naming convention.</p>
+<p><span class="codeline"><span class="keyword">self</span>.<span class="function">generate_image_path</span>(<span class="comment">image_name=<span class="keyword">None</span>, image_path=<span class="string">"default"</span></span>)</span> - generates full image path. If no path is provided the default path is used. Name is also generated if none is provided as argument.</p>
+</div>
+    
+<div class="reference">
+    <h3 class="section_subheader">Dealing with image files</h3>
+<div class="note">
+<p>NOTE: all the years corrected to 1969 and 2023 format instead of '69 or 23.</p>
+<p>No forward slashes `/` allowed in names of models, automatically replaced with an underscrore `_`. Colons `:` in names of series are also replaced with a space followed by a dash ` -`. </p>
+</div>
+<p>The majority of names of images linked to models are not hardcoded but generated on the fly. Naming convention is programmed into the module and is as follows:</p>
+<p>`{MODEL} ({SERIES} {YEAR}).JPG` if Series name does not contain the release year, otherwise:  </p>
+<p>`{MODEL} ({SERIES}).JPG` used on line 947+ in HotWheels/main.py in method definition of <span class="codeline"> ModelCar.<span class="function">generate_image_path</span>()</span></p> 
+<p>Color variations are defined as follows</p>
+<p>`{MODEL} ({SERIES} {YEAR}) [{COLOR}].JPG`  </p>
+<p>Names of images can be generated to be renamed by using the same function module uses.</p>
+
+<div class="syntax">
+    <table class="codeblock">
+        <colgroup>
+            <col style="width: 10%">
+            <col style="width: 90%">
+        </colgroup>
+        <tbody>
+            <tr>
+                <td class="chevron">>>></td>
+                <td>HotWheels.Extras.<span class="function">prompt_image_name_generation</span>() <span class="comment"># prompts for text input</span>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<p>Copying photos from the Photos app adds a `.heic` extension to the name of the file. It can be easily removed.</p>
+
+<div class="syntax">
+    <table class="codeblock">
+        <colgroup>
+            <col style="width: 10%">
+            <col style="width: 90%">
+        </colgroup>
+        <tbody>
+            <tr>
+                <td class="chevron">
+                    >>>
+                </td>
+                <td>HotWheels.Extras.<span class="function">remove_heic_extension</span>()  <span class="comment"># returns nothing</span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<p>Sometimes instead a `.jpeg` extension is used. It also needs to be removed.</p>
+
+<div class="syntax">
+    <table class="codeblock">
+        <colgroup>
+            <col style="width: 10%">
+            <col style="width: 90%">
+        </colgroup>
+        <tbody>
+            <tr>
+                <td class="chevron">
+                    >>>
+                </td>
+                <td>HotWheels.Extras.<span class="function">remove_jpeg_extension</span>()</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p>Images need to be named properly.</p>
+</div>
+
+<div class="reference">
+<h3 class="section_subheader">Spreadsheet structure</h3>
+<p>Each model occupies one row in the spreadsheet or one line in a comma-separated value file. Models with different status (i.e. opened vs. carded) need to be duplicated and separated by condition.</p>
+<p>Column names are: </p>
+    <ul id="csv_struct">
+    <li>- Model <span class="description">(name of the casting)</span></li>  
+    <li>- Collection <span class="description">(name of the series)</span></li>
+    <li>- Part <span class="description">(*N/N of the series)</span></li>
+    <li>- Year <span class="description">(of the series)</span></li>
+    <li>- Origin <span class="description">(source of acquisition)</span></li>
+    <li>- URL <span class="description">(optional web link)</span></li>
+    <li>- Tags  <span class="description">(TH, STH, ZAMAC or Premium)</span></li>
+    <li>- Condition <span class="description">(new/used)</span></li>
+    <li>- Number <span class="description">(mainline or collector)</span></li>
+    <li>- Quantity <span class="description">(defaults to 1)</span></li> 
+    <li>- Image <span class="description">(for color variations)</span></li> 
+    <li>- Notes <span class="description">(optional extra data)</span></li>
+</ul>
+   
+</div>
+    
+    <div id="empty_space"></div>
+
+    <footer id="page_footer">
+        <p>Last update: <a href="">2025-08-12</a></p>
+        <p>Site design: Konstantin A Kolosov</p>
+        <hr />
+            <a href="slideshow.html">Home</a>
+            <a href="index.html">Menu</a>
+            <a href="collection.html">Owned</a>
+            <a href="treasures.html">Treasures</a>
+            <a href="about.html">About</a>
+    </footer>
+    </body>
+</html>

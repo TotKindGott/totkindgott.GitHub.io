@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <title>Hot Wheels</title>
+    <link type="text/css" href="styles.css" rel="stylesheet" />
+    <script src="scripts.js"></script>
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" 
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    
+</head>
+
+<body onload='setSearchRedirect();'>
+
+    <script type="text/javascript">
+        checkMode();
+    </script>
+
+    <header>  <!-- NAVIGATION -->
+    
+    <div id="topbar">
+        <input type="button" src="Images/Icons/Ionic-Ionicons-Menu.16.png" onclick="toggleMenu()" id="left_button" />
+        <input type="text" id="search_bar" src="Images/Icons/Ionic-Ionicons-Search.16.png" />
+        <input type="button" src="Images/Icons/Ionic-Ionicons-Toggle.16.png" onclick="toggleDarkMode()" id="right_button" />
+        <!-- hardcoded at webpage generation, updated with Javascript on search -->
+        <input type="number" name="result counter" value="871" disabled="True" id="counter" />
+    </div>
+
+    <div id="menu" class="overlay">
+        <a id="menu_close_button" onclick="closeMenu()">&times;</a>
+        <div id="menu_list"  class="overlay-content">
+            <p class="subheader">Collection</p>
+            <p class="separator"></p>
+            <a href="slideshow.html">Home</a>
+            <a href="index.html">Menu</a>
+            <a href="collection.html">Owned</a>
+            <p class="subheader">Other</p>
+            <p class="separator"></p>
+            <a href="treasures.html">Treasures</a>
+            <a href="about.html">About</a>
+        </div>
+    </div>
+    
+    </header>  <!-- END NAVIGATION -->
+
+    <h1 id="site_name_part1">Archer's</h1>
+    <h1 id="site_name_part2">COLLECTION</h1>
+    
+    <div class="faq">
+        <div class="question">
+            <p>Why build this website in the first place?</p>
+        </div>
+        <div class="answer">
+            <p>I needed a way to quickly and easily find out whether a specific model was already in the collection.</p>
+            <div class="empty_space"></div>
+            <p>Everything is being tracked in a spreadsheet in the Numbers app.</p>
+            <img src="Images/Content/Spreadsheet.jpg" class="screenshot" />
+            <p>Search and media attachment there is limited so a new approach was needed.</p>
+            <div class="empty_space"></div>
+            <p>Long story short, now it is possible to find the answer in seconds by launching a shortcut and providing a search query.</p>
+        </div>
+    </div>
+    
+    <div class="faq">
+        <div class="question">
+            <p>How do I search your collection with the help of Shortcuts app?</p>
+        </div>
+        <div class="answer">
+            <p>Setup is very simple. The shortcut consists of three steps. </p>
+            <img src="Images/Content/Shortcuts Setup.png" class="screenshot"/>
+            <p>The shortcut prompts for input, then encodes it and adds it to URL.</p>
+            <div class="empty_space"></div>
+            <p>The webpage receives your search query as a URL argument and parses it, loads the content and filters through it.</p>
+        </div>
+    </div>
+    
+    <div class="faq">
+        <div class="question">
+            <p>How do I use this site?</p>
+        </div>
+        <div class="answer">
+            <p><input class="search_bar" placeholder="Search" style="width: 74px;" disabled="True" ></input>
+            on the top of the page helps find either relevant content on the page or collection-wide models.</p>
+            <div class="empty_space"></div>
+            <p>Examples of page-specific search functions are: statistics for inventory and for collection completions.</p>
+            <div class="empty_space"></div>
+            <p>Most other pages redirect search query as parameter to <a href="search.html">search.html</a>.</p>
+        </div>
+        <div class="answer">
+            <input type="button" name="" value="" class="left_button"/>
+            <p>button in the top left corner opens the menu with links to other pages on this site.</p>
+            <div class="empty_space"></div>
+            <input type="button" name="" class="right_button" value="" /> 
+            <p>button in the top right corner toggles between light and dark mode. Value of last used mode gets written to browser's <code>localStorage</code> if allowed.</p>
+            </div>
+    </div>
+    
+    <div class="faq">
+        <div class="question">
+            <p>What else is here besides Hot Wheels?</p>
+        </div>
+        <div class="answer">
+            <p>There is a reference page for <a href="treasures.html">treasure hunts</a>, but of course that is also Hot Wheels.</p>
+            <div class="empty_space"></div>
+            <p>All the info and images on that page are from <a href="hwtreasure.com">HWTreasure.com</a>.</p>
+        </div>
+    </div>
+    
+    <div class="faq">
+        <div class="question">
+            <p>How is this site made?</p>
+        </div>
+        <div class="answer">
+            <p>Everything is being generated from a comma-separated value file and a set of images.</p>
+            <img src="Images/Content/CSV File.png" class="screenshot" />
+        </div>
+        <div class="answer">
+            <p>From Numbers app .csv file is fed to Pythonista app, where all the data is crunched, and Photos app runs a shortcut on selected photos which resizes them and places them into a directory in Files app. Images get renamed there and also imported to Pythonista.</p>
+        </div>
+        <div class="answer">
+            <p>HTML gets generated and copied to Working Copy app, then it gets a commit to GitHub and within minutes an updated version is published.</p>
+        </div>
+    </div>
+    
+    <div id="empty_space" style="height: 48px;"></div>
+    
+    <footer id="page_footer">
+        <p>Last update: <a href="">2025-08-22</a></p>
+        <p>Site design: Konstantin A Kolosov</p>
+        <hr />
+            <a href="slideshow.html">Home</a>
+            <a href="preview.html">Statistics</a>
+            <a href="treasures.html">Treasures</a>
+            <a href="about.html">About</a>
+    </footer>
+    
+</body>
+
+</html>

@@ -128,6 +128,32 @@ body.logo {
     text-underline-offset: 3px;
 }
 
+input.search_bar {
+    display: inline;
+    background-image: url("Images/Icons/Ionic-Ionicons-Search.16.png");
+    background-position: left 5px top 50%;
+    background-repeat: no-repeat;
+    background-color: rgba(255,255,255,1);
+    font-family: monospace, "Inconsolata"; 
+    font-size: 16px; 
+    color: black;
+    border-radius: 10px;
+    margin: auto;
+    box-shadow: 0 0 5px 1px #ffffff;
+    text-indent: 16px;
+    text-align: left;
+    outline: none;
+    vertical-align: center;
+    justify-content: center;
+    width: 64px;
+}
+
+input.search_bar:disabled {
+    background-color: white;
+    opacity: 1;
+    color: black;
+}
+
 #left_button {
     background-image: url("Images/Icons/Ionic-Ionicons-Menu.16.png");
     background-position: center;
@@ -142,6 +168,24 @@ body.logo {
     border-radius: 12px;
     margin: 0; 
     box-shadow: 0 0 5px 1px #ffffff;
+}
+
+input.left_button {
+    float: left;
+    display: inline;
+    background-image: url("Images/Icons/Ionic-Ionicons-Menu.16.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 24px;
+    width: 24px;
+    background-color: #ffffff;
+    border: 1px solid gray;
+    border-radius: 12px;
+    margin: auto;
+    margin-right: 18px;
+    box-shadow: 0 0 5px 1px #ffffff;
+    vertical-align: center;
+    justify-content: center;
 }
 
 #right_button {
@@ -161,6 +205,23 @@ body.logo {
     box-shadow: 0 0 5px 1px #ffffff;
 }
 
+input.right_button {
+    float: left;
+    display: inline;
+    background-image: url("Images/Icons/Ionic-Ionicons-Toggle-outline.16.png");
+    transform: rotateY(180deg);
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 24px;
+    width: 24px;
+    background-color: #ffffff;
+    border: 1px solid gray;
+    border-radius: 12px;
+    margin: 0; 
+    margin-right: 18px;
+    box-shadow: 0 0 5px 1px #ffffff;
+}
+
 body.dark-mode #right_button
 {
     background-image: url("Images/Icons/Ionic-Ionicons-Toggle.16.png");
@@ -170,6 +231,7 @@ body.dark-mode #right_button
 ::placeholder {
     color: gray;
     text-align: center;
+    text-transform: normal;
 }
 
 #counter  {
@@ -368,6 +430,16 @@ details {
 	box-shadow: 3px 3px 10px 2px rgba(50,50,50,0.3);
 	padding-bottom: 40px;
 	background-color: #ffffff;
+}
+
+.screenshot {
+    width: 100%;
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 0px;
+	border-radius: 7px;
+	background-color: transparent;
 }
 
 .wrapper {
@@ -841,6 +913,16 @@ td.bignum {
     background: none;
 }
 
+div.empty_space {
+    width: 100%;
+    height: 10px;
+    margin: auto;
+    display: block;
+    clear: both;
+    float: none;
+    background: none;
+}
+
 body.dark-mode #page_footer > a, body.dark-mode #page_footer > p > a {
     background-color: black;
     color: white;
@@ -949,6 +1031,8 @@ div.faq > div.question {
     width: 80%;
     margin-bottom: 12px;
     padding: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     background: black;
     margin-left: 12px;
     color: white;
@@ -960,6 +1044,8 @@ div.faq > div.answer {
     width: 80%;
     margin-bottom: 12px;
     padding: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     background: transparent;
     margin-right: 12px;
     border: 1px solid #999;
@@ -967,14 +1053,131 @@ div.faq > div.answer {
 }
 
 div.faq > div.question > p {
-    font-weight: bold;
+    font-weight: bolder;
 }
 
 div.faq > div.question > p,
 div.faq > div.answer > p {
-    font: 18px Verdana;
+    font: 16px Verdana;
+}
+
+body.dark-mode div.faq > div.question {
+    box-shadow: 0px 0px 5px 1px red;
+}
+
+body.dark-mode div.faq > div.answer {
+    border-color: lime; 
 }
 
 div.faq > div.answer > p:nth {
     margin-top: 12px;
+}
+
+div.preview {
+    font-family: Verdana;
+    width: 100%;
+    background: transparent;
+    height: 128px;
+    border: none;
+    overflow: hidden;
+    padding: 0;
+    box-shadow: 3px 3px 10px gray;
+    margin-bottom: 36px;
+}
+
+div.preview > div:not(label), div.preview > table {
+    opacity: 0.35;
+    top: 0; left: 0;
+    width: 100%;
+    position: relative;
+    top: -16px;
+}
+
+div.preview > a.label {
+    z-index: 2;
+    opacity: 1.0;
+    width: 75%;
+    font-size: 28px;
+    color: #000000;
+    background-color: transparent;
+    position: absolute;
+    border: none;
+    border-radius: 25px;
+    display: block;
+    /*justify-content: space-around;*/
+    top: 25%; left: 12.5%;
+    font-weight: normal;
+    text-transform: uppercase;
+    text-align: center;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.25);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #000000;
+    text-decoration: none;
+}
+
+body.dark-mode div.preview > a.label {
+    color: black;
+    text-shadow: 2px 2px 5px rgba(255,255,255,0.25);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #ffffff;
+}
+
+body.dark-mode div.preview {
+    box-shadow: none;
+    box-shadow: 0px 0px 1px white;
+}
+
+    
+div.preview {
+    font-family: Verdana;
+    width: 100%;
+    background: transparent;
+    height: 128px;
+    border: none;
+    overflow: hidden;
+    padding: 0;
+    box-shadow: 3px 3px 10px gray;
+    margin-bottom: 36px;
+}
+
+div.preview > div:not(label), div.preview > table {
+    opacity: 0.35;
+    top: 0; left: 0;
+    width: 100%;
+    position: relative;
+    top: -16px;
+}
+
+div.preview > a.label {
+    z-index: 2;
+    opacity: 1.0;
+    width: 75%;
+    font-size: 28px;
+    color: #000000;
+    background-color: transparent;
+    position: absolute;
+    border: none;
+    border-radius: 25px;
+    display: block;
+    /*justify-content: space-around;*/
+    top: 25%; left: 12.5%;
+    font-weight: normal;
+    text-transform: uppercase;
+    text-align: center;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.25);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #000000;
+    text-decoration: none;
+}
+
+body.dark-mode div.preview > a.label {
+    color: black;
+    text-shadow: 2px 2px 5px rgba(255,255,255,0.25);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #ffffff;
+}
+
+body.dark-mode div.preview {
+    box-shadow: none;
+    box-shadow: 0px 0px 1px white;
 }

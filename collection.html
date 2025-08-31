@@ -7,25 +7,26 @@
     <title>Hot Wheels</title>
     <link type="text/css" href="styles.css" rel="stylesheet" />
     <script src="scripts.js"></script>
+    <meta name="format-detection" content="telephone=no" />
     <meta name="viewport" 
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     
 </head>
 
-<body>
-    
+<body onload="loadingSequence()">
+
     <script type="text/javascript">
         checkMode();
     </script>
-    
+
     <header>  <!-- NAVIGATION -->
     
     <div id="topbar">
         <input type="button" src="Images/Icons/Ionic-Ionicons-Menu.16.png" onclick="toggleMenu()" id="left_button" />
-        <input type="text" id="search_bar" onkeyup="searchModels(); hideDivsOnEmpty(); positionFooter();"  src="Images/Icons/Ionic-Ionicons-Search.16.png" />
+        <input type="text" id="search_bar" onkeyup="setTimeout(searchModels(), 250)"  src="Images/Icons/Ionic-Ionicons-Search.16.png" />
         <input type="button" src="Images/Icons/Ionic-Ionicons-Toggle.16.png" onclick="toggleDarkMode()" id="right_button" />
         <!-- hardcoded at webpage generation, updated with Javascript on search -->
-        <input type="number" name="result counter" value="871" disabled="True" id="counter" />
+        <input type="number" name="result counter" value="903" disabled="True" id="counter" />
     </div>
 
     <div id="menu" class="overlay">
@@ -42,12 +43,10 @@
             <a href="about.html">About</a>
         </div>
     </div>
-    
+
+
     </header>  <!-- END NAVIGATION -->
 
-        <h1 id="site_name_part1">Archer's</h1>
-        <h1 id="site_name_part2">COLLECTION</h1>
-    
     <div id='results'>  <!-- BODY -->
     
     <div class="searchable float" data-index="alfa romeo gtv6 3.0 car culture: world tour 2024 target chase ">
@@ -28039,7 +28038,7 @@
         <div class="wrapper"><a><img class="photo" src="Images/1966 Bat Boat (Batman 2025).JPG" alt="1966 Bat Boat" width="640px" /></a><p class="tag"></p></div>
     </div>
 
-    <div class="searchable float" data-index="honda vfr750r (rc30) moto 2025 walmart  ">
+    <div class="searchable float" data-index="honda vfr750r (rc30) hw moto 2025 walmart  ">
         <details>
             <summary>
                 <h1>Honda VFR750R (RC30)</h1>
@@ -28047,7 +28046,7 @@
             <table>
                 <tr>
                     <td class="grayed">series:</td>
-                    <td>Moto</td>
+                    <td>HW Moto</td>
                     <td class="grayed">part:</td>
                     <td class="right">4/5</td>
                 </tr>
@@ -28068,7 +28067,7 @@
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" src="Images/Honda VFR750R (RC30) (Moto 2025).JPG" alt="Honda VFR750R (RC30)" width="640px" /></a><p class="tag"></p></div>
+        <div class="wrapper"><a><img class="photo" src="Images/Honda VFR750R (RC30) (HW Moto 2025).JPG" alt="Honda VFR750R (RC30)" width="640px" /></a><p class="tag"></p></div>
     </div>
 
     <div class="searchable float" data-index="2018 honda civic type r then and now 2025 dollar general  ">
@@ -28319,7 +28318,7 @@
                 </tr>
                 <tr>
                     <td class="grayed">status:</td>
-                    <td>New on card</td>
+                    <td>Opened</td>
                     <td colspan=2 class="tag"></td>
                 </tr>
             </table>
@@ -28743,12 +28742,239 @@
         <div class="wrapper"><a><img class="photo" src="Images/Ferrari 365 GTB4 Competizione (Race Day 2025).JPG" alt="Ferrari 365 GTB4 Competizione" width="640px" /></a><p class="tag"></p></div>
     </div>
 
+    <div class="searchable float" data-index="1966 triumph tiger 100 hw moto 2025 target th treasure hunt">
+        <details>
+            <summary>
+                <h1>1966 Triumph Tiger 100</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>HW Moto</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">5/5</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>235/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Target</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>Opened</td>
+                    <td colspan=2 class="tag">TH</td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" src="Images/1966 Triumph Tiger 100 (HW Moto 2025).JPG" alt="1966 Triumph Tiger 100" width="640px" /></a><img class="logo" src="Images/Logos/TH Logo Mini.PNG" width="30px" alt="TH" /><p class="tag">TH</p></div>
+    </div>
+
+    <div class="searchable float" data-index="feline lucky hw celebration racers 2025 target  ">
+        <details>
+            <summary>
+                <h1>Feline Lucky</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>HW Celebration Racers</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">9/10</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>234/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Target</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>Opened</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" src="Images/Feline Lucky (HW Celebration Racers 2025).JPG" alt="Feline Lucky" width="640px" /></a><p class="tag"></p></div>
+    </div>
+
+    <div class="searchable float" data-index="honda motocompo hw moto 2025 lidl  ">
+        <details>
+            <summary>
+                <h1>Honda Motocompo</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>HW Moto</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">3/5</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>181/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Lidl</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>Opened</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" src="Images/Honda Motocompo (HW Moto 2025).JPG" alt="Honda Motocompo" width="640px" /></a><p class="tag"></p></div>
+    </div>
+
+    <div class="searchable float" data-index=" vespa 90 ss super (1966) hw moto 2025 lidl  ">
+        <details>
+            <summary>
+                <h1> Vespa 90 SS Super (1966)</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>HW Moto</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">2/5</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>177/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Lidl</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>Opened</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" src="Images/ Vespa 90 SS Super (1966) (HW Moto 2025).JPG" alt=" Vespa 90 SS Super (1966)" width="640px" /></a><p class="tag"></p></div>
+    </div>
+
+    <div class="searchable float" data-index="porsche 911 turbo cabriolet then and now 2025 target  ">
+        <details>
+            <summary>
+                <h1>Porsche 911 Turbo Cabriolet</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>Then and Now</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">10/10</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>239/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Target</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" src="Images/Porsche 911 Turbo Cabriolet (Then and Now 2025).JPG" alt="Porsche 911 Turbo Cabriolet" width="640px" /></a><p class="tag"></p></div>
+    </div>
+
+    <div class="searchable float" data-index="2018 honda civic type r then and now 2025 target  ">
+        <details>
+            <summary>
+                <h1>2018 Honda Civic Type R</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>Then and Now</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">3/10</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>123/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Target</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" src="Images/2018 Honda Civic Type R (Then and Now 2025) [blue].JPG" alt="2018 Honda Civic Type R" width="640px" /></a><p class="tag"></p></div>
+    </div>
+
+    <div class="searchable float" data-index="ford gt modified 2025 target  ">
+        <details>
+            <summary>
+                <h1>Ford GT</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>Modified</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">4/5</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>159/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Target</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" src="Images/Ford GT (Modified 2025).JPG" alt="Ford GT" width="640px" /></a><p class="tag"></p></div>
+    </div>
+
+
+
     </div>  <!-- END BODY -->
     
     <div id="empty_space"></div>
 
+
     <footer id="page_footer">
-        <p>Last update: <a href="">2025-08-23</a></p>
+        <p>Last update: <a href="">2025-08-30</a></p>
         <p>Site design: Konstantin A Kolosov</p>
         <hr />
             <a href="slideshow.html">Home</a>
@@ -28757,6 +28983,8 @@
             <a href="about.html">About</a>
     </footer>
     
+
+
 </body>
 
 </html>
