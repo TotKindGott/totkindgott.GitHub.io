@@ -615,6 +615,11 @@ td.tag {
 	text-shadow: 1px 1px 1px #000000;
 }
 
+td.missing {
+    color: gray;
+    text-decoration: line-through;
+}
+
 table.stats td.key {
     text-align: right;
     color: black;
