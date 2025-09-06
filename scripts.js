@@ -191,7 +191,7 @@ async function parseAndSearch() {
         searchModels();
         hideDivsOnEmpty();
         positionFooter();
-    }, 500);
+    }, 1000);
 };
 
 function scrollShow(interval = 2000) {

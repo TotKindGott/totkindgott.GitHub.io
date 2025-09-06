@@ -869,7 +869,7 @@ td.bignum {
 }
 
 #frame {
-    margin: auto;
+    width: 100%;
 }
 
 #frame > div.searchable {
@@ -1185,4 +1185,66 @@ body.dark-mode div.preview > a.label {
 body.dark-mode div.preview {
     box-shadow: none;
     box-shadow: 0px 0px 1px white;
+}
+
+span.pythonista,
+span.textastic,
+span.working_copy,
+span.files,
+span.photos,
+span.shortcuts,
+span.numbers,
+span.camera {
+    height: 20px;
+    font-weight: medium;
+    padding-right: 2px;
+    vertical-align: center;
+    display: inline-block;
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-position-x: 2px;
+    background-position-y: 2px;
+    text-indent: 20px;
+    border: 1px dotted #999;
+    border-radius: 3px;
+    }
+
+span.pythonista {
+    background-image: url(Images/Logos/Pythonista.PNG);
+}
+
+span.photos {
+    background-image: url('Images/Logos/Photos.PNG');
+}
+ 
+ /*body.dark-mode span.photos {
+     background-image: url('Images/Logos/Dark-Mode Photos.PNG');
+ }*/
+ 
+span.files {
+    background-image: url('Images/Logos/Files.PNG');
+}
+ 
+ /*body.dark-mode span.files {
+     background-image: url('Images/Logos/Dark-Mode Files.PNG');
+ }*/
+ 
+span.working_copy {
+    background-image: url('Images/Logos/Working Copy.PNG');
+}
+ 
+span.shortcuts {
+    background-image: url('Images/Logos/Shortcuts.PNG');
+}
+
+span.numbers {
+    background-image: url('Images/Logos/Numbers.PNG');
+}
+
+span.textastic {
+    background-image: url('Images/Logos/Textastic.PNG');
+}
+
+span.camera {
+    background-image: url('Images/Logos/Camera.PNG');
 }

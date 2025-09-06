@@ -46,7 +46,7 @@
     
     </header>  <!-- END NAVIGATION -->
 
-    <h1 id="site_name_part1">Python</h1>
+    <h1 id="site_name_part1"></h1>
         <h1 id="site_name_part2">Reference</h1>
     
     <h1 class="section_header">Coding with Python</h1>
@@ -59,12 +59,11 @@
     h3.section_subheader {
         width: 100%;
         font-family: monospace;
-        font-size: 16px;
-        font-weight: normal;
+        font-size: 20px;
+        font-weight: bold;
         margin: auto;
         text-transform: uppercase;
         text-align: center;
-        text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         padding: 16px 0px;
         text-decoration: underline;
     }
@@ -78,7 +77,6 @@
     
     div.reference {
         font: normal 16px monospace;
-        text-indent: 16px;
         background: transparent;
         margin: auto;
     }
@@ -86,7 +84,7 @@
     div.syntax {
         width: 100%;
         background: black;
-        font: normal 14px monospace;
+        font: normal 16px monospace;
     }
     
     body.dark-mode div.syntax {
@@ -108,46 +106,70 @@
         text-align: right;
     }
     
+    div.syntax table.codeblock td.line,
+    div.syntax table.codeblock td span.function, span.codeline > span.function,
+    div.syntax table.codeblock td span.comment, span.codeline > span.comment,
+    div.syntax table.codeblock td span.keyword, span.codeline > span.keyword, span.keyword,
+    div.syntax table.codeblock td span.string, 
+    span.codeline > span.string, 
+    span.string {
+        font: normal 16px monospace;
+        overflow-wrap: anywhere;
+    }
+    
     div.syntax table.codeblock td.line {
         color: gray;
-        font: normal 14px monospace;
+        font-size: 14px;
     }
     
     div.syntax table.codeblock td.chevron {
         color: lightblue;
-        font: normal 14px monospace;
+        font-size: 14px;
+    }
+    
+    div.syntax table.codeblock td {
+        font: normal 16px monospace;
     }
     
     div.syntax table.codeblock td span.function, span.codeline > span.function {
         color: lime;
-        font: normal 14px monospace;
     }
     
     div.syntax table.codeblock td span.comment, span.codeline > span.comment {
         color: gray;
-        font: normal 14px monospace;
     }
     
     div.syntax table.codeblock td span.keyword, span.codeline > span.keyword, span.keyword {
         color: red;
-        font: normal 14px monospace;
     }
     
     div.syntax table.codeblock td span.string, 
     span.codeline > span.string, 
     span.string {
         color: orange;
-        font: normal 14px monospace;
     }
     
     div.reference > p {
         margin: 12px auto;
-        font: normal 14px Verdana;
+        font: normal 16px Verdana;
+        line-height: 20px;
+        text-indent: 16px;
+    }
+    
+    div.reference ul > li,
+    div.reference ol > li {
+        font: normal 16px Verdana;
+        line-height: 20px;
+        margin: 12px;
     }
     
     div.reference ul > li {
-        margin: auto;
-        font: normal 14px Verdana;
+        text-indent: 28px;
+    }
+    
+    div.reference ol {
+        list-style-type: decimal;
+        margin-left: 32px;
     }
     
     div.note {
@@ -155,7 +177,7 @@
         height: 200px;
         background-color: yellow;*/
         padding: 20px;
-        font: italic 14px monospace;
+        font: italic 16px monospace;
         margin: auto;
         box-shadow: 3px 3px 3px #333;
     }
@@ -168,7 +190,7 @@
     }
     
     #csv_struct {
-        list-style-type: disc;
+        list-style-type: none;
     }
     
     span.description,
@@ -184,37 +206,104 @@
         font-family: monospace;
     }
     
-    div#apps {
+    div.apps-3 {
         width: 100%;
-        margin-top: 20px;
+        margin: 0 auto;
+        text-align: center;
+        padding-left: 12.5%;
+    }
+    
+    div.apps-4 {
+        width: 100%;
+        margin: 0 auto;
+        text-align: center;
+        padding: 0;
     }
     
     div.app {
         width: 25%;
         float: left;
-        padding: none;
         background: transparent;
         margin: auto;
+        text-align: center;
     }
     
     div.app img {
          width: 50px;
          display: block;
          margin: 0px auto;
-         border: 2px solid #fff;
+         border: none;
          border-radius: 14px;
      }
+     
+    body.dark-mode div.app img {
+         border: none;
+     }
     
-     div.app p.name {
+    div.app p.name {
          width: 100%;
          font: bold 10px Verdana;
-         margin: none;
+         margin: auto;
          text-align: center;
+     }
+     
+     ul.page_navigation {
+         width: 100%;
+         margin: 32px auto;
+         list-style: disc;
+         font: bold 16px Verdana;
+         color: black;
+         text-align: center;
+         padding: 0px 0px;
+         border-radius: 12px;
+     }
+     
+     body.dark-mode ul.page_navigation li a {
+         color: #fff;
+     }
+     
+     ul.page_navigation li {
+         margin: 12px auto;
+     }
+     
+     ul.page_navigation li a {
+         text-decoration: underline;
+         color: black;
+         margin-bottom: 0;
+         padding-bottom: 0;
+     }
+     
+     ul.page_navigation li p {
+         color: gray;
+         margin-top: 0;
+         padding-top: 0;
+         font: normal 12px monospace;
+         text-transform: uppercase;
+     }
+     
+     span.logo {
+         border: none;
      }
      
     </style>
     
-    <div id="apps">
+    <ul class="page_navigation">
+        <li><a href="#dev_env">Development environment</a><p>Apps and tools</p></li>
+        <li><a href="#backend">Backend of this website</a><p>History and usage</p></li>
+        <li><a href="#spreadsheet_structure">Spreadsheet structure</a><p>Columns and rows</p></li>
+        <li><a href="#module_init">Initializing module</a><p>Classes and methods<p></li>
+        <li><a href="#image_files">Dealing with image files</a><p>Resizing and renaming</p></li>
+        <li><a href="#webpage_gen">Generating webpages</a><p>Deployments and commits</p></li>
+        <li><a href="#breakdown">Breakdown of process</a><p>Steps and apps</p></li>
+    </ul>
+    
+    <div class="reference">
+        
+    <h3 class="section_subheader" id="dev_env">Development environment</h3>
+    
+    <p>The development workflow relies heavily on these apps:</p>
+    
+    <div class="apps-4">
     <div class='app'>
         <img src="Images/Logos/Pythonista.PNG" />
         <p class="name">Pythonista</p>
@@ -232,37 +321,65 @@
         <p class="name">Textastic</p>
     </div>
     </div>
+    
+    <div class="empty_space"></div>
+
+    <div class="apps-4">
+    <div class='app'>
+        <img src="Images/Logos/Shortcuts.PNG" />
+        <p class="name">Shortcuts</p>
+    </div>
+    <div class='app'>
+        <img src="Images/Logos/Files.PNG" />
+        <p class="name">Files</p>
+    </div>
+    <div class='app'>
+        <img src="Images/Logos/Photos.PNG" />
+        <p class="name">Photos</p>
+    </div>
+    <div class="app">
+        <img src="Images/Logos/Camera.PNG" />
+        <p class="name">Camera</p>
+    </div>
+    </div>
+    <div class="empty_space"></div>
+    <p><span class="pythonista">Pythonista</span> is a Python scripting platform of choice, currently running version 3.10 on iOS 18.6 on iPhone 12. HotWheels module had it's own HTML-based interface before transitioning to web. Collection data is CSV format get exported into <span class="pythonista logo">Pythonista</span> directly from from <span class="numbers">Numbers</span> app. <a href="https://apps.apple.com/us/app/pythonista-3/id1085978097">App Store</a></p>
+    <p><span class="working_copy">Working Copy</span> is a Git client, on iOS it supports x-callback-url from <span class="shortcuts">Shortcuts</span> and is integrated into <span class="files">Files</span>. It pushes commits and publishes updated webfiles. <a href="https://apps.apple.com/us/app/working-copy-git-client/id896694807">App Store</a></p>
+    <p><span class="textastic">Textastic</span> is a text and code editor with HTML preview and JavaScript console, syntax highlighting and code completion, and many more features. External file support allows for integration with <span class="working_copy">Working Copy</span> eliminating the need to move files around. <a href="https://apps.apple.com/us/app/textastic-code-editor/id1049254261">App Store</a></p>
+    <p><span class="numbers">Numbers</span> is a spreadsheet app. Collection is stored as Excel file and it gets exported as a .csv file into <span class="pythonista">Pythonista</span>. It is an Apple-created app. <a href="https://apps.apple.com/us/app/numbers/id361304891">App Store</a></p>
+    </div>
+    
 <div class="empty_space"></div>
     
-<div class="reference">
+<div class="reference" id="backend">
     <h3 class="section_subheader">Backend of this website</h3>
-    <p>Pages are generated by a script running on iOS 18 in Pythonista app. Backend is written in Python and is essentially a parser of a .csv file.</p>
+    <p>Pages are generated by a script running on iOS 18 in <span class="pythonista">Pythonista</span> app. Backend is written in Python and is essentially a parser of a .csv file.</p>
     <p>Originally created as a command-line only tool, it received a more universal HTML-based look, and then produced a website for broader access. Python module gathers and processes data from a .csv file.</p>
-    <p>The comma-separated value file is a simple text file with rows of structured data on the models in the collection.</p>
+    <p>The comma-separated value file is a simple text file with rows of structured data on the models in the collection. Stored in <span class="numbers">Numbers</span> app it can be accessed from <span class="shortcuts">Shortcuts</span>. Export to <span class="pythonista">Pythonista</span> is triggered by a shortcut. Another shortcut ran from <span class="photos">Photos</span> on selected images performs a series of actions.</p>
 </div>
 
-<div class="reference">
+<div class="reference" id="spreadsheet_structure">
 <h3 class="section_subheader">Spreadsheet structure</h3>
 <p>Each model occupies one row in the spreadsheet or one line in a comma-separated value file. Models with different status (i.e. opened vs. carded) need to be duplicated and separated by condition.</p>
 <p>Column names are: </p>
     <ul id="csv_struct">
-    <li>- Model <span class="description">(name of the casting)</span></li>  
-    <li>- Collection <span class="description">(name of the series)</span></li>
-    <li>- Part <span class="description">(*N/N of the series)</span></li>
-    <li>- Year <span class="description">(of the series)</span></li>
-    <li>- Origin <span class="description">(source of acquisition)</span></li>
-    <li>- URL <span class="description">(optional web link)</span></li>
-    <li>- Tags  <span class="description">(TH, STH, ZAMAC or Premium)</span></li>
-    <li>- Condition <span class="description">(new/used)</span></li>
-    <li>- Number <span class="description">(mainline or collector)</span></li>
-    <li>- Quantity <span class="description">(defaults to 1)</span></li> 
-    <li>- Image <span class="description">(for color variations)</span></li> 
-    <li>- Notes <span class="description">(optional extra data)</span></li>
+    <li>Model <span class="description">(name of the casting)</span></li>  
+    <li>Collection <span class="description">(name of the series)</span></li>
+    <li>Part <span class="description">(*N/N of the series)</span></li>
+    <li>Year <span class="description">(of the series)</span></li>
+    <li>Origin <span class="description">(source of acquisition)</span></li>
+    <li>URL <span class="description">(optional web link)</span></li>
+    <li>Tags  <span class="description">(TH, STH, ZAMAC or Premium)</span></li>
+    <li>Condition <span class="description">(new/used)</span></li>
+    <li>Number <span class="description">(mainline or collector)</span></li>
+    <li>Quantity <span class="description">(defaults to 1)</span></li> 
+    <li>Image <span class="description">(for color variations)</span></li> 
+    <li>Notes <span class="description">(optional extra data)</span></li>
 </ul>
 <p>Image names are generally generated by a script. The field is reserved for handling color variations that are produced the same year in the same series (thus having the same exact variables for naming function) but are needing to be logged separately.</p>
 </div>
 
-<div class="reference">
+<div class="reference" id="module_init">
 <h3 class="section_subheader">Initializing module</h3>
     <p>Top-level module is called HotWheels. A simple import statement starts it up.</p>
 <div class="syntax">
@@ -297,7 +414,7 @@
 <p><span class="codeline"><span class="keyword">self</span>.<span class="function">generate_image_path</span>(<span class="comment">image_name=<span class="keyword">None</span>, image_path=<span class="string">"default"</span></span>)</span> - generates full image path. If no path is provided the default path is used. Name is also generated if none is provided as argument.</p>
 </div>
     
-<div class="reference">
+<div class="reference" id="image_files">
     <h3 class="section_subheader">Dealing with image files</h3>
 <div class="note">
 <p>NOTE: all the years corrected to 1969 and 2023 format instead of '69 or 23.</p>
@@ -319,13 +436,13 @@
         <tbody>
             <tr>
                 <td class="chevron">>>></td>
-                <td>HotWheels.Extras.<span class="function">prompt_image_name_generation</span>() <span class="comment"># prompts for text input</span>
+                <td>HotWheels.Extras.<span class="function">prompt_image_name_generation</span>() <span class="comment"># silently prompts for text input</span>
             </tr>
         </tbody>
     </table>
 </div>
 
-<p>Copying photos from the Photos app adds a `.heic` extension to the name of the file. It can be easily removed.</p>
+<p>Copying photos from the <span class="photos">Photos</span> app adds a `.heic` extension to the name of the file. It can be easily removed.</p>
 
 <div class="syntax">
     <table class="codeblock">
@@ -362,10 +479,10 @@
         </tbody>
     </table>
 </div>
-<p>Images need to be named properly.</p>
+<p>Images need to be named properly. If Python cannot find an existing file the website will be instructed to show extended info by default.</p>
 </div>
 
-<div class="reference">
+<div class="reference" id="webpage_gen">
     <h3 class="section_subheader">Generating webpages</h3>
     <p>Creating updated versions of webpages the site consists of is easy, the main function is imported into top-level module.</p>
     <div class="syntax">
@@ -388,7 +505,7 @@
         </tbody>
         </table>
     </div>
-    <p>All the dynamic webpages in seconds get written to <span class="path">HotWheels/HTML/Website</span> directory. The process now is to copy files to Working Copy and push a commit to GitHub.</p>
+    <p>All the dynamic webpages in seconds get written to <span class="path">HotWheels/HTML/Website</span> directory in <span class="pythonista">Pythonista</span>. The process now is to copy files to <span class="working_copy">Working Copy</span> and push a commit to GitHub.</p>
     <p>The list of generated webpages is:</p>
     <ul>
         <li>index.html <span class="note"> static </span></li>
@@ -396,8 +513,24 @@
         <li>completions.html <span class="note"> dynamic </span></li>
         <li>stats.html <span class="note"> dynamic </span></li>
         <li>preview.html <span class="note"> static </span></li>
+        <li>search.html <span class="note"> static </span></li>
     </ul>
-    <p>Dynamic pages are affected by changes in collection status. Static pages are not populated with any data from the spreadsheets or photos and normally remain unchanged between updates. The date of last update in the footer of the page is the most common change.</p>
+    <p>Dynamic pages are affected by changes in collection status. Static pages are not populated with any data from the spreadsheets or photos and normally their content remains unchanged between updates. The date of last update in the footer of the page is the most common change.</p>
+</div>
+
+<div class="reference">
+    <h3 id="breakdown" class="section_subheader">Breakdown of process</h3>
+    <p>To update the collection a series of steps needs to be taken.</p>
+    <ol>
+        <li>Add new data to <span class="numbers logo">Numbers</span></li>
+        <li>Export collection data to <span class="pythonista logo">Pythonista</span></li>
+        <li>Take photos with <span class="camera logo">Camera</span></li>
+        <li>Run a shortcut with <span class="shortcuts logo">Shortcuts</span></li>
+        <li>Run image name generator in <span class="pythonista logo">Pythonista</span></li>
+        <li>Rename image files in <span class="files logo">Files</span></li>
+        <li>Copy image files to <span class="pythonista logo">Pythonista</span></li>
+        <li>Generate pages and copy to <span class="working_copy logo">Working Copy</span></li>
+    </ol>
 </div>
     
     <div id="empty_space"></div>
