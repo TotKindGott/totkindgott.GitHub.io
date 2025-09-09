@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <title>Hot Wheels</title>
+    <link type="text/css" href="../styles.css" rel="stylesheet" />
+    <script src="../scripts.js"></script>
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" 
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <style>
+    
+    div.collage {
+        width: 100%;
+        text-align: center;
+        padding: 0px;
+        margin: 0;
+        background-color: transparent;
+    }
+    
+    div.collage > div.manufacturer {
+        width: 100%;
+        background-color: transparent;
+    }
+    
+    div.collage > div.manufacturer > img.logo {
+        display: block;
+        position: static;
+        height: 156px;
+        margin: auto;
+        background-color: transparent;
+    }
+    
+    div.collage > div.searchable {
+        display: block;
+        width: 33.3%;
+        float: left;
+        padding: 0;
+        margin: 0;
+        border: none;
+        box-shadow: none;
+    }
+    
+    div.collage > div.searchable details {
+        display: none;
+    }
+    
+    div.collage > div.searchable div.wrapper, 
+    div.collage > div.searchable div.wrapper img.photo {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+    }
+    
+    div.collage > div.searchable p.tag {
+        display: none;
+    }
+    
+    div.collage > div.searchable img.logo {
+        top: 5px;
+        right: 5px;
+        height: 20px;
+        width: 20px;
+    }
+    
+    </style>
+</head>
+
+<body onload="setSearchRedirect()">
+
+    <script type="text/javascript">
+        checkMode();
+    </script>
+
+    <header>  <!-- NAVIGATION -->
+    
+    <div id="topbar">
+        <input type="button" src="../Images/Icons/Ionic-Ionicons-Menu.16.png" onclick="toggleMenu()" id="left_button" />
+        <input type="text" id="search_bar" onkeyup=""  src="../Images/Icons/Ionic-Ionicons-Search.16.png" />
+        <input type="button" src="../Images/Icons/Ionic-Ionicons-Toggle.16.png" onclick="toggleDarkMode()" id="right_button" />
+        <!-- hardcoded at webpage generation, updated with Javascript on search -->
+        <input type="number" name="result counter" value="" disabled="True" id="counter" />
+    </div>
+
+    <div id="menu" class="overlay">
+        <a id="menu_close_button" onclick="closeMenu()">&times;</a>
+        <div id="menu_list"  class="overlay-content">
+            <p class="subheader">Collection</p>
+            <p class="separator"></p>
+            <a href="slideshow.html">Home</a>
+            <a href="index.html">Menu</a>
+            <a href="collection.html">Owned</a>
+            <p class="subheader">Other</p>
+            <p class="separator"></p>
+            <a href="treasures.html">Treasures</a>
+            <a href="about.html">About</a>
+        </div>
+    </div>
+    
+    </header>  <!-- END NAVIGATION -->
+
+    <div class="empty_space" style="height: 28px"></div>
+
+    
+    
+    <div class="collage">
+        
+    <div class="manufacturer">   
+        <img src="../Images/Logos/Honda.jpg" class="logo" />
+    </div>
+
+    <div class="empty_space"></div>
+    
+    <div class="searchable float" data-index="1973 honda civic custom compact kings 2024 dollar tree  ">
+        <details>
+            <summary>
+                <h1>1973 Honda Civic Custom</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>Compact Kings</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">4/5</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>90/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2024</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Dollar Tree</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="../Images/1973 Honda Civic Custom (Compact Kings 2024).JPG" alt="1973 Honda Civic Custom" width="640px" /></a><p class="tag"></p></div>
+    </div>
+
+    <div class="searchable float" data-index="1973 honda civic custom compact kings 2024 dollar tree  ">
+        <details>
+            <summary>
+                <h1>1973 Honda Civic Custom</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>Compact Kings</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">4/5</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>90/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2024</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Dollar Tree</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="../Images/1973 Honda Civic Custom (Compact Kings 2024) [green].JPG" alt="1973 Honda Civic Custom" width="640px" /></a><p class="tag"></p></div>
+    </div>
+
+    <div class="searchable float" data-index="honda civic custom hw j-imports 2022 dollar general  ">
+        <details>
+            <summary>
+                <h1>Honda Civic Custom</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>HW J-Imports</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">10/10</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>204/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2022</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Dollar General</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="../Images/Honda Civic Custom (HW J-Imports 2022).JPG" alt="Honda Civic Custom" width="640px" /></a><p class="tag"></p></div>
+    </div>
+
+    <div class="searchable float" data-index="1990 honda civic ef hw j-imports 2023 dollar general  ">
+        <details>
+            <summary>
+                <h1>1990 Honda Civic EF</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>HW J-Imports</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">7/10</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>96/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2023</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Dollar General</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="../Images/1990 Honda Civic EF (HW J-Imports 2023).JPG" alt="1990 Honda Civic EF" width="640px" /></a><p class="tag"></p></div>
+    </div>
+
+    <div class="searchable float" data-index="1973 honda civic custom hw j-imports 2023 family dollar  ">
+        <details>
+            <summary>
+                <h1>1973 Honda Civic Custom</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>HW J-Imports</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">8/10</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>117/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2023</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Family Dollar</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="../Images/1973 Honda Civic Custom (HW J-Imports 2023).JPG" alt="1973 Honda Civic Custom" width="640px" /></a><p class="tag"></p></div>
+    </div>
+
+    <div class="searchable float" data-index="1988 honda cr-x hw j-imports 2023 family dollar  ">
+        <details>
+            <summary>
+                <h1>1988 Honda CR-X</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>HW J-Imports</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">10/10</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>148/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2023</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Family Dollar</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="../Images/1988 Honda CR-X (HW J-Imports 2023).JPG" alt="1988 Honda CR-X" width="640px" /></a><p class="tag"></p></div>
+    </div>
+
+    <div class="searchable float" data-index="honda civic si hw j-imports 2024 dollar tree  ">
+        <details>
+            <summary>
+                <h1>Honda Civic Si</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>HW J-Imports</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">2/10</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>45/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2024</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Dollar Tree</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="../Images/Honda Civic Si (HW J-Imports 2024).JPG" alt="Honda Civic Si" width="640px" /></a><p class="tag"></p></div>
+    </div>
+
+    <div class="searchable float" data-index="honda civic si hw j-imports 2024 family dollar  ">
+        <details>
+            <summary>
+                <h1>Honda Civic Si</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>HW J-Imports</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">2/10</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>45/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2024</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Family Dollar</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="../Images/Honda Civic Si (HW J-Imports 2024) [white].JPG" alt="Honda Civic Si" width="640px" /></a><p class="tag"></p></div>
+    </div>
+
+    <div class="searchable float" data-index="honda super cub custom hw metro 2024 walmart th treasure hunt">
+        <details>
+            <summary>
+                <h1>Honda Super Cub Custom</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>HW Metro</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">7/10</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>159/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2024</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Walmart</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag">TH</td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="../Images/Honda Super Cub Custom (HW Metro 2024).JPG" alt="Honda Super Cub Custom" width="640px" /></a><img class="logo" src="../Images/Logos/TH Logo Mini.PNG" width="30px" alt="TH" /><p class="tag">TH</p></div>
+    </div>
+
+    <div class="searchable float" data-index="2018 honda civic type r hw rescue 2023 walmart  ">
+        <details>
+            <summary>
+                <h1>2018 Honda Civic Type R</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>HW Rescue</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">4/10</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>215/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2023</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Walmart</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="../Images/2018 Honda Civic Type R (HW Rescue 2023).JPG" alt="2018 Honda Civic Type R" width="640px" /></a><p class="tag"></p></div>
+    </div>
+
+    <div class="searchable float" data-index="custom 1970 honda n600 56th anniversary mix 1 2024   ">
+        <details>
+            <summary>
+                <h1>Custom 1970 Honda N600</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>56th Anniversary Mix 1</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">5/6</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td></td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2024</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="../Images/Custom 1970 Honda N600 (56th Anniversary Mix 1 2024).JPG" alt="Custom 1970 Honda N600" width="640px" /></a><p class="tag"></p></div>
+    </div>
+
+    <div class="searchable float" data-index="1985 honda city turbo ii hw j-imports 2025 family dollar th treasure hunt">
+        <details>
+            <summary>
+                <h1>1985 Honda City Turbo II</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>HW J-Imports</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">5/5</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>141/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Family Dollar</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag">TH</td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="../Images/1985 Honda City Turbo II (HW J-Imports 2025).JPG" alt="1985 Honda City Turbo II" width="640px" /></a><img class="logo" src="../Images/Logos/TH Logo Mini.PNG" width="30px" alt="TH" /><p class="tag">TH</p></div>
+    </div>
+
+    <div class="searchable float" data-index="honda cb750 cafe hw moto 2025 dollar tree  ">
+        <details>
+            <summary>
+                <h1>Honda CB750 Cafe</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>HW Moto</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">1/5</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>150/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Dollar Tree</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>Opened</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="../Images/Honda CB750 Cafe (HW Moto 2025).JPG" alt="Honda CB750 Cafe" width="640px" /></a><p class="tag"></p></div>
+    </div>
+
+    <div class="searchable float" data-index="honda vfr750r (rc30) hw moto 2025 walmart  ">
+        <details>
+            <summary>
+                <h1>Honda VFR750R (RC30)</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>HW Moto</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">4/5</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>224/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Walmart</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="../Images/Honda VFR750R (RC30) (HW Moto 2025).JPG" alt="Honda VFR750R (RC30)" width="640px" /></a><p class="tag"></p></div>
+    </div>
+
+    <div class="searchable float" data-index="2018 honda civic type r then and now 2025 dollar general  ">
+        <details>
+            <summary>
+                <h1>2018 Honda Civic Type R</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>Then and Now</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">3/10</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>123/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Dollar General</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="../Images/2018 Honda Civic Type R (Then and Now 2025).JPG" alt="2018 Honda Civic Type R" width="640px" /></a><p class="tag"></p></div>
+    </div>
+
+    <div class="searchable float" data-index="1973 honda civic custom then and now 2025 walmart  ">
+        <details>
+            <summary>
+                <h1>1973 Honda Civic Custom</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>Then and Now</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">9/10</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>231/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Walmart</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="../Images/1973 Honda Civic Custom (Then and Now 2025).JPG" alt="1973 Honda Civic Custom" width="640px" /></a><p class="tag"></p></div>
+    </div>
+
+    <div class="searchable float" data-index="1990 honda civic ef hw 70s vs 90s 2025 dollar general  ">
+        <details>
+            <summary>
+                <h1>1990 Honda Civic EF</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>HW 70s vs 90s</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">1/10</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>28/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Dollar General</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="../Images/1990 Honda Civic EF (HW 70s vs 90s 2025).JPG" alt="1990 Honda Civic EF" width="640px" /></a><p class="tag"></p></div>
+    </div>
+
+    <div class="searchable float" data-index="honda s800 racing compact kings 2025 publix th treasure hunt">
+        <details>
+            <summary>
+                <h1>Honda S800 Racing</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>Compact Kings</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">9/10</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>212/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Publix</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag">TH</td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="../Images/Honda S800 Racing (Compact Kings 2025).JPG" alt="Honda S800 Racing" width="640px" /></a><img class="logo" src="../Images/Logos/TH Logo Mini.PNG" width="30px" alt="TH" /><p class="tag">TH</p></div>
+    </div>
+
+    <div class="searchable float" data-index="honda civic custom hw reverse rake 2025   ">
+        <details>
+            <summary>
+                <h1>Honda Civic Custom</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>HW Reverse Rake</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">5/5</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>201/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="../Images/Honda Civic Custom (HW Reverse Rake 2025).JPG" alt="Honda Civic Custom" width="640px" /></a><p class="tag"></p></div>
+    </div>
+
+    <div class="searchable float" data-index="honda motocompo hw moto 2025 lidl  ">
+        <details>
+            <summary>
+                <h1>Honda Motocompo</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>HW Moto</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">3/5</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>181/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Lidl</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>Opened</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="../Images/Honda Motocompo (HW Moto 2025).JPG" alt="Honda Motocompo" width="640px" /></a><p class="tag"></p></div>
+    </div>
+
+    <div class="searchable float" data-index="2018 honda civic type r then and now 2025 target  ">
+        <details>
+            <summary>
+                <h1>2018 Honda Civic Type R</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>Then and Now</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">3/10</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>123/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Target</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="../Images/2018 Honda Civic Type R (Then and Now 2025) [blue].JPG" alt="2018 Honda Civic Type R" width="640px" /></a><p class="tag"></p></div>
+    </div>
+
+    <div class="searchable float" data-index="1992 honda civic eg hw j-imports 2024 flea market  ">
+        <details>
+            <summary>
+                <h1>1992 Honda Civic EG</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>HW J-Imports</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">4/10</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>95/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2024</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Flea Market</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="../Images/1992 Honda Civic EG (HW J-Imports 2024).JPG" alt="1992 Honda Civic EG" width="640px" /></a><p class="tag"></p></div>
+    </div>
+
+    <div class="searchable float" data-index="1985 honda city turbo ii nightburnerz 2019 flea market  ">
+        <details>
+            <summary>
+                <h1>1985 Honda City Turbo II</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>Nightburnerz</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">2/10</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td></td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2019</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Flea Market</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="../Images/1985 Honda City Turbo II (Nightburnerz 2019).JPG" alt="1985 Honda City Turbo II" width="640px" /></a><p class="tag"></p></div>
+    </div>
+
+    <div class="searchable float" data-index="honda super cub custom hw moto 2023 flea market  ">
+        <details>
+            <summary>
+                <h1>Honda Super Cub Custom</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>HW Moto</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">5/5</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>160/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2023</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Flea Market</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>Opened</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="../Images/Honda Super Cub Custom (HW Moto 2023).JPG" alt="Honda Super Cub Custom" width="640px" /></a><p class="tag"></p></div>
+    </div>
+
+    <div class="searchable float" data-index="honda s800 racing hw race day 2024   ">
+        <details>
+            <summary>
+                <h1>Honda S800 Racing</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>HW Race Day</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">10/10</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>209/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2024</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="../Images/Honda S800 Racing (HW Race Day 2024).JPG" alt="Honda S800 Racing" width="640px" /></a><p class="tag"></p></div>
+    </div>
+
+    <div id="empty_space"></div>
+
+    <footer id="page_footer">
+        <p>Last update: <a href="">2025-09-08</a></p>
+        <p>Site design: Konstantin A Kolosov</p>
+        <hr />
+            <a href="slideshow.html">Home</a>
+            <a href="preview.html">Statistics</a>
+            <a href="treasures.html">Treasures</a>
+            <a href="about.html">About</a>
+    </footer>
+    </body>
+</html>
