@@ -46,17 +46,32 @@
     
     </header>  <!-- END NAVIGATION -->
 
-    <h1 id="site_name_part1"></h1>
-        <h1 id="site_name_part2">Reference</h1>
+    <div class="empty_space" style="height: 32px"></div>
+    
+    <h1 class="large_header">Reference</h1>
+    
+    <div class="empty_space" style="height: 36px"></div>
     
     <h1 class="section_header">Coding with Python</h1>
     
     <h2 class="section_subheader">since August 2023</h2>
-
-
+    
     <style>
     
-    h3.section_subheader {
+    .large_header {
+        font-size: 36px;
+        text-transform: uppercase;
+        font-family: Copperplate, Papyrus, fantasy;
+        font-weight: normal;
+        letter-spacing: 0.25em;
+        text-shadow: 2px 2px 3px rgba(0,0,0,0.5);
+        text-align: center;
+        text-indent: 0.125em;
+        background: transparent;
+    }
+    
+    h3.section_subheader,
+    h3.subsection_subheader {
         width: 100%;
         font-family: monospace;
         font-size: 20px;
@@ -68,17 +83,62 @@
         text-decoration: underline;
     }
     
+    h3.subsection_subheader {
+        text-decoration: none;
+    }
+    
+    p.description {
+        color: gray;
+        text-align: right;
+        margin-top: 0px;
+        padding-top: 0px;
+    }
+    
     span.codeline {
         background: black;
         color: white;
-        padding: 0px 3px;
-        font: normal 14px monospace;
+        padding: 2px 4px;
+        font: normal 16px monospace;
+    }
+    
+    span.variable {
+        background: black;
+        color: yellow;
+        padding: 2px 4px;
+        font: normal 16px monospace;
     }
     
     div.reference {
         font: normal 16px monospace;
         background: transparent;
         margin: auto;
+        margin-top: 36px;
+    }
+    
+    table.paper {
+        width: 100%;
+        background-color: #fff;
+        font: normal 16px monospace;
+        box-shadow: 2px 2px 5px #333;
+    }
+    
+    table.paper td.margin {
+        width: 10%;
+        border-right: 1px solid red;
+        border-bottom: 1px solid rgba(0,0,255,0.25);
+        color: gray;
+    }
+    
+    table.paper tr:last-child td.margin, 
+    table.paper tr:last-child td.page {
+        border-bottom: none;
+    }
+    
+    table.paper td.page {
+        width: 90%;
+        color: #000;
+        border-bottom: 1px solid rgba(0,0,255,0.25);
+        overflow-wrap: anywhere;
     }
     
     div.syntax {
@@ -101,7 +161,7 @@
     
     div.syntax table.codeblock td.line,
     div.syntax table.codeblock td.chevron {
-        color: gray;
+        color: silver;
         border-right: 1px solid gray;
         text-align: right;
     }
@@ -118,7 +178,7 @@
     }
     
     div.syntax table.codeblock td.line {
-        color: gray;
+        color: silver;
         font-size: 14px;
     }
     
@@ -167,6 +227,10 @@
         text-indent: 28px;
     }
     
+    div.reference ul.substeps > li {
+        text-indent: -12px;
+    }
+    
     div.reference ol {
         list-style-type: decimal;
         margin-left: 32px;
@@ -176,16 +240,16 @@
         /*width: 200px;
         height: 200px;
         background-color: yellow;*/
-        padding: 20px;
+        padding: 12px;
         font: normal 16px monospace;
         margin: auto;
-        text-decoration: underline;
-        text-decoration-color: yellow;
+        border: 1px solid gold;
+        border-radius: 12px;
+        
     }
     
     body.dark-mode div.note {
         background-color: black;
-        box-shadow: 0px 0px 5px yellow;
     }
     
     #csv_struct {
@@ -210,47 +274,11 @@
         font-family: monospace;
     }
     
-    div.apps-3 {
-        width: 100%;
-        margin: 0 auto;
-        text-align: center;
-        padding-left: 12.5%;
+    a.no_deco {
+        text-decoration: none;
     }
     
-    div.apps-4 {
-        width: 100%;
-        margin: 0 auto;
-        text-align: center;
-        padding: 0;
-    }
-    
-    div.app {
-        width: 25%;
-        float: left;
-        background: transparent;
-        margin: auto;
-        text-align: center;
-    }
-    
-    div.app img {
-         width: 50px;
-         display: block;
-         margin: 0px auto;
-         border: none;
-         border-radius: 14px;
-     }
-     
-    body.dark-mode div.app img {
-         border: none;
-     }
-    
-    div.app p.name {
-         width: 100%;
-         font: bold 10px Verdana;
-         margin: auto;
-         text-align: center;
-     }
-     
+
      ul.page_navigation {
          width: 100%;
          margin: 32px auto;
@@ -285,16 +313,26 @@
          text-transform: uppercase;
      }
      
-     span.logo {
-         display: inline-block;
-         border: none;
-         width: 28px;
-         height: 28px;
-         padding: 0;
-         margin: 0;
-         background-size: 26px;
-         overflow: visible;vertical-align: bottom;
-     }
+    div.small_badges,
+    div.large_badges {
+        width: 100%;
+        background: transparent;
+        text-align: center;
+    }
+    
+    div.small_badges span {
+        width: 14px;
+        height: 14px;
+        background-size: 16px;
+        border-radius: 3px;
+    }
+    
+    div.large_badges span {
+        width: 24px;
+        height: 24px;
+        background-size: 26px;
+        border-radius: 6px;
+    }
      
     </style>
     
@@ -306,6 +344,7 @@
         <li><a href="#image_files">Dealing with image files</a><p>Resizing and renaming</p></li>
         <li><a href="#webpage_gen">Generating webpages</a><p>Deployments and commits</p></li>
         <li><a href="#breakdown">Breakdown of process</a><p>Steps and apps</p></li>
+        <li><a href="#frontend">Frontend reference</a><p>Site and shortcuts</p></li>
     </ul>
     
     <div class="reference">
@@ -316,19 +355,23 @@
     
     <div class="apps-4">
     <div class='app'>
-        <img src="Images/Logos/Pythonista.PNG" />
+        <!--<img src="Images/Logos/Pythonista.PNG" />-->
+        <span class="pythonista large_logo"></span>
         <p class="name">Pythonista</p>
     </div>
     <div class='app'>
-        <img src="Images/Logos/Working Copy.PNG" />
+        <!--<img src="Images/Logos/Working Copy.PNG" />-->
+        <span class="working_copy large_logo"></span>
         <p class="name">Working Copy</p>
     </div>
     <div class='app'>
-        <img src="Images/Logos/Numbers.PNG" />
+        <!--<img src="Images/Logos/Numbers.PNG" />-->
+        <span class="numbers large_logo"></span>
         <p class="name">Numbers</p>
     </div>
     <div class='app'>
-        <img src="Images/Logos/Textastic.PNG" />
+        <!--<img src="Images/Logos/Textastic.PNG" />-->
+        <span class="textastic large_logo"></span>
         <p class="name">Textastic</p>
     </div>
     </div>
@@ -337,56 +380,88 @@
 
     <div class="apps-4">
     <div class='app'>
-        <img src="Images/Logos/Shortcuts.PNG" />
+        <!--<img src="Images/Logos/Shortcuts.PNG" />-->
+        <span class="shortcuts large_logo"></span>
         <p class="name">Shortcuts</p>
     </div>
     <div class='app'>
-        <img src="Images/Logos/Files.PNG" />
+        <!--<img src="Images/Logos/Files.PNG" />-->
+        <span class="files large_logo"></span>
         <p class="name">Files</p>
     </div>
     <div class='app'>
-        <img src="Images/Logos/Photos.PNG" />
+        <!--<img src="Images/Logos/Photos.PNG" />-->
+        <span class="photos large_logo"></span>
         <p class="name">Photos</p>
     </div>
     <div class="app">
-        <img src="Images/Logos/Camera.PNG" />
+        <!--<img src="Images/Logos/Camera.PNG" />-->
+        <span class="camera large_logo"></span>
         <p class="name">Camera</p>
     </div>
     </div>
     <div class="empty_space"></div>
-    <p><span class="pythonista">Pythonista</span> is a Python scripting platform of choice, currently running version 3.10 on iOS 18.6 on iPhone 12. HotWheels module had it's own HTML-based interface before transitioning to web. Collection data is CSV format get exported into <span class="pythonista">Pythonista</span> directly from from <span class="numbers">Numbers</span> app. <a href="https://apps.apple.com/us/app/pythonista-3/id1085978097">App Store</a></p>
-    <p><span class="working_copy">Working Copy</span> is a Git client, on iOS it supports x-callback-url from <span class="shortcuts">Shortcuts</span> and is integrated into <span class="files">Files</span>. It pushes commits and publishes updated webfiles. <a href="https://apps.apple.com/us/app/working-copy-git-client/id896694807" class="url">App Store</a></p>
-    <p><span class="textastic">Textastic</span> is a text and code editor with HTML preview and JavaScript console, syntax highlighting and code completion, and many more features. External file support allows for integration with <span class="working_copy">Working Copy</span> eliminating the need to move files around. <a href="https://apps.apple.com/us/app/textastic-code-editor/id1049254261">App Store</a></p>
-    <p><span class="numbers">Numbers</span> is a spreadsheet app. Collection is stored as Excel file and it gets exported as a .csv file into <span class="pythonista">Pythonista</span>. It is an Apple-created app. <a href="https://apps.apple.com/us/app/numbers/id361304891">App Store</a></p>
+    <p><span class="pythonista banner"><span class="logo"></span>Pythonista</span> is a Python scripting platform of choice, currently running version 3.10 on iOS 18.6 on iPhone 12. HotWheels module had it's own HTML-based interface before transitioning to web. Collection data in CSV format get exported into <span class="pythonista banner"><span class="logo"></span>Pythonista</span> directly from from <span class="numbers banner"><span class="logo"></span>Numbers</span> app. <a href="https://apps.apple.com/us/app/pythonista-3/id1085978097">App Store</a></p>
+    <p><span class="working_copy banner"><span class="logo"></span>Working Copy</span> is a Git client, on iOS it supports x-callback-url from <span class="shortcuts banner"><span class="logo"></span>Shortcuts</span> and is integrated into <span class="files banner"><span class="logo"></span>Files</span>. It pushes commits and publishes updated webfiles. <a href="https://apps.apple.com/us/app/working-copy-git-client/id896694807" class="url">App Store</a></p>
+    <p><span class="textastic banner"><span class="logo"></span>Textastic</span> is a text and code editor with HTML preview and JavaScript console, syntax highlighting and code completion, and many more features. External file support allows for integration with <span class="working_copy banner"><span class="logo"></span>Working Copy</span> eliminating the need to move files around. <a href="https://apps.apple.com/us/app/textastic-code-editor/id1049254261">App Store</a></p>
+    <p><span class="numbers banner"><span class="logo"></span>Numbers</span> is a spreadsheet app. Collection is stored as Excel file and it gets exported as a .csv file into <span class="pythonista banner"><span class="logo"></span>Pythonista</span>. It is an Apple-created app. <a href="https://apps.apple.com/us/app/numbers/id361304891">App Store</a></p>
+    <p><span class="shortcuts banner"><span class="logo"></span>Shortcuts</span> helps create automations and chained actions, converting data and passing it between applications. It is an Apple-created app. <a href="https://apps.apple.com/us/app/shortcuts/id1462947752">App Store</a></p>
+    <p><span class="files banner"><span class="logo"></span>Files</span> is a file server app that supports local file storage and cloud. It is used with <span class="shortcuts banner"><span class="logo"></span>Shortcuts</span> to import/export and resize image files. It is an Apple-created app. <a href="https://apps.apple.com/us/app/files/id1232058109">App Store</a></p>
     </div>
     
 <div class="empty_space"></div>
     
 <div class="reference" id="backend">
     <h3 class="section_subheader">Backend of this website</h3>
-    <p>Pages are generated by a script running on iOS 18 in <span class="pythonista">Pythonista</span> app. Backend is written in Python and is essentially a parser of a .csv file.</p>
+    <p>Pages are generated by a script running on iOS 18 in <span class="pythonista banner"><span class="logo"></span>Pythonista</span> app. Backend is written in Python and is essentially a parser of a .csv file.</p>
     <p>Originally created as a command-line only tool, it received a more universal HTML-based look, and then produced a website for broader access. Python module gathers and processes data from a .csv file.</p>
-    <p>The comma-separated value file is a simple text file with rows of structured data on the models in the collection. Stored in <span class="numbers">Numbers</span> app it can be accessed from <span class="shortcuts">Shortcuts</span>. Export to <span class="pythonista">Pythonista</span> is triggered by a shortcut. Another shortcut ran from <span class="photos">Photos</span> on selected images performs a series of actions.</p>
+    <p>The comma-separated value file is a simple text file with rows of structured data on the models in the collection. Stored in <span class="numbers banner"><span class="logo"></span>Numbers</span> app it can be accessed from <span class="shortcuts banner"><span class="logo"></span>Shortcuts</span>. Export to <span class="pythonista banner"><span class="logo"></span>Pythonista</span> is triggered by a shortcut. Another shortcut ran from <span class="photos banner"><span class="logo"></span>Photos</span> on selected images performs a series of actions.</p>
 </div>
 
 <div class="reference" id="spreadsheet_structure">
 <h3 class="section_subheader">Spreadsheet structure</h3>
 <p>Each model occupies one row in the spreadsheet or one line in a comma-separated value file. Models with different status (i.e. opened vs. carded) need to be duplicated and separated by condition.</p>
-<p>Column names are: </p>
-    <ul id="csv_struct">
-    <li>Model <span class="description">(name of the casting)</span></li>  
+<p>Column names are in this order: </p>
+    <ul id="csv_struct"> 
     <li>Collection <span class="description">(name of the series)</span></li>
-    <li>Part <span class="description">(*N/N of the series)</span></li>
     <li>Year <span class="description">(of the series)</span></li>
+    <li>Part <span class="description">(*N/N of the series)</span></li>
+    <li>Model <span class="description">(name of the casting)</span></li> 
+    <li>Number <span class="description">(mainline or collector)</span></li>
+    <li>Stamp</li>
+    <li>Condition <span class="description">(new/used)</span></li>
     <li>Origin <span class="description">(source of acquisition)</span></li>
     <li>URL <span class="description">(optional web link)</span></li>
     <li>Tags  <span class="description">(TH, STH, ZAMAC or Premium)</span></li>
-    <li>Condition <span class="description">(new/used)</span></li>
-    <li>Number <span class="description">(mainline or collector)</span></li>
     <li>Quantity <span class="description">(defaults to 1)</span></li> 
     <li>Image <span class="description">(for color variations)</span></li> 
-    <li>Notes <span class="description">(optional extra data)</span></li>
+    <li>Note <span class="description">(optional searchable data)</span></li>
 </ul>
+
+<table class="paper">
+    <tr>
+        <td class="margin">01</td>
+        <td class="page">Collection,Year,Part,Model,Number,Stamp,Condition,Origin,URL,Tags,Quantity,Image,Note</td>
+    </tr>
+    <tr>
+        <td class="margin">02</td>
+        <td class="page">Car Culture: World Tour,2024,0/5,Alfa Romeo GTV6 3.0,,T17A,New on card,Target,,Chase,,,</td>
+    </tr>
+    <tr>
+        <td class="margin">03</td>
+        <td class="page">Pop Culture,2024,,Porsche 911 Turbo (930),,,New on card,Target,,PREMIUM,2,,Cyberpunk 2077</td>
+    </tr>
+    <tr>
+        <td class="margin">04</td>
+        <td class="page">HW Hot Trucks,2025,6/10,1975 Datsun Sunny Truck (B120),93/250,,New on card,Target,,$TH,,1975 Datsun Sunny Truck (B120) (HW Hot Trucks 2025 $TH).JPG,</td>
+    </tr>
+    <tr>
+        <td class="margin">05</td>
+        <td class="page">HW Exotics,2023,7/10,Porsche 935,223/250,,New on card,Dollar General,,$TH,,Porsche 935 (HW Exotics 2023 $TH).JPG,</td>
+    </tr>
+</table>
+<p class="description">Example of a collection.csv file</p>
+
 <p>Image names are generally generated by a script. The field is reserved for handling color variations that are produced the same year in the same series (thus having the same exact variables for naming function) but are needing to be logged separately.</p>
 </div>
 
@@ -428,14 +503,16 @@
 <div class="reference" id="image_files">
     <h3 class="section_subheader">Dealing with image files</h3>
 <div class="note">
-<p>NOTE: all the years corrected to 1969 and 2023 format instead of '69 or 23.</p>
-<p>No forward slashes `/` allowed in names of models, automatically replaced with an underscrore `_`. Colons `:` in names of series are also replaced with a space followed by a dash ` -`. </p>
+    <p>NOTE: all the years corrected to 1969 and 2023 format instead of '69 or 23.</p>
+    <p>No forward slashes <span class="variable">/</span> allowed in names of models, automatically replaced with an underscrore <span class="variable">_</span>. Colons <span class="variable">:</span> in names of series are also replaced with a space followed by a dash <span class="variable"> -</span>. </p>
 </div>
 <p>The majority of names of images linked to models are not hardcoded but generated on the fly. Naming convention is programmed into the module and is as follows:</p>
-<p>`{MODEL} ({SERIES} {YEAR}).JPG` if Series name does not contain the release year, otherwise:  </p>
-<p>`{MODEL} ({SERIES}).JPG` used on line 947+ in HotWheels/main.py in method definition of <span class="codeline"> ModelCar.<span class="function">generate_image_path</span>()</span></p> 
-<p>Color variations are defined as follows</p>
-<p>`{MODEL} ({SERIES} {YEAR}) [{COLOR}].JPG`  </p>
+<ul>
+<li><span class="variable">MODEL</span> (<span class="variable">SERIES</span> <span class="variable">YEAR</span>).JPG   <span class="description">if Series name does not contain the release year</span></li>
+<li><span class="variable">MODEL</span> (<span class="variable">SERIES</span>).JPG <span class="description">if Series name starts with year</span></li> 
+<li><span class="variable">MODEL</span> (<span class="variable">SERIES</span> <span class="variable">YEAR</span>) [<span class="variable">COLOR</span>].JPG <span class="description">if the model is the recolored variation</span></li>
+</ul>
+<p>Code is in <span class="path">HotWheels/Funcs/gens.py</span> and referenced in method definition of <span class="codeline"> ModelCar.<span class="function">generate_image_path</span>()</span></p>
 <p>Names of images can be generated to be renamed by using the same function module uses.</p>
 
 <div class="syntax">
@@ -453,7 +530,11 @@
     </table>
 </div>
 
-<p>Copying photos from the <span class="photos">Photos</span> app adds a `.heic` extension to the name of the file. It can be easily removed.</p>
+<p>The output is color-coded and highlighting is meaningful. Image paths that do not exist are gray, others are green and file stats are printed on the screen.</p>
+<img src="Images/Content/Image Name Prompt.jpg" class="screenshot" />
+<p class="description">Example of function output</p>
+
+<p>Copying photos from the <span class="photos banner"><span class="logo"></span>Photos</span> app adds a <span class="path">.heic</span> extension to the name of the file. It can be easily removed.</p>
 
 <div class="syntax">
     <table class="codeblock">
@@ -472,7 +553,7 @@
     </table>
 </div>
 
-<p>Sometimes instead a `.jpeg` extension is used. It also needs to be removed.</p>
+<p>Sometimes instead a <span class="path">.jpeg</span> extension is used. It also needs to be removed.</p>
 
 <div class="syntax">
     <table class="codeblock">
@@ -490,7 +571,7 @@
         </tbody>
     </table>
 </div>
-<p>Images need to be named properly. If Python cannot find an existing file the website will be instructed to show extended info by default.</p>
+<p>Images need to be named properly. If Python cannot find an existing file the website will be instructed to show extended info by default and no image path will be added.</p>
 </div>
 
 <div class="reference" id="webpage_gen">
@@ -516,7 +597,7 @@
         </tbody>
         </table>
     </div>
-    <p>All the dynamic webpages in seconds get written to <span class="path">HotWheels/HTML/Website</span> directory in <span class="pythonista">Pythonista</span>. The process now is to copy files to <span class="working_copy">Working Copy</span> and push a commit to GitHub.</p>
+    <p>All the dynamic webpages in seconds get written to <span class="path">HotWheels/HTML/Website</span> directory in <span class="pythonista banner"><span class="logo"></span>Pythonista</span>. The process now is to copy files to <span class="working_copy banner"><span class="logo"></span>Working Copy</span> and push a commit to GitHub.</p>
     <p>The list of generated webpages is:</p>
     <ul>
         <li>index.html <span class="note"> static </span></li>
@@ -525,25 +606,161 @@
         <li>stats.html <span class="note"> dynamic </span></li>
         <li>preview.html <span class="note"> static </span></li>
         <li>search.html <span class="note"> static </span></li>
+        <li>inventories.html <span class="note"> dynamic </span></li>
     </ul>
     <p>Dynamic pages are affected by changes in collection status. Static pages are not populated with any data from the spreadsheets or photos and normally their content remains unchanged between updates. The date of last update in the footer of the page is the most common change.</p>
-    <p>Web-testing is done in <span class="textastic">Textastic</span> on files saved in <span class="working_copy">Working Copy</span>.</p>
+    <p>Web-testing is done in <span class="textastic banner"><span class="logo"></span>Textastic</span> on files saved in <span class="working_copy banner"><span class="logo"></span>Working Copy</span>.</p>
+    <p>Each dynamic page starts as an object of <span class="codeline"><span class="keyword">WebPage</span></span> class. Class defines following methods:</p>
+    <ul>
+        <li><span class="codeline"><span class="function">__init__</span>(<span class="keyword">self</span>, url, content=<span class="keyword">None</span>)</span> where url is a relative pathname and content is often programmed to be generated.
+        </li>
+        <li><span class="codeline"><span class="function">get_template</span>(<span class="keyword">self</span>)</span> checks if there is a url+template.html file, uses generic template if not found.
+        </li>
+        <li><span class="codeline"><span class="function">get_content</span>(<span class="keyword">self</span>)</span> raises an error if content was passed as an argument but the template page does not accept it.
+        </li>
+        <li>
+            <span class="codeline"><span class="function">add_head</span>(<span class="keyword">self</span>)</span> adds head element from template.
+        </li>
+        <li>
+            <span class="codeline"><span class="function">add_footer</span>(<span class="keyword">self</span>)</span> adds footer element from template.
+        </li>
+        <li>
+            <span class="codeline"><span class="function">add_menu</span>(<span class="keyword">self</span>)</span> adds navigation menu from template.
+        </li>
+        <li>
+            <span class="codeline"><span class="function">add_date</span>(<span class="keyword">self</span>)</span> replaces last update date with current date in footer.
+        </li>
+        <li>
+            <span class="codeline"><span class="function">add_content</span>(<span class="keyword">self</span>)</span>
+        </li>
+        <li>
+            <span class="codeline"><span class="function">make_page</span>(<span class="keyword">self</span>)</span> runs <span class="codeline"><span class="keyword">self</span>.<span class="function">get_template</span>()</span>, <span class="codeline"><span class="keyword">self</span>.<span class="function">add_head</span>()</span>,  <span class="codeline"><span class="keyword">self</span>.<span class="function">add_footer</span>()</span>,  <span class="codeline"><span class="keyword">self</span>.<span class="function">add_menu</span>()</span>,  <span class="codeline"><span class="keyword">self</span>.<span class="function">add_date</span>()</span>,  <span class="codeline"><span class="keyword">self</span>.<span class="function">add_content</span>()</span>, stores result in <span class="codeline"><span class="keyword">self</span>.page</span>
+        </li>
+        <li>
+            <span class="codeline"><span class="function">write_page</span>(<span class="keyword">self</span>)</span> creates or overwrites an html file.
+        </li>
+    </ul>
 </div>
 
 <div class="reference">
     <h3 id="breakdown" class="section_subheader">Breakdown of process</h3>
     <p>To update the collection a series of steps needs to be taken.</p>
     <ol>
-        <li>Add new data to <span class="numbers logo"></span></li>
-        <li>Export collection data to <span class="pythonista logo"></span></li>
+        <li><details>
+            <summary>Add new data to <span class="numbers logo"></span></summary>
+            <ul class="substeps">
+                <li>Fill in the spreadsheet cells</li>
+            </ul>
+            </details>
+        </li>
+        <li><details>
+            <summary>Export collection data to <span class="pythonista logo"></span></summary>
+            <ul class="substeps">
+                <li>Run a shortcut to export as .csv file</li>
+            </ul>
+            </details>
+        </li>
         <li>Take photos with <span class="camera logo"></span></li>
         <li>Run a shortcut with <span class="shortcuts logo"></span></li>
         <li>Run image name generator in <span class="pythonista logo"></span></li>
         <li>Rename image files in <span class="files logo"></span></li>
-        <li>Copy image files to <span class="pythonista logo"></span></li>
+        <li>Import image files to <span class="pythonista logo"></span></li>
         <li>Generate pages and copy to <span class="working_copy logo"></span></li>
+        <li>Test webpages and media in <span class="textastic logo"></span></li>
     </ol>
+    <p>Extra data like the inventories is stored in <span class="datajar banner"><span class="logo"></span>DataJar</span> app. There is no need to directly launch it, instead we let <span class="shortcuts banner"><span class="logo"></span>Shortcuts</span> access it in the background and overwrite .json file in <span class="pythonista banner"><span class="logo"></span>Pythonista</span>.</p>
+    <ol>
+        <li><details><summary>Run a shortcut in <span class="shortcuts logo"></span></summary>Inventory JSON shortcut -> Copy to clipboard</details>
+            </li>
+        <li>Copy and run script in <span class="pythonista logo"></span></li>
+    </ol>
+    
 </div>
+
+<div class="empty_space" style="height: 36px"></div>
+    
+    <div class="large_badges" style="text-decoration: line-through; text-decoration-thickness: 2px; font-size: 22px;">
+        <span class="pythonista logo"></span>
+        <span class="numbers logo"></span>
+        <span class="textastic logo"></span>
+        <span class="working_copy logo"></span>
+        <span class="shortcuts logo"></span>
+        <span class="files logo"></span>
+        <span class="camera logo"></span>
+        <span class="photos logo"></span>
+        <span class="datajar logo"></span>
+    </div>
+    
+<div class="empty_space" style="height: 36px"></div>
+
+<div class="reference" id="frontend">
+    <h3 class="section_subheader">Frontend of this website</h3>
+    <p><a href="index.html" class="no_deco"><span class="path">./index.html</span></a></p>
+    <p>Landing page.</p>
+    <p>Currently dispays the main navigation menu in an open view by default, with the flame logo in the background.</p>
+    <div class="empty_space"></div>
+    
+    <p><a href="inventories.html" class="no_deco"><span class="path">./inventories.html</span></a></p>
+    <p>History of (almost) every Treasure Hunt since September 2024, whether a deliberate trip to check Hot Wheels or a grocery run and "while I'm here" looking at cars.</p>
+    <p>Data is being gathered by <span class="shortcuts banner"><span class="logo"></span>Shortcuts</span> and stored in <span class="datajar banner"><span class="logo"></span>DataJar</span> as a JSON file, exported to <span class="pythonista banner"><span class="logo"></span>Pythonista</span> and HTML file being generated there.</p>
+    <p>The percentage is meant to approximately represent the inventory stock related to the full box of Hot Wheels or a full stock for a particular store. The only exception are the high numbers 95-100%.</p>
+    <p><span class="full">100%</span> means either a Super Treasure Hunt, Chase or a Matchbox Super Chase was found</p>
+    <p><span class="almost_full">95%</span> means a regular Treasure Hunt was found but not necessarily purchased</p>
+    <p><span class="almost_full">90-94%</span> means the stock was almost full but no Treasure Hunts found</p>
+    <p><span class="almost_full">70-89%</span> standard stock levels</p>
+    <p><span class="half_full">50-69%</span> stock is half-full</p>
+    <p><span class="barely_full">1-49%</span> low levels of inventory</p>
+    <p>The page is searchable by store name and/or address.</p>
+    <div class="empty_space"></div>
+    
+    <p><a href="collection.html" class="no_deco"><span class="path">./collection.html</span></a></p>
+    <p>A dynamic page with all the models visible by default as opposed to <a href="search.html">search.html</a> which hides everything on load and only search reveals matches.</p>
+    <p>The contents are being used by search function, which pulls HTML and parses it to produce results on <a href="search.html">search.html</a>.</p>
+    <div class="empty_space"></div>
+    
+    
+    <p><a href="search.html" class="no_deco"><span class="path">./search.html</span></a></p>
+    <p>Landing page when running a shortcut or when using a search bar on another page.</p>
+    <p>Static page. Displays models that match a search query by parsing and injecting contents of <a href="collection.html"> collection.html</a>.</p>
+    <div class="empty_space"></div>
+    
+    <p><a href="preview.html" class="no_deco"><span class="path">./preview.html</span></a></p>
+    <p>Needs renaming.</p>
+    <p>Static page. Links to three other pages with mode-dependant preview simulations, which really are static and hardcoded parts of actual pages it links to.</p>
+    <div class="empty_space"></div>
+    
+    <p><a href="stats.html" class="no_deco"><span class="path">./stats.html</span></a></p>
+    <p>General statistics for collectables. Breakdown by year, condition, source of acquisition, and tags.</p>
+    <p>Dynamic page. Updates every time there is an addition to collection.</p>
+    <div class="empty_space"></div>
+    
+    <p><a href="completions.html" class="no_deco"><span class="path">./completions.html</span></a></p>
+    <p>Percentages of completion of yearly series.</p>
+    <p>Dynamic page. Certain years have missing models listed.</p>
+    <div class="empty_space"></div>
+    
+    <p><a href="faq.html" class="no_deco"><span class="path">./faq.html</span></a></p>
+    <p>Some information about this project in the form of a conversation.</p>
+    <p>Static page. Basically answers to Frequently Asked Questions without having anybody ask those questions yet.</p>
+    <div class="empty_space"></div>
+
+    <p><a href="reference.html" class="no_deco"><span class="path">./reference.html</span></a></p>
+    <p>This page.</p>
+    <p>Static page. A comprehensive overview and reference to different aspects of this project.</p>
+    <div class="empty_space"></div>
+    
+    <p><a href="showroom/honda.html" class="no_deco"><span class="path">./showroom/honda.html</span></a></p>
+    <p>A page dedicated to Honda.</p>
+    <p>Dynamic page. Shows only images of models in collection.</p>
+    <div class="empty_space"></div>
+    
+    <p><a href="treasures.html" class="no_deco"><span class="path">./treasures.html</span></a></p>
+    <p>Not a part of collection.</p>
+    <p>Treasure Hunts and Super Treasure Hunts for the past few years. Searchable.</p>
+    <div class="empty_space"></div>
+</div>
+
+
     
     <div id="empty_space"></div>
 

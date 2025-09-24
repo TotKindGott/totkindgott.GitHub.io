@@ -101,6 +101,8 @@ body.logo {
 
 #search_bar {
     background-image: url("Images/Icons/Ionic-Ionicons-Search.16.png");
+    background-image: url("Images/Icons/search-sharp.svg");
+    background-size: 16px;
     background-position: left 5px top 50%;
     background-repeat: no-repeat;
     background-color: rgba(255,255,255,0.9);
@@ -131,6 +133,8 @@ body.logo {
 input.search_bar {
     display: inline;
     background-image: url("Images/Icons/Ionic-Ionicons-Search.16.png");
+    background-image: url("Images/Icons/search-sharp.svg");
+    background-size: 16px;
     background-position: left 5px top 50%;
     background-repeat: no-repeat;
     background-color: rgba(255,255,255,1);
@@ -156,6 +160,8 @@ input.search_bar:disabled {
 
 #left_button {
     background-image: url("Images/Icons/Ionic-Ionicons-Menu.16.png");
+    background-image: url("Images/Icons/menu.svg");
+    background-size: 16px;
     background-position: center;
     background-repeat: no-repeat;
     height: 24px;
@@ -174,6 +180,8 @@ input.left_button {
     float: left;
     display: inline;
     background-image: url("Images/Icons/Ionic-Ionicons-Menu.16.png");
+    background-image: url("Images/Icons/menu.svg");
+    background-size: 16px;
     background-position: center;
     background-repeat: no-repeat;
     height: 24px;
@@ -190,6 +198,8 @@ input.left_button {
 
 #right_button {
     background-image: url("Images/Icons/Ionic-Ionicons-Toggle-outline.16.png");
+    background-image: url("Images/Icons/toggle-outline.svg");
+    background-size: 16px;
     transform: rotateY(180deg);
     background-position: center;
     background-repeat: no-repeat;
@@ -209,6 +219,8 @@ input.right_button {
     float: left;
     display: inline;
     background-image: url("Images/Icons/Ionic-Ionicons-Toggle-outline.16.png");
+    background-image: url("Images/Icons/toggle-outline.svg");
+    background-size: 16px;
     transform: rotateY(180deg);
     background-position: center;
     background-repeat: no-repeat;
@@ -225,6 +237,8 @@ input.right_button {
 body.dark-mode #right_button
 {
     background-image: url("Images/Icons/Ionic-Ionicons-Toggle.16.png");
+    background-image: url("Images/Icons/toggle.svg");
+    background-size: 16px;
     transform: rotateY(0deg);
 }
 
@@ -269,6 +283,23 @@ body.dark-mode #right_button
     padding: 0;
     background-color: transparent;
 }
+
+#help_button {
+    background-image: url("Images/Icons/help-circle-outline.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 24px;
+    width: 24px;
+    position: fixed;
+    right: 15px;
+    bottom: 30px;
+    background-color: #ffffff;
+    border: 1px solid gray;
+    border-radius: 12px;
+    margin: 0; 
+    box-shadow: 0 0 5px 1px #ffffff;
+}
+
 
 /* ------- END TOP MENU BAR */
 
@@ -675,25 +706,29 @@ tr.subheader > td {
 
 tr.subheader > td.full_collection, 
 td.full,
-body.dark-mode td.full {
+body.dark-mode td.full,
+span.full {
     color: limegreen;
 }
 
 tr.subheader > td.almost_full_collection, 
 td.almost_full,
-body.dark-mode td.almost_full {
+body.dark-mode td.almost_full, 
+span.almost_full {
     color: lightblue;
 }
 
 tr.subheader > td.half_full_collection, 
 td.half_full,
-body.dark-mode td.half_full {
+body.dark-mode td.half_full, 
+span.half_full {
     color: orange;
 }
 
 tr.subheader > td.barely_full_collection, 
 td.barely_full, 
-body.dark-mode td.barely_full {
+body.dark-mode td.barely_full, 
+span.barely_full {
     color: red;
 }
 
@@ -742,6 +777,7 @@ td.bignum {
     position: fixed;
     top: 25%;
     left: 0;
+    z-index: 9;
 }
 
 #menu .overlay-content {
@@ -828,7 +864,7 @@ td.bignum {
     text-underline-offset: 4px;
     text-decoration-color: gray;
     letter-spacing: 0.25em;
-    text-indent: 0.5em;
+    text-indent: 0.25em;
     padding-top: 18px;
 }
 
@@ -1187,6 +1223,49 @@ body.dark-mode div.preview {
     box-shadow: 0px 0px 1px white;
 }
 
+div.apps-3 {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    padding-left: 12.5%;
+}
+
+div.apps-4 {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0;
+}
+
+div.app {
+    width: 25%;
+    float: left;
+    background: transparent;
+    margin: auto;
+    text-align: center;
+    vertical-align: center;
+}
+
+div.app img {
+     width: 50px;
+     display: block;
+     margin: 0px auto;
+     border: none;
+     border-radius: 10px;
+     box-shadow: 2px 2px 3px rgba(0,0,0,0.5)
+ }
+ 
+body.dark-mode div.app img {
+     border: none;
+ }
+
+div.app p.name {
+     width: 100%;
+     font: bold 10px Verdana;
+     margin: auto;
+     text-align: center;
+ }
+
 span.pythonista,
 span.textastic,
 span.working_copy,
@@ -1194,26 +1273,31 @@ span.files,
 span.photos,
 span.shortcuts,
 span.numbers,
-span.camera {
+span.camera,
+span.datajar {
     height: 20px;
     font-weight: medium;
     padding-right: 2px;
     vertical-align: center;
     display: inline-block;
+    
     background-size: 16px;
     background-repeat: no-repeat;
     background-position-x: 2px;
     background-position-y: 2px;
     text-indent: 20px;
-    border: 1px dotted #999;
+    border: 1px dotted rgba(0,0,0,0.05);
     border-radius: 3px;
+    box-shadow: 1px 1px 1px rgba(0,0,0,0.25);
     }
 
-span.pythonista {
+span.pythonista,
+span.pythonista.banner > span.logo {
     background-image: url(Images/Logos/Pythonista.PNG);
 }
 
-span.photos {
+span.photos, 
+span.photos.banner > span.logo {
     background-image: url('Images/Logos/Photos.PNG');
 }
  
@@ -1221,7 +1305,8 @@ span.photos {
      background-image: url('Images/Logos/Dark-Mode Photos.PNG');
  }*/
  
-span.files {
+span.files, 
+span.files.banner > span.logo {
     background-image: url('Images/Logos/Files.PNG');
 }
  
@@ -1229,22 +1314,87 @@ span.files {
      background-image: url('Images/Logos/Dark-Mode Files.PNG');
  }*/
  
-span.working_copy {
+span.working_copy, 
+span.working_copy.banner > span.logo {
     background-image: url('Images/Logos/Working Copy.PNG');
 }
  
-span.shortcuts {
+span.shortcuts, 
+span.shortcuts.banner > span.logo {
     background-image: url('Images/Logos/Shortcuts.PNG');
 }
 
-span.numbers {
+span.numbers, 
+span.numbers.banner > span.logo {
     background-image: url('Images/Logos/Numbers.PNG');
 }
 
-span.textastic {
+span.textastic, 
+span.textastic.banner > span.logo {
     background-image: url('Images/Logos/Textastic.PNG');
 }
 
-span.camera {
+span.camera, 
+span.camera.banner > span.logo {
     background-image: url('Images/Logos/Camera.PNG');
+}
+
+span.datajar, 
+span.datajar.banner > span.logo {
+    background-image: url('Images/Logos/DataJar.PNG');
+}
+
+span.logo {
+    display: inline-block;
+    text-indent: none;
+    border: none;
+    border-radius: 6px;
+    width: 28px;
+    height: 28px;
+    padding: 0px;
+    margin: 0px;
+    background-size: 30px;
+    background-position: center;
+    overflow: visible;
+    vertical-align: bottom;
+    box-shadow: 2px 2px 3px rgba(0,0,0,0.5)
+}
+ 
+span.banner {
+    background: none;
+    text-indent: 0px;
+}
+
+body.dark-mode span.banner {
+    text-decoration: underline;
+}
+ 
+span.banner > span.logo {
+    height: 16px;
+    width: 16px;
+    background-size: 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    box-shadow: none;
+    display: inline-block;
+    border-radius: 4px;
+    margin: 2px;
+    border: 1px solid #fff;
+}
+ 
+span.large_logo {
+    display: inline-block;
+    text-indent: none;
+    border: none;
+    border-radius: 12px;
+    width: 56px;
+    height: 56px;
+    padding: 0px;
+    margin: 0px;
+    background-size: 60px;
+    background-position: center;
+    overflow: visible;
+    vertical-align: bottom;
+    box-shadow: 2px 2px 3px rgba(0,0,0,0.5)
 }
