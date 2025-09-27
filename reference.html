@@ -499,6 +499,105 @@
 <p><span class="codeline"><span class="keyword">self</span>.<span class="function">generate_image_name</span>()</span> - generates image name according to naming convention.</p>
 <p><span class="codeline"><span class="keyword">self</span>.<span class="function">generate_image_path</span>(<span class="comment">image_name=<span class="keyword">None</span>, image_path=<span class="string">"default"</span></span>)</span> - generates full image path. If no path is provided the default path is used. Name is also generated if none is provided as argument.</p>
 </div>
+
+<div class="reference">
+    <p>Collection class consists of different methods:</p>
+    <div class="syntax">
+    <table class="codeblock">
+        <colgroup>
+            <col style="width: 10%">
+            <col style="width: 90%">
+        </colgroup>
+        <tbody>
+            <tr>
+                <td class="chevron">>>></td>
+                <td>methods = <span class="function">list</span>(<span class="string">f'{method}()'</span> <span class="keyword">for</span> method <span class="keyword">in</span> <span class="function">dir</span>(cars) <span class="keyword">if</span> <span class="function">callable</span>(<span class="function">getattr</span>(cars, method)) <span class="keyword">and not</span> method.<span class="function">startswith</span>(<span class="string">'__'</span>))</td>
+            </tr>
+            <tr>
+                <td class="chevron">>>></td>
+                <td><span class="function">print</span>(<span class="string">'\n'</span>.<span class="function">join</span></span>(methods))</td>
+            </tr>
+            <tr>
+                <td class="line">001</td>
+                <td>add_to_collection()</td>
+            </tr>
+            <tr>
+                <td class="line">002</td>
+                <td>calculate_completion()</td>
+            </tr>
+            <tr>
+                <td class="line">003</td>
+                <td>check_image_path()</td>
+            </tr>
+            <tr>
+                <td class="line">004</td>
+                <td>find_by_collector_number()</td>
+            </tr>
+            <tr>
+                <td class="line">005</td>
+                <td>find_by_condition()</td>
+            </tr>
+            <tr>
+                <td class="line">006</td>
+                <td>find_by_model()</td>
+            </tr>
+            <tr>
+                <td class="line">007</td>
+                <td>find_by_quantity()</td>
+            </tr>
+            <tr>
+                <td class="line">008</td>
+                <td>find_by_series()</td>
+            </tr>
+            <tr>
+                <td class="line">009</td>
+                <td>find_by_tag()</td>
+            </tr>
+            <tr>
+                <td class="line">010</td>
+                <td>find_by_year()</td>
+            </tr>
+            <tr>
+                <td class="line">011</td>
+                <td>find_duplicates()</td>
+            </tr>
+            <tr>
+                <td class="line">012</td>
+                <td>genfind()</td>
+            </tr>
+            <tr>
+                <td class="line">013</td>
+                <td>intfind()</td>
+            </tr>
+            <tr>
+                <td class="line">014</td>
+                <td>multifind()</td>
+            </tr>
+            <tr>
+                <td class="line">015</td>
+                <td>print_stats()</td>
+            </tr>
+            <tr>
+                <td class="line">016</td>
+                <td>recent_clear()</td>
+            </tr>
+            <tr>
+                <td class="line">017</td>
+                <td>recent_update()</td>
+            </tr>
+            <tr>
+                <td class="line">018</td>
+                <td>resolve_image_paths()</td>
+            </tr>
+            <tr>
+                <td class="line">019</td>
+                <td>visfind()</td>
+            </tr>
+
+        </tbody>
+    </table>
+    </div>
+</div>
     
 <div class="reference" id="image_files">
     <h3 class="section_subheader">Dealing with image files</h3>
