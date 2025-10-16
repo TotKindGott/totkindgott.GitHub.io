@@ -107,12 +107,14 @@ function toggleView() {
     try {
         document.getElementById("results").classList.toggle("collage");
     } catch (error) {
-        console.error("An error occurred:", error.message);
+        void(0);
+        //console.error("An error occurred:", error.message);
     };
     try {
         document.getElementById("frame").classList.toggle("collage");
     } catch (error) {
-        console.error("An error occurred:", error.message);
+        void(0);
+        //console.error("An error occurred:", error.message);
     };
 }
 
