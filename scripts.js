@@ -92,6 +92,21 @@ function hideDivsOnEmpty() {
     };
 };
 
+function toggleDetails() {
+    detailsTags = document.getElementsByTagName('details');
+    for (let i = 0; i < detailsTags.length; i++) {
+        detailsTag = detailsTags[i];
+        if (detailsTag.open == true) {
+            detailsTag.open = false
+        } else {
+            detailsTag.open = true}
+    };
+};
+
+function toggleView() {
+    document.getElementById("results").classList.toggle("collage");
+}
+
 function searchModels() {
     // searches through data-index attribute of every carDiv
     let search_query = document.getElementById('search_bar').value;
@@ -100,7 +115,7 @@ function searchModels() {
     for (i = 0; i < carDivs.length; i++) {
         if (
         carDivs[i].getAttribute("data-index").toLowerCase().includes(search_query)) {
-                carDivs[i].style.display = "list-item";
+                carDivs[i].style.display = "block";
             carDivs[i].classList.add("visible");
         }
         else {
@@ -112,7 +127,9 @@ function searchModels() {
 };
 
 function clearSearch() {
-    document.getElementById("search_bar").setAttribute('value', '')
+    document.getElementById("search_bar").setAttribute("value", '');
+    document.getElementById("search_bar").value = "";
+    
     searchModels();
 };
 

@@ -21,8 +21,16 @@
     
     <div id="topbar">
         <input type="button" src="Images/Icons/Ionic-Ionicons-Menu.16.png" onclick="toggleMenu()" id="left_button" />
-        <input type="text" id="search_bar" onkeyup="setTimeout(searchModels(), 250)"  src="Images/Icons/Ionic-Ionicons-Search.16.png" />
-        <input type="button" src="Images/Icons/Ionic-Ionicons-Toggle.16.png" onclick="toggleDarkMode()" id="right_button" />
+        <input type="text" id="search_bar" onkeyup="setTimeout(searchModels(), 250)" src="Images/Icons/Ionic-Ionicons-Search.16.png" />
+        <div class="dropdown">
+            <input type="button"  id="right_button" />
+            <div class="dropdown-content">
+                <input type="button" src="Images/Icons/Ionic-Ionicons-Toggle.16.png" onclick="toggleDarkMode()" id="mode_button" />
+                <input type="button" onclick="toggleView()" id="view_button" />
+                <input type="button" onclick="toggleDetails()" id="details_button" />
+                <input type="button" onclick="clearSearch()" id="clear_button" />
+            </div>
+        </div>
         <input type="number" name="result counter" value="" disabled="True" id="counter" />
     </div>
 
@@ -31,9 +39,9 @@
         <div id="menu_list"  class="overlay-content">
             <p class="subheader">Collection</p>
             <p class="separator"></p>
-            <a href="slideshow.html">Home</a>
-            <a href="index.html">Menu</a>
+            <a href="index.html">Home</a>
             <a href="collection.html">Owned</a>
+            <a href="preview.html">Statistics</a>
             <p class="subheader">Other</p>
             <p class="separator"></p>
             <a href="treasures.html">Treasures</a>
@@ -105,7 +113,7 @@
                <td class="key">1987</td>
                <td class="value">001</td>
                <td class="key">2004</td>
-               <td class="value">013</td>
+               <td class="value">014</td>
                <td class="key">2018</td>
                <td class="value">017</td>
            </tr>
@@ -170,7 +178,7 @@
                <td class="key">2011</td>
                <td class="value">004</td>
                <td class="key">2025</td>
-               <td class="value">113</td>
+               <td class="value">115</td>
            </tr>
             
            <tr>
@@ -221,13 +229,20 @@
             <tr>
                 <td class="key">Grandpa</td>
                 <td class="value">076</td>
-                <td class="key">Walgreens</td>
+                <td class="key">Found</td>
                 <td class="value">003</td>
             </tr>
             
             <tr>
                 <td class="key">Dollar General</td>
                 <td class="value">075</td>
+                <td class="key">Walgreens</td>
+                <td class="value">003</td>
+            </tr>
+            
+            <tr>
+                <td class="key">Mommy</td>
+                <td class="value">066</td>
                 <td class="key">Community Thrift</td>
                 <td class="value">003</td>
             </tr>
@@ -240,16 +255,9 @@
             </tr>
             
             <tr>
-                <td class="key">Mommy</td>
-                <td class="value">064</td>
-                <td class="key">Grandma</td>
-                <td class="value">002</td>
-            </tr>
-            
-            <tr>
                 <td class="key">Target</td>
                 <td class="value">051</td>
-                <td class="key">Found</td>
+                <td class="key">Grandma</td>
                 <td class="value">002</td>
             </tr>
             
@@ -326,30 +334,37 @@
             
             <tr>
                 <td class="key">New on card</td>
-                <td class="value">558</td>
-                <td class="key">New in 5-pack</td>
-                <td class="value">030</td>
-            </tr>
-            
-            <tr>
-                <td class="key">Opened</td>
-                <td class="value">227</td>
+                <td class="value">552</td>
                 <td class="key">New (open)</td>
                 <td class="value">012</td>
             </tr>
             
             <tr>
-                <td class="key">Used</td>
-                <td class="value">101</td>
+                <td class="key">Opened</td>
+                <td class="value">235</td>
                 <td class="key">New in 6-pack</td>
                 <td class="value">006</td>
             </tr>
             
             <tr>
-                <td class="key">New in 50-pack</td>
-                <td class="value">050</td>
+                <td class="key">Used</td>
+                <td class="value">101</td>
                 <td class="key">New in 3-pack</td>
                 <td class="value">003</td>
+            </tr>
+            
+            <tr>
+                <td class="key">New in 50-pack</td>
+                <td class="value">050</td>
+                <td class="key">New in box</td>
+                <td class="value">001</td>
+            </tr>
+            
+            <tr>
+                <td class="key">New in 5-pack</td>
+                <td class="value">030</td>
+                <td class="key"></td>
+                <td class="value"></td>
             </tr>
             
         </tbody>
@@ -369,7 +384,7 @@
             
             <tr>
                 <td class="key">Mainline</td>
-                <td class="value">893</td>
+                <td class="value">896</td>
                 <td class="key">$TH</td>
                 <td class="value">008</td>
             </tr>
@@ -405,10 +420,10 @@
     <input type="button" id="help_button" value="" onclick="location.href='reference.html'" />
     
     <footer id="page_footer">
-        <p>Last update: <a href="">2025-10-11</a></p>
+        <p>Last update: <a href="">2025-10-15</a></p>
         <p>Site design: Konstantin A Kolosov</p>
         <hr />
-            <a href="slideshow.html">Home</a>
+            <a href="index.html">Home</a>
             <a href="preview.html">Statistics</a>
             <a href="treasures.html">Treasures</a>
             <a href="about.html">About</a>

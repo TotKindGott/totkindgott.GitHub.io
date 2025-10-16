@@ -197,8 +197,7 @@ input.left_button {
 }
 
 #right_button {
-    background-image: url("Images/Icons/Ionic-Ionicons-Toggle-outline.16.png");
-    background-image: url("Images/Icons/toggle-outline.svg");
+    background-image: url("Images/Icons/settings-outline.svg");
     background-size: 16px;
     transform: rotateY(180deg);
     background-position: center;
@@ -218,10 +217,8 @@ input.left_button {
 input.right_button {
     float: left;
     display: inline;
-    background-image: url("Images/Icons/Ionic-Ionicons-Toggle-outline.16.png");
-    background-image: url("Images/Icons/toggle-outline.svg");
+    background-image: url("Images/Icons/settings-outline.svg");
     background-size: 16px;
-    transform: rotateY(180deg);
     background-position: center;
     background-repeat: no-repeat;
     height: 24px;
@@ -234,13 +231,87 @@ input.right_button {
     box-shadow: 0 0 5px 1px #ffffff;
 }
 
-body.dark-mode #right_button
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: fixed;
+    right: 0;
+    top: 35px;
+    background-color: transparent;
+    z-index: 10;
+    width: 39px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+#mode_button {
+    background-image: url("Images/Icons/Ionic-Ionicons-Toggle-outline.16.png");
+    background-image: url("Images/Icons/toggle-outline.svg");
+    background-size: 16px;
+    transform: rotateY(180deg);
+    background-position: center;
+    background-repeat: no-repeat;
+    position: static;
+    right: 15px;
+    height: 24px;
+    width: 24px;
+    background-color: #ffffff;
+    border: 1px solid gray;
+    border-radius: 12px;
+    margin: 5px auto; 
+    box-shadow: 0 0 5px 1px #ffffff;
+}
+
+body.dark-mode #mode_button
 {
     background-image: url("Images/Icons/Ionic-Ionicons-Toggle.16.png");
     background-image: url("Images/Icons/toggle.svg");
     background-size: 16px;
     transform: rotateY(0deg);
 }
+
+#view_button {
+    background-image: url("Images/Icons/apps-sharp.svg");
+    background-size: 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 24px;
+    width: 24px;
+    position: static;
+    right: 15px;
+    border-radius: 12px;
+    border: 1px solid gray;
+    background-color: #ffffff;
+    margin: 5px auto; 
+    padding: 0;
+    box-shadow: 0 0 5px 1px #ffffff;
+    z-index: 10;
+}
+
+#details_button {
+    background-image: url("Images/Icons/newspaper-outline.svg");
+    background-size: 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 24px;
+    width: 24px;
+    position: static;
+    right: 15px;
+    border-radius: 12px;
+    border: 1px solid gray;
+    background-color: #ffffff;
+    margin: 5px auto; 
+    padding: 0;
+    box-shadow: 0 0 5px 1px #ffffff;
+    z-index: 10;
+}
+
 
 ::placeholder {
     color: gray;
@@ -269,19 +340,21 @@ body.dark-mode #right_button
 }
 
 #clear_button {
-    position: fixed; 
-    right: 20%;
-    top: 5px;
-    transform: translate(-50%);
-    height: 24px; 
-    margin: auto;
-    text-align: right;
-    width: 40px;
-    border: none;
-    z-index: 11;
-    margin: auto;
+    background-image: url("Images/Icons/reload-outline.svg");
+    background-size: 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 24px;
+    width: 24px;
+    position: static;
+    right: 15px;
+    border-radius: 12px;
+    border: 1px solid gray;
+    background-color: #ffffff;
+    margin: 5px auto; 
     padding: 0;
-    background-color: transparent;
+    box-shadow: 0 0 5px 1px #ffffff;
+    z-index: 10;
 }
 
 #help_button {
@@ -1398,3 +1471,60 @@ span.large_logo {
     vertical-align: bottom;
     box-shadow: 2px 2px 3px rgba(0,0,0,0.5)
 }
+
+div.collage {
+    width: 100%;
+    text-align: center;
+    padding: 0px;
+    margin: 0;
+    background-color: transparent;
+}
+
+div.collage > div.searchable > details, div.collage > div.searchable > div.wrapper > p, div.collage > div.searchable > * {
+    display: none;
+}
+
+div.collage > div.manufacturer {
+    width: 100%;
+    background-color: transparent;
+}
+
+div.collage > div.manufacturer > img.logo {
+    display: block;
+    position: static;
+    height: 156px;
+    margin: auto;
+    background-color: transparent;
+}
+
+div.collage > div.searchable {
+    display: block;
+    width: 33.3%;
+    float: left;
+    padding: 0;
+    margin: 0;
+    border: none;
+    box-shadow: none;
+}
+
+div.collage > div.searchable div.wrapper {
+    display: block;
+}
+
+div.collage > div.searchable div.wrapper > a > img.photo {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+div.collage > div.searchable img.logo {
+    top: 5px;
+    right: 5px;
+    height: 20px;
+    width: 20px;
+}
+

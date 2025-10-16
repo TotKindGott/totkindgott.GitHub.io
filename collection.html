@@ -19,8 +19,16 @@
     
     <div id="topbar">
         <input type="button" src="Images/Icons/Ionic-Ionicons-Menu.16.png" onclick="toggleMenu()" id="left_button" />
-        <input type="text" id="search_bar" onkeyup="setTimeout(searchModels(), 250)"  src="Images/Icons/Ionic-Ionicons-Search.16.png" />
-        <input type="button" src="Images/Icons/Ionic-Ionicons-Toggle.16.png" onclick="toggleDarkMode()" id="right_button" />
+        <input type="text" id="search_bar" onkeyup="setTimeout(searchModels(), 250)" src="Images/Icons/Ionic-Ionicons-Search.16.png" />
+        <div class="dropdown">
+            <input type="button"  id="right_button" />
+            <div class="dropdown-content">
+                <input type="button" src="Images/Icons/Ionic-Ionicons-Toggle.16.png" onclick="toggleDarkMode()" id="mode_button" />
+                <input type="button" onclick="toggleView()" id="view_button" />
+                <input type="button" onclick="toggleDetails()" id="details_button" />
+                <input type="button" onclick="clearSearch()" id="clear_button" />
+            </div>
+        </div>
         <input type="number" name="result counter" value="" disabled="True" id="counter" />
     </div>
 
@@ -29,9 +37,9 @@
         <div id="menu_list"  class="overlay-content">
             <p class="subheader">Collection</p>
             <p class="separator"></p>
-            <a href="slideshow.html">Home</a>
-            <a href="index.html">Menu</a>
+            <a href="index.html">Home</a>
             <a href="collection.html">Owned</a>
+            <a href="preview.html">Statistics</a>
             <p class="subheader">Other</p>
             <p class="separator"></p>
             <a href="treasures.html">Treasures</a>
@@ -483,6 +491,38 @@
             </table>
         </details>
         <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Honda Civic EG (Fast & Furious 2025).JPG" alt="Honda Civic EG" width="640px" /></a><p class="tag"></p></div>
+    </div>
+
+    <div class="searchable float" data-index="taurus stocker (2000) pro racing race day 2004 found  ">
+        <details open>
+            <summary>
+                <h1>Taurus Stocker (2000)</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>Pro Racing Race Day</td>
+                    <td class="grayed">part:</td>
+                    <td class="right"></td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>17</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2004</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Found</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New in box</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"></div>
     </div>
 
     <div class="searchable float" data-index="geoterra baja blazers 2020 flea market  ">
@@ -4733,7 +4773,7 @@
                 </tr>
                 <tr>
                     <td class="grayed">status:</td>
-                    <td>New on card</td>
+                    <td>Opened</td>
                     <td colspan=2 class="tag"></td>
                 </tr>
             </table>
@@ -5341,7 +5381,7 @@
                 </tr>
                 <tr>
                     <td class="grayed">status:</td>
-                    <td>New on card</td>
+                    <td>Opened</td>
                     <td colspan=2 class="tag"></td>
                 </tr>
             </table>
@@ -7389,7 +7429,7 @@
                 </tr>
                 <tr>
                     <td class="grayed">status:</td>
-                    <td>New on card</td>
+                    <td>Opened</td>
                     <td colspan=2 class="tag"></td>
                 </tr>
             </table>
@@ -14141,7 +14181,7 @@
                 </tr>
                 <tr>
                     <td class="grayed">status:</td>
-                    <td>New on card</td>
+                    <td>Opened</td>
                     <td colspan=2 class="tag"></td>
                 </tr>
             </table>
@@ -18845,7 +18885,7 @@
                 </tr>
                 <tr>
                     <td class="grayed">status:</td>
-                    <td>New on card</td>
+                    <td>Opened</td>
                     <td colspan=2 class="tag"></td>
                 </tr>
             </table>
@@ -22045,7 +22085,7 @@
                 </tr>
                 <tr>
                     <td class="grayed">status:</td>
-                    <td>New on card</td>
+                    <td>Opened</td>
                     <td colspan=2 class="tag"></td>
                 </tr>
             </table>
@@ -31653,6 +31693,70 @@
         <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Drift’n Break (HW Wagons 2025).JPG" alt="Drift’n Break" width="640px" /></a><p class="comment">from Grandpa</p></div>
     </div>
 
+    <div class="searchable float" data-index="long bloc hw art cars 2025 mommy  hot wheels let’s race">
+        <details open>
+            <summary>
+                <h1>Long Bloc</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>HW Art Cars</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">9/10</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>135/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Mommy</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>Opened</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"></div>
+    </div>
+
+    <div class="searchable float" data-index="long bloc hw art cars 2025 mommy  hot wheels let’s race">
+        <details open>
+            <summary>
+                <h1>Long Bloc</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>HW Art Cars</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">9/10</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>135/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Mommy</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>Opened</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"></div>
+    </div>
+
 
     </div>
 
@@ -31662,10 +31766,10 @@
     <input type="button" id="help_button" value="" onclick="location.href='reference.html'" />
     
     <footer id="page_footer">
-        <p>Last update: <a href="">2025-10-11</a></p>
+        <p>Last update: <a href="">2025-10-15</a></p>
         <p>Site design: Konstantin A Kolosov</p>
         <hr />
-            <a href="slideshow.html">Home</a>
+            <a href="index.html">Home</a>
             <a href="preview.html">Statistics</a>
             <a href="treasures.html">Treasures</a>
             <a href="about.html">About</a>

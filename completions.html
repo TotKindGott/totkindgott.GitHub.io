@@ -40,8 +40,16 @@
     <header>  <!-- NAVIGATION -->
     <div id="topbar">
         <input type="button" src="Images/Icons/Ionic-Ionicons-Menu.16.png" onclick="toggleMenu()" id="left_button" />
-        <input type="text" id="search_bar" onkeyup="setTimeout(searchModels(), 250)"  src="Images/Icons/Ionic-Ionicons-Search.16.png" />
-        <input type="button" src="Images/Icons/Ionic-Ionicons-Toggle.16.png" onclick="toggleDarkMode()" id="right_button" />
+        <input type="text" id="search_bar" onkeyup="setTimeout(searchModels(), 250)" src="Images/Icons/Ionic-Ionicons-Search.16.png" />
+        <div class="dropdown">
+            <input type="button"  id="right_button" />
+            <div class="dropdown-content">
+                <input type="button" src="Images/Icons/Ionic-Ionicons-Toggle.16.png" onclick="toggleDarkMode()" id="mode_button" />
+                <input type="button" onclick="toggleView()" id="view_button" />
+                <input type="button" onclick="toggleDetails()" id="details_button" />
+                <input type="button" onclick="clearSearch()" id="clear_button" />
+            </div>
+        </div>
         <input type="number" name="result counter" value="" disabled="True" id="counter" />
     </div>
 
@@ -50,9 +58,9 @@
         <div id="menu_list"  class="overlay-content">
             <p class="subheader">Collection</p>
             <p class="separator"></p>
-            <a href="slideshow.html">Home</a>
-            <a href="index.html">Menu</a>
+            <a href="index.html">Home</a>
             <a href="collection.html">Owned</a>
+            <a href="preview.html">Statistics</a>
             <p class="subheader">Other</p>
             <p class="separator"></p>
             <a href="treasures.html">Treasures</a>
@@ -9431,7 +9439,7 @@
         </table>
     </div>
     
-    <div class="searchable collection_status" data-index="HW Art Cars 2020">
+    <div class="searchable collection_status" data-index="HW Art Cars 2025">
         <table class="collection_status">
         <colgroup>
             <col style="width: 10%">
@@ -9442,69 +9450,21 @@
         <tbody>
             <tr class="subheader">
                 <td class="barely_full_collection">10%</td>
-                <td class="right">2020</td>
+                <td class="right">2025</td>
                 <td>HW ART CARS</td>
                 <td class="right grayed">1/10</td>
             </tr>
         
         <tr>
-            <td class="grayed">-m</td>
-			<td class="right grayed missing">1/10</td>
-			<td colspan=2 class="missing">'92 Ford Mustang</td>
+            <td class="grayed">-i</td>
+			<td class="right">9/10</td>
+			<td colspan=2 class="bold">Long Bloc</td>
         </tr>
         
         <tr>
-            <td class="grayed">-m</td>
-			<td class="right grayed missing">2/10</td>
-			<td colspan=2 class="missing">Cruise Bruiser</td>
-        </tr>
-        
-        <tr>
-            <td class="grayed">-m</td>
-			<td class="right grayed missing">3/10</td>
-			<td colspan=2 class="missing">Bone Shaker</td>
-        </tr>
-        
-        <tr>
-            <td class="grayed">-m</td>
-			<td class="right grayed missing">4/10</td>
-			<td colspan=2 class="missing">Fish'd & Chip'd</td>
-        </tr>
-        
-        <tr>
-            <td class="grayed">-m</td>
-			<td class="right grayed missing">5/10</td>
-			<td colspan=2 class="missing">Humvee</td>
-        </tr>
-        
-        <tr>
-            
-			<td class="right" colspan=2>6/10</td>
-			<td colspan=2 class="bold">La Fasta</td>
-        </tr>
-        
-        <tr>
-            <td class="grayed">-m</td>
-			<td class="right grayed missing">7/10</td>
-			<td colspan=2 class="missing">Quick Bite</td>
-        </tr>
-        
-        <tr>
-            <td class="grayed">-m</td>
-			<td class="right grayed missing">8/10</td>
-			<td colspan=2 class="missing">Rodger Dodger</td>
-        </tr>
-        
-        <tr>
-            <td class="grayed">-m</td>
-			<td class="right grayed missing">9/10</td>
-			<td colspan=2 class="missing">Super Van</td>
-        </tr>
-        
-        <tr>
-            <td class="grayed">-m</td>
-			<td class="right grayed missing">10/10</td>
-			<td class="missing">Custom '56 Ford Truck</td><td class="right tag missing">TH</td>
+            <td class="grayed">-i</td>
+			<td class="right">9/10</td>
+			<td colspan=2 class="bold">Long Bloc</td>
         </tr>
         
             </tbody>
@@ -11356,10 +11316,10 @@
     <input type="button" id="help_button" value="" onclick="location.href='reference.html'" />
     
     <footer id="page_footer">
-        <p>Last update: <a href="">2025-10-11</a></p>
+        <p>Last update: <a href="">2025-10-15</a></p>
         <p>Site design: Konstantin A Kolosov</p>
         <hr />
-            <a href="slideshow.html">Home</a>
+            <a href="index.html">Home</a>
             <a href="preview.html">Statistics</a>
             <a href="treasures.html">Treasures</a>
             <a href="about.html">About</a>
