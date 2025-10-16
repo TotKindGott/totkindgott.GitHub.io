@@ -104,7 +104,16 @@ function toggleDetails() {
 };
 
 function toggleView() {
-    document.getElementById("results").classList.toggle("collage");
+    try {
+        document.getElementById("results").classList.toggle("collage");
+    } catch (error) {
+        console.error("An error occurred:", error.message);
+    };
+    try {
+        document.getElementById("frame").classList.toggle("collage");
+    } catch (error) {
+        console.error("An error occurred:", error.message);
+    };
 }
 
 function searchModels() {
