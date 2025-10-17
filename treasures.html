@@ -13,7 +13,7 @@
     
 </head>
 
-<body onload='document.getElementById("counter").value = document.getElementsByClassName("searchable").length'>
+<body onload="loadingSequence()">
 
     <script type="text/javascript">
         checkMode();
@@ -22,11 +22,18 @@
     <header>  <!-- NAVIGATION -->
     
     <div id="topbar">
-        <input type="button" src="Images/TreasureHunts/Images/Icons/Ionic-Ionicons-Menu.16.png" onclick="toggleMenu()" id="left_button" />
-        <input type="text" id="search_bar" onkeyup="setTimeout(searchModels(), 250)"  src="Images/TreasureHunts/Images/Icons/Ionic-Ionicons-Search.16.png" />
-        <input type="button" src="Images/TreasureHunts/Images/Icons/Ionic-Ionicons-Toggle.16.png" onclick="toggleDarkMode()" id="right_button" />
-        <!-- hardcoded at webpage generation, updated with Javascript on search -->
-        <input type="number" name="result counter" value="<!--count-->" disabled="True" id="counter" />
+        <input type="button" src="Images/Icons/Ionic-Ionicons-Menu.16.png" onclick="toggleMenu()" id="left_button" />
+        <input type="text" id="search_bar" onkeyup="setTimeout(searchModels(), 250)" src="Images/Icons/Ionic-Ionicons-Search.16.png" />
+        <div class="dropdown">
+            <input type="button"  id="right_button" />
+            <div class="dropdown-content">
+                <input type="button" src="Images/Icons/Ionic-Ionicons-Toggle.16.png" onclick="toggleDarkMode()" id="mode_button" />
+                <input type="button" onclick="toggleView()" id="view_button" />
+                <input type="button" onclick="toggleDetails()" id="details_button" />
+                <input type="button" onclick="clearSearch()" id="clear_button" />
+            </div>
+        </div>
+        <input type="number" name="result counter" value="" disabled="True" id="counter" />
     </div>
 
     <div id="menu" class="overlay">
@@ -34,21 +41,18 @@
         <div id="menu_list"  class="overlay-content">
             <p class="subheader">Collection</p>
             <p class="separator"></p>
-            <a href="slideshow.html">Home</a>
-            <a href="index.html">Menu</a>
+            <a href="index.html">Home</a>
             <a href="collection.html">Owned</a>
+            <a href="preview.html">Statistics</a>
             <p class="subheader">Other</p>
             <p class="separator"></p>
             <a href="treasures.html">Treasures</a>
-            <a href="index.html">About</a>
+            <a href="about.html">About</a>
         </div>
     </div>
 
     </header>  <!-- END NAVIGATION -->
 
-    <h1 id="site_name_part1">Desired</h1>
-    <h1 id="site_name_part2">TREASURES</h1>
-    
     <div id='results'>  <!-- BODY -->
     
     <div class="searchable float" data-index="1987 audi quattro factory fresh 2025   ">
@@ -401,6 +405,134 @@
             </table>
         </details>
         <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/TreasureHunts/Images/2025-STH-94-Bugatti-EB110-SS-Int-Card.jpg" alt="1994 Bugatti EB110 SS" width="640px" /></a><p class="tag"></p></div>
+    </div>
+
+    <div class="searchable float" data-index="1973 honda civic custom then and now 2025   ">
+        <details>
+            <summary>
+                <h1>1973 Honda Civic Custom</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>Then and Now</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">9/10</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>231/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td></td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/TreasureHunts/Images/2025-STH-73-Honda-Civic-Custom-US-Card.jpg" alt="1973 Honda Civic Custom" width="640px" /></a><p class="tag"></p></div>
+    </div>
+
+    <div class="searchable float" data-index="2020 dodge charger hellcat muscle mania 2025   ">
+        <details>
+            <summary>
+                <h1>2020 Dodge Charger Hellcat</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>Muscle Mania</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">9/10</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>240/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td></td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/TreasureHunts/Images/2025-STH-20-Dodge-Charger-Hellcat-US-Card.jpg" alt="2020 Dodge Charger Hellcat" width="640px" /></a><p class="tag"></p></div>
+    </div>
+
+    <div class="searchable float" data-index="bmw m3 wagon hw wagons 2025   ">
+        <details>
+            <summary>
+                <h1>BMW M3 Wagon</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>HW Wagons</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">5/5</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>245/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td></td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/TreasureHunts/Images/2025-STH-BMW-M3-Wagon-US-Card.jpg" alt="BMW M3 Wagon" width="640px" /></a><p class="tag"></p></div>
+    </div>
+
+    <div class="searchable float" data-index="ford rs200 peak pursuit 2025   ">
+        <details>
+            <summary>
+                <h1>Ford RS200</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>Peak Pursuit</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">9/10</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>247/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td></td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/TreasureHunts/Images/2025-STH-Ford-RS200-Int-Card.jpg" alt="Ford RS200" width="640px" /></a><p class="tag"></p></div>
     </div>
 
     <div class="searchable float" data-index="ford performance supervan 4 hw first response 2025   ">
@@ -785,6 +917,70 @@
             </table>
         </details>
         <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/TreasureHunts/Images/2025-TH-1966-Triumph-Tiger-100-1.jpg" alt="1966 Triumph Tiger 100" width="640px" /></a><p class="tag"></p></div>
+    </div>
+
+    <div class="searchable float" data-index="1984 audi sport quattro wild widebody 2025   ">
+        <details>
+            <summary>
+                <h1>1984 Audi Sport Quattro</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>Wild Widebody</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">5/5</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>246/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td></td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/TreasureHunts/Images/2025-TH-84-Audi-Sport-quattro-1.jpg" alt="1984 Audi Sport Quattro" width="640px" /></a><p class="tag"></p></div>
+    </div>
+
+    <div class="searchable float" data-index="triumph tr6 hw track champs 2025   ">
+        <details>
+            <summary>
+                <h1>Triumph TR6</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>HW Track Champs</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">5/5</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>249/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td></td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/TreasureHunts/Images/2025-TH-Triumph-TR6-1.jpg" alt="Triumph TR6" width="640px" /></a><p class="tag"></p></div>
     </div>
 
     <div class="searchable float" data-index="2018 camaro ss hw dream garage 2024   ">
@@ -3120,7 +3316,7 @@
                 </tr>
             </table>
         </details>
-        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/TreasureHunts/Images/2022-Morris-Mini-Card.jpg)" alt="Morris Mini" width="640px" /></a><p class="tag"></p></div>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/TreasureHunts/Images/2022-Morris-Mini-Card.jpg" alt="Morris Mini" width="640px" /></a><p class="tag"></p></div>
     </div>
 
     <div class="searchable float" data-index="gotta go experimotors 2022   ">
@@ -3347,20 +3543,24 @@
         <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/TreasureHunts/Images/22-71-Mustang-Funny-Car-LR.jpg" alt="1971 Mustang Funny Car" width="640px" /></a><p class="tag"></p></div>
     </div>
 
+
+
     </div>  <!-- END BODY -->
     
-    <div id="empty_space"></div>
-
+    <div id="empty_space" style="height: 60px;"></div>
+    
+    <input type="button" id="help_button" value="" onclick="location.href='reference.html'" />
+    
     <footer id="page_footer">
-        <p>Last update: <a href="">2025-08-22</a></p>
+        <p>Last update: <a href="">2025-10-16</a></p>
         <p>Site design: Konstantin A Kolosov</p>
         <hr />
-            <a href="slideshow.html">Home</a>
+            <a href="index.html">Home</a>
             <a href="preview.html">Statistics</a>
             <a href="treasures.html">Treasures</a>
             <a href="about.html">About</a>
     </footer>
-
+    
 </body>
 
 </html>
