@@ -162,6 +162,36 @@
         border-radius: 12px;
     }
     
+    #printButton {
+        z-index: 5;
+        position: absolute;
+        top: 48px; 
+        right: 15px;
+        background-image: url("Images/Icons/print-outline.svg");
+        background-size: 24px;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 24px;
+        height: 24px;
+        background-color: #ffffff;
+        margin: 0; 
+    }
+    
+    #downloadButton {
+        z-index: 5;
+        position: absolute;
+        top: 48px; 
+        right: 45px;
+        background-image: url("Images/Icons/save-outline.svg");
+        background-size: 20px;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 24px;
+        height: 24px;
+        background-color: #ffffff;
+        margin: 0; 
+    }
+    
     #filterTable tr {
         width: 100%; margin: 5px;
     }
@@ -226,6 +256,11 @@
         text-align: center;
     }
 
+    @media print {
+    /* Hide elements not intended for print */
+    header, #page_footer, fieldset, button, input {
+        display: none;
+    }
     </style>
     
     <script>
@@ -290,7 +325,19 @@
         updateCount();
     };
 
-    </script>
+    function printTable() {
+        var printContents = document.getElementById('mainTableDiv').innerHTML;
+        var originalContents = document.body.innerHTML;
+    
+        document.body.innerHTML = printContents; // Temporarily replace body content
+        window.print(); // Trigger browser print dialog
+        document.body.innerHTML = originalContents; // Restore original content
+    };
+    
+</script>
+
+    <button id="printButton" onclick="printTable()"></button>
+    <a id="downloadButton" href="collection.csv" target="_blank" download="collection.csv"></a></input>
     
     <fieldset>
         <legend id="filterToggle" onclick="toggleFilter()"></legend>
@@ -13351,7 +13398,7 @@
     <input type="button" id="help_button" value="" onclick="location.href='reference.html'" />
     
     <footer id="page_footer">
-        <p>Last update: <a href="">2025-10-19</a></p>
+        <p>Last update: <a href="">2025-10-20</a></p>
         <p>Site design: Konstantin A Kolosov</p>
         <hr />
             <a href="index.html">Home</a>
