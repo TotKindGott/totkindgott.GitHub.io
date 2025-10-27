@@ -1528,3 +1528,25 @@ div.collage > div.searchable img.logo {
     width: 20px;
 }
 
+.gone details table tr td:not(.tag),
+.gone details h1 {
+    color: gray;
+    text-decoration: none;
+}
+
+.gone details h1 {
+    text-decoration: line-through;
+    text-decoration-color: gray;
+    text-decoration-thickness: 1px;
+    text-decoration-offset: 5px;
+}
+
+.gone img.photo {
+    filter: grayscale(0.75);
+    box-shadow: none;
+    border: 1px dashed rgba(0,0,0,0.1);
+}
+
+div.searchable.gone > div.wrapper.preview {
+    width: 25%;
+}
