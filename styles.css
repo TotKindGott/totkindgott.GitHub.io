@@ -983,6 +983,7 @@ td.bignum {
 
 #frame > div.searchable {
     display: none;
+    break-before: page;
 }
 
 #page_footer {
@@ -1549,4 +1550,21 @@ div.collage > div.searchable img.logo {
 
 div.searchable.gone > div.wrapper.preview {
     width: 25%;
+}
+
+@media print {
+    #topbar, #page_footer, #help_button, #site_name_part1, #site_name_part2 {
+        display: none;
+    }
+    body {
+        background-color: white;
+    }
+    div.searchable.float {
+        border: 1px solid #eaeaea;
+        break-inside: avoid;
+    }
+    #mainTable tbody tr td {
+        background-color: white;
+        border: 1px solid #eaeaea;
+    }
 }
