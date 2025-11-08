@@ -78,13 +78,6 @@ body {
     color: white;
 }
 
-body.logo {
-    background-image: url("Images/Logos/TH Logo.PNG");
-    background-position: 50% 50%;
-    background-size: 300px;
-    background-repeat: no-repeat;
-}
-
 /* ------- TOP MENU BAR ------- */
 
 #topbar {
@@ -851,6 +844,7 @@ td.bignum {
     top: 25%;
     left: 0;
     z-index: 9;
+    transition: 0s;
 }
 
 #menu .overlay-content {
@@ -862,7 +856,11 @@ td.bignum {
     position: fixed;
     top: 50%;
     left: 50%;
-    background-color: rgba(0,0,0,0.9);
+    /*background-color: rgba(0,0,0,0.9);
+    background-image: url("Images/Logos/TH Logo.PNG");
+    background-position: 50% 50%;
+    background-size: 75%;
+    background-repeat: no-repeat;*/
 }
 
 .overlay {
