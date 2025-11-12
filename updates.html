@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Hot Wheels</title>
+    <link type="text/css" href="styles.css" rel="stylesheet" />
+    <script src="scripts.js"></script>
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" 
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+</head>
+
+
+<body onload="setSearchRedirect()">
+    <script type="text/javascript">
+        checkMode();
+    </script>
+    
+    <div id="topbar">
+        <input type="button" src="Images/Icons/Ionic-Ionicons-Menu.16.png" onclick="toggleMenu()" id="left_button" />
+        <input type="text" id="search_bar" onkeyup="setTimeout(searchModels(), 250)" src="Images/Icons/Ionic-Ionicons-Search.16.png" />
+        <div class="dropdown">
+            <input type="button"  id="right_button" />
+            <div class="dropdown-content">
+                <input type="button" src="Images/Icons/Ionic-Ionicons-Toggle.16.png" onclick="toggleDarkMode()" id="mode_button" />
+                <input type="button" onclick="toggleView()" id="view_button" />
+                <input type="button" onclick="toggleDetails()" id="details_button" />
+                <input type="button" onclick="clearSearch()" id="clear_button" />
+            </div>
+        </div>
+        <input type="number" name="result counter" value="" disabled="True" id="counter" />
+    </div>
+
+    <div id="menu" class="overlay">
+        <a id="menu_close_button" onclick="closeMenu()">&times;</a>
+        <div id="menu_list"  class="overlay-content">
+            <p class="subheader">Collection</p>
+            <p class="separator"></p>
+            <a href="index.html">Home</a>
+            <a href="collection.html">Owned</a>
+            <a href="preview.html">Statistics</a>
+            <a href="spreadsheet.html">Spreadsheet</a>
+            <p class="subheader">Other</p>
+            <p class="separator"></p>
+            <a href="treasures.html">Treasures</a>
+            <a href="about.html">About</a>
+        </div>
+    </div>
+
+
+    </header>  <!-- END NAVIGATION -->
+    
+    <h1 id="site_name_part1">Archer's</h1>
+        <h1 id="site_name_part2">COLLECTION</h1>
+
+    <table class="bigdata">
+            <td class="bignum">1</td>
+            <td class="bignum">142</td>
+            <td class="bignum">756</td>
+        </tr>
+        <tr>
+            <td class="bigtext">author</td>
+            <td class="bigtext">commits</td>
+            <td class="bigtext">days</td>
+        </tr>
+    </table>
+        
+        <h1 class="section_subheader">Latest update:</h1>
+        
+        <div class="commit">
+            <span class="hash"></span>
+            <span class="commit_date">Tue Nov 11 23:10:00 2025</span>
+            <span class="commit_note">updates.html added</span>
+        </div>
+        
+        <h1 class="section_subheader">Other updates:</h1>
+        
+        <div class="commit">
+            <span class="hash">f2bd562b8bd664977fb80c53eb306423a5b838dc</span>
+            <span class="commit_date">Sun Nov 9 23:05:54 2025</span>
+            <span class="commit_note">collection update / gifts from Dima and DT haul</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> afa677a5184dc92f8350236ebdc51a36e735bc45</span>
+            <span class="commit_date">Sat Nov 8 12:57:16 2025</span>
+            <span class="commit_note">new Premium Honda added</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 8cf1da92fa4dca1fb68dc82038635ed975f73314</span>
+            <span class="commit_date">Sat Nov 8 00:45:34 2025</span>
+            <span class="commit_note">spreadsheet tweaks</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> eeb4a17a713e682926ae779939b86cf6081aa30b</span>
+            <span class="commit_date">Fri Nov 7 23:16:16 2025</span>
+            <span class="commit_note">2 new Hondas added</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 3a37b727e2765fe052f35549b078432d481fe7ee</span>
+            <span class="commit_date">Thu Nov 6 23:01:29 2025</span>
+            <span class="commit_note">collectables updated</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> d0e4416fe4eecd41ab5ae442065dfc6012010760</span>
+            <span class="commit_date">Wed Nov 5 23:05:09 2025</span>
+            <span class="commit_note">small update and path fix</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 6b0da2a7076efdfb61429d8d211e5135d3f01497</span>
+            <span class="commit_date">Tue Nov 4 23:49:39 2025</span>
+            <span class="commit_note">collection and inventories update</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> e8a70b6d135d061868d46e3cc133823c66276064</span>
+            <span class="commit_date">Tue Nov 4 22:50:49 2025</span>
+            <span class="commit_note">positionFooter() removed onload</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> bc701dbc16546d4370bfd2637ca2231418dea5b8</span>
+            <span class="commit_date">Tue Nov 4 22:31:36 2025</span>
+            <span class="commit_note">Matchbox SpaceX and NASA added</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 40085baecee2f4f3ed8e1e2570b85c7abc912f6d</span>
+            <span class="commit_date">Mon Nov 3 23:37:05 2025</span>
+            <span class="commit_note">HWMT fire trucks added</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> fd11e1c66d999e1b240fa4e7be011df4e10b3795</span>
+            <span class="commit_date">Mon Nov 3 22:47:11 2025</span>
+            <span class="commit_note">Matchbox fire trucks added</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> f7abce2a830bf4f1513febfbb9cb0c723a163bdc</span>
+            <span class="commit_date">Sun Nov 2 23:01:23 2025</span>
+            <span class="commit_note">collection update / flea market haul</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 1d3ddb8b84af5cd0d53eba4053ccfb6fac277cd5</span>
+            <span class="commit_date">Sat Nov 1 23:42:06 2025</span>
+            <span class="commit_note">collection and inventories update</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> d718d54e69948a8bc8aa8d25095f0c1f91e703db</span>
+            <span class="commit_date">Sat Nov 1 22:29:57 2025</span>
+            <span class="commit_note">collection update / cars gifted by Debbie and Mindy</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> e15603cc5386647ead70318f20f33e7871127e94</span>
+            <span class="commit_date">Sat Nov 1 00:28:28 2025</span>
+            <span class="commit_note">Matchbox Porsches added</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> d471ff3ec5719498380acf5eeaabb29bfa1b26e9</span>
+            <span class="commit_date">Wed Oct 29 00:10:10 2025</span>
+            <span class="commit_note">Matchbox Hondas added</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 249823376c33eaabc9a95a1ddf7c8282d1979541</span>
+            <span class="commit_date">Tue Oct 28 23:13:04 2025</span>
+            <span class="commit_note">collection update / trade with u/ObscureReference</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 8c75c37f3e0c1c4607b1af3f1c302179402e694b</span>
+            <span class="commit_date">Sun Oct 26 23:05:44 2025</span>
+            <span class="commit_note">.gone class added, update</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> f118b5bfc7f50f2509549d0ac4b4c2c3107176a9</span>
+            <span class="commit_date">Mon Oct 20 22:13:59 2025</span>
+            <span class="commit_note">print and save on spreadsheet.html</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> ac33e975e76dec6a3ddd0a955ca16a9c5f942ee1</span>
+            <span class="commit_date">Sun Oct 19 23:46:09 2025</span>
+            <span class="commit_note">spreadsheet.html added</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 83ceec40d875cb0e8a5f34e0c90dfc8944e0760e</span>
+            <span class="commit_date">Sat Oct 18 19:56:14 2025</span>
+            <span class="commit_note">collection update</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> c01d74d51bede5173f30e3424bdef9cf4ba3e4ed</span>
+            <span class="commit_date">Sat Oct 18 06:48:03 2025</span>
+            <span class="commit_note">logos on treasures.html</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 5f59ac0bd0e393610e1000a49895914bae527f0e</span>
+            <span class="commit_date">Fri Oct 17 22:53:31 2025</span>
+            <span class="commit_note">collection update / tweaked search by notes</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> cd0beaac00390b136930077a7ed6d2caba17e91b</span>
+            <span class="commit_date">Thu Oct 16 22:51:15 2025</span>
+            <span class="commit_note">treasures.html update / 2025 completed</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 99c8af4f62de860fc07eb0f0455c64054da2221b</span>
+            <span class="commit_date">Thu Oct 16 12:22:22 2025</span>
+            <span class="commit_note">logos size-matched</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 914306bd83cc3626da74339a0f708a2ba2d6c898</span>
+            <span class="commit_date">Thu Oct 16 11:04:57 2025</span>
+            <span class="commit_note">minor tweaks</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> ab2f5fbe83ad9441a993380ab8c0840567f301ee</span>
+            <span class="commit_date">Thu Oct 16 06:47:12 2025</span>
+            <span class="commit_note">new logo used for STHs</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> e3a3be611e553b81c92012c5bb717e6cc41b5e55</span>
+            <span class="commit_date">Wed Oct 15 23:56:11 2025</span>
+            <span class="commit_note">toggleView() works on search.html</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 9fc7d3e270434fade1c99252cc9456eb749a230d</span>
+            <span class="commit_date">Wed Oct 15 23:20:25 2025</span>
+            <span class="commit_note">new menu under top right button</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 5628349959000b28b5fd12b69b11fd4c7de14dea</span>
+            <span class="commit_date">Sat Oct 11 12:36:58 2025</span>
+            <span class="commit_note">some info corrected</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> b8e267c2bf61a918b42d11045d6fa01b5db5f9e8</span>
+            <span class="commit_date">Sat Oct 11 12:29:30 2025</span>
+            <span class="commit_note">collection update</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 4d897d3d4493c453922c332ddbf9ece184b737d4</span>
+            <span class="commit_date">Wed Oct 8 23:51:03 2025</span>
+            <span class="commit_note">collection update</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 8a0c4fb7ebda306c64ca89d72cf6ef185fe78b1f</span>
+            <span class="commit_date">Sun Oct 5 22:46:06 2025</span>
+            <span class="commit_note">collection update</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> aeff2f4863d1b6da591a326009d8dafd6d65e3ff</span>
+            <span class="commit_date">Sun Oct 5 00:56:03 2025</span>
+            <span class="commit_note">collection update</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 703d2ffb8aa5e55e6ecafcaed333a1001137753f</span>
+            <span class="commit_date">Sat Sep 27 10:32:44 2025</span>
+            <span class="commit_note">collection update</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 28cdf69767354456f522efe63347b881ab19fdae</span>
+            <span class="commit_date">Tue Sep 23 23:06:46 2025</span>
+            <span class="commit_note">another small collection update</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 8a918fa8ed3eeb26cb0b6cb5465b814679b8fd34</span>
+            <span class="commit_date">Tue Sep 23 22:08:32 2025</span>
+            <span class="commit_note">small collection update</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> aa3d5e3aadb2572cb0a141630176e43af77aa618</span>
+            <span class="commit_date">Mon Sep 8 23:44:20 2025</span>
+            <span class="commit_note">collection update, brand/honda.html</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> a7fd0612a10bfd7d1d48f252de9dc1d2355d9e4c</span>
+            <span class="commit_date">Sat Sep 6 13:35:31 2025</span>
+            <span class="commit_note">collection update</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> ed4debac9888c0d6984fded26c323c396f08fa5e</span>
+            <span class="commit_date">Tue Sep 2 23:38:03 2025</span>
+            <span class="commit_note">logos</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> c510e0bf54fd9f6e2941e7777879760e89fd1e26</span>
+            <span class="commit_date">Tue Sep 2 23:31:42 2025</span>
+            <span class="commit_note">collection update</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> ad465e60cea778c6ac0b46f0b68e6c399bb4c4c4</span>
+            <span class="commit_date">Mon Sep 1 15:15:26 2025</span>
+            <span class="commit_note">div "results" in collection.html</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> c7e77b4e68f5689b1f83902cb2f5f9efcfdee357</span>
+            <span class="commit_date">Mon Sep 1 13:38:05 2025</span>
+            <span class="commit_note">missing models show in completions.html</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> ada3cb057b8cec0fe75ab54c4bbd569ad1e7fbdb</span>
+            <span class="commit_date">Sun Aug 31 13:00:41 2025</span>
+            <span class="commit_note">image paths fixes</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 7b2aa8ab4a6316fa12123246f9e0ea0accea2cd3</span>
+            <span class="commit_date">Sun Aug 31 11:40:22 2025</span>
+            <span class="commit_note">collection update</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 20aa970ee4ab5ad7efc27b8ab52aa1585dea3362</span>
+            <span class="commit_date">Sun Aug 31 08:02:19 2025</span>
+            <span class="commit_note">issues with images resolved</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> a2275a5048ee393a003a9a2173f008a49139a3ea</span>
+            <span class="commit_date">Sun Aug 31 00:15:05 2025</span>
+            <span class="commit_note">collection update and references</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 6b922925eb543634f10bd744d42c5e80c5cf0925</span>
+            <span class="commit_date">Sat Aug 23 22:26:44 2025</span>
+            <span class="commit_note">collection update</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 32d7441d3d2ad3f7885fd21ac665fd3ff3275200</span>
+            <span class="commit_date">Fri Aug 22 23:55:54 2025</span>
+            <span class="commit_note">preview page for stats</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 41663c6bda30f89a2f079d9b6dd0386b30c2db14</span>
+            <span class="commit_date">Wed Aug 20 22:57:32 2025</span>
+            <span class="commit_note">default template header replaced</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 38df959fb55a3db39bc396fa198e23b7fe74f103</span>
+            <span class="commit_date">Wed Aug 20 22:55:00 2025</span>
+            <span class="commit_note">banner added to inventories.html</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 1d572899576cee975cf9b5557bfb1c7994e68675</span>
+            <span class="commit_date">Tue Aug 19 23:58:39 2025</span>
+            <span class="commit_note">inventories added</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 7ac75a140f6e4a532d185c0ced381e02bcd7b64e</span>
+            <span class="commit_date">Sun Aug 17 00:32:49 2025</span>
+            <span class="commit_note">stats.html added</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 4192f1761e041f09f9f2b65b5fe8a33a9b85994e</span>
+            <span class="commit_date">Sat Aug 16 01:21:04 2025</span>
+            <span class="commit_note">stylesheet omitted by accident</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 8f8f02ced822d9138b1f9c9baa266d7b848f6096</span>
+            <span class="commit_date">Sat Aug 16 01:16:49 2025</span>
+            <span class="commit_note">completions, count in ths, scroll</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 0763e61d5d8e62660beaa0ed1cc68d3d083095fd</span>
+            <span class="commit_date">Wed Aug 13 00:27:37 2025</span>
+            <span class="commit_note">smaller links in footer</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 129060d9dbc5dd34f1077e9fe22fbdf686db0bbe</span>
+            <span class="commit_date">Wed Aug 13 00:01:10 2025</span>
+            <span class="commit_note">about.html added</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> afe676e88c86e5178feb0ca384025f2678b34695</span>
+            <span class="commit_date">Tue Aug 12 22:32:06 2025</span>
+            <span class="commit_note">image paths corrected</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 458bdec4bd5224ccebe7a35fe7ee9d44be4d6dba</span>
+            <span class="commit_date">Tue Aug 12 22:24:43 2025</span>
+            <span class="commit_note">collection update</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 7a07fdc972e4c6c3918f2ca9d8d686bc064d8459</span>
+            <span class="commit_date">Tue Aug 12 11:31:18 2025</span>
+            <span class="commit_note">collection update</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> c7d1697935045352c8db10bffeef6c09f3906b7a</span>
+            <span class="commit_date">Sun Aug 10 01:11:33 2025</span>
+            <span class="commit_note">minor changes</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 8a77cf8960dbf60ed10bc567d95805d6fde5378f</span>
+            <span class="commit_date">Sun Aug 10 01:05:03 2025</span>
+            <span class="commit_note">lazy loading for images</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 4b7c01b01f8f226d6ea7c9173f851a1f6b7b06d5</span>
+            <span class="commit_date">Sun Aug 10 00:59:22 2025</span>
+            <span class="commit_note">footer positioning issue</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 70c201d64e092df0efe9b94ca2efcd823926a03b</span>
+            <span class="commit_date">Sun Aug 10 00:57:04 2025</span>
+            <span class="commit_note">missing file extensions</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 5ec43698d2752c809d661f08aca7c01b794a4374</span>
+            <span class="commit_date">Sun Aug 10 00:52:40 2025</span>
+            <span class="commit_note">minor fixes</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 2d26f70f2f1fe91689ffc1bdac11090e540b1640</span>
+            <span class="commit_date">Sun Aug 10 00:38:29 2025</span>
+            <span class="commit_note">finishing touches for stable version</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 314c9011fe0ce271f2a8b9911d8bacf3a9125b82</span>
+            <span class="commit_date">Sun Aug 10 00:25:18 2025</span>
+            <span class="commit_note">STABLE VERSION 0.3</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 4840d21682d1e10d3ae1bdc167dea7ee3398395b</span>
+            <span class="commit_date">Sun Aug 10 00:18:57 2025</span>
+            <span class="commit_note">stable version take whatever</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> f58a40c508a47787cac59d44f885fa234871f1ab</span>
+            <span class="commit_date">Sun Aug 10 00:15:26 2025</span>
+            <span class="commit_note">stable version take 3</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 4a6ac11485033d97a0ee6dba8839addf96d5247f</span>
+            <span class="commit_date">Sun Aug 10 00:06:05 2025</span>
+            <span class="commit_note">stable version take 2</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> d721d13f25580a914a7a07bc7028e0dded671a69</span>
+            <span class="commit_date">Sun Aug 10 00:01:59 2025</span>
+            <span class="commit_note">stable version 0.3</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> c1738ba0c3cd21385194ca8a9f0578c0b1832321</span>
+            <span class="commit_date">Sun Aug 10 00:01:03 2025</span>
+            <span class="commit_note">2025 $TH partial data and image</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> c8c9e1acad8d614eac37ec77f3350c9caf5b11a0</span>
+            <span class="commit_date">Sat Aug 9 23:08:24 2025</span>
+            <span class="commit_note">2025 TH data update</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> e2d04743c4944c9705e481a33038c32c0dabe327</span>
+            <span class="commit_date">Sat Aug 9 23:01:37 2025</span>
+            <span class="commit_note">2025 TH photo update</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> aba75a081ef8e7156712ed8b8b510d7f1f21dc30</span>
+            <span class="commit_date">Sat Aug 9 21:11:45 2025</span>
+            <span class="commit_note">shortened timeout</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 757982b19ab754d37dd6616925d84d731e25ca7b</span>
+            <span class="commit_date">Sat Aug 9 21:02:04 2025</span>
+            <span class="commit_note">search onload tweaks</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 4fbd98701364e2775990751f09dd5033fe19b97a</span>
+            <span class="commit_date">Sat Aug 9 20:57:28 2025</span>
+            <span class="commit_note">search fix with 1 sec timeout</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> ea4bcf4c0b3d22a759bd1ff496009166e3115055</span>
+            <span class="commit_date">Fri Aug 8 09:13:15 2025</span>
+            <span class="commit_note">search fix</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 9c0a0c0b6b24d8cc470c9ac96e10e7a74473a3d0</span>
+            <span class="commit_date">Thu Aug 7 23:55:59 2025</span>
+            <span class="commit_note">search fix</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> bebaadb5f880e2130409482dedca0eb677a702b9</span>
+            <span class="commit_date">Thu Aug 7 23:52:41 2025</span>
+            <span class="commit_note">search fix</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 48ef9a0c71f722a2dbe5e6c323301c19c67db1ab</span>
+            <span class="commit_date">Thu Aug 7 23:49:21 2025</span>
+            <span class="commit_note">search fix</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 6e58b1ca1504920afbe7a0a0eb972f4708c11e8d</span>
+            <span class="commit_date">Thu Aug 7 23:10:18 2025</span>
+            <span class="commit_note">search fix</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> bc97e91beba3d006ba7ad16fb095f9f6ede4a179</span>
+            <span class="commit_date">Thu Aug 7 22:54:04 2025</span>
+            <span class="commit_note">search fix</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 1df89b01c3f9053799e64b432e9fa4f765a29e05</span>
+            <span class="commit_date">Thu Aug 7 22:45:59 2025</span>
+            <span class="commit_note">search fix</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 1bb8bc73b1d20af41502f7da92e7ecb62cc60d71</span>
+            <span class="commit_date">Thu Aug 7 22:33:35 2025</span>
+            <span class="commit_note">search fix</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 3b7237f145f2dd4ddba57c83d7108ecef16ed86a</span>
+            <span class="commit_date">Thu Aug 7 22:15:34 2025</span>
+            <span class="commit_note">search fix</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 79c94ad4cf19773a7c219de72fb565056a5611ff</span>
+            <span class="commit_date">Wed Aug 6 16:53:14 2025</span>
+            <span class="commit_note">async parseAndSearch()</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> b3bed1fa1055a92edab7116202a07c66d1703bd8</span>
+            <span class="commit_date">Wed Aug 6 08:33:50 2025</span>
+            <span class="commit_note">search fix</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 0850abea288151d2feb6150bb0847cf1d58282be</span>
+            <span class="commit_date">Wed Aug 6 08:30:59 2025</span>
+            <span class="commit_note">search fix</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 70c694b948e5a48e3bdafbed48ea769c6bf3daca</span>
+            <span class="commit_date">Wed Aug 6 07:59:32 2025</span>
+            <span class="commit_note">search fix</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 601dbd389bb120a6c1c81494980999ccec6a40e6</span>
+            <span class="commit_date">Wed Aug 6 07:57:05 2025</span>
+            <span class="commit_note">search fix</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 88f771c5e24ecd99d384ea7ee1d81c58c9f7cf42</span>
+            <span class="commit_date">Wed Aug 6 07:52:24 2025</span>
+            <span class="commit_note">search fix</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 27d429f9d0a1294fc573707aaa6f09dd94c6065b</span>
+            <span class="commit_date">Wed Aug 6 07:47:36 2025</span>
+            <span class="commit_note">search fix</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> d8f320d6b558d8633c24b370c700ec09fe250463</span>
+            <span class="commit_date">Tue Aug 5 23:54:25 2025</span>
+            <span class="commit_note">search fix</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 2c0cd38f637f1816b58a1a02ad512a09e46ae790</span>
+            <span class="commit_date">Tue Aug 5 23:36:12 2025</span>
+            <span class="commit_note">search fix</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> e3d7058cccefa2ede20f72bfe954ae2d8113c4c1</span>
+            <span class="commit_date">Tue Aug 5 23:20:00 2025</span>
+            <span class="commit_note">search fix</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> c79c3825f9f82f660793fb54d7db6842b1a37518</span>
+            <span class="commit_date">Tue Aug 5 23:13:21 2025</span>
+            <span class="commit_note">searching for search fix</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 66860544daaa330c7bdfeeaaf02f0df3900dab47</span>
+            <span class="commit_date">Tue Aug 5 23:02:34 2025</span>
+            <span class="commit_note">search fix</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 3599dc259012ad56f49565f3f20752c00dfb1ebe</span>
+            <span class="commit_date">Tue Aug 5 22:52:43 2025</span>
+            <span class="commit_note">search fix</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> cfd9ff8f1f14f01fe901537e072205efb04fc2d8</span>
+            <span class="commit_date">Tue Aug 5 11:19:43 2025</span>
+            <span class="commit_note">search fix 4</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 051759fdaa4ea8b45ad66ea32b0a524e51c5e3a5</span>
+            <span class="commit_date">Tue Aug 5 08:05:49 2025</span>
+            <span class="commit_note">search fix 3</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 04f48d99b93745ca962a2e572fe3531627dbd9d4</span>
+            <span class="commit_date">Mon Aug 4 23:47:30 2025</span>
+            <span class="commit_note">search fix 2</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 6da6648fa60a00b61f12d9e80d6f91ce00800d40</span>
+            <span class="commit_date">Mon Aug 4 23:27:36 2025</span>
+            <span class="commit_note">search fix</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 1154d8f6a3b01b0da3b70ecbe84b4e8e2f919db3</span>
+            <span class="commit_date">Mon Aug 4 23:09:59 2025</span>
+            <span class="commit_note">slideshow added, search optimized</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 4ebd0cb273797abc7e6d0d7b3382a660f0be422b</span>
+            <span class="commit_date">Wed Jul 30 23:53:23 2025</span>
+            <span class="commit_note">text-shadow added to name</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 3a6efec84a6d3a2d2bc2499102d9d79b35e003ba</span>
+            <span class="commit_date">Wed Jul 30 23:02:46 2025</span>
+            <span class="commit_note">new index.html page</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> fa5e2931a93d2dbfb43d3357503f91066b9060be</span>
+            <span class="commit_date">Tue Jul 29 00:10:48 2025</span>
+            <span class="commit_note">url parsing for search parameter</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> b00e91b24dd8699880a747ffc09a0c0c6ae3d6fe</span>
+            <span class="commit_date">Mon Jul 28 23:55:39 2025</span>
+            <span class="commit_note">html: footer & js: search</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 97539b548939e481684b88557a7390cf36a6e4b9</span>
+            <span class="commit_date">Sun Jul 27 01:02:39 2025</span>
+            <span class="commit_note">search through notes added</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 446c711c4ee395f0293874b98b37841d47932084</span>
+            <span class="commit_date">Sun Jul 27 00:48:41 2025</span>
+            <span class="commit_note">counter added and other tweaks</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 44f9ff63ae707cab5d33ff4e5c33c58b13ce8a55</span>
+            <span class="commit_date">Thu Jul 24 12:38:20 2025</span>
+            <span class="commit_note">external stylesheet / html cleaned up and prettified a bit</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> be295e56015293182129a3a0a45abd04f25c6753</span>
+            <span class="commit_date">Tue Jul 22 22:48:30 2025</span>
+            <span class="commit_note">dark mode toggle direction fixed</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> e806b4118575e2a0c09ab14fdd7444384d9a7ae9</span>
+            <span class="commit_date">Tue Jul 22 22:15:13 2025</span>
+            <span class="commit_note">smoother transitions between dark and light modes</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 243945fc6fb8130543310a444dec0280b38863ea</span>
+            <span class="commit_date">Mon Jul 21 21:45:10 2025</span>
+            <span class="commit_note">persistent dark mode / localStorage use added</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> a102291eeb2b3dc2a95daf2e25d48c5ad1c4fa18</span>
+            <span class="commit_date">Mon Jul 21 06:23:20 2025</span>
+            <span class="commit_note">menu reverted back</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> e9c25bb995b46e1a706f8541864b78f335752492</span>
+            <span class="commit_date">Sun Jul 20 23:53:42 2025</span>
+            <span class="commit_note">treasure hunts linked</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> c75cbcf40a5fa584afc9220ce012b05ea065c17a</span>
+            <span class="commit_date">Sat Jul 19 08:52:21 2025</span>
+            <span class="commit_note">dark mode and future menu added</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> f629bda75eb087e7ed7e11b7b133a2e9efe3fb99</span>
+            <span class="commit_date">Mon Jul 14 00:22:40 2025</span>
+            <span class="commit_note">search bar visual tweaks</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 9368d395354dca3d6419b2234d0b1768d7a2d1b4</span>
+            <span class="commit_date">Mon Jul 14 00:13:19 2025</span>
+            <span class="commit_note">sticky search bar</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 578a7a6b6dc2a2f2ba168ed3c53da34317ad5480</span>
+            <span class="commit_date">Sun Jul 13 22:57:54 2025</span>
+            <span class="commit_note">one more photo fixed</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 5eb1f8174e6d60fd6271d30aa1211b0ea2f99a20</span>
+            <span class="commit_date">Sun Jul 13 22:50:23 2025</span>
+            <span class="commit_note">$TH photos labeled correctly</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 75fdc97018df53915477315017e7195902417364</span>
+            <span class="commit_date">Sun Jul 13 22:38:48 2025</span>
+            <span class="commit_note">collection update</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> e3472596a49cca5ec88e21411be6299891801505</span>
+            <span class="commit_date">Sun Jul 13 22:07:38 2025</span>
+            <span class="commit_note">collection update</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 25849d813077db280216216f2446c5e84b1b5125</span>
+            <span class="commit_date">Sun Jul 13 10:13:39 2025</span>
+            <span class="commit_note">collection update</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 1c5b5eab21b2bd2d65ae1e1fc49cf9b88c570605</span>
+            <span class="commit_date">Sat Jul 12 22:59:52 2025</span>
+            <span class="commit_note">a few more missing photos</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> e9e1437275b38018c72b12777c03ffdb69bd4d49</span>
+            <span class="commit_date">Sat Jul 12 22:55:37 2025</span>
+            <span class="commit_note">missing photos added</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> e041954d835645d4f43b47015a576dc4ccf92712</span>
+            <span class="commit_date">Sat Jul 12 00:23:56 2025</span>
+            <span class="commit_note">small visual tweaks</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> c2b5ce902cd4042b5302e8bfba715403400e64b7</span>
+            <span class="commit_date">Fri Jul 11 23:51:11 2025</span>
+            <span class="commit_note">comments to photos added</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 4146b9d5c43928dd7733eea1ed77d28bba970f03</span>
+            <span class="commit_date">Fri Jul 11 22:51:10 2025</span>
+            <span class="commit_note">redesign (dark mode to light)</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> dd69a20cbb112a8ae7bcfdbd66fb4c25f128d0ef</span>
+            <span class="commit_date">Sat Aug 31 00:51:51 2024</span>
+            <span class="commit_note">THunt update</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> efc7677bd9cbcc752af3515ee680a543cb8c44e6</span>
+            <span class="commit_date">Tue Aug 27 20:26:00 2024</span>
+            <span class="commit_note">collection update</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 626d64d87ce682e8cd18f2c26325bd390818a981</span>
+            <span class="commit_date">Fri Jul 5 23:59:58 2024</span>
+            <span class="commit_note">typo fixed</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 05cc940364b328ca3bb2f417efcba5f5fb1a9019</span>
+            <span class="commit_date">Fri Jul 5 23:53:47 2024</span>
+            <span class="commit_note">collection update</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 417edb3a72df8b9977e650701e88636ed1804934</span>
+            <span class="commit_date">Fri Jun 7 09:21:49 2024</span>
+            <span class="commit_note">alt tag for logos</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 0f18de0292c7985e243c526d2d69b8977df4bed2</span>
+            <span class="commit_date">Thu Jun 6 23:49:30 2024</span>
+            <span class="commit_note">collection update</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 5cb88b2217dd729eb58e8cc32e512d494d7336ce</span>
+            <span class="commit_date">Thu Jun 6 23:34:44 2024</span>
+            <span class="commit_note">missing parentheses and collection update</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> d87df963e002b61ae7b68fcde9d413940dd26b12</span>
+            <span class="commit_date">Mon Jan 29 12:30:41 2024</span>
+            <span class="commit_note">collection update</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> ac042f8eb9b2aa48729c4ae45cfe13b0beede7ea</span>
+            <span class="commit_date">Thu Jan 25 23:32:58 2024</span>
+            <span class="commit_note">collection update</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> c9f21dfc13394b7831dfc4f859ed3898b3fe2cb0</span>
+            <span class="commit_date">Mon Oct 30 09:03:50 2023</span>
+            <span class="commit_note">collection update</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 8ec5d80883991aa92ba5465191cae43b5d6a51a4</span>
+            <span class="commit_date">Mon Oct 16 23:10:18 2023</span>
+            <span class="commit_note">&lt;details&gt; tag behavior fixed</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> f916249aa6074a2f1f5a7df0d6867d42e8eec490</span>
+            <span class="commit_date">Mon Oct 16 22:37:48 2023</span>
+            <span class="commit_note">treasure hunt logo display fix</span>
+        </div>
+        
+        <div class="commit">
+            <span class="hash"> 3e3f3f789be2aba13810a326158b7707955a0950</span>
+            <span class="commit_date">Sun Oct 15 23:20:40 2023</span>
+            <span class="commit_note">first iteration</span>
+        </div>
+        
+
+
+    <div id="empty_space" style="height: 60px;"></div>
+    
+    <input type="button" id="help_button" value="" onclick="location.href='reference.html'" />
+    
+    <footer id="page_footer">
+        <p>Last update: <a href="">2025-11-11</a></p>
+        <p>Site design: Konstantin A Kolosov</p>
+        <hr />
+            <a href="index.html">Home</a>
+            <a href="preview.html">Statistics</a>
+            <a href="treasures.html">Treasures</a>
+            <a href="about.html">About</a>
+    </footer>
+    
+
+    </body>
+</html>

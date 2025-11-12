@@ -1566,3 +1566,32 @@ div.searchable.gone > div.wrapper.preview {
         border: 1px solid #eaeaea;
     }
 }
+
+div.commit {
+    width: auto;
+    margin: 20px auto;
+    background: transparent;
+    border: 1px solid gray;
+    border-radius: 16px;
+    padding: 12px;
+    text-align: center;
+}
+
+body.dark-mode div.commit {
+    border-color: lime;
+}
+
+div.commit span.hash {
+    font-size: 12px;
+    color: gray;
+    display: block;
+}
+
+div.commit span.commit_date {
+    color: gray;
+    display: block;
+}
+
+div.commit span.commit_note {
+    font-weight: bold;
+}
