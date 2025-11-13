@@ -1575,6 +1575,7 @@ div.commit {
     border-radius: 16px;
     padding: 12px;
     text-align: center;
+    box-shadow: 0px 1px 3px silver;
 }
 
 body.dark-mode div.commit {
