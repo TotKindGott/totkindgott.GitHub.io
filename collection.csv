@@ -121,7 +121,7 @@ Factory Fresh,2024,4/10,Porsche 911 Carrera RS 2.7,46/250,,New on card,,,,,Porsc
 Factory Fresh,2024,8/10,Alfa Romeo GTV6 3.0,98/250,,New on card,Dollar Tree,,,,,
 Fast Foodie,2022,5/5,Carbonator,135/250,02-22,New on card,Family Dollar,,,,,
 Fast Foodie,2024,3/5,Car-De-Asada,200/250,,New on card,Dollar General,,TH,,,
-Final Run,2004,3/5,Semi-Fast,135,2003,New on card,Flea Market,,,,,
+Final Run,2004,3/5,Semi-Fast,135,2003,Opened,Flea Market,,,,,
 Flyin’ Aces,1998,2/4,Dogfighter,738,1997,Opened,Flea Market,,,,,
 Flyin’ Aces,1998,4/4,XT-3,740,,Opened,Flea Market,,,,,
 Fright Cars,2017,3/5,Street Creeper,008,0377N,New on card,Flea Market,,ZAMAC,,,
@@ -771,9 +771,9 @@ HW J-Imports,2021,3/10,1970 Toyota Celica,151/250,,New on card,Flea Market,,,,,
 HW J-Imports,2024,7/10,Mazda RX-3,156/250,,Opened,Target,,,,[white],Tooned
 HW J-Imports,2024,10/10,Toyota GR86 Cup,203/250,,New on card,Target,,,,,Toni Breidinger
 2004 First Editions,2004,,Tooned Deora,25/100,,New on card,Flea Market,,,,,
-HW Metro,,9/10,Ain’t Fare,77/250,,New on card,Flea Market,,,,,Bus
+HW Metro,2022,9/10,Ain’t Fare,77/250,,New on card,Flea Market,,,,Ain’t Fare (HW Metro 2022) [yellow].JPG,Bus
 HW City,2014,,Surfin’ School Bus,3/250,,New on card,Flea Market,,,,,Bus
-HW City,2014,,Surfin’ School Bus,3/250,,New on card,Flea Market,,,,,Bus
+HW City,2014,,Surfin’ School Bus,3/250,,New on card,Flea Market,,,,Surfin’ School Bus (HW City 2014) [yellow].JPG,Bus
 HW City Works,2017,10/10,Hot Wheels High,93/365,,New on card,Flea Market,,,,,Best for Track / Bus
 Neon Speeders,2023,7/8,Rally Cat,,,New on card,Flea Market,,,,,
 Tesla: Greetings from Space,2019,,2008 Tesla Roadster,,,New on card,Flea Market,,,,,
@@ -820,7 +820,7 @@ Web Trading Cars,2008,24/24,Brutalistic,100/196,,Used,Goodwill,,,,,
 Compact Kings,2022,2/5,VW Bug,42/250,,Used,Goodwill,,,,,
 Flaming Hot Wheels,2003,3/5,Pony-Up,062,,Used,Goodwill,,,,,
 Spring,2019,5/6,Nerve Hammer,,,Used,Goodwill,,,,,
-HW Glow Wheels,2017,5/10,24 Ours,189/366,,Used,Goodwill,,,,,
+HW Glow Wheels,2017,5/10,24 Ours,189/366,,Used,Goodwill,,,,,Glow in the dark
 HW Designs,2009,8/10,Pony-Up,104/190,,Used,Goodwill,,,,,
 HW Art Cars,2020,6/10,La Fasta,114/250,,Used,Goodwill,,,,,
 2008 New Models,2008,8/40,Corvette Grand Sport,8/196,,Used,Goodwill,,,,,
@@ -1096,9 +1096,65 @@ Multipack Exclusive,2025,,Custom 1962 Chevy,,,Opened,,,,,,
 Vintage Racing Club,2024,2/5,Toyota 2000GT,,,New on card,Publix,,,,,
 Vintage Racing Club,2024,3/5,1969 Ford Mustang Boss 302,,,New on card,Publix,,,,,
 Vintage Racing Club,2024,5/5,Custom Datsun 240Z,,,New on card,Publix,,,,,
-MBX Models of Yesteryear,,,1932 Ford AA Truck,,,,Steve,,,,,
-MBX Models of Yesteryear,,,Caterpillar 1933 Diamond T Low-Wall Truck,,,,Steve,,,,,
-MBX Models of Yesteryear,,,1955 Ford F 100,,,,Steve,,,,,
-MBX Super Star Transporters,,,Kenworth Transporter (Neil Bonnett),,,,Steve,,,,,
-MBX Super Star Transporters,,,Kenworth Transporter (Ken Schrader),,,,Steve,,,,,
+MBX Models of Yesteryear,,,1932 Ford AA Truck,,,New in box,Steve,,,,,
+MBX Models of Yesteryear,,,Caterpillar 1933 Diamond T Low-Wall Truck,,,New in box,Steve,,,,,
+MBX Models of Yesteryear,,,1955 Ford F 100,,,New in box,Steve,,,,,
+MBX Super Star Transporters,,,Kenworth Transporter (Neil Bonnett),,,New on card,Steve,,,,,
+MBX Super Star Transporters,,,Kenworth Transporter (Ken Schrader),,,New on card,Steve,,,,,
 HW Hatchbacks,2022,5/5,1999 Honda Civic Type R (EK9),125/250,,New on card,Dima,,,,,
+Twenty +,2005,3/5,Boom Box,118,,Used,Dima,,,,,
+Demo Destruction 5-pack,2023,,Blind-Sided,,,Used,Dima,,,,,
+Corvette 5-pack,2021,,Corvette Stingray,,,Used,Dima,,,,,
+Mystery Car,2009,17/24,Rogue Hog,183/190,,Used,Dima,,,,,
+HW Exotics 5-pack,2017,,Aston Martin DBS,,,Used,Dima,,,,,
+MBX Rescue,2019,11/20,Chevy Blazer 4x4,,,Used,Dima,,,,,
+MBX Highway,2024,,Volkswagen ID.4,,,Used,Dima,,,,,
+MBX Mickey Mouse Clubhouse 5-pack,2009,,Billboard Truck,,,Used,Dima,,,,,
+MBX Construction,2010,1/14,Road Roller,,,Used,Dima,,,,,
+MBX Construction,2009,6/7,Dump Truck,,,Used,Dima,,,,,
+HW Moto,2017,4/5,Street Stealth,,,Used,Dima,,,,,Motorcycle
+Matchbox Mainline,1996,,Fire Engine,,,Opened,,,,,,Fire truck
+MBX EMT 5-pack,2013,,Highway Rescue Fire Truck,,,Used,,,,,,Fire truck
+Nightspeed,2026,3/10,2018 Honda Civic Type R,11/250,,New on card,Dollar Tree,,,,,
+HW Workshop,2014,6/10,1971 Datsun Bluebird 510 Wagon,206/250,2024N,New on card,Dima,,,,,
+Factory Fresh,2026,1/5,Porsche 911 Carrera T,15/250,,New on card,Dollar Tree,,,,,
+Exoticars,2026,1/10,2016 Lamborghini Centenario Roadster,2/250,,New on card,Dollar Tree,,,,,
+Race Day,2025,6/10,McLaren W1,142/250,,New on card,Dollar Tree,,,,,
+HW Starting Grid,2026,2/10,1969 Dodge Charger Daytona,23/250,,New on card,Dollar Tree,,,,,
+Halloween 4-pack,2013,,Howlin' Heat,,,New in 4-pack,Dima,,,,,
+Halloween 4-pack,2013,,Growler,,,New in 4-pack,Dima,,,,,
+Halloween 4-pack,2013,,Ratitude,,,New in 4-pack,Dima,,,,,
+Halloween 4-pack,2013,,Skull Crusher,,,New in 4-pack,Dima,,,,,
+Easter 4-pack,,,Dieselboy,,,New in 4-pack,Dima,,,,,
+Easter 4-pack,,,Corvette Stingray,,,New in 4-pack,Dima,,,,,
+Street Art,1999,4/4,School Bus,952,,Opened,Flea Market,,,,,Bus
+MBX Service,2018,2/20,GMC Scenic Cruiser,,,Opened,Flea Market,,,,,Bus
+MBX City,2025,,EV School Bus,,,Opened,,,,,,Bus
+MBX Adventure City,2016,,Swift Shuttle,,,Used,Flea Market,,,,,Bus
+MBX Airport II 5-pack,2025,,Swift Shuttle,,,Opened,Mommy,,,,,Bus
+HW Art Cars,2025,8/10,Ain’t Fare,88/250,,Opened,,,,,,Bus
+MBX Adventure City,2014,,Two-Story Bus,,,Opened,Flea Market,,,,,Bus
+Matchbox Mainline,2025,,GMC 3500 Utility Truck,,,Opened,Dollar Tree,,,,,
+MBX Rescue Rookies,2002,5/13,Trash Truck,,,Used,,,,,,
+Matchbox Multipack,2008,,Police Car,,,Used,,,,,,
+MBX Explorers,2017,,1970 Datsun 510,,,Opened,Dollar Tree,,,,,
+MBX Highway,2014,,2012 BMW 3 Series Touring,,,Opened,,,,,,
+MBX Adventure,2024,,1980 AMC Eagle,,,Opened,Grandpa,,,,,
+MBX Metro,2024,,Audi e-tron,,,Opened,,,,,,
+MBX Showroom,2022,,2019 Audi TT RS,,,Opened,,,,,,
+MBX Rescue V 5-pack,2025,,Dodge Monaco Police Car,,,Opened,,,,,,Police
+MBX Heroic Rescue 5-pack,2013,,Ford Explorer,,,,,,,,,Fire chief
+MBX Off-Road,2021,,1965 Land Rover Gen II Safari,,,,,,,,,
+Matchbox Mainline,1981,,Mobile Home,,,,,,,,,
+MBX Candy Series Mix 2,2025,,Volkswagen Delivery Van,,,Opened,Family Dollar,,,,,Fluffy Stuff
+MBX Retro 5-pack,2024,,MBX Field Car,,,Opened,,,,,,
+MBX Retro 5-pack,2024,,1990 Volkswagen Golf Country,,,Opened,,,,,,
+Matchbox Mainline,1994,,Tailgator,,,Used,Grandpa,,,,,
+MBX Rescue,2018,11/20,Chevy Blazer 4x4,,,Opened,,,,,,
+MBX Animals,1998,,Rhino Rod,,,Used,Grandpa,,,,,
+MBX Airport II 5-pack,2025,,Ford Police Interceptor,,,Opened,Mommy,,,,,
+MBX Airport II 5-pack,2025,,Runway Wrangler,,,Opened,Mommy,,,,,
+MBX Airport II 5-pack,2025,,Petrol Pumper,,,Opened,Mommy,,,,,
+MBX Airport II 5-pack,2025,,Hardnoze,,,Opened,Mommy,,,,,
+McDonald’s,2002,,Ford Crown Victoria,,,Opened,Mommy,,,,,
+MBX Candy Series Mix 2,2025,6/6,Hummer H2 SUV Concept,,,Opened,,,,,,
