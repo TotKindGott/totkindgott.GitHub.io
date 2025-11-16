@@ -1121,6 +1121,7 @@ body.dark-mode #page_footer > a, body.dark-mode #page_footer > p > a {
     color: black;
     margin-top: 24px;
     margin-bottom: 24px;
+    padding: 16px;
 }
 
 @keyframes pulse {
@@ -1504,6 +1505,20 @@ div.collage > div.searchable {
     margin: 0;
     border: none;
     box-shadow: none;
+}
+
+div.collage.third > div.searchable {
+    width: 33.3%;
+}
+
+div.collage.half > div.searchable {
+    width: 50%;
+    margin-bottom: 2px;
+}
+
+div.collage.full > div.searchable {
+    width: 100%;
+    margin-bottom: 10px;
 }
 
 div.collage > div.searchable div.wrapper {

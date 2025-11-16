@@ -104,19 +104,61 @@ function toggleDetails() {
 };
 
 function toggleView() {
+    
     try {
-        document.getElementById("results").classList.toggle("collage");
+        let div = document.getElementById("frame");
+    
+        if (div.classList.contains("collage")) {
+            
+            if (div.classList.contains("third")) {
+                div.classList.remove("third");
+                div.classList.add("half");
+            } else if (div.classList.contains("half")) {
+                div.classList.remove("half");
+                div.classList.add("full");
+            } else if (div.classList.contains("full")) {
+            div.classList.remove("collage");
+            div.classList.remove("full");
+            } else {
+                console.alert('error');
+            };
+        } else {
+            div.classList.add("collage");
+            div.classList.add("third");
+        };
     } catch (error) {
         void(0);
-        //console.error("An error occurred:", error.message);
     };
+    
     try {
-        document.getElementById("frame").classList.toggle("collage");
+        
+        let div = document.getElementById("results");
+    
+        if (div.classList.contains("collage")) {
+            
+            if (div.classList.contains("third")) {
+                div.classList.remove("third");
+                div.classList.add("half");
+            } else if (div.classList.contains("half")) {
+                div.classList.remove("half");
+                div.classList.add("full");
+            } else if (div.classList.contains("full")) {
+            div.classList.remove("collage");
+            div.classList.remove("full");
+            } else {
+                console.alert('error');
+            };
+        } else {
+            div.classList.add("collage");
+            div.classList.add("third");
+        };
     } catch (error) {
         void(0);
-        //console.error("An error occurred:", error.message);
     };
 }
+
+
+
 
 function searchModels() {
     // searches through data-index attribute of every carDiv
