@@ -53,6 +53,7 @@ table {
 
 html {
     height: 100%;
+    max-width: 900px;
 }
 
 body {
@@ -243,7 +244,7 @@ input.right_button {
     display: block;
 }
 
-#mode_button {
+#mode_button, .mode_button {
     background-image: url("Images/Icons/Ionic-Ionicons-Toggle-outline.16.png");
     background-image: url("Images/Icons/toggle-outline.svg");
     background-size: 16px;
@@ -261,12 +262,19 @@ input.right_button {
     box-shadow: 0 0 5px 1px #ffffff;
 }
 
-body.dark-mode #mode_button
-{
+body.dark-mode #mode_button,
+body.dark-mode .mode_button {
     background-image: url("Images/Icons/Ionic-Ionicons-Toggle.16.png");
     background-image: url("Images/Icons/toggle.svg");
     background-size: 16px;
     transform: rotateY(0deg);
+}
+
+input.mode_button {
+    float: left;
+    display: inline;
+    margin: 0; 
+    margin-right: 18px;
 }
 
 #view_button {
@@ -516,7 +524,7 @@ details {
 }
 
 .photo {
-	width: 75%; 
+	width: 100%;
 	display: block; 
 	margin-left: auto; 
 	margin-right: auto;
@@ -539,21 +547,23 @@ details {
 	background-color: transparent;
 }
 
-.wrapper {
+div.wrapper {
 	position: relative; 
-	width: 100%;
+	width: 75%;
+    max-width: 512px;
+    margin: auto;
 }
 
-img.logo {
+div.wrapper img.logo {
 	position: absolute; 
 	top: 15px; 
-	right: 55px;
+	right: 0px;
 }
 
-p.comment {
+div.wrapper p.comment {
 	position: absolute;
 	bottom: 10px;
-    right: 50px;
+    right: 0px;
 	font-family: cursive;
 	font-size: 22px;
 	font-weight: bold;
@@ -562,10 +572,10 @@ p.comment {
 	color: #000000;
 }
 
-p.tag {
+div.wrapper p.tag {
 	position: absolute;
     bottom: 10px;
-    right: 50px;
+    right: 0px;
 	font-family: monospace;
 	font-size: 18px;
 	font-weight: bold;
@@ -577,10 +587,10 @@ p.tag {
     -webkit-text-stroke-color: black;*/
 }
 
-p.facts {
+div.wrapper p.facts {
 	position: absolute;
     bottom: 10px;
-    right: 50px;
+    right: 0px;
 	font-family: monospace;
 	font-size: 18px;
 	font-weight: bold;
@@ -872,6 +882,16 @@ td.bignum {
   left: 0;
   overflow-x: hidden;
   transition: 0.5s;
+}
+
+.overlay.logo {
+    transition-property: opacity;
+    animation-name: fade-in;
+    transition-duration: 2s;
+    background-image: url("Images/Logos/TH Logo.PNG");
+    background-position: 50% 50%;
+    background-size: 90%;
+    background-repeat: no-repeat;
 }
 
 .overlay-content {
@@ -1347,7 +1367,8 @@ span.photos,
 span.shortcuts,
 span.numbers,
 span.camera,
-span.datajar {
+span.datajar,
+span.safari {
     height: 20px;
     font-weight: medium;
     padding-right: 2px;
@@ -1400,6 +1421,11 @@ span.shortcuts.banner > span.logo {
 span.numbers, 
 span.numbers.banner > span.logo {
     background-image: url('Images/Logos/Numbers.PNG');
+}
+
+span.safari, 
+span.safari.banner > span.logo {
+    background-image: url('Images/Logos/Safari.PNG');
 }
 
 span.textastic, 
@@ -1511,14 +1537,41 @@ div.collage.third > div.searchable {
     width: 33.3%;
 }
 
+div.collage.third div.searchable img.logo {
+    top: 3%; 
+    right: 3%;
+    width: 22%;
+    height: 22%;
+}
+
 div.collage.half > div.searchable {
     width: 50%;
     margin-bottom: 2px;
 }
 
+div.collage.half div.searchable img.logo {
+    top: 3%; 
+    right: 3%;
+    width: 17%;
+    height: 17%;
+}
+
 div.collage.full > div.searchable {
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 10px; 
+}
+
+div.collage.full div.searchable img.logo {
+    top: 3%; 
+    right: 3%;
+    width: 12%;
+    height: 12%;
+}
+
+div.collage.third div.wrapper, 
+div.collage.half div.wrapper, 
+div.collage.full div.wrapper {
+    width: 100%;
 }
 
 div.collage > div.searchable div.wrapper {

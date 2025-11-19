@@ -13,7 +13,7 @@
     
 </head>
 
-<body onload="loadingSequence()">
+<body onload="positionFooter()">
 
     <script type="text/javascript">
         checkMode();
@@ -37,6 +37,24 @@
     </div>
 
     </header>  <!-- END NAVIGATION -->
+    <div id="menu" class="overlay">
+        <a id="menu_close_button" onclick="closeMenu()">&times;</a>
+        <div id="menu_list"  class="overlay-content">
+            <p class="subheader">Collection</p>
+            <p class="separator"></p>
+            <a href="index.html">Home</a>
+            <a href="collection.html">Owned</a>
+            <a href="preview.html">Statistics</a>
+            <a href="spreadsheet.html">Spreadsheet</a>
+            <p class="subheader">Other</p>
+            <p class="separator"></p>
+            <a href="treasures.html">Treasures</a>
+            <a href="about.html">About</a>
+        </div>
+    </div>
+    
+    <h1 id="site_name_part1">Desired</h1>
+    <h1 id="site_name_part2">treasures</h1>
 
     <div id='results'>  <!-- BODY -->
     
