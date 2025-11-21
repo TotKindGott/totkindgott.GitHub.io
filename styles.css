@@ -60,7 +60,6 @@ body {
     transition-property: background-color;
     transition-duration: 0.5s;
 	background-color: #f7f7f7; 
-	width: 390; 
     /*height: 844;*/
 	padding-left: 10px; 
 	padding-right: 10px; 
