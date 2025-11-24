@@ -11,7 +11,7 @@
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 </head>
 
-<body onload="getCollection()" onscroll="hideDynamics()">
+<body onload="getCollection()">
 
     <script type="text/javascript">
         checkMode();
@@ -63,8 +63,7 @@
         width: 70%;
         display: table;
         background-color: rgba(0,0,0,0.25);
-        
-        border-radius: 14px;
+        border-radius: 10px;
         margin: 0;
         position: fixed;
         top: 38px;
@@ -121,7 +120,6 @@ function findMatches() {
     let year = document.getElementById("years_input").value;
     let series = document.getElementById("series_input").value;
     let query = document.getElementById("search_bar").value;
-    
     let divs = document.getElementsByClassName("searchable");
     
     for (var i = 0; i < divs.length; i++) {
@@ -137,54 +135,16 @@ function findMatches() {
     };
 };
     
-function searchVisible(query) {
-    // searches through data-index attribute of every carDiv
-    
-    //let visibleCount = document.getElementsByClassName("visible").length;
-    
-    
-    //if (visibleCount == 0) {
-        //void(0);
-        //console.log('visible', visibleCount);
-        //let divs = document.getElementsByClassName("searchable");
-        //console.log("searchable", divs.length);
-        //for (var i = 0; i < divs.length; i++) {
-            
-           //divs[i].style.display = 'block'; //divs[i].classList.add("visible");
-        //};
-    //} else {
-        
-    
-    let search_query = query.toLowerCase();
-    let carDivs = document.getElementsByClassName('searchable');
-    for (i = 0; i < carDivs.length; i++) {
-        cardiv = carDivs[i];
-        if (
-        cardiv.getAttribute("data-index").toLowerCase().includes(search_query)) {
-            cardiv.style.display = "block";
-            cardiv.classList.add("visible");
-        }
-        else {
-            cardiv.style.display = "none";
-            cardiv.classList.remove("visible");
-        };
-    };
-    updateCount();
-//};
-};
 
-    
     function run(id) {
-        //console.log(document.getElementById("years_input").value);
         try {
             var input_field = document.getElementById(id);
             //console.log(input_field + input_field.value);
         } catch (error) {
             void(0);
-        }
-        
-        //searchVisible(input_field.value);
+        };
         findMatches();
+        updateCount();
     };
     
 function showSearchTools() {
@@ -193,12 +153,8 @@ function showSearchTools() {
     tools_element.style.zIndex = 8;
     tools_element.style.position = "fixed";
     tools_element.style.display = "block";
-    }, 250);
-}
-
-function hideDynamics() {
-    document.getElementById("advanced_search").style.display = "none";
-}
+    }, 50);
+};
 
 </script>
 
@@ -215,7 +171,7 @@ function hideDynamics() {
 
 <div id="advanced_search">
     
-    <input type="search" list="tags" placeholder="TAG" class="select" id="tags_input" onchange="run('tags_input')">
+    <input type="search" list="tags" placeholder="TAG" class="select" id="tags_input" onkeyup="run('tags_input')" onchange="run('tags_input')">
 
     <datalist id="tags">
         <option value="" />
@@ -639,6 +595,19 @@ function hideDynamics() {
     
     document.getElementById("conditions_input").classList.add("full");
     document.getElementById("years_input").classList.add("right");
+    
+    function hideDynamics() {
+    document.getElementById("advanced_search").style.display = "none";
+    };
+    
+    const searchBar = document.getElementById("search_bar");
+    const searchTools = document.getElementById("advanced_search");
+
+    document.addEventListener('click', function(event) {
+        if (!searchTools.contains(event.target) & !searchBar.contains(event.target)) {
+            hideDynamics();
+        };
+    });
     
 </script>
 
