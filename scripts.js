@@ -180,6 +180,15 @@ function clearSearch() {
     document.getElementById("search_bar").setAttribute("value", '');
     document.getElementById("search_bar").value = "";
     
+    try {
+        document.getElementById("tags_input").value = "";
+        document.getElementById("years_input").value = "";
+        document.getElementById("series_input").value = "";
+        document.getElementById("conditions_input").value = "";
+    } catch (error) {
+        void(0);
+    }
+    
     searchModels();
 };
 
@@ -309,7 +318,7 @@ function findMatches() {
     for (var i = 0; i < divs.length; i++) {
         let div = divs[i];
         let data = div.getAttribute("data-index").toLowerCase();
-        if (data.includes(query.toLowerCase()) && data.includes('tag:' + tag.toLowerCase()) && data.includes('year:' + year) && data.includes('condition:' + condition) && data.includes('series:' + series.toLowerCase())) {
+        if (data.includes(query.toLowerCase()) && data.includes('tag:' + tag.toLowerCase()) && data.includes('year:' + year) && data.includes('condition:' + condition.toLowerCase()) && data.includes('series:' + series.toLowerCase())) {
              div.classList.add("visible");
             div.style.display = "block";
         } else {
