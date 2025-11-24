@@ -151,6 +151,57 @@ input.search_bar:disabled {
     color: black;
 }
 
+#advanced_search {
+    width: 70%;
+    display: table;
+    background-color: rgba(0,0,0,0.25);
+    border-radius: 10px;
+    margin: 0;
+    position: fixed;
+    top: 38px;
+    left: 15%;
+    z-index: 8;
+    box-shadow: 0 0 5px 1px #ffffff;
+}
+
+#advanced_search > input.select {
+    font: normal 16px monospace;
+    color: black;
+    display: block;
+    margin: 2.5% auto;
+    text-indent: 5px;
+    border: 1px solid white;
+    background: white);
+    background-image: url("Images/Icons/Ionic-Ionicons-Search.16.png");
+    background-image: url("Images/Icons/search-sharp.svg");
+    background-size: 16px;
+    background-position: left 5px top 50%;
+    background-repeat: no-repeat;
+    background-color: rgba(255,255,255,0.9);
+    text-indent: 16px;
+    text-align: left;
+    outline: none;
+    vertical-align: center;
+    justify-content: center;
+    text-transform: uppercase;
+}
+
+#advanced_search > input.select.full {
+    width: 95%;
+}
+
+#advanced_search > input.select.half.left {
+    width: 46%;
+    float: left;
+    margin-left: 2.5%;
+}
+
+#advanced_search > input.select.half.right {
+    width: 46%;
+    float: right;
+    margin-right: 2.5%;
+}
+
 #left_button {
     background-image: url("Images/Icons/Ionic-Ionicons-Menu.16.png");
     background-image: url("Images/Icons/menu.svg");
@@ -1536,6 +1587,10 @@ div.collage > div.searchable {
     margin: 0;
     border: none;
     box-shadow: none;
+}
+
+div.collage > div.searchable > div.wrapper {
+    padding: 0;
 }
 
 div.collage.third > div.searchable {

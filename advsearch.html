@@ -57,104 +57,9 @@
     TODO: on select from either search bar filter out suggestions in all others input fields to match the selection
 -->
 
-<style>
-
-    #advanced_search {
-        width: 70%;
-        display: table;
-        background-color: rgba(0,0,0,0.25);
-        border-radius: 10px;
-        margin: 0;
-        position: fixed;
-        top: 38px;
-        left: 15%;
-        z-index: 8;
-        box-shadow: 0 0 5px 1px #ffffff;
-    }
-
-    #advanced_search > input.select {
-        font: normal 16px monospace;
-        color: black;
-        display: block;
-        margin: 2.5% auto;
-        text-indent: 5px;
-        border: 1px solid white;
-        background: white);
-        background-image: url("Images/Icons/Ionic-Ionicons-Search.16.png");
-        background-image: url("Images/Icons/search-sharp.svg");
-        background-size: 16px;
-        background-position: left 5px top 50%;
-        background-repeat: no-repeat;
-        background-color: rgba(255,255,255,0.9);
-        text-indent: 16px;
-        text-align: left;
-        outline: none;
-        vertical-align: center;
-        justify-content: center;
-        text-transform: uppercase;
-    }
-    
-    #advanced_search > input.select.full {
-        width: 95%;
-    }
-    
-    #advanced_search > input.select.half.left {
-        width: 46%;
-        float: left;
-        margin-left: 2.5%;
-    }
-    
-    #advanced_search > input.select.half.right {
-        width: 46%;
-        float: right;
-        margin-right: 2.5%;
-    }
-
-</style>
-
 <script>
     
-function findMatches() {
-    
-    let tag = document.getElementById("tags_input").value;
-    let year = document.getElementById("years_input").value;
-    let series = document.getElementById("series_input").value;
-    let query = document.getElementById("search_bar").value;
-    let divs = document.getElementsByClassName("searchable");
-    
-    for (var i = 0; i < divs.length; i++) {
-        let div = divs[i];
-        let data = div.getAttribute("data-index").toLowerCase();
-        if (data.includes(query.toLowerCase()) && data.includes('tag:' + tag.toLowerCase()) && data.includes('year:' + year) && data.includes('series:' + series.toLowerCase())) {
-             div.classList.add("visible");
-            div.style.display = "block";
-        } else {
-            div.classList.remove("visible");
-            div.style.display = 'none';
-        };
-    };
-};
-    
 
-    function run(id) {
-        try {
-            var input_field = document.getElementById(id);
-            //console.log(input_field + input_field.value);
-        } catch (error) {
-            void(0);
-        };
-        findMatches();
-        updateCount();
-    };
-    
-function showSearchTools() {
-    let tools_element = document.getElementById("advanced_search");
-    setTimeout(() => {
-    tools_element.style.zIndex = 8;
-    tools_element.style.position = "fixed";
-    tools_element.style.display = "block";
-    }, 50);
-};
 
 </script>
 
@@ -171,7 +76,7 @@ function showSearchTools() {
 
 <div id="advanced_search">
     
-    <input type="search" list="tags" placeholder="TAG" class="select" id="tags_input" onkeyup="run('tags_input')" onchange="run('tags_input')">
+    <input type="search" list="tags" placeholder="TAG" class="select" id="tags_input" onkeyup="matchInput('tags_input')" onchange="matchInput('tags_input')">
 
     <datalist id="tags">
         <option value="" />
@@ -186,7 +91,7 @@ function showSearchTools() {
     </datalist>
 
 
-    <input type="search" list="years" placeholder="YEAR" class="select" id="years_input" onchange="run('years_input')">
+    <input type="search" list="years" placeholder="YEAR" class="select" id="years_input" onchange="matchInput('years_input')">
 
     <datalist id="years">
         <option value="" />
@@ -235,7 +140,7 @@ function showSearchTools() {
     </datalist>
 
 
-    <input type="search" list="series" placeholder="SERIES" class="select" id="series_input" onchange="run('series_input')">
+    <input type="search" list="series" placeholder="SERIES" class="select" id="series_input" onchange="matchInput('series_input')">
 
     <datalist id="series">
         <option value="1998 First Editions" />

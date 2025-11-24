@@ -155,10 +155,7 @@ function toggleView() {
     } catch (error) {
         void(0);
     };
-}
-
-
-
+};
 
 function searchModels() {
     // searches through data-index attribute of every carDiv
@@ -299,3 +296,46 @@ function replaceDaysSince() {
                  };
              };
         };
+
+function findMatches() {
+    
+    let tag = document.getElementById("tags_input").value;
+    let year = document.getElementById("years_input").value;
+    let series = document.getElementById("series_input").value;
+    let condition = document.getElementById("conditions_input").value;
+    let query = document.getElementById("search_bar").value;
+    let divs = document.getElementsByClassName("searchable");
+    
+    for (var i = 0; i < divs.length; i++) {
+        let div = divs[i];
+        let data = div.getAttribute("data-index").toLowerCase();
+        if (data.includes(query.toLowerCase()) && data.includes('tag:' + tag.toLowerCase()) && data.includes('year:' + year) && data.includes('condition:' + condition) && data.includes('series:' + series.toLowerCase())) {
+             div.classList.add("visible");
+            div.style.display = "block";
+        } else {
+            div.classList.remove("visible");
+            div.style.display = 'none';
+        };
+    };
+};
+    
+
+function matchInput(id) {
+    try {
+        var input_field = document.getElementById(id);
+        //console.log(input_field + input_field.value);
+    } catch (error) {
+        void(0);
+    };
+    findMatches();
+    updateCount();
+};
+    
+function showSearchTools() {
+    let tools_element = document.getElementById("advanced_search");
+    setTimeout(() => {
+    tools_element.style.zIndex = 8;
+    tools_element.style.position = "fixed";
+    tools_element.style.display = "block";
+    }, 50);
+};
