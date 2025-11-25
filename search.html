@@ -6,6 +6,7 @@
     <title>Hot Wheels</title>
     <link type="text/css" href="styles.css" rel="stylesheet" />
     <script src="scripts.js"></script>
+    <script src="search.js"></script>
     <meta name="format-detection" content="telephone=no" />
     <meta name="viewport" 
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -22,14 +23,14 @@
 
     <div id="topbar">
         <input type="button" src="Images/Icons/Ionic-Ionicons-Menu.16.png" onclick="toggleMenu()" id="left_button" />
-        <input type="text" id="search_bar" onkeyup="searchModels(); hideDivsOnEmpty(); positionFooter();" src="Images/Icons/Ionic-Ionicons-Search.16.png" onfocus="showSearchTools()" />
+        <input type="text" id="search_bar" onkeyup="findMatches(); hideDivsOnEmpty(); positionFooter(); //parseDatalists()" src="Images/Icons/Ionic-Ionicons-Search.16.png" onfocus="showSearchTools(); restoreOptions(); parseDatalists()" />
         <div class="dropdown">
             <input type="button"  id="right_button" />
             <div class="dropdown-content">
                 <input type="button" src="Images/Icons/Ionic-Ionicons-Toggle.16.png" onclick="toggleDarkMode()" id="mode_button" />
                 <input type="button" onclick="toggleView()" id="view_button" />
                 <input type="button" onclick="toggleDetails()" id="details_button" />
-                <input type="button" onclick="clearSearch()" id="clear_button" />
+                <input type="button" onclick="clearSearch(); restoreOptions()" id="clear_button" />
             </div>
         </div>
         <input type="number" name="result counter" value="" disabled="True" id="counter" />
@@ -55,12 +56,12 @@
     </header>  <!-- END NAVIGATION -->
 
         <h1 id="site_name_part1">Archer's</h1>
-        <h1 id="site_name_part2">COLLECTION</h1>
-    
-    <div id="frame"></div>
+        <h1 id="site_name_part2">COLLECTION</h1>     
+        
+<div id="frame"></div>
     
 <div id="advanced_search">
-    <input type="search" list="tags" placeholder="TAG" class="select" id="tags_input" onchange="matchInput('tags_input')" onkeyup="matchInput('tags_input')">
+    <input type="search" list="tags" placeholder="TAG" class="select" id="tags_input" onchange="findMatches();" onkeyup="findMatches();">
 
     <datalist id="tags">
         <option value="" />
@@ -75,7 +76,7 @@
     </datalist>
 
 
-    <input type="search" list="years" placeholder="YEAR" class="select" id="years_input" onchange="matchInput('years_input')" onkeyup="matchInput('years_input')">
+    <input type="search" list="years" placeholder="YEAR" class="select" id="years_input" onchange="findMatches();" onkeyup="findMatches();">
 
     <datalist id="years">
         <option value="" />
@@ -124,7 +125,7 @@
     </datalist>
 
 
-    <input type="search" list="series" placeholder="SERIES" class="select" id="series_input" onchange="matchInput('series_input')" onkeyup="matchInput('series_input')">
+    <input type="search" list="series" placeholder="SERIES" class="select" id="series_input" onchange="findMatches()" onkeyup="findMatches()">
 
     <datalist id="series">
         <option value="1998 First Editions" />
@@ -436,7 +437,7 @@
     </datalist>
 
 
-    <input type="search" list="conditions" placeholder="CONDITION" class="select" id="conditions_input" onchange="matchInput('conditions_input')" onkeyup="matchInput('conditions_input')">
+    <input type="search" list="conditions" placeholder="CONDITION" class="select" id="conditions_input" onchange="findMatches()" onkeyup="findMatches()">
 
     <datalist id="conditions">
         <option value="" />
@@ -457,29 +458,7 @@
 
 <script>
     
-    document.getElementById("years_input").classList.add("half");
-    document.getElementById("years_input").classList.add("right");
     
-    document.getElementById("tags_input").classList.add("half");
-    
-    document.getElementById("tags_input").classList.add("left");
-    document.getElementById("series_input").classList.add("full");
-    
-    document.getElementById("conditions_input").classList.add("full");
-    document.getElementById("years_input").classList.add("right");
-    
-    function hideDynamics() {
-    document.getElementById("advanced_search").style.display = "none";
-    };
-    
-    const searchBar = document.getElementById("search_bar");
-    const searchTools = document.getElementById("advanced_search");
-
-    document.addEventListener('click', function(event) {
-        if (!searchTools.contains(event.target) & !searchBar.contains(event.target)) {
-            hideDynamics();
-        };
-    });
     
 </script>
     
@@ -487,7 +466,7 @@
     
     <input type="button" id="help_button" value="" onclick="location.href='reference.html'" />
     
-    <footer id="page_footer">
+    <footer id="page_footer" class="fixed-position">
         <p>Last update: <a href="updates.html">2025-11-20</a></p>
         <p>Site design: Konstantin A Kolosov</p>
         <hr />
@@ -497,7 +476,53 @@
             <a href="about.html">About</a>
     </footer>
     
-   
+<script>
+    
+const seriesOptions = document.getElementById("series").innerHTML;
+const yearOptions = document.getElementById("years").innerHTML;
+const conditionOptions = document.getElementById("conditions").innerHTML;
+const tagOptions = document.getElementById("tags").innerHTML;
+const seriesOptionsList = document.getElementById("series").options;
+const yearOptionsList = document.getElementById("years").options;
+const tagOptionsList = document.getElementById("tags").options;
+const conditionOptionsList = document.getElementById("conditions").options;
+
+document.getElementById("years_input").classList.add("half");
+document.getElementById("years_input").classList.add("right");
+    
+document.getElementById("tags_input").classList.add("half");
+    
+document.getElementById("tags_input").classList.add("left");
+document.getElementById("series_input").classList.add("full");
+    
+document.getElementById("conditions_input").classList.add("full");
+document.getElementById("years_input").classList.add("right");
+
+const searchBar = document.getElementById("search_bar");
+const searchTools = document.getElementById("advanced_search");
+
+document.addEventListener('click', function(event) {
+    if (!searchTools.contains(event.target) & !searchBar.contains(event.target)) {
+        hideDynamics();
+    }; // if else block ends
+}); // addEventListener ends
+
+
+    //clearOptions();
+    
+    //let arr = new Array(document.getElementById("years").options);
+    //console.log(typeof(arr));
+    
+    //arr.filter(y => y.value !== "1999");
+    //console.log(arr);
+    //document.getElementById("years").innerHTML = arr;
+    
+    //restoreOptions();
+    
+    
+    
+</script>
+    
 </body>
 
 </html>
