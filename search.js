@@ -24,6 +24,7 @@ function findMatches() {
             div.style.display = 'none';
         }; // if else block ends
     }; // for loop ends
+    updateCount(document.getElementsByClassName("visible").length);
     //restoreOptions();
     parseDatalists();
 }; // finaMatches function ends
@@ -137,3 +138,12 @@ function clearOptions() {
     document.getElementById("tags").innerHTML = "";
     document.getElementById("conditions").innerHTML = "";
 }; // clearOptions function ends
+
+function updateCount(count = 0) {
+    // outputs count in #counter
+       if (count === 0) {
+        document.getElementById("counter").setAttribute("value", countResults());
+        } else {
+            document.getElementById("counter").setAttribute("value", count);
+        };
+    };

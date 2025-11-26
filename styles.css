@@ -327,7 +327,7 @@ input.mode_button {
     margin-right: 18px;
 }
 
-#view_button {
+#view_button, .view_button {
     background-image: url("Images/Icons/apps-sharp.svg");
     background-size: 16px;
     background-position: center;
@@ -345,7 +345,14 @@ input.mode_button {
     z-index: 10;
 }
 
-#details_button {
+.view_button {
+    float: left;
+    display: inline;
+    margin: 0; 
+    margin-right: 18px;
+}
+
+#details_button, .details_button {
     background-image: url("Images/Icons/newspaper-outline.svg");
     background-size: 16px;
     background-position: center;
@@ -363,6 +370,12 @@ input.mode_button {
     z-index: 10;
 }
 
+.details_button {
+    float: left;
+    display: inline;
+    margin: 0; 
+    margin-right: 18px;
+}
 
 ::placeholder {
     color: gray;
@@ -390,7 +403,7 @@ input.mode_button {
     background-color: transparent;
 }
 
-#clear_button {
+#clear_button, .clear_button {
     background-image: url("Images/Icons/reload-outline.svg");
     background-size: 16px;
     background-position: center;
@@ -406,6 +419,13 @@ input.mode_button {
     padding: 0;
     box-shadow: 0 0 5px 1px #ffffff;
     z-index: 10;
+}
+
+.clear_button {
+    float: left;
+    display: inline;
+    margin: 0; 
+    margin-right: 18px;
 }
 
 #help_button {
@@ -1727,5 +1747,5 @@ div.commit span.commit_date {
 }
 
 div.commit span.commit_note {
-    font-weight: bold;
+    font-weight: bolder;
 }
