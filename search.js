@@ -10,15 +10,20 @@ function findMatches() {
     let year = document.getElementById("years_input").value;
     let series = document.getElementById("series_input").value;
     let condition = document.getElementById("conditions_input").value;
+    let source = document.getElementById("sources_input").value;
     let query = document.getElementById("search_bar").value;
     let divs = document.getElementsByClassName("searchable");
     
     for (var i = 0; i < divs.length; i++) {
         let div = divs[i];
         let data = div.getAttribute("data-index").toLowerCase();
-        if (data.includes(query.toLowerCase()) && data.includes('tag:' + tag.toLowerCase()) && data.includes('year:' + year) && data.includes('condition:' + condition.toLowerCase()) && data.includes('series:' + series.toLowerCase())) {
-             div.classList.add("visible");
-            div.style.display = "block";
+        if (data.includes(query.toLowerCase()) && data.includes('tag:' + tag.toLowerCase()) && data.includes('year:' + year) && data.includes('condition:' + condition.toLowerCase()) && data.includes('source:' + source.toLowerCase()) && data.includes('series:' + series.toLowerCase())) {
+            div.classList.add("visible");
+            if (div.nodeName == 'TR') {
+                div.style.display = "table-row";
+            } else {
+                div.style.display = "block";
+            };
         } else {
             div.classList.remove("visible");
             div.style.display = 'none';
@@ -50,11 +55,12 @@ function parseDatalists() {
     let tagMatches = [];
     let conditionMatches = [];
     let seriesMatches = [];
+    let sourceMatches = [];
     
     if (visibleDivs.length > 0) {
         // make a list of data-index values and check every option against it
         for (var d = 0; d < visibleDivs.length; d++) {
-            dataIndexes += visibleDivs[d].getAttribute("data-index") + '\n';
+            dataIndexes += visibleDivs[d].getAttribute("data-index").toLowerCase() + '\n';
         }; // for loop ends
         
         // make a new list of options and wrap it in HTML
@@ -94,6 +100,22 @@ function parseDatalists() {
                 }; // if else ends
         }; // for loop ends
         
+        // iterating over sources
+        for (var c = 0; c < sourceOptionsList.length; c++) {
+            if (sourceOptionsList[c].value == null | sourceOptionsList[c].value == "") {continue;};
+            if (dataIndexes.includes("source:" + sourceOptionsList[c].value.toLowerCase())) {
+                sourceMatches.push(sourceOptionsList[c].value);
+                }; // if else ends
+        }; // for loop ends
+        
+        // iterating over conditions
+        for (var c = 0; c < conditionOptionsList.length; c++) {
+            if (conditionOptionsList[c].value == null | conditionOptionsList[c].value == "") {continue;};
+            if (dataIndexes.includes("condition:" + conditionOptionsList[c].value.toLowerCase())) {
+                conditionMatches.push(conditionOptionsList[c].value);
+                }; // if else ends
+        }; // for loop ends
+        
         let newYearOptions = "";
         for (o = 0; o < yearMatches.length; o++) {
             newYearOptions += "<option value='" + yearMatches[o] + "' />\n";
@@ -106,11 +128,23 @@ function parseDatalists() {
         };
         document.getElementById("tags").innerHTML = newTagOptions;
         
+        let newSourceOptions = "";
+        for (o = 0; o < sourceMatches.length; o++) {
+            newSourceOptions += "<option value='" + sourceMatches[o] + "' />\n";
+        };
+        document.getElementById("sources").innerHTML = newSourceOptions;
+        
         let newSeriesOptions = "";
         for (o = 0; o < seriesMatches.length; o++) {
             newSeriesOptions += "<option value='" + seriesMatches[o] + "' />\n";
         };
         document.getElementById("series").innerHTML = newSeriesOptions;
+        
+        let newConditionOptions = "";
+        for (o = 0; o < conditionMatches.length; o++) {
+            newConditionOptions += "<option value='" + conditionMatches[o] + "' />\n";
+        };
+        document.getElementById("conditions").innerHTML = newConditionOptions;
         
     } else {
         //restoreOptions();
@@ -126,6 +160,7 @@ function restoreOptions() {
     document.getElementById("years").innerHTML = yearOptions;
     document.getElementById("tags").innerHTML = tagOptions;
     document.getElementById("conditions").innerHTML = conditionOptions;
+    document.getElementById("sources").innerHTML = sourceOptions;
     
     //console.log("restored options");
 }; // restoreOptions function ends
@@ -137,6 +172,7 @@ function clearOptions() {
     document.getElementById("years").innerHTML = "";
     document.getElementById("tags").innerHTML = "";
     document.getElementById("conditions").innerHTML = "";
+    document.getElementById("sources").innerHTML = "";
 }; // clearOptions function ends
 
 function updateCount(count = 0) {

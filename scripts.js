@@ -165,7 +165,12 @@ function searchModels() {
     for (i = 0; i < carDivs.length; i++) {
         if (
         carDivs[i].getAttribute("data-index").toLowerCase().includes(search_query)) {
+                
+            if (carDivs[i].nodeName == 'TR') {
+                carDivs[i].style.display = "table-row";
+            } else {
                 carDivs[i].style.display = "block";
+            };
             carDivs[i].classList.add("visible");
         }
         else {
@@ -188,7 +193,7 @@ function clearSearch() {
     } catch (error) {
         void(0);
     }
-    
+
     searchModels();
 };
 

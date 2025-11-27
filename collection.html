@@ -6,6 +6,7 @@
     <title>Hot Wheels</title>
     <link type="text/css" href="styles.css" rel="stylesheet" />
     <script src="scripts.js"></script>
+    <script src="search.js"></script>
     <meta name="format-detection" content="telephone=no" />
     <meta name="viewport" 
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -19,7 +20,7 @@
     
     <div id="topbar">
         <input type="button" src="Images/Icons/Ionic-Ionicons-Menu.16.png" onclick="toggleMenu()" id="left_button" />
-        <input type="text" id="search_bar" onkeyup="setTimeout(searchModels(), 250)" src="Images/Icons/Ionic-Ionicons-Search.16.png" onfocus="showSearchTools()" />
+        <input type="text" id="search_bar" onkeyup="findMatches(); hideDivsOnEmpty(); positionFooter();" src="Images/Icons/Ionic-Ionicons-Search.16.png" onfocus="showSearchTools(); restoreOptions(); parseDatalists()" />
         <div class="dropdown">
             <input type="button"  id="right_button" />
             <div class="dropdown-content">
@@ -36537,7 +36538,8 @@
     </div>
 
 <div id="advanced_search">
-    <input type="search" list="tags" placeholder="TAG" class="select" id="tags_input" onchange="matchInput('tags_input')" onkeyup="matchInput('tags_input')">
+
+    <input type="search" list="tags" placeholder="TAG" class="select" id="tags_input" onchange="findMatches()" onkeyup="findMatches()">
 
     <datalist id="tags">
         <option value="" />
@@ -36552,7 +36554,7 @@
     </datalist>
 
 
-    <input type="search" list="years" placeholder="YEAR" class="select" id="years_input" onchange="matchInput('years_input')" onkeyup="matchInput('years_input')">
+    <input type="search" list="years" placeholder="YEAR" class="select" id="years_input" onchange="findMatches()" onkeyup="findMatches()">
 
     <datalist id="years">
         <option value="" />
@@ -36601,7 +36603,7 @@
     </datalist>
 
 
-    <input type="search" list="series" placeholder="SERIES" class="select" id="series_input" onchange="matchInput('series_input')" onkeyup="matchInput('series_input')">
+    <input type="search" list="series" placeholder="SERIES" class="select" id="series_input" onchange="findMatches()" onkeyup="findMatches()">
 
     <datalist id="series">
         <option value="1998 First Editions" />
@@ -36913,7 +36915,7 @@
     </datalist>
 
 
-    <input type="search" list="conditions" placeholder="CONDITION" class="select" id="conditions_input" onchange="matchInput('conditions_input')" onkeyup="matchInput('conditions_input')">
+    <input type="search" list="conditions" placeholder="STATUS" class="select" id="conditions_input" onchange="findMatches()" onkeyup="findMatches()">
 
     <datalist id="conditions">
         <option value="" />
@@ -36929,50 +36931,99 @@
       <option value="Used" />
       
     </datalist>
+
+
+    <input type="search" list="sources" placeholder="SOURCE" class="select" id="sources_input" onchange="findMatches()" onkeyup="findMatches()">
+
+    <datalist id="sources">
+        <option value="" />
+      <option value="Archer" />
+      <option value="Big Lots" />
+      <option value="Brother" />
+      <option value="CVS" />
+      <option value="Community Thrift" />
+      <option value="DD’s Discount" />
+      <option value="Debbie & Mindy" />
+      <option value="Dima" />
+      <option value="Dollar General" />
+      <option value="Dollar Tree" />
+      <option value="Family Dollar" />
+      <option value="Flea Market" />
+      <option value="Found" />
+      <option value="Gina" />
+      <option value="Goodwill" />
+      <option value="Grandma" />
+      <option value="Grandpa" />
+      <option value="Isa" />
+      <option value="Lidl" />
+      <option value="Marketplace" />
+      <option value="Mommy" />
+      <option value="OfferUp" />
+      <option value="Ollie’s" />
+      <option value="Publix" />
+      <option value="Ross" />
+      <option value="Sandy" />
+      <option value="Sissy" />
+      <option value="Steve" />
+      <option value="Target" />
+      <option value="Trade" />
+      <option value="Walgreens" />
+      <option value="Walmart" />
+      
+    </datalist>
     
 </div>
-
-<script>
     
-    document.getElementById("years_input").classList.add("half");
-    document.getElementById("years_input").classList.add("right");
-    
-    document.getElementById("tags_input").classList.add("half");
-    
-    document.getElementById("tags_input").classList.add("left");
-    document.getElementById("series_input").classList.add("full");
-    
-    document.getElementById("conditions_input").classList.add("full");
-    document.getElementById("years_input").classList.add("right");
-    
-    function hideDynamics() {
-    document.getElementById("advanced_search").style.display = "none";
-    };
-    
-    const searchBar = document.getElementById("search_bar");
-    const searchTools = document.getElementById("advanced_search");
-
-    document.addEventListener('click', function(event) {
-        if (!searchTools.contains(event.target) & !searchBar.contains(event.target)) {
-            hideDynamics();
-        };
-    });
-    
-</script>
-
     <div id="empty_space" style="height: 60px;"></div>
     
     <input type="button" id="help_button" value="" onclick="location.href='reference.html'" />
     
-    <footer id="page_footer">
-        <p>Last update: <a href="updates.html">2025-11-23</a></p>
+    <footer id="page_footer" class="fixed-position">
+        <p>Last update: <a href="updates.html">2025-11-20</a></p>
         <p>Site design: Konstantin A Kolosov</p>
         <hr />
-            <a href="index.html">Home</a>
+        <a href="index.html">Home</a>
             <a href="preview.html">Statistics</a>
-            <a href="treasures.html">Treasures</a>
-            <a href="about.html">About</a>
+        <a href="treasures.html">Treasures</a>
+        <a href="about.html">About</a>
     </footer>
+    
+<script type="text/javascript">
+    
+const seriesOptions = document.getElementById("series").innerHTML;
+const yearOptions = document.getElementById("years").innerHTML;
+const conditionOptions = document.getElementById("conditions").innerHTML;
+const tagOptions = document.getElementById("tags").innerHTML;
+const sourceOptions = document.getElementById("sources").innerHTML;
+const seriesOptionsList = document.getElementById("series").options;
+const yearOptionsList = document.getElementById("years").options;
+const tagOptionsList = document.getElementById("tags").options;
+const conditionOptionsList = document.getElementById("conditions").options;
+const sourceOptionsList = document.getElementById("sources").options;
+
+document.getElementById("years_input").classList.add("half");
+document.getElementById("years_input").classList.add("right");
+    
+document.getElementById("tags_input").classList.add("half");
+    
+document.getElementById("tags_input").classList.add("left");
+document.getElementById("series_input").classList.add("full");
+document.getElementById("sources_input").classList.add("half");
+document.getElementById("sources_input").classList.add("left");
+document.getElementById("conditions_input").classList.add("half");
+document.getElementById("conditions_input").classList.add("right");
+document.getElementById("years_input").classList.add("right");
+
+const searchBar = document.getElementById("search_bar");
+const searchTools = document.getElementById("advanced_search");
+
+document.addEventListener('click', function(event) {
+    if (!searchTools.contains(event.target) & !searchBar.contains(event.target)) {
+        hideDynamics();
+    }; // if else block ends
+}); // addEventListener ends
+
+</script>
     
 
     </body>
