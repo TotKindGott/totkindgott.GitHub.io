@@ -7,6 +7,7 @@
     <title>Hot Wheels</title>
     <link type="text/css" href="styles.css" rel="stylesheet" />
     <script src="scripts.js"></script>
+    <script src="buttons.js" defer></script>
     <meta name="format-detection" content="telephone=no" />
     <meta name="viewport" 
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -22,34 +23,33 @@
     <header>  <!-- NAVIGATION -->
     
     <div id="topbar">
-        <input type="button" src="Images/Icons/Ionic-Ionicons-Menu.16.png" onclick="toggleMenu()" id="left_button" />
-        <input type="text" id="search_bar" onkeyup="setTimeout(searchModels(), 250)" src="Images/Icons/Ionic-Ionicons-Search.16.png" />
-        <div class="dropdown">
+        <input type="button" id="left_button" />
+        <input type="text" id="search_bar" />
             <input type="button"  id="right_button" />
-            <div class="dropdown-content">
-                <input type="button" src="Images/Icons/Ionic-Ionicons-Toggle.16.png" onclick="toggleDarkMode()" id="mode_button" />
-                <input type="button" onclick="toggleView()" id="view_button" />
-                <input type="button" onclick="toggleDetails()" id="details_button" />
-                <input type="button" onclick="clearSearch()" id="clear_button" />
+            <div id="dropdown">
+                <input type="button" id="mode_button" />
+                <input type="button" id="view_button" />
+                <input type="button" id="details_button" />
+                <input type="button" id="clear_button" />
             </div>
-        </div>
         <input type="number" name="result counter" value="" disabled="True" id="counter" />
     </div>
 
-    <div id="menu" class="overlay">
-        <a id="menu_close_button" onclick="closeMenu()">&times;</a>
-        <div id="menu_list"  class="overlay-content">
-            <p class="subheader">Collection</p>
-            <p class="separator"></p>
-            <a href="index.html">Home</a>
-            <a href="collection.html">Owned</a>
-            <a href="preview.html">Statistics</a>
-            <p class="subheader">Other</p>
-            <p class="separator"></p>
-            <a href="treasures.html">Treasures</a>
-            <a href="about.html">About</a>
-        </div>
+<div id="menu" class="overlay">
+    <a id="menu_close_button">&times;</a>
+    <div id="menu_list"  class="overlay-content">
+        <p class="subheader">Collection</p>
+        <p class="separator"></p>
+        <a href="index.html">Home</a>
+        <a href="collection.html">Owned</a>
+        <a href="preview.html">Statistics</a>
+        <a href="spreadsheet.html">Spreadsheet</a>
+        <p class="subheader">Other</p>
+        <p class="separator"></p>
+        <a href="treasures.html">Treasures</a>
+        <a href="about.html">About</a>
     </div>
+</div>
 
     
     </header>  <!-- END NAVIGATION -->

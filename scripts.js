@@ -3,20 +3,23 @@ const search_url = 'https://totkindgott.github.io/search.html?search=';
     
 const inputs = document.querySelectorAll('input');
 
+
 inputs.forEach(input => {
-    input.setAttribute('autocomplete', 'off')
-    input.setAttribute('autocorrect', 'off')
-    input.setAttribute('autocapitalize', 'off')
-    input.setAttribute('spellcheck', false)
-});
+    input.setAttribute('autocomplete', 'off');
+    input.setAttribute('autocorrect', 'off');
+    input.setAttribute('autocapitalize', 'off');
+    input.setAttribute('spellcheck', false);
+}); // forEach block ends
+
 
 function checkMode() {
     // checks if dark mode was previously selected
     if (localStorage.getItem("mode") == "dark") {
             var element = document.body;
             element.classList.toggle("dark-mode");
-        }
-};
+        }; // if block ends
+}; // checkMode function ends
+
 
 function toggleDarkMode() {
     // switches between dark & light modes
@@ -24,20 +27,21 @@ function toggleDarkMode() {
     element.classList.toggle("dark-mode");
     if (localStorage.getItem("mode") !== "dark") {
         localStorage.setItem("mode", "dark");
-    }
-    else {
+    } else {
         localStorage.setItem("mode", "light");
-    }
-};
+    }; // if else block ends
+}; // toggleDarkMode function ends
+
 
 function openMenu() {
     // opens main navigation menu
     document.getElementById("menu").style.width = "100%";
     document.getElementById("menu_list").classList.remove("fade-out");
     document.getElementById("menu_list").classList.add("fade-in");
-   
+    document.getElementById("menu").style.opacity = 1;
     document.getElementById("menu_close_button").classList.remove("closed");
-};
+}; // openMenu function ends
+
 
 function closeMenu() {
     // closes main navigation menu
@@ -45,7 +49,8 @@ function closeMenu() {
     document.getElementById("menu_list").classList.add("fade-out");
     document.getElementById("menu_list").classList.remove("fade-in");
     document.getElementById("menu").style.width = "0%";
-};
+}; // closeMenu function ends
+
 
 function toggleMenu() {
     // opens menu if closed and closes if open
@@ -53,31 +58,35 @@ function toggleMenu() {
         closeMenu();
     } else {
         openMenu();
-    }
-};
+    }; // if else block ends
+}; // toggleMenu function ends
+
 
 function positionFooter() {
     if (countResults() == 0) {
         document.getElementById("page_footer").classList.add("fixed-position");
     } else {
         document.getElementById("page_footer").classList.remove("fixed-position");
-    }
-};
+    }; // if else block ends
+}; // positionFooter function ends
+
 
 function countResults() {
     // gets a count of visible carDivs
     let result_count =  document.querySelectorAll(".visible").length;
-    return result_count
-};
+    return result_count;
+}; // countResults function ends
+
 
 function updateCount(count = 0) {
     // outputs count in #counter
-       if (count === 0) {
+    if (count === 0) {
         document.getElementById("counter").setAttribute("value", countResults());
-        } else {
-            document.getElementById("counter").setAttribute("value", count);
-        };
-    };
+    } else {
+        document.getElementById("counter").setAttribute("value", count);
+    }; // if else block ends
+}; // updateCount function ends
+
 
 function hideDivsOnEmpty() {
     // if search is cleared hides every searchable visible div
@@ -87,10 +96,11 @@ function hideDivsOnEmpty() {
             cardiv = cardivs[i];
             cardiv.style.display =  "none";
             cardiv.classList.remove('visible');
-        };
+        }; // for loop ends
         updateCount();
-    };
-};
+    }; // if block ends
+}; // hideDivsOnEmpty function ends
+
 
 function toggleDetails() {
     detailsTags = document.getElementsByTagName('details');
@@ -99,17 +109,16 @@ function toggleDetails() {
         if (detailsTag.open == true) {
             detailsTag.open = false
         } else {
-            detailsTag.open = true}
-    };
-};
+            detailsTag.open = true;
+        }; // if else block ends
+    }; // for loop block ends
+}; // function toggleDetails ends
+
 
 function toggleView() {
-    
     try {
         let div = document.getElementById("frame");
-    
         if (div.classList.contains("collage")) {
-            
             if (div.classList.contains("third")) {
                 div.classList.remove("third");
                 div.classList.add("half");
@@ -121,19 +130,16 @@ function toggleView() {
             div.classList.remove("full");
             } else {
                 console.alert('error');
-            };
+            }; // if else block ends
         } else {
             div.classList.add("collage");
             div.classList.add("third");
-        };
+        }; // if else block ends
     } catch (error) {
         void(0);
-    };
-    
+    }; // try catch block ends
     try {
-        
         let div = document.getElementById("results");
-    
         if (div.classList.contains("collage")) {
             
             if (div.classList.contains("third")) {
@@ -151,11 +157,12 @@ function toggleView() {
         } else {
             div.classList.add("collage");
             div.classList.add("third");
-        };
+        }; // if else block ends
     } catch (error) {
         void(0);
-    };
-};
+    }; // try catch block ends
+}; // toggleView function ends
+
 
 function searchModels() {
     // searches through data-index attribute of every carDiv
@@ -176,26 +183,28 @@ function searchModels() {
         else {
             carDivs[i].style.display = "none";
             carDivs[i].classList.remove("visible");
-        }
-    };
+        }; // if else block ends
+    }; // for loop ends
     updateCount();
-};
+}; // searcbModels function ends
+
 
 function clearSearch() {
     document.getElementById("search_bar").setAttribute("value", '');
     document.getElementById("search_bar").value = "";
-    
     try {
         document.getElementById("tags_input").value = "";
         document.getElementById("years_input").value = "";
         document.getElementById("series_input").value = "";
+                
+        document.getElementById("sources_input").value = "";
         document.getElementById("conditions_input").value = "";
     } catch (error) {
         void(0);
-    }
-
+    }; // try catch block ends
     searchModels();
-};
+}; // clearSearch function ends
+
 
 function searchFor(search_query) {
     // searches through data-index attribute of every carDiv for specified query passed as argument
@@ -219,6 +228,7 @@ function searchFor(search_query) {
     updateCount();
 };
 
+
 function parseURL() {
     // search by parsing url parameter
     // add ?search= + query at url end
@@ -228,14 +238,15 @@ function parseURL() {
         var searchQuery = urlParams.get('search');
         document.getElementById('search_bar').setAttribute("value", searchQuery);
         searchModels();
-    };
+    }; // if block ends
     if (urlParams.has('mode') == true) {
         var mode = urlParams.get('mode');
         if (mode == 'dark') {
             document.body.classList.add('dark-mode');
-        };
-    };
-};
+        }; // if subblock ends
+    }; // if block ends
+}; // function parseURL ends
+
 
 function getCollection() {
     // parses collection.html and loads it into a div id=frame
@@ -249,12 +260,14 @@ function getCollection() {
                 document.getElementById("frame").innerHTML = result_html;
             })
         .catch(error => console.error('Error fetching file:', error));
-};
+}; // getCollection function ends
+
 
 function loadingSequence() {
     parseURL();
     positionFooter();
-};
+}; // loadingSequence function ends
+
 
 function setSearchRedirect() {
     // passes search text as URL arguments to search.html
@@ -262,8 +275,9 @@ function setSearchRedirect() {
         let search_query = document.getElementById("search_bar").value;
         let parsing_url = search_url + encodeURI(search_query.toLowerCase());
         window.open(parsing_url, '_self');
-        });
-};
+        }); // function event ends
+}; // function setSearchRedirect ends
+
 
 async function parseAndSearch() {
     await getCollection();
@@ -272,8 +286,9 @@ async function parseAndSearch() {
         searchModels();
         hideDivsOnEmpty();
         positionFooter();
-    }, 1000);
-};
+    }, 1000); // setTimeout ends
+}; // function parseAndSearch ends
+
 
 function scrollShow(interval = 2000) {
     // simple slideshow
@@ -290,6 +305,7 @@ function scrollShow(interval = 2000) {
     };
     setInterval(nextSlide, interval);
 };
+
 
 function replaceDaysSince() {
         var today = Date.now();
@@ -310,3 +326,25 @@ function replaceDaysSince() {
                  };
              };
         };
+
+
+function showExtraControls() {
+    let extraControls = document.getElementById("dropdown");
+    extraControls.style.display = "block";
+    extraControls.style.opacity = 1;
+};
+
+function hideExtraControls() {
+    let extraControls = document.getElementById("dropdown");
+    extraControls.style.display = "none";
+    extraControls.style.opacity = 0;
+};
+
+function toggleExtraControls() {
+    let extraControls = document.getElementById("dropdown");
+    if (extraControls.style.opacity == 1) {
+         hideExtraControls();
+    } else {
+        showExtraControls();
+    };
+};

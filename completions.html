@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
-    <title>Hot Wheels</title>
+    <title>Collection</title>
     <link type="text/css" href="styles.css" rel="stylesheet" />
     <script src="scripts.js"></script>
+    <script src="buttons.js" defer></script>
+    <!--optional-->
     <meta name="format-detection" content="telephone=no" />
     <meta name="viewport" 
-    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, interactive-widget=resizes-content">
 </head>
-
 
 <body onload="">
 
@@ -38,36 +38,35 @@
     </script>
 
     <header>  <!-- NAVIGATION -->
-    <div id="topbar">
-        <input type="button" src="Images/Icons/Ionic-Ionicons-Menu.16.png" onclick="toggleMenu()" id="left_button" />
-        <input type="text" id="search_bar" onkeyup="setTimeout(searchModels(), 250)" src="Images/Icons/Ionic-Ionicons-Search.16.png" />
-        <div class="dropdown">
-            <input type="button"  id="right_button" />
-            <div class="dropdown-content">
-                <input type="button" src="Images/Icons/Ionic-Ionicons-Toggle.16.png" onclick="toggleDarkMode()" id="mode_button" />
-                <input type="button" onclick="toggleView()" id="view_button" />
-                <input type="button" onclick="toggleDetails()" id="details_button" />
-                <input type="button" onclick="clearSearch()" id="clear_button" />
-            </div>
-        </div>
-        <input type="number" name="result counter" value="" disabled="True" id="counter" />
+<div id="topbar">
+    <input type="button" id="left_button" />
+    <input type="text" id="search_bar" />
+    <input type="button"  id="right_button" />
+    <div id="dropdown">
+        <input type="button" id="mode_button" />
+        <input type="button" id="view_button" />
+        <input type="button" id="details_button" />
+        <input type="button" id="clear_button" />
     </div>
+    <input type="number" name="result counter" value="" disabled="True" id="counter" />
+</div>
 
-    <div id="menu" class="overlay">
-        <a id="menu_close_button" onclick="closeMenu()">&times;</a>
-        <div id="menu_list"  class="overlay-content">
-            <p class="subheader">Collection</p>
-            <p class="separator"></p>
-            <a href="index.html">Home</a>
-            <a href="collection.html">Owned</a>
-            <a href="preview.html">Statistics</a>
-            <a href="spreadsheet.html">Spreadsheet</a>
-            <p class="subheader">Other</p>
-            <p class="separator"></p>
-            <a href="treasures.html">Treasures</a>
-            <a href="about.html">About</a>
-        </div>
+
+<div id="menu" class="overlay">
+    <a id="menu_close_button">&times;</a>
+    <div id="menu_list"  class="overlay-content">
+        <p class="subheader">Collection</p>
+        <p class="separator"></p>
+        <a href="index.html">Home</a>
+        <a href="collection.html">Owned</a>
+        <a href="preview.html">Statistics</a>
+        <a href="spreadsheet.html">Spreadsheet</a>
+        <p class="subheader">Other</p>
+        <p class="separator"></p>
+        <a href="treasures.html">Treasures</a>
+        <a href="about.html">About</a>
     </div>
+</div>
 
 
     </header>  <!-- END NAVIGATION -->
@@ -395,32 +394,32 @@
             </tr>
         
         <tr>
-            <td class="grayed">-i</td>
-			<td class="right">1/5</td>
+            
+			<td class="right" colspan=2>1/5</td>
 			<td colspan=2 class="bold">Flat Iron</td>
         </tr>
         
         <tr>
-            <td class="grayed">-i</td>
-			<td class="right">2/5</td>
+            
+			<td class="right" colspan=2>2/5</td>
 			<td colspan=2 class="bold">Cruise Bruiser</td>
         </tr>
         
         <tr>
-            <td class="grayed">-i</td>
-			<td class="right">3/5</td>
+            
+			<td class="right" colspan=2>3/5</td>
 			<td colspan=2 class="bold">Repo Duty</td>
         </tr>
         
         <tr>
-            <td class="grayed">-i</td>
-			<td class="right">4/5</td>
+            
+			<td class="right" colspan=2>4/5</td>
 			<td colspan=2 class="bold">Blind-Sided</td>
         </tr>
         
         <tr>
-            <td class="grayed">-i</td>
-			<td class="right">5/5</td>
+            
+			<td class="right" colspan=2>5/5</td>
 			<td colspan=2 class="bold">Project Speeder</td>
         </tr>
         
@@ -2174,6 +2173,44 @@
         </table>
     </div>
     
+    <div class="searchable collection_status" data-index="MBX Airport Alarm 2002">
+        <table class="collection_status">
+        <colgroup>
+            <col style="width: 10%">
+            <col style="width: 10%">
+            <col style="width: 70%">
+            <col style="width: 10%"
+        </colgroup>
+        <tbody>
+            <tr class="subheader">
+                <td class="almost_full_collection">75%</td>
+                <td class="right">2002</td>
+                <td>MBX AIRPORT ALARM</td>
+                <td class="right grayed">3/4</td>
+            </tr>
+        
+        <tr>
+            
+			<td class="right" colspan=2>1/4</td>
+			<td colspan=2 class="bold">Airport Pumper</td>
+        </tr>
+        
+        <tr>
+            
+			<td class="right" colspan=2>2/4</td>
+			<td colspan=2 class="bold">Mack Auxiliary Power Truck</td>
+        </tr>
+        
+        <tr>
+            
+			<td class="right" colspan=2>4/4</td>
+			<td colspan=2 class="bold">Dennis Sabre Fire Truck</td>
+        </tr>
+        
+            </tbody>
+        </table>
+    </div>
+    
     <div class="searchable collection_status" data-index="Then and Now 2025">
         <table class="collection_status">
         <colgroup>
@@ -2230,6 +2267,12 @@
             
 			<td class="right" colspan=2>5/10</td>
 			<td class="bold">Land Rover Defender 90</td><td class="right tag">ZAMAC</td>
+        </tr>
+        
+        <tr>
+            
+			<td class="right" colspan=2>5/10</td>
+			<td colspan=2 class="bold">Land Rover Defender 90</td>
         </tr>
         
         <tr>
@@ -3092,6 +3135,86 @@
         </table>
     </div>
     
+    <div class="searchable collection_status" data-index="HW Modified 2024">
+        <table class="collection_status">
+        <colgroup>
+            <col style="width: 10%">
+            <col style="width: 10%">
+            <col style="width: 70%">
+            <col style="width: 10%"
+        </colgroup>
+        <tbody>
+            <tr class="subheader">
+                <td class="half_full_collection">60%</td>
+                <td class="right">2024</td>
+                <td>HW MODIFIED</td>
+                <td class="right grayed">6/10</td>
+            </tr>
+        
+        <tr>
+            <td class="grayed">-m</td>
+			<td class="right grayed missing">1/10</td>
+			<td colspan=2 class="missing">Mod Speeder</td>
+        </tr>
+        
+        <tr>
+            <td class="grayed">-m</td>
+			<td class="right grayed missing">2/10</td>
+			<td colspan=2 class="missing">'76 Greenwood Corvette</td>
+        </tr>
+        
+        <tr>
+            <td class="grayed">-m</td>
+			<td class="right grayed missing">3/10</td>
+			<td colspan=2 class="missing">Lolux</td>
+        </tr>
+        
+        <tr>
+            
+			<td class="right" colspan=2>4/10</td>
+			<td colspan=2 class="bold">Drift’n Break</td>
+        </tr>
+        
+        <tr>
+            <td class="grayed">-m</td>
+			<td class="right grayed missing">5/10</td>
+			<td colspan=2 class="missing">Mad Mike Drift Attack</td>
+        </tr>
+        
+        <tr>
+            <td class="grayed">-i</td>
+			<td class="right">6/10</td>
+			<td colspan=2 class="bold">McLaren Solus GT</td>
+        </tr>
+        
+        <tr>
+            
+			<td class="right" colspan=2>7/10</td>
+			<td colspan=2 class="bold">Custom 1968 Camaro</td>
+        </tr>
+        
+        <tr>
+            
+			<td class="right" colspan=2>8/10</td>
+			<td class="bold">1989 Mercedes-Benz 560 SEC AMG</td><td class="right tag">$TH</td>
+        </tr>
+        
+        <tr>
+            
+			<td class="right" colspan=2>9/10</td>
+			<td colspan=2 class="bold">Pontiac Aztec Custom</td>
+        </tr>
+        
+        <tr>
+            
+			<td class="right" colspan=2>10/10</td>
+			<td colspan=2 class="bold">BMW M3 Wagon</td>
+        </tr>
+        
+            </tbody>
+        </table>
+    </div>
+    
     <div class="searchable collection_status" data-index="Compact Kings 2022">
         <table class="collection_status">
         <colgroup>
@@ -3594,6 +3717,62 @@
             
 			<td class="right" colspan=2>5/5</td>
 			<td class="bold">1985 Honda City Turbo II</td><td class="right tag">TH</td>
+        </tr>
+        
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="searchable collection_status" data-index="HW the 90s 2024">
+        <table class="collection_status">
+        <colgroup>
+            <col style="width: 10%">
+            <col style="width: 10%">
+            <col style="width: 70%">
+            <col style="width: 10%"
+        </colgroup>
+        <tbody>
+            <tr class="subheader">
+                <td class="half_full_collection">60%</td>
+                <td class="right">2024</td>
+                <td>HW THE 90S</td>
+                <td class="right grayed">6/10</td>
+            </tr>
+        
+        <tr>
+            
+			<td class="right" colspan=2>1/10</td>
+			<td colspan=2 class="bold">1996 Porsche Carrera</td>
+        </tr>
+        
+        <tr>
+            
+			<td class="right" colspan=2>2/10</td>
+			<td colspan=2 class="bold">1990 Acura NSX</td>
+        </tr>
+        
+        <tr>
+            
+			<td class="right" colspan=2>4/10</td>
+			<td colspan=2 class="bold">1992 BMW M3</td>
+        </tr>
+        
+        <tr>
+            
+			<td class="right" colspan=2>7/10</td>
+			<td colspan=2 class="bold">1991 GMC Syclone</td>
+        </tr>
+        
+        <tr>
+            <td class="grayed">-i</td>
+			<td class="right">8/10</td>
+			<td colspan=2 class="bold">Toyota Supra</td>
+        </tr>
+        
+        <tr>
+            
+			<td class="right" colspan=2>10/10</td>
+			<td colspan=2 class="bold">1998 Subaru Impreza 22B-STi Version</td>
         </tr>
         
             </tbody>
@@ -4192,86 +4371,6 @@
         </table>
     </div>
     
-    <div class="searchable collection_status" data-index="HW Modified 2024">
-        <table class="collection_status">
-        <colgroup>
-            <col style="width: 10%">
-            <col style="width: 10%">
-            <col style="width: 70%">
-            <col style="width: 10%"
-        </colgroup>
-        <tbody>
-            <tr class="subheader">
-                <td class="half_full_collection">50%</td>
-                <td class="right">2024</td>
-                <td>HW MODIFIED</td>
-                <td class="right grayed">5/10</td>
-            </tr>
-        
-        <tr>
-            <td class="grayed">-m</td>
-			<td class="right grayed missing">1/10</td>
-			<td colspan=2 class="missing">Mod Speeder</td>
-        </tr>
-        
-        <tr>
-            <td class="grayed">-m</td>
-			<td class="right grayed missing">2/10</td>
-			<td colspan=2 class="missing">'76 Greenwood Corvette</td>
-        </tr>
-        
-        <tr>
-            <td class="grayed">-m</td>
-			<td class="right grayed missing">3/10</td>
-			<td colspan=2 class="missing">Lolux</td>
-        </tr>
-        
-        <tr>
-            
-			<td class="right" colspan=2>4/10</td>
-			<td colspan=2 class="bold">Drift’n Break</td>
-        </tr>
-        
-        <tr>
-            <td class="grayed">-m</td>
-			<td class="right grayed missing">5/10</td>
-			<td colspan=2 class="missing">Mad Mike Drift Attack</td>
-        </tr>
-        
-        <tr>
-            <td class="grayed">-i</td>
-			<td class="right">6/10</td>
-			<td colspan=2 class="bold">McLaren Solus GT</td>
-        </tr>
-        
-        <tr>
-            
-			<td class="right" colspan=2>7/10</td>
-			<td colspan=2 class="bold">Custom 1968 Camaro</td>
-        </tr>
-        
-        <tr>
-            
-			<td class="right" colspan=2>8/10</td>
-			<td class="bold">1989 Mercedes-Benz 560 SEC AMG</td><td class="right tag">$TH</td>
-        </tr>
-        
-        <tr>
-            <td class="grayed">-m</td>
-			<td class="right grayed missing">9/10</td>
-			<td colspan=2 class="missing">Pontiac Aztek Custom</td>
-        </tr>
-        
-        <tr>
-            
-			<td class="right" colspan=2>10/10</td>
-			<td colspan=2 class="bold">BMW M3 Wagon</td>
-        </tr>
-        
-            </tbody>
-        </table>
-    </div>
-    
     <div class="searchable collection_status" data-index="Baja Blazers 2022">
         <table class="collection_status">
         <colgroup>
@@ -4740,56 +4839,6 @@
         </table>
     </div>
     
-    <div class="searchable collection_status" data-index="HW the 90s 2024">
-        <table class="collection_status">
-        <colgroup>
-            <col style="width: 10%">
-            <col style="width: 10%">
-            <col style="width: 70%">
-            <col style="width: 10%"
-        </colgroup>
-        <tbody>
-            <tr class="subheader">
-                <td class="half_full_collection">50%</td>
-                <td class="right">2024</td>
-                <td>HW THE 90S</td>
-                <td class="right grayed">5/10</td>
-            </tr>
-        
-        <tr>
-            
-			<td class="right" colspan=2>1/10</td>
-			<td colspan=2 class="bold">1996 Porsche Carrera</td>
-        </tr>
-        
-        <tr>
-            
-			<td class="right" colspan=2>2/10</td>
-			<td colspan=2 class="bold">1990 Acura NSX</td>
-        </tr>
-        
-        <tr>
-            
-			<td class="right" colspan=2>4/10</td>
-			<td colspan=2 class="bold">1992 BMW M3</td>
-        </tr>
-        
-        <tr>
-            <td class="grayed">-i</td>
-			<td class="right">8/10</td>
-			<td colspan=2 class="bold">Toyota Supra</td>
-        </tr>
-        
-        <tr>
-            
-			<td class="right" colspan=2>10/10</td>
-			<td colspan=2 class="bold">1998 Subaru Impreza 22B-STi Version</td>
-        </tr>
-        
-            </tbody>
-        </table>
-    </div>
-    
     <div class="searchable collection_status" data-index="Space Series 1996">
         <table class="collection_status">
         <colgroup>
@@ -4940,6 +4989,32 @@
             
 			<td class="right" colspan=2>10/10</td>
 			<td colspan=2 class="bold">Salt Shaker</td>
+        </tr>
+        
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="searchable collection_status" data-index="MBX Ultimate Rescue 2002">
+        <table class="collection_status">
+        <colgroup>
+            <col style="width: 10%">
+            <col style="width: 10%">
+            <col style="width: 70%">
+            <col style="width: 10%"
+        </colgroup>
+        <tbody>
+            <tr class="subheader">
+                <td class="half_full_collection">50%</td>
+                <td class="right">2002</td>
+                <td>MBX ULTIMATE RESCUE</td>
+                <td class="right grayed">2/4</td>
+            </tr>
+        
+        <tr>
+            
+			<td class="right" colspan=2>3/4</td>
+			<td colspan=2 class="bold">Fire Hovercraft</td>
         </tr>
         
             </tbody>
@@ -5264,7 +5339,7 @@
         </table>
     </div>
     
-    <div class="searchable collection_status" data-index="Halloween Series 2024">
+    <div class="searchable collection_status" data-index="Halloween Series 2025">
         <table class="collection_status">
         <colgroup>
             <col style="width: 10%">
@@ -5275,21 +5350,21 @@
         <tbody>
             <tr class="subheader">
                 <td class="barely_full_collection">40%</td>
-                <td class="right">2024</td>
+                <td class="right">2025</td>
                 <td>HALLOWEEN SERIES</td>
                 <td class="right grayed">2/5</td>
             </tr>
         
         <tr>
-            <td class="grayed">-i</td>
-			<td class="right">4/5</td>
-			<td colspan=2 class="bold">Muscle Bound</td>
+            
+			<td class="right" colspan=2>1/5</td>
+			<td colspan=2 class="bold">Hollowback</td>
         </tr>
         
         <tr>
-            <td class="grayed">-i</td>
-			<td class="right">5/5</td>
-			<td colspan=2 class="bold">Street Shaker</td>
+            
+			<td class="right" colspan=2>3/5</td>
+			<td colspan=2 class="bold">Haul-O-Gram</td>
         </tr>
         
             </tbody>
@@ -5870,6 +5945,62 @@
         </table>
     </div>
     
+    <div class="searchable collection_status" data-index="HW Ride-Ons 2025">
+        <table class="collection_status">
+        <colgroup>
+            <col style="width: 10%">
+            <col style="width: 10%">
+            <col style="width: 70%">
+            <col style="width: 10%"
+        </colgroup>
+        <tbody>
+            <tr class="subheader">
+                <td class="barely_full_collection">40%</td>
+                <td class="right">2025</td>
+                <td>HW RIDE-ONS</td>
+                <td class="right grayed">2/5</td>
+            </tr>
+        
+        <tr>
+            <td class="grayed">-m</td>
+			<td class="right grayed missing">1/5</td>
+			<td colspan=2 class="missing">Bogzilla</td>
+        </tr>
+        
+        <tr>
+            <td class="grayed">-m</td>
+			<td class="right grayed missing">1/5</td>
+			<td colspan=2 class="missing">Power Wheels Dune Racer</td>
+        </tr>
+        
+        <tr>
+            <td class="grayed">-m</td>
+			<td class="right grayed missing">2/5</td>
+			<td colspan=2 class="missing">Kick Kart</td>
+        </tr>
+        
+        <tr>
+            
+			<td class="right" colspan=2>3/5</td>
+			<td colspan=2 class="bold">Draggin’ Wagon</td>
+        </tr>
+        
+        <tr>
+            <td class="grayed">-m</td>
+			<td class="right grayed missing">4/5</td>
+			<td class="missing">Pedal Driver</td><td class="right tag missing">TH</td>
+        </tr>
+        
+        <tr>
+            
+			<td class="right" colspan=2>5/5</td>
+			<td colspan=2 class="bold">Pixel Shaker</td>
+        </tr>
+        
+            </tbody>
+        </table>
+    </div>
+    
     <div class="searchable collection_status" data-index="HW Roadsters 2024">
         <table class="collection_status">
         <colgroup>
@@ -6364,6 +6495,92 @@
         </table>
     </div>
     
+    <div class="searchable collection_status" data-index="HW Dirt 2025">
+        <table class="collection_status">
+        <colgroup>
+            <col style="width: 10%">
+            <col style="width: 10%">
+            <col style="width: 70%">
+            <col style="width: 10%"
+        </colgroup>
+        <tbody>
+            <tr class="subheader">
+                <td class="barely_full_collection">40%</td>
+                <td class="right">2025</td>
+                <td>HW DIRT</td>
+                <td class="right grayed">4/10</td>
+            </tr>
+        
+        <tr>
+            <td class="grayed">-m</td>
+			<td class="right grayed missing">1/10</td>
+			<td colspan=2 class="missing">Humvee</td>
+        </tr>
+        
+        <tr>
+            <td class="grayed">-m</td>
+			<td class="right grayed missing">2/10</td>
+			<td colspan=2 class="missing">'70 Dodge Power Wagon</td>
+        </tr>
+        
+        <tr>
+            <td class="grayed">-m</td>
+			<td class="right grayed missing">3/10</td>
+			<td colspan=2 class="missing">Chevy Blazer 4×4</td>
+        </tr>
+        
+        <tr>
+            
+			<td class="right" colspan=2>4/10</td>
+			<td colspan=2 class="bold">Tesla Cyberquad</td>
+        </tr>
+        
+        <tr>
+            <td class="grayed">-i</td>
+			<td class="right">5/10</td>
+			<td colspan=2 class="bold">1975 Chevy Blazer Custom</td>
+        </tr>
+        
+        <tr>
+            
+			<td class="right" colspan=2>5/10</td>
+			<td colspan=2 class="bold">1975 Chevy Blazer Custom</td>
+        </tr>
+        
+        <tr>
+            
+			<td class="right" colspan=2>6/10</td>
+			<td colspan=2 class="bold">2020 Jeep Gladiator</td>
+        </tr>
+        
+        <tr>
+            <td class="grayed">-m</td>
+			<td class="right grayed missing">7/10</td>
+			<td colspan=2 class="missing">Ford Model A Custom '31</td>
+        </tr>
+        
+        <tr>
+            <td class="grayed">-m</td>
+			<td class="right grayed missing">8/10</td>
+			<td colspan=2 class="missing">'19 Chevy Silverado Trail Boss LT</td>
+        </tr>
+        
+        <tr>
+            <td class="grayed">-m</td>
+			<td class="right grayed missing">9/10</td>
+			<td colspan=2 class="missing">'17 Ford F-150 Raptor</td>
+        </tr>
+        
+        <tr>
+            
+			<td class="right" colspan=2>10/10</td>
+			<td colspan=2 class="bold">2015 Land Rover Defender Double Cab</td>
+        </tr>
+        
+            </tbody>
+        </table>
+    </div>
+    
     <div class="searchable collection_status" data-index="Hot Wheels Let’s Race 2025">
         <table class="collection_status">
         <colgroup>
@@ -6390,6 +6607,38 @@
             
 			<td class="right" colspan=2>5/5</td>
 			<td colspan=2 class="bold">Buns of Steel</td>
+        </tr>
+        
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="searchable collection_status" data-index="HW Extreme Sports 2024">
+        <table class="collection_status">
+        <colgroup>
+            <col style="width: 10%">
+            <col style="width: 10%">
+            <col style="width: 70%">
+            <col style="width: 10%"
+        </colgroup>
+        <tbody>
+            <tr class="subheader">
+                <td class="barely_full_collection">40%</td>
+                <td class="right">2024</td>
+                <td>HW EXTREME SPORTS</td>
+                <td class="right grayed">2/5</td>
+            </tr>
+        
+        <tr>
+            
+			<td class="right" colspan=2>2/5</td>
+			<td colspan=2 class="bold">Surf’s Up</td>
+        </tr>
+        
+        <tr>
+            
+			<td class="right" colspan=2>4/5</td>
+			<td colspan=2 class="bold">Surfin' School Bus</td>
         </tr>
         
             </tbody>
@@ -6440,6 +6689,56 @@
             <td class="grayed">-m</td>
 			<td class="right grayed missing">5/5</td>
 			<td colspan=2 class="missing">Lil' Roar</td>
+        </tr>
+        
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="searchable collection_status" data-index="HW Moto 2023">
+        <table class="collection_status">
+        <colgroup>
+            <col style="width: 10%">
+            <col style="width: 10%">
+            <col style="width: 70%">
+            <col style="width: 10%"
+        </colgroup>
+        <tbody>
+            <tr class="subheader">
+                <td class="barely_full_collection">40%</td>
+                <td class="right">2023</td>
+                <td>HW MOTO</td>
+                <td class="right grayed">2/5</td>
+            </tr>
+        
+        <tr>
+            <td class="grayed">-m</td>
+			<td class="right grayed missing">1/5</td>
+			<td colspan=2 class="missing">Ducati DesertX</td>
+        </tr>
+        
+        <tr>
+            <td class="grayed">-m</td>
+			<td class="right grayed missing">2/5</td>
+			<td class="missing">BMW R nineT Racer</td><td class="right tag missing">TH</td>
+        </tr>
+        
+        <tr>
+            
+			<td class="right" colspan=2>3/5</td>
+			<td colspan=2 class="bold">Honda Super Cub</td>
+        </tr>
+        
+        <tr>
+            <td class="grayed">-m</td>
+			<td class="right grayed missing">4/5</td>
+			<td colspan=2 class="missing">Honda CB750 Café</td>
+        </tr>
+        
+        <tr>
+            
+			<td class="right" colspan=2>5/5</td>
+			<td colspan=2 class="bold">Honda Super Cub Custom</td>
         </tr>
         
             </tbody>
@@ -6812,92 +7111,6 @@
         </table>
     </div>
     
-    <div class="searchable collection_status" data-index="HW Dirt 2025">
-        <table class="collection_status">
-        <colgroup>
-            <col style="width: 10%">
-            <col style="width: 10%">
-            <col style="width: 70%">
-            <col style="width: 10%"
-        </colgroup>
-        <tbody>
-            <tr class="subheader">
-                <td class="barely_full_collection">30%</td>
-                <td class="right">2025</td>
-                <td>HW DIRT</td>
-                <td class="right grayed">3/10</td>
-            </tr>
-        
-        <tr>
-            <td class="grayed">-m</td>
-			<td class="right grayed missing">1/10</td>
-			<td colspan=2 class="missing">Humvee</td>
-        </tr>
-        
-        <tr>
-            <td class="grayed">-m</td>
-			<td class="right grayed missing">2/10</td>
-			<td colspan=2 class="missing">'70 Dodge Power Wagon</td>
-        </tr>
-        
-        <tr>
-            <td class="grayed">-m</td>
-			<td class="right grayed missing">3/10</td>
-			<td colspan=2 class="missing">Chevy Blazer 4×4</td>
-        </tr>
-        
-        <tr>
-            
-			<td class="right" colspan=2>4/10</td>
-			<td colspan=2 class="bold">Tesla Cyberquad</td>
-        </tr>
-        
-        <tr>
-            <td class="grayed">-i</td>
-			<td class="right">5/10</td>
-			<td colspan=2 class="bold">1975 Chevy Blazer Custom</td>
-        </tr>
-        
-        <tr>
-            <td class="grayed">-m</td>
-			<td class="right grayed missing">6/10</td>
-			<td colspan=2 class="missing">'20 Jeep Gladiator</td>
-        </tr>
-        
-        <tr>
-            <td class="grayed">-m</td>
-			<td class="right grayed missing">6/10</td>
-			<td class="missing">'20 Jeep Gladiator</td><td class="right tag missing">STH</td>
-        </tr>
-        
-        <tr>
-            <td class="grayed">-m</td>
-			<td class="right grayed missing">7/10</td>
-			<td colspan=2 class="missing">Ford Model A Custom '31</td>
-        </tr>
-        
-        <tr>
-            <td class="grayed">-m</td>
-			<td class="right grayed missing">8/10</td>
-			<td colspan=2 class="missing">'19 Chevy Silverado Trail Boss LT</td>
-        </tr>
-        
-        <tr>
-            <td class="grayed">-m</td>
-			<td class="right grayed missing">9/10</td>
-			<td colspan=2 class="missing">'17 Ford F-150 Raptor</td>
-        </tr>
-        
-        <tr>
-            
-			<td class="right" colspan=2>10/10</td>
-			<td colspan=2 class="bold">2015 Land Rover Defender Double Cab</td>
-        </tr>
-        
-            </tbody>
-        </table>
-    </div>
-    
     <div class="searchable collection_status" data-index="HW Glow Wheels 2016">
         <table class="collection_status">
         <colgroup>
@@ -6966,6 +7179,12 @@
         
         <tr>
             
+			<td class="right" colspan=2>5/10</td>
+			<td colspan=2 class="bold">BMW 2002</td>
+        </tr>
+        
+        <tr>
+            
 			<td class="right" colspan=2>6/10</td>
 			<td colspan=2 class="bold">1971 Lamborghini Miura P400SV</td>
         </tr>
@@ -6974,6 +7193,44 @@
             
 			<td class="right" colspan=2>6/10</td>
 			<td colspan=2 class="bold">1971 Lamborghini Miura SV</td>
+        </tr>
+        
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="searchable collection_status" data-index="Race Day 2025">
+        <table class="collection_status">
+        <colgroup>
+            <col style="width: 10%">
+            <col style="width: 10%">
+            <col style="width: 70%">
+            <col style="width: 10%"
+        </colgroup>
+        <tbody>
+            <tr class="subheader">
+                <td class="barely_full_collection">30%</td>
+                <td class="right">2025</td>
+                <td>RACE DAY</td>
+                <td class="right grayed">3/10</td>
+            </tr>
+        
+        <tr>
+            
+			<td class="right" colspan=2>6/10</td>
+			<td colspan=2 class="bold">McLaren W1</td>
+        </tr>
+        
+        <tr>
+            
+			<td class="right" colspan=2>7/10</td>
+			<td colspan=2 class="bold">2018 Bentley Continental GT3</td>
+        </tr>
+        
+        <tr>
+            
+			<td class="right" colspan=2>10/10</td>
+			<td colspan=2 class="bold">Ferrari 365 GTB4 Competizione</td>
         </tr>
         
             </tbody>
@@ -7520,32 +7777,6 @@
         </table>
     </div>
     
-    <div class="searchable collection_status" data-index="MBX Airport Alarm 2002">
-        <table class="collection_status">
-        <colgroup>
-            <col style="width: 10%">
-            <col style="width: 10%">
-            <col style="width: 70%">
-            <col style="width: 10%"
-        </colgroup>
-        <tbody>
-            <tr class="subheader">
-                <td class="barely_full_collection">25%</td>
-                <td class="right">2002</td>
-                <td>MBX AIRPORT ALARM</td>
-                <td class="right grayed">1/4</td>
-            </tr>
-        
-        <tr>
-            
-			<td class="right" colspan=2>1/4</td>
-			<td colspan=2 class="bold">Airport Pumper</td>
-        </tr>
-        
-            </tbody>
-        </table>
-    </div>
-    
     <div class="searchable collection_status" data-index="Biohazard Series 1998">
         <table class="collection_status">
         <colgroup>
@@ -7566,6 +7797,32 @@
             
 			<td class="right" colspan=2>1/4</td>
 			<td colspan=2 class="bold">Hydroplane</td>
+        </tr>
+        
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="searchable collection_status" data-index="Truckin Along 2026">
+        <table class="collection_status">
+        <colgroup>
+            <col style="width: 10%">
+            <col style="width: 10%">
+            <col style="width: 70%">
+            <col style="width: 10%"
+        </colgroup>
+        <tbody>
+            <tr class="subheader">
+                <td class="barely_full_collection">20%</td>
+                <td class="right">2026</td>
+                <td>TRUCKIN ALONG</td>
+                <td class="right grayed">1/5</td>
+            </tr>
+        
+        <tr>
+            
+			<td class="right" colspan=2>1/5</td>
+			<td class="bold">Drift-Ender</td><td class="right tag">$TH</td>
         </tr>
         
             </tbody>
@@ -7823,6 +8080,12 @@
         </tr>
         
         <tr>
+            
+			<td class="right" colspan=2>2/5</td>
+			<td colspan=2 class="bold">Mazda MX-5 Miata</td>
+        </tr>
+        
+        <tr>
             <td class="grayed">-m</td>
 			<td class="right grayed missing">3/5</td>
 			<td colspan=2 class="missing">Aston Martin DB4GT High-Speed Edition</td>
@@ -7876,6 +8139,32 @@
             
 			<td class="right" colspan=2>1/5</td>
 			<td colspan=2 class="bold">Honda Civic EG</td>
+        </tr>
+        
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="searchable collection_status" data-index="Urban Camouflage 2020">
+        <table class="collection_status">
+        <colgroup>
+            <col style="width: 10%">
+            <col style="width: 10%">
+            <col style="width: 70%">
+            <col style="width: 10%"
+        </colgroup>
+        <tbody>
+            <tr class="subheader">
+                <td class="barely_full_collection">20%</td>
+                <td class="right">2020</td>
+                <td>URBAN CAMOUFLAGE</td>
+                <td class="right grayed">1/5</td>
+            </tr>
+        
+        <tr>
+            
+			<td class="right" colspan=2>2/5</td>
+			<td colspan=2 class="bold">2016 Honda Civic Type R</td>
         </tr>
         
             </tbody>
@@ -8316,32 +8605,6 @@
             <td class="grayed">-m</td>
 			<td class="right grayed missing">5/5</td>
 			<td colspan=2 class="missing">Skull Crusher</td>
-        </tr>
-        
-            </tbody>
-        </table>
-    </div>
-    
-    <div class="searchable collection_status" data-index="Halloween Series 2025">
-        <table class="collection_status">
-        <colgroup>
-            <col style="width: 10%">
-            <col style="width: 10%">
-            <col style="width: 70%">
-            <col style="width: 10%"
-        </colgroup>
-        <tbody>
-            <tr class="subheader">
-                <td class="barely_full_collection">20%</td>
-                <td class="right">2025</td>
-                <td>HALLOWEEN SERIES</td>
-                <td class="right grayed">1/5</td>
-            </tr>
-        
-        <tr>
-            
-			<td class="right" colspan=2>3/5</td>
-			<td colspan=2 class="bold">Haul-O-Gram</td>
         </tr>
         
             </tbody>
@@ -8830,7 +9093,7 @@
         </table>
     </div>
     
-    <div class="searchable collection_status" data-index="HW Ride-Ons 2025">
+    <div class="searchable collection_status" data-index="HW Ride-Ons 2022">
         <table class="collection_status">
         <colgroup>
             <col style="width: 10%">
@@ -8841,7 +9104,7 @@
         <tbody>
             <tr class="subheader">
                 <td class="barely_full_collection">20%</td>
-                <td class="right">2025</td>
+                <td class="right">2022</td>
                 <td>HW RIDE-ONS</td>
                 <td class="right grayed">1/5</td>
             </tr>
@@ -8849,37 +9112,31 @@
         <tr>
             <td class="grayed">-m</td>
 			<td class="right grayed missing">1/5</td>
-			<td colspan=2 class="missing">Bogzilla</td>
-        </tr>
-        
-        <tr>
-            <td class="grayed">-m</td>
-			<td class="right grayed missing">1/5</td>
-			<td colspan=2 class="missing">Power Wheels Dune Racer</td>
+			<td colspan=2 class="missing">Let's GO</td>
         </tr>
         
         <tr>
             <td class="grayed">-m</td>
 			<td class="right grayed missing">2/5</td>
-			<td colspan=2 class="missing">Kick Kart</td>
+			<td colspan=2 class="missing">Bogzilla</td>
         </tr>
         
         <tr>
             <td class="grayed">-m</td>
 			<td class="right grayed missing">3/5</td>
-			<td colspan=2 class="missing">Draggin' Wagon</td>
+			<td colspan=2 class="missing">Fig Rig</td>
         </tr>
         
         <tr>
             <td class="grayed">-m</td>
 			<td class="right grayed missing">4/5</td>
-			<td class="missing">Pedal Driver</td><td class="right tag missing">TH</td>
+			<td class="missing">Pixel Shaker</td><td class="right tag missing">TH</td>
         </tr>
         
         <tr>
-            
-			<td class="right" colspan=2>5/5</td>
-			<td colspan=2 class="bold">Pixel Shaker</td>
+            <td class="grayed">-i</td>
+			<td class="right">5/5</td>
+			<td colspan=2 class="bold">Kick Kart</td>
         </tr>
         
             </tbody>
@@ -10198,7 +10455,7 @@
         </table>
     </div>
     
-    <div class="searchable collection_status" data-index="HW Moto 2023">
+    <div class="searchable collection_status" data-index="HW Moto 2019">
         <table class="collection_status">
         <colgroup>
             <col style="width: 10%">
@@ -10209,7 +10466,7 @@
         <tbody>
             <tr class="subheader">
                 <td class="barely_full_collection">20%</td>
-                <td class="right">2023</td>
+                <td class="right">2019</td>
                 <td>HW MOTO</td>
                 <td class="right grayed">1/5</td>
             </tr>
@@ -10217,31 +10474,31 @@
         <tr>
             <td class="grayed">-m</td>
 			<td class="right grayed missing">1/5</td>
-			<td colspan=2 class="missing">Ducati DesertX</td>
+			<td colspan=2 class="missing">Moto Wing</td>
         </tr>
         
         <tr>
             <td class="grayed">-m</td>
 			<td class="right grayed missing">2/5</td>
-			<td class="missing">BMW R nineT Racer</td><td class="right tag missing">TH</td>
+			<td colspan=2 class="missing">Ducati 1199 Panigale</td>
         </tr>
         
         <tr>
-            <td class="grayed">-m</td>
-			<td class="right grayed missing">3/5</td>
-			<td colspan=2 class="missing">Honda Super Cub</td>
+            
+			<td class="right" colspan=2>3/5</td>
+			<td class="bold">Honda Monkey Z50</td><td class="right tag">TH</td>
         </tr>
         
         <tr>
             <td class="grayed">-m</td>
 			<td class="right grayed missing">4/5</td>
-			<td colspan=2 class="missing">Honda CB750 Café</td>
+			<td colspan=2 class="missing">Blastous Moto</td>
         </tr>
         
         <tr>
-            
-			<td class="right" colspan=2>5/5</td>
-			<td colspan=2 class="bold">Honda Super Cub Custom</td>
+            <td class="grayed">-m</td>
+			<td class="right grayed missing">5/5</td>
+			<td colspan=2 class="missing">Tred Shredder</td>
         </tr>
         
             </tbody>
@@ -10274,38 +10531,6 @@
         </table>
     </div>
     
-    <div class="searchable collection_status" data-index="Race Day 2025">
-        <table class="collection_status">
-        <colgroup>
-            <col style="width: 10%">
-            <col style="width: 10%">
-            <col style="width: 70%">
-            <col style="width: 10%"
-        </colgroup>
-        <tbody>
-            <tr class="subheader">
-                <td class="barely_full_collection">20%</td>
-                <td class="right">2025</td>
-                <td>RACE DAY</td>
-                <td class="right grayed">2/10</td>
-            </tr>
-        
-        <tr>
-            
-			<td class="right" colspan=2>6/10</td>
-			<td colspan=2 class="bold">McLaren W1</td>
-        </tr>
-        
-        <tr>
-            
-			<td class="right" colspan=2>10/10</td>
-			<td colspan=2 class="bold">Ferrari 365 GTB4 Competizione</td>
-        </tr>
-        
-            </tbody>
-        </table>
-    </div>
-    
     <div class="searchable collection_status" data-index="Modified 2025">
         <table class="collection_status">
         <colgroup>
@@ -10321,6 +10546,12 @@
                 <td>MODIFIED</td>
                 <td class="right grayed">1/5</td>
             </tr>
+        
+        <tr>
+            
+			<td class="right" colspan=2>4/5</td>
+			<td colspan=2 class="bold">Ford GT</td>
+        </tr>
         
         <tr>
             
@@ -10538,6 +10769,38 @@
         </table>
     </div>
     
+    <div class="searchable collection_status" data-index="Nightspeed 2026">
+        <table class="collection_status">
+        <colgroup>
+            <col style="width: 10%">
+            <col style="width: 10%">
+            <col style="width: 70%">
+            <col style="width: 10%"
+        </colgroup>
+        <tbody>
+            <tr class="subheader">
+                <td class="barely_full_collection">20%</td>
+                <td class="right">2026</td>
+                <td>NIGHTSPEED</td>
+                <td class="right grayed">2/10</td>
+            </tr>
+        
+        <tr>
+            
+			<td class="right" colspan=2>1/10</td>
+			<td class="bold">1987 Buick Regal GNX</td><td class="right tag">TH</td>
+        </tr>
+        
+        <tr>
+            
+			<td class="right" colspan=2>3/10</td>
+			<td colspan=2 class="bold">2018 Honda Civic Type R</td>
+        </tr>
+        
+            </tbody>
+        </table>
+    </div>
+    
     <div class="searchable collection_status" data-index="HW Starting Grid 2026">
         <table class="collection_status">
         <colgroup>
@@ -10564,6 +10827,84 @@
             
 			<td class="right" colspan=2>2/10</td>
 			<td colspan=2 class="bold">1969 Dodge Charger Daytona</td>
+        </tr>
+        
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="searchable collection_status" data-index="Matchbox Hero City: Hospital 2003">
+        <table class="collection_status">
+        <colgroup>
+            <col style="width: 10%">
+            <col style="width: 10%">
+            <col style="width: 70%">
+            <col style="width: 10%"
+        </colgroup>
+        <tbody>
+            <tr class="subheader">
+                <td class="barely_full_collection">20%</td>
+                <td class="right">2003</td>
+                <td>MATCHBOX HERO CITY: HOSPITAL</td>
+                <td class="right grayed">1/5</td>
+            </tr>
+        
+        <tr>
+            
+			<td class="right" colspan=2>4/5</td>
+			<td colspan=2 class="bold">Ford Transit Van</td>
+        </tr>
+        
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="searchable collection_status" data-index="Track Champs 2025">
+        <table class="collection_status">
+        <colgroup>
+            <col style="width: 10%">
+            <col style="width: 10%">
+            <col style="width: 70%">
+            <col style="width: 10%"
+        </colgroup>
+        <tbody>
+            <tr class="subheader">
+                <td class="barely_full_collection">20%</td>
+                <td class="right">2025</td>
+                <td>TRACK CHAMPS</td>
+                <td class="right grayed">1/5</td>
+            </tr>
+        
+        <tr>
+            
+			<td class="right" colspan=2>5/5</td>
+			<td class="bold">Triumph TR6</td><td class="right tag">TH</td>
+        </tr>
+        
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="searchable collection_status" data-index="First Response 2025">
+        <table class="collection_status">
+        <colgroup>
+            <col style="width: 10%">
+            <col style="width: 10%">
+            <col style="width: 70%">
+            <col style="width: 10%"
+        </colgroup>
+        <tbody>
+            <tr class="subheader">
+                <td class="barely_full_collection">20%</td>
+                <td class="right">2025</td>
+                <td>FIRST RESPONSE</td>
+                <td class="right grayed">1/5</td>
+            </tr>
+        
+        <tr>
+            
+			<td class="right" colspan=2>5/5</td>
+			<td colspan=2 class="bold">Rapid Pulse</td>
         </tr>
         
             </tbody>
@@ -10801,8 +11142,8 @@
             </tr>
         
         <tr>
-            <td class="grayed">-i</td>
-			<td class="right">2/6</td>
+            
+			<td class="right" colspan=2>2/6</td>
 			<td colspan=2 class="bold">Altered Ego</td>
         </tr>
         
@@ -11001,8 +11342,8 @@
             </tr>
         
         <tr>
-            <td class="grayed">-i</td>
-			<td class="right">4/8</td>
+            
+			<td class="right" colspan=2>4/8</td>
 			<td colspan=2 class="bold">1973 BMW 3.0 CSL Race Car</td>
         </tr>
         
@@ -11869,8 +12210,8 @@
             </tr>
         
         <tr>
-            <td class="grayed">-i</td>
-			<td class="right">10/10</td>
+            
+			<td class="right" colspan=2>10/10</td>
 			<td colspan=2 class="bold">Backdrafter</td>
         </tr>
         
@@ -12821,8 +13162,8 @@
         </tr>
         
         <tr>
-            <td class="grayed">-i</td>
-			<td class="right">3/10</td>
+            
+			<td class="right" colspan=2>3/10</td>
 			<td colspan=2 class="bold">Aristo Rat</td>
         </tr>
         
@@ -13056,32 +13397,6 @@
             
 			<td class="right" colspan=2>5/10</td>
 			<td colspan=2 class="bold">Honda Racer</td>
-        </tr>
-        
-            </tbody>
-        </table>
-    </div>
-    
-    <div class="searchable collection_status" data-index="Nightspeed 2026">
-        <table class="collection_status">
-        <colgroup>
-            <col style="width: 10%">
-            <col style="width: 10%">
-            <col style="width: 70%">
-            <col style="width: 10%"
-        </colgroup>
-        <tbody>
-            <tr class="subheader">
-                <td class="barely_full_collection">10%</td>
-                <td class="right">2026</td>
-                <td>NIGHTSPEED</td>
-                <td class="right grayed">1/10</td>
-            </tr>
-        
-        <tr>
-            
-			<td class="right" colspan=2>3/10</td>
-			<td colspan=2 class="bold">2018 Honda Civic Type R</td>
         </tr>
         
             </tbody>
@@ -13746,6 +14061,32 @@
         </table>
     </div>
     
+    <div class="searchable collection_status" data-index="Cool Classics 2013">
+        <table class="collection_status">
+        <colgroup>
+            <col style="width: 10%">
+            <col style="width: 10%">
+            <col style="width: 70%">
+            <col style="width: 10%"
+        </colgroup>
+        <tbody>
+            <tr class="subheader">
+                <td class="barely_full_collection">3%</td>
+                <td class="right">2013</td>
+                <td>COOL CLASSICS</td>
+                <td class="right grayed">1/30</td>
+            </tr>
+        
+        <tr>
+            
+			<td class="right" colspan=2>2/30</td>
+			<td colspan=2 class="bold">Blastous Moto</td>
+        </tr>
+        
+            </tbody>
+        </table>
+    </div>
+    
     <div class="searchable collection_status" data-index="2003 First Editions 2003">
         <table class="collection_status">
         <colgroup>
@@ -13850,6 +14191,32 @@
         </table>
     </div>
     
+    <div class="searchable collection_status" data-index="HW Stunt 2012">
+        <table class="collection_status">
+        <colgroup>
+            <col style="width: 10%">
+            <col style="width: 10%">
+            <col style="width: 70%">
+            <col style="width: 10%"
+        </colgroup>
+        <tbody>
+            <tr class="subheader">
+                <td class="barely_full_collection">2%</td>
+                <td class="right">2012</td>
+                <td>HW STUNT</td>
+                <td class="right grayed">1/50</td>
+            </tr>
+        
+        <tr>
+            
+			<td class="right" colspan=2>41/50</td>
+			<td colspan=2 class="bold">Blastous</td>
+        </tr>
+        
+            </tbody>
+        </table>
+    </div>
+    
     <div class="searchable collection_status" data-index="MBX Off-Road 2023">
         <table class="collection_status">
         <colgroup>
@@ -13883,7 +14250,7 @@
     <input type="button" id="help_button" value="" onclick="location.href='reference.html'" />
     
     <footer id="page_footer">
-        <p>Last update: <a href="updates.html">2025-11-20</a></p>
+        <p>Last update: <a href="updates.html">2025-12-15</a></p>
         <p>Site design: Konstantin A Kolosov</p>
         <hr />
             <a href="index.html">Home</a>

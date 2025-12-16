@@ -1,54 +1,52 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
-    <title>Hot Wheels</title>
+    <title>Collection</title>
     <link type="text/css" href="styles.css" rel="stylesheet" />
     <script src="scripts.js"></script>
+    <script src="buttons.js" defer></script>
+    <!--optional-->
     <meta name="format-detection" content="telephone=no" />
     <meta name="viewport" 
-    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, interactive-widget=resizes-content">
 </head>
 
-
-<body onload='replaceDaysSince(); setSearchRedirect()'>
-
+<body onload="replaceDaysSince(); setSearchRedirect()">
     <script type="text/javascript">
         checkMode();
     </script>
 
     <header>  <!-- NAVIGATION -->
-    <div id="topbar">
-        <input type="button" src="Images/Icons/Ionic-Ionicons-Menu.16.png" onclick="toggleMenu()" id="left_button" />
-        <input type="text" id="search_bar" onkeyup="setTimeout(searchModels(), 250)" src="Images/Icons/Ionic-Ionicons-Search.16.png" />
-        <div class="dropdown">
-            <input type="button"  id="right_button" />
-            <div class="dropdown-content">
-                <input type="button" src="Images/Icons/Ionic-Ionicons-Toggle.16.png" onclick="toggleDarkMode()" id="mode_button" />
-                <input type="button" onclick="toggleView()" id="view_button" />
-                <input type="button" onclick="toggleDetails()" id="details_button" />
-                <input type="button" onclick="clearSearch()" id="clear_button" />
-            </div>
-        </div>
-        <input type="number" name="result counter" value="" disabled="True" id="counter" />
+<div id="topbar">
+    <input type="button" id="left_button" />
+    <input type="text" id="search_bar" />
+    <input type="button"  id="right_button" />
+    <div id="dropdown">
+        <input type="button" id="mode_button" />
+        <input type="button" id="view_button" />
+        <input type="button" id="details_button" />
+        <input type="button" id="clear_button" />
     </div>
+    <input type="number" name="result counter" value="" disabled="True" id="counter" />
+</div>
 
-    <div id="menu" class="overlay">
-        <a id="menu_close_button" onclick="closeMenu()">&times;</a>
-        <div id="menu_list"  class="overlay-content">
-            <p class="subheader">Collection</p>
-            <p class="separator"></p>
-            <a href="index.html">Home</a>
-            <a href="collection.html">Owned</a>
-            <a href="preview.html">Statistics</a>
-            <a href="spreadsheet.html">Spreadsheet</a>
-            <p class="subheader">Other</p>
-            <p class="separator"></p>
-            <a href="treasures.html">Treasures</a>
-            <a href="about.html">About</a>
-        </div>
+
+<div id="menu" class="overlay">
+    <a id="menu_close_button">&times;</a>
+    <div id="menu_list"  class="overlay-content">
+        <p class="subheader">Collection</p>
+        <p class="separator"></p>
+        <a href="index.html">Home</a>
+        <a href="collection.html">Owned</a>
+        <a href="preview.html">Statistics</a>
+        <a href="spreadsheet.html">Spreadsheet</a>
+        <p class="subheader">Other</p>
+        <p class="separator"></p>
+        <a href="treasures.html">Treasures</a>
+        <a href="about.html">About</a>
     </div>
+</div>
 
 
     </header>  <!-- END NAVIGATION -->
@@ -318,7 +316,7 @@
     <input type="button" id="help_button" value="" onclick="location.href='reference.html'" />
     
     <footer id="page_footer">
-        <p>Last update: <a href="updates.html">2025-11-20</a></p>
+        <p>Last update: <a href="updates.html">2025-12-15</a></p>
         <p>Site design: Konstantin A Kolosov</p>
         <hr />
             <a href="index.html">Home</a>

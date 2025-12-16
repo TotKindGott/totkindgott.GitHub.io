@@ -7,6 +7,7 @@
     <title>Hot Wheels</title>
     <link type="text/css" href="styles.css" rel="stylesheet" />
     <script src="scripts.js"></script>
+    <script src="buttons.js" defer></script>
     <meta name="format-detection" content="telephone=no" />
     <meta name="viewport" 
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -22,16 +23,14 @@
     <header>  <!-- NAVIGATION -->
     
     <div id="topbar">
-        <input type="button" src="Images/Icons/Ionic-Ionicons-Menu.16.png" onclick="toggleMenu()" id="left_button" />
+        <input type="button" id="left_button" />
         <input type="text" id="search_bar" onkeyup="setTimeout(searchModels(), 250)" src="Images/Icons/Ionic-Ionicons-Search.16.png" />
-        <div class="dropdown">
-            <input type="button"  id="right_button" />
-            <div class="dropdown-content">
-                <input type="button" src="Images/Icons/Ionic-Ionicons-Toggle.16.png" onclick="toggleDarkMode()" id="mode_button" />
-                <input type="button" onclick="toggleView()" id="view_button" />
+        <input type="button"  id="right_button" />
+        <div id="dropdown">
+            <input type="button" src="Images/Icons/Ionic-Ionicons-Toggle.16.png" onclick="toggleDarkMode()" id="mode_button" />
+            <input type="button" onclick="toggleView()" id="view_button" />
                 <input type="button" onclick="toggleDetails()" id="details_button" />
-                <input type="button" onclick="clearSearch()" id="clear_button" />
-            </div>
+            <input type="button" onclick="clearSearch()" id="clear_button" />
         </div>
         <input type="number" name="result counter" value="" disabled="True" id="counter" />
     </div>
@@ -60,7 +59,7 @@
     
     <div class="empty_space" style="height: 36px"></div>
     
-    <h1 class="section_header">Coding with Python</h1>
+    <h1 class="section_header" >Coding with Python</h1>
     
     <h2 class="section_subheader">since August 2023</h2>
     
@@ -360,6 +359,21 @@
         padding: 0;
     }
     
+    input.down_button {
+        background-image: url("Images/Icons/arrow-down-circle-outline.svg");
+        background-size: 20px;
+        background-position: center;
+        background-color: white;
+        position: absolute;
+        top: 52px;
+        left: 6px;
+        width: 20px;
+        height: 20px;
+        border: 1px solid #red;
+        border-radius: 10px;
+        padding: 0;
+    }
+    
 </style>    
     <ul class="page_navigation">
         <li><a href="#backend">BACKEND REFERENCE</a><p>History and usage</p></li>
@@ -375,10 +389,10 @@
         <li><a href="#sitemap">Website map</a><p>Links and descriptions</p></li>
     </ul>
     
-<div class="reference">
+<div class="reference" id="dev_env">
     <div class="empty_space" style="height: 36px"></div>
     <input type="button" class="up_button" value="" onclick="location.href = '#'" />
-    <h3 class="section_subheader" id="dev_env">Development environment</h3>
+    <h3 class="section_subheader">Development environment</h3>
     
     <p>The development workflow relies heavily on these apps:</p>
     
@@ -865,7 +879,7 @@
 
     <p>Most other pages redirect search query as parameter to <a href="search.html">search.html</a>.</p>
 
-    <p>In the right corner of the search bar is a counter which shows how many results the search has returner. It is often blank until the search is performed.</p>
+    <p>In the right corner of the search bar is a counter which shows how many results the search has returned. It is often blank or 0 until the search is performed.</p>
     
     <div class="empty_space"></div>            
     
@@ -978,6 +992,62 @@
     <p>Photos of Archer.</p>
 
 </div>
+
+<script>
+    
+    function getNext(arr, current) {
+        let i = arr.indexOf(current);
+        if (i != arr.length - 1) {
+            return arr[i + 1];
+        } else {
+            return "";
+        }
+    };
+    
+    function getPrevious(arr, current) {
+        let i = arr.indexOf(current);
+        if (i != 0) {
+            return arr[i - 1];
+        } else {
+            return "";
+        }
+    };
+    
+    function removeEmptyIDs(arr) {
+        result = new Array();
+        for (i = arr.length - 1; i >= 0; i--) {
+            if (arr[i].id !== "") {
+                result.push(arr[i].id);
+            };
+        };
+        return result.reverse();
+        //return arr.filter((el) => el.id !== "");
+    };
+    
+    let buttonDownTemplate = '    <input type="button" class="down_button" value="" onclick="location.href = \'{link}\'" />'
+    let buttonUpTemplate = '    <input type="button" class="up_button" value="" onclick="location.href = \'{link}\'" />'
+    
+    let refdivs = removeEmptyIDs(document.getElementsByClassName("reference"));
+    
+    for (var i = 0; i < refdivs.length; i++) {
+        let divID = refdivs[i];
+        if (divID != "") {
+        try {
+            document.getElementById(divID).innerHTML += buttonDownTemplate.replace("{link}", "#" + getNext(refdivs, divID));
+            document.getElementById(divID).innerHTML += buttonUpTemplate.replace("{link}", "#" + getPrevious(refdivs, divID));
+            //console.log("working on", divID);
+            //document.getElementById(divID).addEventListener("dblclick", function () {
+            //console.log("current:", divID, "\nnext:", getNext(refdivs, divID), "\nprevious:", getPrevious(refdivs, divID));
+            //});
+        } catch (error) {
+            console.log(error);
+        }; // try except block ends
+        } else {
+            void(0);
+        }; // if else block ends
+    };
+    
+</script>
 
     <div id="empty_space"></div>
 

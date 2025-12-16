@@ -1,17 +1,83 @@
+const searchBar = document.getElementById("search_bar");
+const leftMenuButton = document.getElementById("left_button");
+const rightMenuButton = document.getElementById("right_button");
+const extraControls = document.getElementById("dropdown");
+
+const searchTools = document.getElementById("advanced_search");
+    
+const seriesOptions = document.getElementById("series").innerHTML;
+const yearOptions = document.getElementById("years").innerHTML;
+const conditionOptions = document.getElementById("conditions").innerHTML;
+const tagOptions = document.getElementById("tags").innerHTML;
+const sourceOptions = document.getElementById("sources").innerHTML;
+const seriesOptionsList = document.getElementById("series").options;
+const yearOptionsList = document.getElementById("years").options;
+const tagOptionsList = document.getElementById("tags").options;
+const conditionOptionsList = document.getElementById("conditions").options;
+const sourceOptionsList = document.getElementById("sources").options;
+
+const seriesSelectorInput = document.getElementById("series_input");
+const yearSelectorInput = document.getElementById("years_input");
+const tagSelectorInput = document.getElementById("tags_input");
+const conditionSelectorInput = document.getElementById("conditions_input"); 
+const sourceSelectorInput = document.getElementById("sources_input");
+
+document.body.setAttribute("load", parseAndSearch);
+
+yearSelectorInput.classList.add("half");
+yearSelectorInput.classList.add("right");
+tagSelectorInput.classList.add("half");
+tagSelectorInput.classList.add("left");
+seriesSelectorInput.classList.add("full");
+sourceSelectorInput.classList.add("half");
+sourceSelectorInput.classList.add("left");
+conditionSelectorInput.classList.add("half");
+conditionSelectorInput.classList.add("right");
+
+seriesSelectorInput.addEventListener("change", findMatches);
+seriesSelectorInput.addEventListener("keyup", findMatches);
+sourceSelectorInput.addEventListener("change", findMatches);
+sourceSelectorInput.addEventListener("keyup", findMatches);
+tagSelectorInput.addEventListener("change", findMatches);
+tagSelectorInput.addEventListener("keyup", findMatches);
+conditionSelectorInput.addEventListener("change", findMatches);
+conditionSelectorInput.addEventListener("keyup", findMatches);
+yearSelectorInput.addEventListener("change", findMatches);
+yearSelectorInput.addEventListener("keyup", findMatches);
+
+searchBar.addEventListener("focus", showSearchTools);
+searchBar.addEventListener("keyup", findMatches);
+
+//const multiButton = document.getElementById("multibutton");
+
+document.addEventListener('click', function(event) {
+    if (!rightMenuButton.contains(event.target) & !searchTools.contains(event.target) & !searchBar.contains(event.target) & !extraControls.contains(event.target)) {
+        hideDynamics();
+    }; // if else block ends
+}); // addEventListener ends
+document.addEventListener("dblclick", promptNewSearch);
+
+//clearButton.addEventListener("click", clearOptions);
+clearButton.addEventListener("click", restoreOptions);
+
+//searchBar.addEventListener("blur", hideDynamics);
 
 function hideDynamics() {
-document.getElementById("advanced_search").style.display = "none";
-};
+    searchTools.style.opacity = 0;
+    searchTools.style.display = "none";
+    extraControls.style.opacity = 0;
+    extraControls.style.display = "none";
+}; // hideDynamics function ends
 
 
 function findMatches() {
     
-    let tag = document.getElementById("tags_input").value;
-    let year = document.getElementById("years_input").value;
-    let series = document.getElementById("series_input").value;
-    let condition = document.getElementById("conditions_input").value;
-    let source = document.getElementById("sources_input").value;
-    let query = document.getElementById("search_bar").value;
+    let tag = tagSelectorInput.value;
+    let year = yearSelectorInput.value;
+    let series = seriesSelectorInput.value;
+    let condition = conditionSelectorInput.value;
+    let source = sourceSelectorInput.value;
+    let query = searchBar.value;
     let divs = document.getElementsByClassName("searchable");
     
     for (var i = 0; i < divs.length; i++) {
@@ -36,12 +102,9 @@ function findMatches() {
 
     
 function showSearchTools() {
-    let tools_element = document.getElementById("advanced_search");
-    setTimeout(() => {
-    tools_element.style.zIndex = 8;
-    tools_element.style.position = "fixed";
-    tools_element.style.display = "block";
-    }, 50);
+    searchTools.style.display = "block";
+    searchTools.style.opacity = 1;
+    showExtraControls();
 };
 
 
@@ -131,19 +194,19 @@ function parseDatalists() {
         let newSourceOptions = "";
         for (o = 0; o < sourceMatches.length; o++) {
             newSourceOptions += "<option value='" + sourceMatches[o] + "' />\n";
-        };
+        }; // for loop ends
         document.getElementById("sources").innerHTML = newSourceOptions;
         
         let newSeriesOptions = "";
         for (o = 0; o < seriesMatches.length; o++) {
             newSeriesOptions += "<option value='" + seriesMatches[o] + "' />\n";
-        };
+        }; // for loop ends
         document.getElementById("series").innerHTML = newSeriesOptions;
         
         let newConditionOptions = "";
         for (o = 0; o < conditionMatches.length; o++) {
             newConditionOptions += "<option value='" + conditionMatches[o] + "' />\n";
-        };
+        }; // for loop ends
         document.getElementById("conditions").innerHTML = newConditionOptions;
         
     } else {
@@ -151,7 +214,6 @@ function parseDatalists() {
         //console.log("no visible divs");
         void(0);
     }; // if else block ends
-
 }; // parseDatalists function ends
 
 
@@ -161,25 +223,31 @@ function restoreOptions() {
     document.getElementById("tags").innerHTML = tagOptions;
     document.getElementById("conditions").innerHTML = conditionOptions;
     document.getElementById("sources").innerHTML = sourceOptions;
-    
-    //console.log("restored options");
 }; // restoreOptions function ends
 
 
 function clearOptions() {
     // manipulating innerHTML
-    document.getElementById("series").innerHTML = "";
-    document.getElementById("years").innerHTML = "";
-    document.getElementById("tags").innerHTML = "";
-    document.getElementById("conditions").innerHTML = "";
-    document.getElementById("sources").innerHTML = "";
+    seriesOptions.innerHTML = "";
+    yearOptions.innerHTML = "";
+    tagOptions.innerHTML = "";
+    conditionOptions.innerHTML = "";
+    sourceOptions.innerHTML = "";
 }; // clearOptions function ends
+
 
 function updateCount(count = 0) {
     // outputs count in #counter
-       if (count === 0) {
+    if (count === 0) {
         document.getElementById("counter").setAttribute("value", countResults());
-        } else {
-            document.getElementById("counter").setAttribute("value", count);
-        };
-    };
+    } else {
+        document.getElementById("counter").setAttribute("value", count);
+    }; // if else block ends
+}; // function updateCount ends
+    
+function promptNewSearch() {
+    clearSearch();
+    searchBar.focus();
+    clearOptions();
+    restoreOptions();
+};

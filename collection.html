@@ -1,59 +1,60 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
-    <title>Hot Wheels</title>
+    <title>Collection</title>
     <link type="text/css" href="styles.css" rel="stylesheet" />
     <script src="scripts.js"></script>
-    <script src="search.js"></script>
+    <script src="buttons.js" defer></script>
+    <!--optional-->
     <meta name="format-detection" content="telephone=no" />
     <meta name="viewport" 
-    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, interactive-widget=resizes-content">
 </head>
-
 
 <body onload="parseURL()">
     <script type="text/javascript">
         checkMode();
     </script>
+    <script src="search.js" defer></script>
     
-    <div id="topbar">
-        <input type="button" src="Images/Icons/Ionic-Ionicons-Menu.16.png" onclick="toggleMenu()" id="left_button" />
-        <input type="text" id="search_bar" onkeyup="findMatches(); hideDivsOnEmpty(); positionFooter();" src="Images/Icons/Ionic-Ionicons-Search.16.png" onfocus="showSearchTools(); restoreOptions(); parseDatalists()" />
-        <div class="dropdown">
-            <input type="button"  id="right_button" />
-            <div class="dropdown-content">
-                <input type="button" src="Images/Icons/Ionic-Ionicons-Toggle.16.png" onclick="toggleDarkMode()" id="mode_button" />
-                <input type="button" onclick="toggleView()" id="view_button" />
-                <input type="button" onclick="toggleDetails()" id="details_button" />
-                <input type="button" onclick="clearSearch()" id="clear_button" />
-            </div>
-        </div>
-        <input type="number" name="result counter" value="" disabled="True" id="counter" />
+    <header>  <!-- NAVIGATION -->
+<div id="topbar">
+    <input type="button" id="left_button" />
+    <input type="text" id="search_bar" />
+    <input type="button"  id="right_button" />
+    <div id="dropdown">
+        <input type="button" id="mode_button" />
+        <input type="button" id="view_button" />
+        <input type="button" id="details_button" />
+        <input type="button" id="clear_button" />
     </div>
+    <input type="number" name="result counter" value="" disabled="True" id="counter" />
+</div>
 
-    <div id="menu" class="overlay">
-        <a id="menu_close_button" onclick="closeMenu()">&times;</a>
-        <div id="menu_list"  class="overlay-content">
-            <p class="subheader">Collection</p>
-            <p class="separator"></p>
-            <a href="index.html">Home</a>
-            <a href="collection.html">Owned</a>
-            <a href="preview.html">Statistics</a>
-            <a href="spreadsheet.html">Spreadsheet</a>
-            <p class="subheader">Other</p>
-            <p class="separator"></p>
-            <a href="treasures.html">Treasures</a>
-            <a href="about.html">About</a>
-        </div>
+
+<div id="menu" class="overlay">
+    <a id="menu_close_button">&times;</a>
+    <div id="menu_list"  class="overlay-content">
+        <p class="subheader">Collection</p>
+        <p class="separator"></p>
+        <a href="index.html">Home</a>
+        <a href="collection.html">Owned</a>
+        <a href="preview.html">Statistics</a>
+        <a href="spreadsheet.html">Spreadsheet</a>
+        <p class="subheader">Other</p>
+        <p class="separator"></p>
+        <a href="treasures.html">Treasures</a>
+        <a href="about.html">About</a>
     </div>
+</div>
 
 
     </header>  <!-- END NAVIGATION -->
     
     <h1 id="site_name_part1">Archer's</h1>
-        <h1 id="site_name_part2">COLLECTION</h1>
+    <h1 id="site_name_part2">COLLECTION</h1>
+        
     <div id="results">
     <div class="searchable float" data-index="alfa romeo gtv6 3.0 series:car culture: world tour year:2024 source:target tag:chase condition:new on card ">
         <details>
@@ -116,6 +117,41 @@
             </table>
         </details>
         <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Porsche 911 Turbo (930) (Pop Culture - Cyberpunk 2077 2024).JPG" alt="Porsche 911 Turbo (930)" width="640px" /></a><p class="tag">PREMIUM</p></div>    </div>
+
+    <div class="searchable float" data-index="drift-ender series:truckin along year:2026 source:dollar tree tag:$th condition:new on card super treasure hunt">
+        <details>
+            <summary>
+                <h1>Drift-Ender</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>Truckin Along</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">1/5</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>13/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2026</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Dollar Tree</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag">$TH</td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper">
+			<a><img class="photo" loading="lazy" src="Images/Drift-Ender (Truckin Along 2026).JPG" alt="Drift-Ender" width="640px" /></a>
+<img class="logo" src="Images/Logos/STH Logo.PNG" width="30px" alt="$TH" />
+			<p class="tag">$TH</p>
+</div>    </div>
 
     <div class="searchable float" data-index="1973 honda civic custom series:then and now year:2025 source:trade tag:$th condition:new on card super treasure hunt">
         <details>
@@ -494,6 +530,68 @@
         </details>
         <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/1996 Honda Accord (Hot Wheels Boulevard 2023).JPG" alt="1996 Honda Accord" width="640px" /></a><p class="tag">PREMIUM</p></div>    </div>
 
+    <div class="searchable float" data-index="1999 honda civic type r (ek9) series:car culture: spoon honda 2-pack year:2025 source:target tag:premium condition:new on card ">
+        <details>
+            <summary>
+                <h1>1999 Honda Civic Type R (EK9)</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>Car Culture: Spoon Honda 2-pack</td>
+                    <td class="grayed">part:</td>
+                    <td class="right"></td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td></td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Target</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag">PREMIUM</td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/1999 Honda Civic Type R (EK9) (Car Culture - Spoon Honda 2-pack 2025).JPG" alt="1999 Honda Civic Type R (EK9)" width="640px" /></a><p class="tag">PREMIUM</p></div>    </div>
+
+    <div class="searchable float" data-index="2024 honda civic type r series:car culture: spoon honda 2-pack year:2025 source:target tag:premium condition:new on card ">
+        <details>
+            <summary>
+                <h1>2024 Honda Civic Type R</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>Car Culture: Spoon Honda 2-pack</td>
+                    <td class="grayed">part:</td>
+                    <td class="right"></td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td></td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Target</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag">PREMIUM</td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/2024 Honda Civic Type R (Car Culture - Spoon Honda 2-pack 2025).JPG" alt="2024 Honda Civic Type R" width="640px" /></a><p class="tag">PREMIUM</p></div>    </div>
+
     <div class="searchable float" data-index="1993 honda civic coupe ex ej1 series:fast & furious year:2025 source:walmart tag:premium condition:new on card ">
         <details>
             <summary>
@@ -524,6 +622,37 @@
             </table>
         </details>
         <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/1993 Honda Civic Coupe EX EJ1 (Fast & Furious 2025).JPG" alt="1993 Honda Civic Coupe EX EJ1" width="640px" /></a><p class="tag">PREMIUM</p></div>    </div>
+
+    <div class="searchable float" data-index="2016 honda civic type r series:urban camouflage year:2020 source:ebay tag: condition:new on card ">
+        <details>
+            <summary>
+                <h1>2016 Honda Civic Type R</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>Urban Camouflage</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">2/5</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td></td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2020</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>eBay</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/2016 Honda Civic Type R (Urban Camouflage 2020).JPG" alt="2016 Honda Civic Type R" width="640px" /></a><p class="tag"></p></div>    </div>
 
     <div class="searchable float" data-index="honda civic si series:the hot ones year:2025 source:target tag: condition:new on card ">
         <details>
@@ -835,7 +964,7 @@
         </details>
         <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/1987 Dodge D100 (Baja Blazers).JPG" alt="1987 Dodge D100" width="640px" /></a><p class="tag"></p></div>    </div>
 
-    <div class="searchable float" data-index="baja bone shaker series:baja blazers year:2022 source:trade tag: condition:new on card ">
+    <div class="searchable float" data-index="baja bone shaker series:baja blazers year:2022 source:trade tag: condition:opened ">
         <details>
             <summary>
                 <h1>Baja Bone Shaker</h1>
@@ -859,7 +988,7 @@
                 </tr>
                 <tr>
                     <td class="grayed">status:</td>
-                    <td>New on card</td>
+                    <td>Opened</td>
                     <td colspan=2 class="tag"></td>
                 </tr>
             </table>
@@ -2853,7 +2982,7 @@
         <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/1957 Nomad (2005 First Editions - Drop Tops).JPG" alt="1957 Nomad" width="640px" /></a><p class="tag"></p></div>    </div>
 
     <div class="searchable float" data-index="flat iron series:demo destruction year:2023 source:gina tag: condition:new in 5-pack ">
-        <details open>
+        <details>
             <summary>
                 <h1>Flat Iron</h1>
             </summary>
@@ -2881,10 +3010,10 @@
                 </tr>
             </table>
         </details>
-            </div>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Flat Iron (Demo Destruction 2023).JPG" alt="Flat Iron" width="640px" /></a><p class="comment">from Gina</p></div>    </div>
 
     <div class="searchable float" data-index="cruise bruiser series:demo destruction year:2023 source:gina tag: condition:new in 5-pack ">
-        <details open>
+        <details>
             <summary>
                 <h1>Cruise Bruiser</h1>
             </summary>
@@ -2912,10 +3041,10 @@
                 </tr>
             </table>
         </details>
-            </div>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Cruise Bruiser (Demo Destruction 2023).JPG" alt="Cruise Bruiser" width="640px" /></a><p class="comment">from Gina</p></div>    </div>
 
     <div class="searchable float" data-index="repo duty series:demo destruction year:2023 source:gina tag: condition:new in 5-pack ">
-        <details open>
+        <details>
             <summary>
                 <h1>Repo Duty</h1>
             </summary>
@@ -2943,10 +3072,10 @@
                 </tr>
             </table>
         </details>
-            </div>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Repo Duty (Demo Destruction 2023).JPG" alt="Repo Duty" width="640px" /></a><p class="comment">from Gina</p></div>    </div>
 
     <div class="searchable float" data-index="blind-sided series:demo destruction year:2023 source:gina tag: condition:new in 5-pack ">
-        <details open>
+        <details>
             <summary>
                 <h1>Blind-Sided</h1>
             </summary>
@@ -2974,10 +3103,10 @@
                 </tr>
             </table>
         </details>
-            </div>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Blind-Sided (Demo Destruction 2023).JPG" alt="Blind-Sided" width="640px" /></a><p class="comment">from Gina</p></div>    </div>
 
     <div class="searchable float" data-index="project speeder series:demo destruction year:2023 source:gina tag: condition:new in 5-pack ">
-        <details open>
+        <details>
             <summary>
                 <h1>Project Speeder</h1>
             </summary>
@@ -3005,7 +3134,7 @@
                 </tr>
             </table>
         </details>
-            </div>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Project Speeder (Demo Destruction 2023).JPG" alt="Project Speeder" width="640px" /></a><p class="comment">from Gina</p></div>    </div>
 
     <div class="searchable float" data-index="blings mercedes-benz g500 series:dropstars year:2006 source:flea market tag: condition:new on card ">
         <details>
@@ -4314,7 +4443,7 @@
         <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/King Kuda (Halloween Series 2023).JPG" alt="King Kuda" width="640px" /></a><p class="tag"></p></div>    </div>
 
     <div class="searchable float" data-index="muscle bound series:halloween series year:2024 source:mommy tag: condition:opened ">
-        <details open>
+        <details>
             <summary>
                 <h1>Muscle Bound</h1>
             </summary>
@@ -4342,7 +4471,7 @@
                 </tr>
             </table>
         </details>
-            </div>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Muscle Bound (Halloween Series 2024).JPG" alt="Muscle Bound" width="640px" /></a><p class="comment">from Mommy</p></div>    </div>
 
     <div class="searchable float" data-index="street shaker series:halloween series year:2024 source:mommy tag: condition:opened ">
         <details open>
@@ -5840,7 +5969,7 @@
         </details>
         <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Twin Mill Gen-E (HW Dream Garage 2020).JPG" alt="Twin Mill Gen-E" width="640px" /></a><p class="tag"></p></div>    </div>
 
-    <div class="searchable float" data-index="fusionbusta series:hw dream garage year:2022 source:flea market tag: condition:new on card ">
+    <div class="searchable float" data-index="fusionbusta series:hw dream garage year:2022 source:flea market tag: condition:opened ">
         <details>
             <summary>
                 <h1>FusionBusta</h1>
@@ -5864,7 +5993,7 @@
                 </tr>
                 <tr>
                     <td class="grayed">status:</td>
-                    <td>New on card</td>
+                    <td>Opened</td>
                     <td colspan=2 class="tag"></td>
                 </tr>
             </table>
@@ -20477,7 +20606,7 @@
         </details>
         <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Tooned 1969 Camaro Z28 (Mainline 2006).JPG" alt="Tooned 1969 Camaro Z28" width="640px" /></a><p class="tag"></p></div>    </div>
 
-    <div class="searchable float" data-index="anglia panel series:mainline year:2002 source:flea market tag: condition:new on card ">
+    <div class="searchable float" data-index="anglia panel series:mainline year:2002 source:flea market tag: condition:opened ">
         <details>
             <summary>
                 <h1>Anglia Panel</h1>
@@ -20501,7 +20630,7 @@
                 </tr>
                 <tr>
                     <td class="grayed">status:</td>
-                    <td>New on card</td>
+                    <td>Opened</td>
                     <td colspan=2 class="tag"></td>
                 </tr>
             </table>
@@ -20570,15 +20699,15 @@
         </details>
         <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/2020 Jeep Gladiator (Fast & Furious 2023).JPG" alt="2020 Jeep Gladiator" width="640px" /></a><p class="tag"></p></div>    </div>
 
-    <div class="searchable float" data-index="ford thunderbird series:pro racing: basic year:1997 source:grandpa tag:premium condition:used t-bird stocker">
-        <details open>
+    <div class="searchable float" data-index="ford thunderbird stocker series:pro racing year:1997 source:grandpa tag:premium condition:used t-bird stocker">
+        <details>
             <summary>
-                <h1>Ford Thunderbird</h1>
+                <h1>Ford Thunderbird Stocker</h1>
             </summary>
             <table>
                 <tr>
                     <td class="grayed">series:</td>
-                    <td>Pro Racing: Basic</td>
+                    <td>Pro Racing</td>
                     <td class="grayed">part:</td>
                     <td class="right"></td>
                 </tr>
@@ -20599,7 +20728,7 @@
                 </tr>
             </table>
         </details>
-            </div>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Ford Thunderbird Stocker (Pro Racing 1997).JPG" alt="Ford Thunderbird Stocker" width="640px" /></a><p class="comment">from Grandpa</p></div>    </div>
 
     <div class="searchable float" data-index="chevrolet monte carlo series:pro racing: basic year:1997 source:grandpa tag: condition:used monte carlo stocker">
         <details open>
@@ -23857,7 +23986,7 @@
             </div>
 
     <div class="searchable float" data-index="1973 bmw 3.0 csl race car series:ultra hots year:2024 source:brother tag: condition:opened ">
-        <details open>
+        <details>
             <summary>
                 <h1>1973 BMW 3.0 CSL Race Car</h1>
             </summary>
@@ -23885,7 +24014,7 @@
                 </tr>
             </table>
         </details>
-            </div>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/1973 BMW 3.0 CSL Race Car (Ultra Hots 2024).JPG" alt="1973 BMW 3.0 CSL Race Car" width="640px" /></a><p class="comment">from Brother</p></div>    </div>
 
     <div class="searchable float" data-index="deora ii series:hw dream garage year:2021 source:flea market tag:th condition:opened treasure hunt">
         <details>
@@ -26277,7 +26406,7 @@
             </div>
 
     <div class="searchable float" data-index="backdrafter series:hw rescue year:2016 source:flea market tag: condition:used ">
-        <details open>
+        <details>
             <summary>
                 <h1>Backdrafter</h1>
             </summary>
@@ -26305,7 +26434,7 @@
                 </tr>
             </table>
         </details>
-            </div>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Backdrafter (HW Rescue 2016).JPG" alt="Backdrafter" width="640px" /></a><p class="tag"></p></div>    </div>
 
     <div class="searchable float" data-index="baja bison t5 series:57th anniversary mix 1 year:2025 source:publix tag:chase condition:new on card ">
         <details>
@@ -26958,7 +27087,7 @@
         </details>
         <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Rapid Pulse (HW First Response 2025).JPG" alt="Rapid Pulse" width="640px" /></a><p class="comment">from Grandpa</p></div>    </div>
 
-    <div class="searchable float" data-index="rapid pulse series:hw first response year:2025 source: tag: condition:new on card ">
+    <div class="searchable float" data-index="rapid pulse series:hw first response year:2025 source:sandy tag: condition:opened ">
         <details>
             <summary>
                 <h1>Rapid Pulse</h1>
@@ -26978,11 +27107,11 @@
                 </tr>
                 <tr>
                     <td class="grayed">origin:</td>
-                    <td></td>
+                    <td>Sandy</td>
                 </tr>
                 <tr>
                     <td class="grayed">status:</td>
-                    <td>New on card</td>
+                    <td>Opened</td>
                     <td colspan=2 class="tag"></td>
                 </tr>
             </table>
@@ -28555,6 +28684,37 @@
         </details>
         <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Land Rover Defender 90 (Then and Now 2025) [ZAMAC].JPG" alt="Land Rover Defender 90" width="640px" /></a><p class="tag">ZAMAC</p></div>    </div>
 
+    <div class="searchable float" data-index="land rover defender 90 series:then and now year:2025 source:grandpa tag: condition:opened ">
+        <details>
+            <summary>
+                <h1>Land Rover Defender 90</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>Then and Now</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">5/10</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>210/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Grandpa</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>Opened</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Land Rover Defender 90 (Then and Now 2025) [green].JPG" alt="Land Rover Defender 90" width="640px" /></a><p class="comment">from Grandpa</p></div>    </div>
+
     <div class="searchable float" data-index="honda civic custom series:hw reverse rake year:2025 source: tag: condition:new on card ">
         <details>
             <summary>
@@ -28897,6 +29057,37 @@
             </table>
         </details>
         <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Ford GT (Modified 2025).JPG" alt="Ford GT" width="640px" /></a><p class="tag"></p></div>    </div>
+
+    <div class="searchable float" data-index="ford gt series:modified year:2025 source:grandpa tag: condition:opened ">
+        <details>
+            <summary>
+                <h1>Ford GT</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>Modified</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">4/5</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>159/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Grandpa</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>Opened</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Ford GT (Modified 2025).JPG" alt="Ford GT" width="640px" /></a><p class="comment">from Grandpa</p></div>    </div>
 
     <div class="searchable float" data-index="gotta go series:hw designed by year:2025 source:grandpa tag: condition:opened ">
         <details>
@@ -36473,7 +36664,7 @@
         <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Honda Monkey Z50 (HW Moto 2016).JPG" alt="Honda Monkey Z50" width="640px" /></a><p class="tag"></p></div>    </div>
 
     <div class="searchable float" data-index="aristo rat series:hw glow wheels year:2018 source:marketplace tag: condition:new on card glow in the dark">
-        <details open>
+        <details>
             <summary>
                 <h1>Aristo Rat</h1>
             </summary>
@@ -36501,10 +36692,10 @@
                 </tr>
             </table>
         </details>
-            </div>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Aristo Rat (HW Glow Wheels 2018).JPG" alt="Aristo Rat" width="640px" /></a><p class="tag"></p></div>    </div>
 
     <div class="searchable float" data-index="altered ego series:peanuts year:2017 source:marketplace tag: condition:opened charlie brown">
-        <details open>
+        <details>
             <summary>
                 <h1>Altered Ego</h1>
             </summary>
@@ -36532,14 +36723,1102 @@
                 </tr>
             </table>
         </details>
-            </div>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Altered Ego (Peanuts 2017).JPG" alt="Altered Ego" width="640px" /></a><p class="tag"></p></div>    </div>
+
+    <div class="searchable float" data-index="2020 jeep gladiator series:hw dirt year:2025 source:target tag: condition:opened ">
+        <details>
+            <summary>
+                <h1>2020 Jeep Gladiator</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>HW Dirt</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">6/10</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>130/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Target</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>Opened</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/2020 Jeep Gladiator (HW Dirt 2025).JPG" alt="2020 Jeep Gladiator" width="640px" /></a><p class="tag"></p></div>    </div>
+
+    <div class="searchable float" data-index="draggin’ wagon series:hw ride-ons year:2025 source: tag: condition:opened ">
+        <details>
+            <summary>
+                <h1>Draggin’ Wagon</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>HW Ride-Ons</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">3/5</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>68/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>Opened</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Draggin’ Wagon (HW Ride-Ons 2025).JPG" alt="Draggin’ Wagon" width="640px" /></a><p class="tag"></p></div>    </div>
+
+    <div class="searchable float" data-index="1966 land rover gen ii series:mbx adventure year:2025 source:dollar tree tag: condition:opened ">
+        <details>
+            <summary>
+                <h1>1966 Land Rover Gen II</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>MBX Adventure</td>
+                    <td class="grayed">part:</td>
+                    <td class="right"></td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>82/125</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Dollar Tree</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>Opened</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/1966 Land Rover Gen II (MBX Adventure 2025).JPG" alt="1966 Land Rover Gen II" width="640px" /></a><p class="tag"></p></div>    </div>
+
+    <div class="searchable float" data-index="pontiac aztec custom series:hw modified year:2024 source: tag: condition:used ">
+        <details>
+            <summary>
+                <h1>Pontiac Aztec Custom</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>HW Modified</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">9/10</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>111/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2024</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>Used</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Pontiac Aztec Custom (HW Modified 2024).JPG" alt="Pontiac Aztec Custom" width="640px" /></a><p class="tag"></p></div>    </div>
+
+    <div class="searchable float" data-index="1964 lincoln continental series:mbx showroom year:2024 source:goodwill tag: condition:used ">
+        <details>
+            <summary>
+                <h1>1964 Lincoln Continental</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>MBX Showroom</td>
+                    <td class="grayed">part:</td>
+                    <td class="right"></td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td></td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2024</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Goodwill</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>Used</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/1964 Lincoln Continental (MBX Showroom 2024).JPG" alt="1964 Lincoln Continental" width="640px" /></a><p class="tag"></p></div>    </div>
+
+    <div class="searchable float" data-index="karma gs-6 series:mbx highway year:2024 source:goodwill tag: condition:used ">
+        <details>
+            <summary>
+                <h1>Karma GS-6</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>MBX Highway</td>
+                    <td class="grayed">part:</td>
+                    <td class="right"></td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td></td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2024</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Goodwill</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>Used</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Karma GS-6 (MBX Highway 2024).JPG" alt="Karma GS-6" width="640px" /></a><p class="tag"></p></div>    </div>
+
+    <div class="searchable float" data-index="1991 gmc syclone series:hw the 90s year:2024 source:goodwill tag: condition:used ">
+        <details>
+            <summary>
+                <h1>1991 GMC Syclone</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>HW the 90s</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">7/10</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>226/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2024</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Goodwill</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>Used</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/1991 GMC Syclone (HW the 90s 2024).JPG" alt="1991 GMC Syclone" width="640px" /></a><p class="tag"></p></div>    </div>
+
+    <div class="searchable float" data-index="2018 bentley continental gt3 series:race day year:2025 source:grandpa tag: condition:opened ">
+        <details>
+            <summary>
+                <h1>2018 Bentley Continental GT3</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>Race Day</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">7/10</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>162/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Grandpa</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>Opened</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/2018 Bentley Continental GT3 (Race Day 2025).JPG" alt="2018 Bentley Continental GT3" width="640px" /></a><p class="comment">from Grandpa</p></div>    </div>
+
+    <div class="searchable float" data-index="1987 buick regal gnx series:nightspeed year:2026 source:dollar tree tag:th condition:new on card treasure hunt">
+        <details>
+            <summary>
+                <h1>1987 Buick Regal GNX</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>Nightspeed</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">1/10</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>9/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2026</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Dollar Tree</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag">TH</td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper">
+<a><img class="photo" loading="lazy" src="Images/1987 Buick Regal GNX (Nightspeed 2026).JPG" alt="1987 Buick Regal GNX" width="640px" /></a><img class="logo" src="Images/Logos/TH Logo Mini.PNG" width="30px" alt="TH" /><p class="tag">TH</p>
+</div>    </div>
+
+    <div class="searchable float" data-index="ford transit van series:matchbox hero city: hospital year:2003 source:debbie & mindy tag: condition:new on card ">
+        <details>
+            <summary>
+                <h1>Ford Transit Van</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>Matchbox Hero City: Hospital</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">4/5</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>14</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2003</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Debbie & Mindy</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Ford Transit Van (Matchbox Hero City - Hospital 2003).JPG" alt="Ford Transit Van" width="640px" /></a><p class="tag"></p></div>    </div>
+
+    <div class="searchable float" data-index="extending-ladder fire truck series:matchbox hero city year:2004 source:debbie & mindy tag: condition:new on card ">
+        <details>
+            <summary>
+                <h1>Extending-Ladder Fire Truck</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>Matchbox Hero City</td>
+                    <td class="grayed">part:</td>
+                    <td class="right"></td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>4</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2004</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Debbie & Mindy</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Extending-Ladder Fire Truck (Matchbox Hero City 2004).JPG" alt="Extending-Ladder Fire Truck" width="640px" /></a><p class="tag"></p></div>    </div>
+
+    <div class="searchable float" data-index="all-terrain fire tanker series:matchbox hero city year:2004 source:debbie & mindy tag: condition:new on card fire truck">
+        <details>
+            <summary>
+                <h1>All-Terrain Fire Tanker</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>Matchbox Hero City</td>
+                    <td class="grayed">part:</td>
+                    <td class="right"></td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>67</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2004</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Debbie & Mindy</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/All-Terrain Fire Tanker (Matchbox Hero City 2004).JPG" alt="All-Terrain Fire Tanker" width="640px" /></a><p class="tag"></p></div>    </div>
+
+    <div class="searchable float" data-index="dennis sabre fire truck series:mbx airport alarm year:2002 source:debbie & mindy tag: condition:new on card fire truck">
+        <details>
+            <summary>
+                <h1>Dennis Sabre Fire Truck</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>MBX Airport Alarm</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">4/4</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>44/75</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2002</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Debbie & Mindy</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Dennis Sabre Fire Truck (MBX Airport Alarm 2002).JPG" alt="Dennis Sabre Fire Truck" width="640px" /></a><p class="tag"></p></div>    </div>
+
+    <div class="searchable float" data-index="mack auxiliary power truck series:mbx airport alarm year:2002 source:debbie & mindy tag: condition:new on card fire truck">
+        <details>
+            <summary>
+                <h1>Mack Auxiliary Power Truck</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>MBX Airport Alarm</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">2/4</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>42/75</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2002</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Debbie & Mindy</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Mack Auxiliary Power Truck (MBX Airport Alarm 2002).JPG" alt="Mack Auxiliary Power Truck" width="640px" /></a><p class="tag"></p></div>    </div>
+
+    <div class="searchable float" data-index="fire hovercraft series:mbx ultimate rescue year:2002 source:debbie & mindy tag: condition:new on card ">
+        <details>
+            <summary>
+                <h1>Fire Hovercraft</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>MBX Ultimate Rescue</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">3/4</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>35/75</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2002</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Debbie & Mindy</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Fire Hovercraft (MBX Ultimate Rescue 2002).JPG" alt="Fire Hovercraft" width="640px" /></a><p class="tag"></p></div>    </div>
+
+    <div class="searchable float" data-index="hummer h1 police series:mbx ultimate rescue year:2002 source:debbie & mindy tag: condition:new on card ">
+        <details>
+            <summary>
+                <h1>Hummer H1 Police</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>MBX Ultimate Rescue</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">1/5</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>33/75</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2002</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Debbie & Mindy</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Hummer H1 Police (MBX Ultimate Rescue 2002).JPG" alt="Hummer H1 Police" width="640px" /></a><p class="tag"></p></div>    </div>
+
+    <div class="searchable float" data-index="triumph tr6 series:track champs year:2025 source:target tag:th condition:new on card treasure hunt">
+        <details>
+            <summary>
+                <h1>Triumph TR6</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>Track Champs</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">5/5</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>249/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Target</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag">TH</td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper">
+<a><img class="photo" loading="lazy" src="Images/Triumph TR6 (Track Champs 2025).JPG" alt="Triumph TR6" width="640px" /></a><img class="logo" src="Images/Logos/TH Logo Mini.PNG" width="30px" alt="TH" /><p class="tag">TH</p>
+</div>    </div>
+
+    <div class="searchable float" data-index="honda super cub series:hw moto year:2023 source:ace hardware tag: condition:opened ">
+        <details>
+            <summary>
+                <h1>Honda Super Cub</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>HW Moto</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">3/5</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>87/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2023</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Ace Hardware</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>Opened</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Honda Super Cub (HW Moto 2023).JPG" alt="Honda Super Cub" width="640px" /></a><p class="tag"></p></div>    </div>
+
+    <div class="searchable float" data-index="surf’s up series:hw extreme sports year:2024 source:ace hardware tag: condition:opened ">
+        <details>
+            <summary>
+                <h1>Surf’s Up</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>HW Extreme Sports</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">2/5</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>17/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2024</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Ace Hardware</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>Opened</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Surf’s Up (HW Extreme Sports 2024).JPG" alt="Surf’s Up" width="640px" /></a><p class="tag"></p></div>    </div>
+
+    <div class="searchable float" data-index="hollowback series:halloween series year:2025 source:gina tag: condition:opened ">
+        <details>
+            <summary>
+                <h1>Hollowback</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>Halloween Series</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">1/5</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td></td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Gina</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>Opened</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Hollowback (Halloween Series 2025).JPG" alt="Hollowback" width="640px" /></a><p class="comment">from Gina</p></div>    </div>
+
+    <div class="searchable float" data-index="bmw 2002 series:hw 70s vs 90s year:2025 source:gina tag: condition:opened ">
+        <details>
+            <summary>
+                <h1>BMW 2002</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>HW 70s vs 90s</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">5/10</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>77/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Gina</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>Opened</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/BMW 2002 (HW 70s vs 90s 2025).JPG" alt="BMW 2002" width="640px" /></a><p class="comment">from Gina</p></div>    </div>
+
+    <div class="searchable float" data-index="rapid pulse series:first response year:2025 source:gina tag: condition:opened ">
+        <details>
+            <summary>
+                <h1>Rapid Pulse</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>First Response</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">5/5</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>137/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Gina</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>Opened</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Rapid Pulse (First Response 2025) [blue].JPG" alt="Rapid Pulse" width="640px" /></a><p class="comment">from Gina</p></div>    </div>
+
+    <div class="searchable float" data-index="mazda mx-5 miata series:hw dream garage year:2025 source:gina tag: condition:opened hot wheels legends tour">
+        <details>
+            <summary>
+                <h1>Mazda MX-5 Miata</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>HW Dream Garage</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">2/5</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>1/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Gina</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>Opened</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Mazda MX-5 Miata (HW Dream Garage 2025) [green].JPG" alt="Mazda MX-5 Miata" width="640px" /></a><p class="comment">from Gina</p></div>    </div>
+
+    <div class="searchable float" data-index="1975 chevy blazer custom series:hw dirt year:2025 source:gina tag: condition:opened ">
+        <details>
+            <summary>
+                <h1>1975 Chevy Blazer Custom</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>HW Dirt</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">5/10</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>115/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Gina</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>Opened</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/1975 Chevy Blazer Custom (HW Dirt 2025) [white].JPG" alt="1975 Chevy Blazer Custom" width="640px" /></a><p class="comment">from Gina</p></div>    </div>
+
+    <div class="searchable float" data-index="mattel dream mobile series:80th anniversary series year:2025 source:gina tag: condition:opened ">
+        <details>
+            <summary>
+                <h1>Mattel Dream Mobile</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>80th Anniversary Series</td>
+                    <td class="grayed">part:</td>
+                    <td class="right"></td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td></td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Gina</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>Opened</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Mattel Dream Mobile (80th Anniversary Series 2025).JPG" alt="Mattel Dream Mobile" width="640px" /></a><p class="comment">from Gina</p></div>    </div>
+
+    <div class="searchable float" data-index="2024 honda civic type r series:mbx metro year:2026 source:walmart tag: condition:new on card ">
+        <details>
+            <summary>
+                <h1>2024 Honda Civic Type R</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>MBX Metro</td>
+                    <td class="grayed">part:</td>
+                    <td class="right"></td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td></td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2026</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Walmart</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>New on card</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/2024 Honda Civic Type R (MBX Metro 2026).JPG" alt="2024 Honda Civic Type R" width="640px" /></a><p class="tag"></p></div>    </div>
+
+    <div class="searchable float" data-index="scrubba dub driver + duck n’ roll series:super rigs year:2024 source:grandpa tag: condition:opened ">
+        <details>
+            <summary>
+                <h1>Scrubba Dub Driver + Duck N’ Roll</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>Super Rigs</td>
+                    <td class="grayed">part:</td>
+                    <td class="right"></td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td></td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2024</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Grandpa</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>Opened</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Scrubba Dub Driver + Duck N’ Roll (Super Rigs 2024).JPG" alt="Scrubba Dub Driver + Duck N’ Roll" width="640px" /></a><p class="comment">from Grandpa</p></div>    </div>
+
+    <div class="searchable float" data-index="blastous moto series:cool classics year:2013 source:grandpa tag: condition:opened spectrafrost / retro riders / motorcycle">
+        <details>
+            <summary>
+                <h1>Blastous Moto</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>Cool Classics</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">2/30</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td></td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2013</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Grandpa</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>Opened</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Blastous Moto (Cool Classics 2013).JPG" alt="Blastous Moto" width="640px" /></a><p class="comment">from Grandpa</p></div>    </div>
+
+    <div class="searchable float" data-index="1988 ford t-bird series:hw drag strip 5-pack year:2024 source:grandpa tag: condition:opened ">
+        <details>
+            <summary>
+                <h1>1988 Ford T-Bird</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>HW Drag Strip 5-pack</td>
+                    <td class="grayed">part:</td>
+                    <td class="right"></td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td></td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2024</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Grandpa</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>Opened</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/1988 Ford T-Bird (HW Drag Strip 5-pack 2024).JPG" alt="1988 Ford T-Bird" width="640px" /></a><p class="comment">from Grandpa</p></div>    </div>
+
+    <div class="searchable float" data-index="1962 corvette gasser series:hw drag strip 5-pack year:2024 source:grandpa tag: condition:opened ">
+        <details>
+            <summary>
+                <h1>1962 Corvette Gasser</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>HW Drag Strip 5-pack</td>
+                    <td class="grayed">part:</td>
+                    <td class="right"></td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td></td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2024</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Grandpa</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>Opened</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/1962 Corvette Gasser (HW Drag Strip 5-pack 2024).JPG" alt="1962 Corvette Gasser" width="640px" /></a><p class="comment">from Grandpa</p></div>    </div>
+
+    <div class="searchable float" data-index="hot wired series:hw drag strip 5-pack year:2024 source:grandpa tag: condition:opened ">
+        <details>
+            <summary>
+                <h1>Hot Wired</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>HW Drag Strip 5-pack</td>
+                    <td class="grayed">part:</td>
+                    <td class="right"></td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td></td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2024</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Grandpa</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>Opened</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Hot Wired (HW Drag Strip 5-pack 2024).JPG" alt="Hot Wired" width="640px" /></a><p class="comment">from Grandpa</p></div>    </div>
+
+    <div class="searchable float" data-index="nitro doorslammer series:hw drag strip 5-pack year:2024 source:grandpa tag: condition:opened ">
+        <details>
+            <summary>
+                <h1>Nitro Doorslammer</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>HW Drag Strip 5-pack</td>
+                    <td class="grayed">part:</td>
+                    <td class="right"></td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td></td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2024</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Grandpa</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>Opened</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Nitro Doorslammer (HW Drag Strip 5-pack 2024).JPG" alt="Nitro Doorslammer" width="640px" /></a><p class="comment">from Grandpa</p></div>    </div>
+
+    <div class="searchable float" data-index="mustang funny car series:hw drag strip 5-pack year:2024 source:grandpa tag: condition:opened moon eyes">
+        <details>
+            <summary>
+                <h1>Mustang Funny Car</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>HW Drag Strip 5-pack</td>
+                    <td class="grayed">part:</td>
+                    <td class="right"></td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td></td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2024</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Grandpa</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>Opened</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Mustang Funny Car (HW Drag Strip 5-pack 2024).JPG" alt="Mustang Funny Car" width="640px" /></a><p class="comment">from Grandpa</p></div>    </div>
+
+    <div class="searchable float" data-index="blastous series:hw stunt year:2012 source:grandpa tag: condition:opened motorcycle">
+        <details>
+            <summary>
+                <h1>Blastous</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>HW Stunt</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">41/50</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>41/247</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2012</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Grandpa</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>Opened</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Blastous (HW Stunt 2012).JPG" alt="Blastous" width="640px" /></a><p class="comment">from Grandpa</p></div>    </div>
+
+    <div class="searchable float" data-index="ford taurus stocker series:pro racing year:2002 source:dima tag: condition:used ">
+        <details>
+            <summary>
+                <h1>Ford Taurus Stocker</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>Pro Racing</td>
+                    <td class="grayed">part:</td>
+                    <td class="right"></td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td></td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2002</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Dima</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>Used</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Ford Taurus Stocker (Pro Racing 2002).JPG" alt="Ford Taurus Stocker" width="640px" /></a><p class="comment">from Dima</p></div>    </div>
 
 
     </div>
-
 <div id="advanced_search">
 
-    <input type="search" list="tags" placeholder="TAG" class="select" id="tags_input" onchange="findMatches()" onkeyup="findMatches()">
+    <input type="search" list="tags" placeholder="TAG" class="select" id="tags_input">
 
     <datalist id="tags">
         <option value="" />
@@ -36553,8 +37832,7 @@
       
     </datalist>
 
-
-    <input type="search" list="years" placeholder="YEAR" class="select" id="years_input" onchange="findMatches()" onkeyup="findMatches()">
+    <input type="search" list="years" placeholder="YEAR" class="select" id="years_input">
 
     <datalist id="years">
         <option value="" />
@@ -36602,8 +37880,7 @@
       
     </datalist>
 
-
-    <input type="search" list="series" placeholder="SERIES" class="select" id="series_input" onchange="findMatches()" onkeyup="findMatches()">
+    <input type="search" list="series" placeholder="SERIES" class="select" id="series_input">
 
     <datalist id="series">
         <option value="1998 First Editions" />
@@ -36629,6 +37906,7 @@
       <option value="56th Anniversary Mix 1" />
       <option value="57th Anniversary Mix 1" />
       <option value="57th Anniversary Mix 2" />
+      <option value="80th Anniversary Series" />
       <option value="Action 5-pack" />
       <option value="Avon Super Tuners" />
       <option value="Baja Blazers" />
@@ -36645,6 +37923,7 @@
       <option value="Car Culture: Ronin Run" />
       <option value="Car Culture: Slide Street 2" />
       <option value="Car Culture: Speed Machines" />
+      <option value="Car Culture: Spoon Honda 2-pack" />
       <option value="Car Culture: Team Transport" />
       <option value="Car Culture: World Tour" />
       <option value="Car Meet 5-pack" />
@@ -36657,6 +37936,7 @@
       <option value="Color Shifters" />
       <option value="Compact Kings" />
       <option value="Company Cars" />
+      <option value="Cool Classics" />
       <option value="Corvette 5-pack" />
       <option value="Corvette 70 1953-2023" />
       <option value="Crack-Ups" />
@@ -36682,6 +37962,7 @@
       <option value="Figure 8 Starter Set" />
       <option value="Final Run" />
       <option value="Fire Squad" />
+      <option value="First Response" />
       <option value="Flaming Hot Wheels" />
       <option value="Flyin’ Aces" />
       <option value="Fright Cars" />
@@ -36704,6 +37985,7 @@
       <option value="HW Digital Circuit" />
       <option value="HW Dirt" />
       <option value="HW Drag Strip" />
+      <option value="HW Drag Strip 5-pack" />
       <option value="HW Dream Garage" />
       <option value="HW Drift" />
       <option value="HW EV" />
@@ -36751,6 +38033,7 @@
       <option value="HW Speed Team" />
       <option value="HW Sports" />
       <option value="HW Starting Grid" />
+      <option value="HW Stunt" />
       <option value="HW Tool-in-1" />
       <option value="HW Track Champs" />
       <option value="HW Turbo" />
@@ -36814,12 +38097,14 @@
       <option value="MBX Showroom" />
       <option value="MBX Sky Busters" />
       <option value="MBX Super Star Transporters" />
+      <option value="MBX Ultimate Rescue" />
       <option value="MBX Working Rigs" />
       <option value="Mainline" />
       <option value="Mainline Classics" />
       <option value="Marvel Character Cars" />
       <option value="Matchbox Collectors Series" />
       <option value="Matchbox Hero City" />
+      <option value="Matchbox Hero City: Hospital" />
       <option value="Matchbox Mainline" />
       <option value="Matchbox Multipack" />
       <option value="McDonald’s" />
@@ -36846,6 +38131,7 @@
       <option value="Pop Culture: Cyberpunk 2077" />
       <option value="Pop Culture: Jurassic Park" />
       <option value="Power Launcher pack" />
+      <option value="Pro Racing" />
       <option value="Pro Racing Race Day" />
       <option value="Pro Racing: Basic" />
       <option value="Quarter Mile Heroes" />
@@ -36891,15 +38177,18 @@
       <option value="Tooned" />
       <option value="Tooned 5-pack" />
       <option value="Track Builder 5-pack" />
+      <option value="Track Champs" />
       <option value="Track Fleet" />
       <option value="Track Set" />
       <option value="Track Stars" />
       <option value="Track Stars Haulers" />
       <option value="Treasure Hunts 2010" />
+      <option value="Truckin Along" />
       <option value="Tuners" />
       <option value="Turbo Trax Set" />
       <option value="Twenty +" />
       <option value="Ultra Hots" />
+      <option value="Urban Camouflage" />
       <option value="Vintage American Muscle" />
       <option value="Vintage Racing Club" />
       <option value="Virtual Collection" />
@@ -36914,8 +38203,7 @@
       
     </datalist>
 
-
-    <input type="search" list="conditions" placeholder="STATUS" class="select" id="conditions_input" onchange="findMatches()" onkeyup="findMatches()">
+    <input type="search" list="conditions" placeholder="CONDITION" class="select" id="conditions_input">
 
     <datalist id="conditions">
         <option value="" />
@@ -36932,11 +38220,11 @@
       
     </datalist>
 
-
-    <input type="search" list="sources" placeholder="SOURCE" class="select" id="sources_input" onchange="findMatches()" onkeyup="findMatches()">
+    <input type="search" list="sources" placeholder="SOURCE" class="select" id="sources_input">
 
     <datalist id="sources">
         <option value="" />
+      <option value="Ace Hardware" />
       <option value="Archer" />
       <option value="Big Lots" />
       <option value="Brother" />
@@ -36969,61 +38257,26 @@
       <option value="Trade" />
       <option value="Walgreens" />
       <option value="Walmart" />
+      <option value="eBay" />
       
     </datalist>
-    
+
 </div>
-    
+
+
     <div id="empty_space" style="height: 60px;"></div>
     
     <input type="button" id="help_button" value="" onclick="location.href='reference.html'" />
     
-    <footer id="page_footer" class="fixed-position">
-        <p>Last update: <a href="updates.html">2025-11-20</a></p>
+    <footer id="page_footer">
+        <p>Last update: <a href="updates.html">2025-12-15</a></p>
         <p>Site design: Konstantin A Kolosov</p>
         <hr />
-        <a href="index.html">Home</a>
+            <a href="index.html">Home</a>
             <a href="preview.html">Statistics</a>
-        <a href="treasures.html">Treasures</a>
-        <a href="about.html">About</a>
+            <a href="treasures.html">Treasures</a>
+            <a href="about.html">About</a>
     </footer>
-    
-<script type="text/javascript">
-    
-const seriesOptions = document.getElementById("series").innerHTML;
-const yearOptions = document.getElementById("years").innerHTML;
-const conditionOptions = document.getElementById("conditions").innerHTML;
-const tagOptions = document.getElementById("tags").innerHTML;
-const sourceOptions = document.getElementById("sources").innerHTML;
-const seriesOptionsList = document.getElementById("series").options;
-const yearOptionsList = document.getElementById("years").options;
-const tagOptionsList = document.getElementById("tags").options;
-const conditionOptionsList = document.getElementById("conditions").options;
-const sourceOptionsList = document.getElementById("sources").options;
-
-document.getElementById("years_input").classList.add("half");
-document.getElementById("years_input").classList.add("right");
-    
-document.getElementById("tags_input").classList.add("half");
-    
-document.getElementById("tags_input").classList.add("left");
-document.getElementById("series_input").classList.add("full");
-document.getElementById("sources_input").classList.add("half");
-document.getElementById("sources_input").classList.add("left");
-document.getElementById("conditions_input").classList.add("half");
-document.getElementById("conditions_input").classList.add("right");
-document.getElementById("years_input").classList.add("right");
-
-const searchBar = document.getElementById("search_bar");
-const searchTools = document.getElementById("advanced_search");
-
-document.addEventListener('click', function(event) {
-    if (!searchTools.contains(event.target) & !searchBar.contains(event.target)) {
-        hideDynamics();
-    }; // if else block ends
-}); // addEventListener ends
-
-</script>
     
 
     </body>

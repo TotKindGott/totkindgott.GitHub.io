@@ -81,7 +81,7 @@ body {
 /* ------- TOP MENU BAR ------- */
 
 #topbar {
-    position: fixed; 
+    position: fixed;
     top: 0;
     left: 0;
     z-index: 9;
@@ -162,6 +162,8 @@ input.search_bar:disabled {
     left: 15%;
     z-index: 8;
     box-shadow: 0 0 5px 1px #ffffff;
+    opacity: 0; /* Or other properties for the animation */
+    transition: opacity 0.5s, display 0.5s allow-discrete;
 }
 
 #advanced_search > input.select {
@@ -275,12 +277,7 @@ input.right_button {
     box-shadow: 0 0 5px 1px #ffffff;
 }
 
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
+#dropdown {
     display: none;
     position: fixed;
     right: 0;
@@ -288,11 +285,13 @@ input.right_button {
     background-color: transparent;
     z-index: 10;
     width: 39px;
+    opacity: 0; /* Or other properties for the animation */
+    transition: opacity 0.5s, display 0.5s allow-discrete;
 }
 
-.dropdown:hover .dropdown-content {
+/*.dropdown:hover .dropdown-content {
     display: block;
-}
+}*/
 
 #mode_button, .mode_button {
     background-image: url("Images/Icons/Ionic-Ionicons-Toggle-outline.16.png");
@@ -586,7 +585,8 @@ summary > h1 {
 	text-underline-offset: 3px;
     transition-property: background-color;
     transition-duration: 0.5s;
-	background-color: #ffffff; padding-top: 5px; 
+	background-color: transparent; 
+    padding-top: 5px; 
 	padding-bottom: 5px; 
 	/*padding: 5px;*/
 	margin: auto;
@@ -713,7 +713,6 @@ body.dark-mode body {
     background-color: rgba(0,0,0,0.92.5);
 }
 
-body.dark-mode h1,
 body.dark-mode #results,
 body.dark-mode .searchable,
 body.dark-mode .wrapper {
@@ -722,8 +721,8 @@ body.dark-mode .wrapper {
     background-color: #000000;
 }
 
-body.dark-mode .searchable {
-    box-shadow: 0 0 10px 1px rgba(255,255,255,0.25);
+body.dark-mode > #results > div.searchable {
+    box-shadow: 0 1px 1px 1px rgba(255,255,255,0.25);
     border-top: 1px solid rgba(255,255,255,0.5);
     border-bottom: 1px solid rgba(255,255,255,0.5);
 }
@@ -936,6 +935,8 @@ td.bignum {
     left: 0;
     z-index: 9;
     transition: 0s;
+    opacity: 0; /* Or other properties for the animation */
+    transition: opacity 0.5s, display 0.5s allow-discrete;
 }
 
 #menu .overlay-content {
@@ -1210,7 +1211,7 @@ body.dark-mode #page_footer > a, body.dark-mode #page_footer > p > a {
 }
 
 #about > .wrapper {
-    background: transparent;
+    background: white;
 }
 
 #about > .wrapper > img {
@@ -1223,6 +1224,10 @@ body.dark-mode #page_footer > a, body.dark-mode #page_footer > p > a {
     margin-top: 24px;
     margin-bottom: 24px;
     padding: 16px;
+}
+
+body.dark-mode #about > p {
+    color: white;
 }
 
 @keyframes pulse {
@@ -1657,10 +1662,19 @@ div.collage.third div.wrapper,
 div.collage.half div.wrapper, 
 div.collage.full div.wrapper {
     width: 100%;
+    padding: 0;
+}
+
+body.dark-mode > div.collage > div.searchable {
+    border: none;
+    box-shadow: none;
+    margin: 0;
 }
 
 div.collage > div.searchable div.wrapper {
     display: block;
+    border-radius: 0;
+    padding: 0;
 }
 
 div.collage > div.searchable div.wrapper > a > img.photo {
@@ -1671,6 +1685,7 @@ div.collage > div.searchable div.wrapper > a > img.photo {
     border: none;
     border-radius: 0;
     box-shadow: none;
+    top: 0;
 }
 
 div.collage > div.searchable img.logo {

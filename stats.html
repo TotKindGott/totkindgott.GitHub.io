@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
-    <title>Hot Wheels</title>
+    <title>Collection</title>
     <link type="text/css" href="styles.css" rel="stylesheet" />
     <script src="scripts.js"></script>
+    <script src="buttons.js" defer></script>
+    <!--optional-->
     <meta name="format-detection" content="telephone=no" />
     <meta name="viewport" 
-    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, interactive-widget=resizes-content">
 </head>
-
 
 <body onload="setSearchRedirect()">
     <script type="text/javascript">
@@ -18,37 +18,35 @@
     </script>
 
     <header>  <!-- NAVIGATION -->
-    
-    <div id="topbar">
-        <input type="button" src="Images/Icons/Ionic-Ionicons-Menu.16.png" onclick="toggleMenu()" id="left_button" />
-        <input type="text" id="search_bar" onkeyup="setTimeout(searchModels(), 250)" src="Images/Icons/Ionic-Ionicons-Search.16.png" />
-        <div class="dropdown">
-            <input type="button"  id="right_button" />
-            <div class="dropdown-content">
-                <input type="button" src="Images/Icons/Ionic-Ionicons-Toggle.16.png" onclick="toggleDarkMode()" id="mode_button" />
-                <input type="button" onclick="toggleView()" id="view_button" />
-                <input type="button" onclick="toggleDetails()" id="details_button" />
-                <input type="button" onclick="clearSearch()" id="clear_button" />
-            </div>
-        </div>
-        <input type="number" name="result counter" value="" disabled="True" id="counter" />
+<div id="topbar">
+    <input type="button" id="left_button" />
+    <input type="text" id="search_bar" />
+    <input type="button"  id="right_button" />
+    <div id="dropdown">
+        <input type="button" id="mode_button" />
+        <input type="button" id="view_button" />
+        <input type="button" id="details_button" />
+        <input type="button" id="clear_button" />
     </div>
+    <input type="number" name="result counter" value="" disabled="True" id="counter" />
+</div>
 
-    <div id="menu" class="overlay">
-        <a id="menu_close_button" onclick="closeMenu()">&times;</a>
-        <div id="menu_list"  class="overlay-content">
-            <p class="subheader">Collection</p>
-            <p class="separator"></p>
-            <a href="index.html">Home</a>
-            <a href="collection.html">Owned</a>
-            <a href="preview.html">Statistics</a>
-            <a href="spreadsheet.html">Spreadsheet</a>
-            <p class="subheader">Other</p>
-            <p class="separator"></p>
-            <a href="treasures.html">Treasures</a>
-            <a href="about.html">About</a>
-        </div>
+
+<div id="menu" class="overlay">
+    <a id="menu_close_button">&times;</a>
+    <div id="menu_list"  class="overlay-content">
+        <p class="subheader">Collection</p>
+        <p class="separator"></p>
+        <a href="index.html">Home</a>
+        <a href="collection.html">Owned</a>
+        <a href="preview.html">Statistics</a>
+        <a href="spreadsheet.html">Spreadsheet</a>
+        <p class="subheader">Other</p>
+        <p class="separator"></p>
+        <a href="treasures.html">Treasures</a>
+        <a href="about.html">About</a>
     </div>
+</div>
 
 
     </header>  <!-- END NAVIGATION -->
@@ -71,7 +69,7 @@
                <td class="key">1999</td>
                <td class="value">008</td>
                <td class="key">2013</td>
-               <td class="value">010</td>
+               <td class="value">011</td>
            </tr>
             
            <tr>
@@ -96,7 +94,7 @@
                <td class="key">1984</td>
                <td class="value">004</td>
                <td class="key">2002</td>
-               <td class="value">009</td>
+               <td class="value">014</td>
                <td class="key">2016</td>
                <td class="value">011</td>
            </tr>
@@ -105,7 +103,7 @@
                <td class="key">1986</td>
                <td class="value">002</td>
                <td class="key">2003</td>
-               <td class="value">008</td>
+               <td class="value">009</td>
                <td class="key">2017</td>
                <td class="value">022</td>
            </tr>
@@ -114,7 +112,7 @@
                <td class="key">1987</td>
                <td class="value">001</td>
                <td class="key">2004</td>
-               <td class="value">015</td>
+               <td class="value">017</td>
                <td class="key">2018</td>
                <td class="value">021</td>
            </tr>
@@ -134,7 +132,7 @@
                <td class="key">2006</td>
                <td class="value">011</td>
                <td class="key">2020</td>
-               <td class="value">021</td>
+               <td class="value">022</td>
            </tr>
             
            <tr>
@@ -161,7 +159,7 @@
                <td class="key">2009</td>
                <td class="value">009</td>
                <td class="key">2023</td>
-               <td class="value">218</td>
+               <td class="value">219</td>
            </tr>
             
            <tr>
@@ -170,7 +168,7 @@
                <td class="key">2010</td>
                <td class="value">006</td>
                <td class="key">2024</td>
-               <td class="value">216</td>
+               <td class="value">227</td>
            </tr>
             
            <tr>
@@ -179,16 +177,16 @@
                <td class="key">2011</td>
                <td class="value">004</td>
                <td class="key">2025</td>
-               <td class="value">163</td>
+               <td class="value">178</td>
            </tr>
             
            <tr>
                <td class="key">1998</td>
                <td class="value">020</td>
                <td class="key">2012</td>
-               <td class="value">005</td>
-               <td class="key">2026</td>
                <td class="value">006</td>
+               <td class="key">2026</td>
+               <td class="value">009</td>
            </tr>
             
        </tbody>
@@ -209,63 +207,63 @@
             <tr>
                 <td class="key">Flea Market</td>
                 <td class="value">216</td>
-                <td class="key">Gina</td>
-                <td class="value">010</td>
-            </tr>
-            
-            <tr>
-                <td class="key">Walmart</td>
-                <td class="value">142</td>
                 <td class="key">Lidl</td>
                 <td class="value">010</td>
             </tr>
             
             <tr>
-                <td class="key">Dollar Tree</td>
-                <td class="value">096</td>
+                <td class="key">Walmart</td>
+                <td class="value">143</td>
                 <td class="key">DD’s Discount</td>
                 <td class="value">005</td>
             </tr>
             
             <tr>
-                <td class="key">Grandpa</td>
-                <td class="value">083</td>
+                <td class="key">Dollar Tree</td>
+                <td class="value">099</td>
                 <td class="key">Steve</td>
                 <td class="value">005</td>
             </tr>
             
             <tr>
-                <td class="key"></td>
-                <td class="value">082</td>
+                <td class="key">Grandpa</td>
+                <td class="value">094</td>
                 <td class="key">Found</td>
                 <td class="value">004</td>
             </tr>
             
             <tr>
+                <td class="key"></td>
+                <td class="value">083</td>
+                <td class="key">Walgreens</td>
+                <td class="value">003</td>
+            </tr>
+            
+            <tr>
                 <td class="key">Dollar General</td>
                 <td class="value">076</td>
-                <td class="key">Walgreens</td>
+                <td class="key">Community Thrift</td>
                 <td class="value">003</td>
             </tr>
             
             <tr>
                 <td class="key">Mommy</td>
                 <td class="value">072</td>
-                <td class="key">Community Thrift</td>
-                <td class="value">003</td>
-            </tr>
-            
-            <tr>
-                <td class="key">Family Dollar</td>
-                <td class="value">065</td>
                 <td class="key">CVS</td>
                 <td class="value">002</td>
             </tr>
             
             <tr>
-                <td class="key">Target</td>
-                <td class="value">054</td>
+                <td class="key">Family Dollar</td>
+                <td class="value">065</td>
                 <td class="key">Grandma</td>
+                <td class="value">002</td>
+            </tr>
+            
+            <tr>
+                <td class="key">Target</td>
+                <td class="value">058</td>
+                <td class="key">Sandy</td>
                 <td class="value">002</td>
             </tr>
             
@@ -278,49 +276,56 @@
             
             <tr>
                 <td class="key">Dima</td>
-                <td class="value">034</td>
-                <td class="key">Big Lots</td>
-                <td class="value">001</td>
+                <td class="value">035</td>
+                <td class="key">Ace Hardware</td>
+                <td class="value">002</td>
             </tr>
             
             <tr>
                 <td class="key">Publix</td>
                 <td class="value">033</td>
-                <td class="key">Ollie’s</td>
+                <td class="key">eBay</td>
+                <td class="value">001</td>
+            </tr>
+            
+            <tr>
+                <td class="key">Goodwill</td>
+                <td class="value">033</td>
+                <td class="key">Big Lots</td>
                 <td class="value">001</td>
             </tr>
             
             <tr>
                 <td class="key">Marketplace</td>
                 <td class="value">032</td>
-                <td class="key">Sissy</td>
-                <td class="value">001</td>
-            </tr>
-            
-            <tr>
-                <td class="key">Goodwill</td>
-                <td class="value">030</td>
-                <td class="key">Brother</td>
+                <td class="key">Ollie’s</td>
                 <td class="value">001</td>
             </tr>
             
             <tr>
                 <td class="key">Ross</td>
                 <td class="value">024</td>
-                <td class="key">Isa</td>
+                <td class="key">Sissy</td>
+                <td class="value">001</td>
+            </tr>
+            
+            <tr>
+                <td class="key">Debbie & Mindy</td>
+                <td class="value">020</td>
+                <td class="key">Brother</td>
                 <td class="value">001</td>
             </tr>
             
             <tr>
                 <td class="key">Trade</td>
                 <td class="value">019</td>
-                <td class="key">Sandy</td>
+                <td class="key">Isa</td>
                 <td class="value">001</td>
             </tr>
             
             <tr>
-                <td class="key">Debbie & Mindy</td>
-                <td class="value">013</td>
+                <td class="key">Gina</td>
+                <td class="value">016</td>
                 <td class="key"></td>
                 <td class="value"></td>
             </tr>
@@ -342,21 +347,21 @@
             
             <tr>
                 <td class="key">New on card</td>
-                <td class="value">600</td>
+                <td class="value">610</td>
                 <td class="key">New in 6-pack</td>
                 <td class="value">006</td>
             </tr>
             
             <tr>
                 <td class="key">Opened</td>
-                <td class="value">334</td>
+                <td class="value">360</td>
                 <td class="key">New in 4-pack</td>
                 <td class="value">006</td>
             </tr>
             
             <tr>
                 <td class="key">Used</td>
-                <td class="value">125</td>
+                <td class="value">130</td>
                 <td class="key">New in box</td>
                 <td class="value">004</td>
             </tr>
@@ -399,21 +404,21 @@
             
             <tr>
                 <td class="key">Mainline</td>
-                <td class="value">1070</td>
+                <td class="value">1106</td>
                 <td class="key">$TH</td>
-                <td class="value">009</td>
+                <td class="value">010</td>
             </tr>
             
             <tr>
                 <td class="key">TH</td>
-                <td class="value">040</td>
+                <td class="value">042</td>
                 <td class="key">Chase</td>
                 <td class="value">004</td>
             </tr>
             
             <tr>
                 <td class="key">PREMIUM</td>
-                <td class="value">029</td>
+                <td class="value">031</td>
                 <td class="key">Monster</td>
                 <td class="value">003</td>
             </tr>
@@ -435,7 +440,7 @@
     <input type="button" id="help_button" value="" onclick="location.href='reference.html'" />
     
     <footer id="page_footer">
-        <p>Last update: <a href="updates.html">2025-11-20</a></p>
+        <p>Last update: <a href="updates.html">2025-12-15</a></p>
         <p>Site design: Konstantin A Kolosov</p>
         <hr />
             <a href="index.html">Home</a>

@@ -1,66 +1,64 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
-    <title>Hot Wheels</title>
+    <title>Collection</title>
     <link type="text/css" href="styles.css" rel="stylesheet" />
     <script src="scripts.js"></script>
-    <script src="search.js"></script>
+    <script src="buttons.js" defer></script>
+    <!--optional-->
     <meta name="format-detection" content="telephone=no" />
     <meta name="viewport" 
-    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, interactive-widget=resizes-content">
 </head>
 
-<body onload='parseAndSearch();'>
-
+<body onload="parseAndSearch();">
     <script type="text/javascript">
         checkMode();
     </script>
+    <script type="text/javascript" src="search.js" defer></script>
 
     <header>  <!-- NAVIGATION -->
-
-    <div id="topbar">
-        <input type="button" src="Images/Icons/Ionic-Ionicons-Menu.16.png" onclick="toggleMenu()" id="left_button" />
-        <input type="text" id="search_bar" onkeyup="findMatches(); hideDivsOnEmpty(); positionFooter();" src="Images/Icons/Ionic-Ionicons-Search.16.png" onfocus="showSearchTools(); restoreOptions(); parseDatalists()" />
-        <div class="dropdown">
-            <input type="button"  id="right_button" />
-            <div class="dropdown-content">
-                <input type="button" src="Images/Icons/Ionic-Ionicons-Toggle.16.png" onclick="toggleDarkMode()" id="mode_button" />
-                <input type="button" onclick="toggleView()" id="view_button" />
-                <input type="button" onclick="toggleDetails()" id="details_button" />
-                <input type="button" onclick="clearSearch(); restoreOptions()" id="clear_button" />
-            </div>
-        </div>
-        <input type="number" name="result counter" value="" disabled="True" id="counter" />
+<div id="topbar">
+    <input type="button" id="left_button" />
+    <input type="text" id="search_bar" />
+    <input type="button"  id="right_button" />
+    <div id="dropdown">
+        <input type="button" id="mode_button" />
+        <input type="button" id="view_button" />
+        <input type="button" id="details_button" />
+        <input type="button" id="clear_button" />
     </div>
+    <input type="number" name="result counter" value="" disabled="True" id="counter" />
+</div>
 
-    <div id="menu" class="overlay">
-        <a id="menu_close_button" onclick="closeMenu()">&times;</a>
-        <div id="menu_list"  class="overlay-content">
-            <p class="subheader">Collection</p>
-            <p class="separator"></p>
-            <a href="index.html">Home</a>
-            <a href="collection.html">Owned</a>
-            <a href="preview.html">Statistics</a>
-            <a href="spreadsheet.html">Spreadsheet</a>
-            <p class="subheader">Other</p>
-            <p class="separator"></p>
-            <a href="treasures.html">Treasures</a>
-            <a href="about.html">About</a>
-        </div>
+
+<div id="menu" class="overlay">
+    <a id="menu_close_button">&times;</a>
+    <div id="menu_list"  class="overlay-content">
+        <p class="subheader">Collection</p>
+        <p class="separator"></p>
+        <a href="index.html">Home</a>
+        <a href="collection.html">Owned</a>
+        <a href="preview.html">Statistics</a>
+        <a href="spreadsheet.html">Spreadsheet</a>
+        <p class="subheader">Other</p>
+        <p class="separator"></p>
+        <a href="treasures.html">Treasures</a>
+        <a href="about.html">About</a>
     </div>
+</div>
+
 
     </header>  <!-- END NAVIGATION -->
 
-        <h1 id="site_name_part1">Archer's</h1>
-        <h1 id="site_name_part2">COLLECTION</h1>     
-        
-<div id="frame"></div>
+    <h1 id="site_name_part1">Archer's</h1>
+    <h1 id="site_name_part2">COLLECTION</h1>
     
+    <div id="frame"></div>
 <div id="advanced_search">
 
-    <input type="search" list="tags" placeholder="TAG" class="select" id="tags_input" onchange="findMatches()" onkeyup="findMatches()">
+    <input type="search" list="tags" placeholder="TAG" class="select" id="tags_input">
 
     <datalist id="tags">
         <option value="" />
@@ -74,8 +72,7 @@
       
     </datalist>
 
-
-    <input type="search" list="years" placeholder="YEAR" class="select" id="years_input" onchange="findMatches()" onkeyup="findMatches()">
+    <input type="search" list="years" placeholder="YEAR" class="select" id="years_input">
 
     <datalist id="years">
         <option value="" />
@@ -123,8 +120,7 @@
       
     </datalist>
 
-
-    <input type="search" list="series" placeholder="SERIES" class="select" id="series_input" onchange="findMatches()" onkeyup="findMatches()">
+    <input type="search" list="series" placeholder="SERIES" class="select" id="series_input">
 
     <datalist id="series">
         <option value="1998 First Editions" />
@@ -150,6 +146,7 @@
       <option value="56th Anniversary Mix 1" />
       <option value="57th Anniversary Mix 1" />
       <option value="57th Anniversary Mix 2" />
+      <option value="80th Anniversary Series" />
       <option value="Action 5-pack" />
       <option value="Avon Super Tuners" />
       <option value="Baja Blazers" />
@@ -166,6 +163,7 @@
       <option value="Car Culture: Ronin Run" />
       <option value="Car Culture: Slide Street 2" />
       <option value="Car Culture: Speed Machines" />
+      <option value="Car Culture: Spoon Honda 2-pack" />
       <option value="Car Culture: Team Transport" />
       <option value="Car Culture: World Tour" />
       <option value="Car Meet 5-pack" />
@@ -178,6 +176,7 @@
       <option value="Color Shifters" />
       <option value="Compact Kings" />
       <option value="Company Cars" />
+      <option value="Cool Classics" />
       <option value="Corvette 5-pack" />
       <option value="Corvette 70 1953-2023" />
       <option value="Crack-Ups" />
@@ -203,6 +202,7 @@
       <option value="Figure 8 Starter Set" />
       <option value="Final Run" />
       <option value="Fire Squad" />
+      <option value="First Response" />
       <option value="Flaming Hot Wheels" />
       <option value="Flyin’ Aces" />
       <option value="Fright Cars" />
@@ -225,6 +225,7 @@
       <option value="HW Digital Circuit" />
       <option value="HW Dirt" />
       <option value="HW Drag Strip" />
+      <option value="HW Drag Strip 5-pack" />
       <option value="HW Dream Garage" />
       <option value="HW Drift" />
       <option value="HW EV" />
@@ -272,6 +273,7 @@
       <option value="HW Speed Team" />
       <option value="HW Sports" />
       <option value="HW Starting Grid" />
+      <option value="HW Stunt" />
       <option value="HW Tool-in-1" />
       <option value="HW Track Champs" />
       <option value="HW Turbo" />
@@ -335,12 +337,14 @@
       <option value="MBX Showroom" />
       <option value="MBX Sky Busters" />
       <option value="MBX Super Star Transporters" />
+      <option value="MBX Ultimate Rescue" />
       <option value="MBX Working Rigs" />
       <option value="Mainline" />
       <option value="Mainline Classics" />
       <option value="Marvel Character Cars" />
       <option value="Matchbox Collectors Series" />
       <option value="Matchbox Hero City" />
+      <option value="Matchbox Hero City: Hospital" />
       <option value="Matchbox Mainline" />
       <option value="Matchbox Multipack" />
       <option value="McDonald’s" />
@@ -367,6 +371,7 @@
       <option value="Pop Culture: Cyberpunk 2077" />
       <option value="Pop Culture: Jurassic Park" />
       <option value="Power Launcher pack" />
+      <option value="Pro Racing" />
       <option value="Pro Racing Race Day" />
       <option value="Pro Racing: Basic" />
       <option value="Quarter Mile Heroes" />
@@ -412,15 +417,18 @@
       <option value="Tooned" />
       <option value="Tooned 5-pack" />
       <option value="Track Builder 5-pack" />
+      <option value="Track Champs" />
       <option value="Track Fleet" />
       <option value="Track Set" />
       <option value="Track Stars" />
       <option value="Track Stars Haulers" />
       <option value="Treasure Hunts 2010" />
+      <option value="Truckin Along" />
       <option value="Tuners" />
       <option value="Turbo Trax Set" />
       <option value="Twenty +" />
       <option value="Ultra Hots" />
+      <option value="Urban Camouflage" />
       <option value="Vintage American Muscle" />
       <option value="Vintage Racing Club" />
       <option value="Virtual Collection" />
@@ -435,8 +443,7 @@
       
     </datalist>
 
-
-    <input type="search" list="conditions" placeholder="STATUS" class="select" id="conditions_input" onchange="findMatches()" onkeyup="findMatches()">
+    <input type="search" list="conditions" placeholder="CONDITION" class="select" id="conditions_input">
 
     <datalist id="conditions">
         <option value="" />
@@ -453,11 +460,11 @@
       
     </datalist>
 
-
-    <input type="search" list="sources" placeholder="SOURCE" class="select" id="sources_input" onchange="findMatches()" onkeyup="findMatches()">
+    <input type="search" list="sources" placeholder="SOURCE" class="select" id="sources_input">
 
     <datalist id="sources">
         <option value="" />
+      <option value="Ace Hardware" />
       <option value="Archer" />
       <option value="Big Lots" />
       <option value="Brother" />
@@ -490,65 +497,28 @@
       <option value="Trade" />
       <option value="Walgreens" />
       <option value="Walmart" />
+      <option value="eBay" />
       
     </datalist>
 
-
-
-    
 </div>
-    
+
+
     <div id="empty_space" style="height: 60px;"></div>
     
     <input type="button" id="help_button" value="" onclick="location.href='reference.html'" />
     
-    <footer id="page_footer" class="fixed-position">
-        <p>Last update: <a href="updates.html">2025-11-20</a></p>
+    <footer id="page_footer">
+        <p>Last update: <a href="updates.html">2025-12-15</a></p>
         <p>Site design: Konstantin A Kolosov</p>
         <hr />
-        <a href="index.html">Home</a>
+            <a href="index.html">Home</a>
             <a href="preview.html">Statistics</a>
-        <a href="treasures.html">Treasures</a>
-        <a href="about.html">About</a>
+            <a href="treasures.html">Treasures</a>
+            <a href="about.html">About</a>
     </footer>
     
-<script type="text/javascript">
-    
-const seriesOptions = document.getElementById("series").innerHTML;
-const yearOptions = document.getElementById("years").innerHTML;
-const conditionOptions = document.getElementById("conditions").innerHTML;
-const tagOptions = document.getElementById("tags").innerHTML;
-const sourceOptions = document.getElementById("sources").innerHTML;
-const seriesOptionsList = document.getElementById("series").options;
-const yearOptionsList = document.getElementById("years").options;
-const tagOptionsList = document.getElementById("tags").options;
-const conditionOptionsList = document.getElementById("conditions").options;
-const sourceOptionsList = document.getElementById("sources").options;
-
-document.getElementById("years_input").classList.add("half");
-document.getElementById("years_input").classList.add("right");
-    
-document.getElementById("tags_input").classList.add("half");
-    
-document.getElementById("tags_input").classList.add("left");
-document.getElementById("series_input").classList.add("full");
-document.getElementById("sources_input").classList.add("half");
-document.getElementById("sources_input").classList.add("left");
-document.getElementById("conditions_input").classList.add("half");
-document.getElementById("conditions_input").classList.add("right");
-document.getElementById("years_input").classList.add("right");
-
-const searchBar = document.getElementById("search_bar");
-const searchTools = document.getElementById("advanced_search");
-
-document.addEventListener('click', function(event) {
-    if (!searchTools.contains(event.target) & !searchBar.contains(event.target)) {
-        hideDynamics();
-    }; // if else block ends
-}); // addEventListener ends
-
-</script>
-    
+   
 </body>
 
 </html>

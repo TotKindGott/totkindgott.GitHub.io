@@ -7,6 +7,7 @@
     <title>Hot Wheels</title>
     <link type="text/css" href="styles.css" rel="stylesheet" />
     <script src="scripts.js"></script>
+    <script src="buttons.js" defer></script>
     <meta name="format-detection" content="telephone=no" />
     <meta name="viewport" 
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -22,17 +23,15 @@
     <header>  <!-- NAVIGATION -->
     
     <div id="topbar">
-        <input type="button" src="Images/Icons/Ionic-Ionicons-Menu.16.png" onclick="toggleMenu()" id="left_button" />
-        <input type="text" id="search_bar" onkeyup="searchModels(); hideDivsOnEmpty(); positionFooter();" src="Images/Icons/Ionic-Ionicons-Search.16.png" />
-        <div class="dropdown">
+        <input type="button" id="left_button" />
+        <input type="text" id="search_bar" />
             <input type="button"  id="right_button" />
-            <div class="dropdown-content">
-                <input type="button" src="Images/Icons/Ionic-Ionicons-Toggle.16.png" onclick="toggleDarkMode()" id="mode_button" />
-                <input type="button" onclick="toggleView()" id="view_button" />
-                <input type="button" onclick="toggleDetails()" id="details_button" />
-                <input type="button" onclick="clearSearch()" id="clear_button" />
+            <div id="dropdown">
+                <input type="button" id="mode_button" />
+                <input type="button" id="view_button" />
+                <input type="button" id="details_button" />
+                <input type="button" id="clear_button" />
             </div>
-        </div>
         <input type="number" name="result counter" value="" disabled="True" id="counter" />
     </div>
 
