@@ -7,13 +7,15 @@
     <title>Hot Wheels</title>
     <link type="text/css" href="styles.css" rel="stylesheet" />
     <script src="scripts.js"></script>
+    <script src="buttons.js" defer></script>
+    <script src="slideshow.js" defer></script>
     <meta name="format-detection" content="telephone=no" />
     <meta name="viewport" 
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     
 </head>
 
-<body onload='positionFooter(); setSearchRedirect(); scrollShow()'>
+<body onload='positionFooter(); setSearchRedirect(); startSlideShow()'>
 
     <script type="text/javascript">
         checkMode();
@@ -21,70 +23,150 @@
 
     <header>  <!-- NAVIGATION -->
     
-    <div id="topbar">
-        <input type="button" src="Images/Icons/Ionic-Ionicons-Menu.16.png" onclick="toggleMenu()" id="left_button" />
-        <input type="text" id="search_bar" onfocus="" src="Images/Icons/Ionic-Ionicons-Search.16.png" />
-        <input type="button" src="Images/Icons/Ionic-Ionicons-Toggle.16.png" onclick="toggleDarkMode()" id="right_button" />
-        <!-- hardcoded at webpage generation, updated with Javascript on search -->
-        <input type="number" name="result counter" value="871" disabled="True" id="counter" />
+<div id="topbar">
+    <input type="button" id="left_button" />
+    <input type="text" id="search_bar" />
+    <input type="button"  id="right_button" />
+    <div id="dropdown">
+        <input type="button" id="mode_button" />
+        <input type="button" id="view_button" />
+        <input type="button" id="details_button" />
+        <input type="button" id="clear_button" />
     </div>
+    <input type="number" name="result counter" value="" disabled="True" id="counter" />
+</div>
 
-    <div id="menu" class="overlay">
-        <a id="menu_close_button" onclick="closeMenu()">&times;</a>
-        <div id="menu_list"  class="overlay-content">
-            <p class="subheader">Collection</p>
-            <p class="separator"></p>
-            <a href="slideshow.html">Home</a>
-            <a href="index.html">Menu</a>
-            <a href="collection.html">Owned</a>
-            <p class="subheader">Other</p>
-            <p class="separator"></p>
-            <a href="treasures.html">Treasures</a>
-            <a href="about.html">About</a>
-        </div>
+<div id="menu" class="overlay">
+    <a id="menu_close_button">&times;</a>
+    <div id="menu_list"  class="overlay-content">
+        <p class="subheader">Collection</p>
+        <p class="separator"></p>
+        <a href="index.html">Home</a>
+        <a href="collection.html">Owned</a>
+        <a href="preview.html">Statistics</a>
+        <a href="spreadsheet.html">Spreadsheet</a>
+        <p class="subheader">Other</p>
+        <p class="separator"></p>
+        <a href="treasures.html">Treasures</a>
+        <a href="about.html">About</a>
     </div>
+</div>
     
     </header>  <!-- END NAVIGATION -->
 
     <h1 id="site_name_part1">Archer's</h1>
     <h1 id="site_name_part2">COLLECTION</h1>
+
+<style>
+    div#selector {
+        height: auto;
+        width: 100%;
+        scroll-direction: horizontal;
+        overflow-x: auto;
+        background-color: transparent;
+        margin: auto auto 20px auto;
+        padding: 10px 0px;
+        clear: both;
+        white-space: nowrap;
+        scroll-snap-type: x;
+    }
     
-    <div id="slideshow">
-          <nav class="lil-nav">
-    <a href="#image-1" id="img-link-1">
-      <img class="lil-nav__img" src="Images/Porsche 911 Turbo (930) (Pop Culture 2024).JPG" alt="Premium" />
-    </a>
-    <a href="#image-2" id="img-link-2">
-      <img class="lil-nav__img" src="Images/Toyota Land Cruiser (56th Anniversary Mix 1 2024).JPG" alt="56th Anniversary" />
-    </a>
-    <a href="#image-3" id="img-link-3">
-      <img class="lil-nav__img" src="Images/1967 Chevy C10 (55th Anniversary Mix 2 2023).JPG" alt="55th Anniversary" />
-    </a>
-    <a href="#image-4" id="img-link-4">
-      <img class="lil-nav__img" src="Images/Baja Bison T5 (57th Anniversary Mix 1 2025).JPG" alt="57th Anniversary" />
-    </a>
-    <a href="#image-5" id="img-link-5">
-      <img class="lil-nav__img" src="Images/1967 Ford GT40 Mk.IV (Then and Now 2024).JPG" alt="ZAMAC" />
-    </a>
-    <a href="#image-6" id="img-link-6">
-        <img class="lil-nav__img" src="Images/Dug (Pixar Character Cars 2022).JPG" alt="Character" />
-    </a>
-    </nav>
-  <div class="gallery">
-    <img class="gallery__img"  id="image-1" src="Images/Porsche 911 Turbo (930) (Pop Culture 2024).JPG" alt="Premium" />
-    <img class="gallery__img" id="image-2" src="Images/Toyota Land Cruiser (56th Anniversary Mix 1 2024).JPG" alt="56th Anniversary" />
-    <img class="gallery__img" id="image-3" src="Images/1967 Chevy C10 (55th Anniversary Mix 2 2023).JPG" alt="55th Anniversary" />
-    <img class="gallery__img"  id="image-4" src="Images/Baja Bison T5 (57th Anniversary Mix 1 2025).JPG" alt="57th Anniversary" />
-    <img class="gallery__img"  id="image-5" src="Images/1967 Ford GT40 Mk.IV (Then and Now 2024).JPG" alt="ZAMAC" />
-    <img class="gallery__img"  id="image-6" src="Images/Dug (Pixar Character Cars 2022).JPG" alt="Character" />
+    div#selector::-webkit-scrollbar {
+        display: none;
+    }
+    
+    div#selector > span {
+        display: inline-block;
+        width: auto;
+        margin: auto;
+        padding: 3px;
+        font: normal 12px monospace;
+        text-transform: uppercase;
+        border: 1px solid #999;
+        border-radius: 3px;
+        scroll-snap-align: start;
+        /*box-shadow: 1px 1px 1px rgba(0,0,0,0.25);*/
+    }
+    
+    div#selector > span.active {
+        text-decoration: underline;
+        text-decoration-color: black;
+        text-underline-offset: 2px;
+        border-color: black;
+    }
+</style>
+
+<div id="frame" style="display: none"></div>
+
+<script>
+    getCollection();
+    
+    const collectables = document.getElementById("frame");
+    
+    function getPhotoSources(query) {
+        searchFor(query);
+        let matches = collectables.getElementsByClassName("visible");
+        let photos = "";
+        
+        for (var i = 0; i < matches.length; i++) {
+            
+            try {
+                let path = matches[i].getElementsByClassName("photo")[0].getAttribute("src");
+            
+                if (path === "") {
+                    void(0);
+                } else {
+                    photos += "<img src='" + path + "' />"
+                };
+            } catch {
+                void(0);
+            }; // try catch block ends
+        } // for loop ends
+
+        sidebar.innerHTML = photos;
+        stopSlideShow();
+        startSlideShow(interval = slideInterval, index = 0);
+        toggleStopButton();
+    };
+    
+</script>
+
+<div id="selector">
+    <span onclick="getPhotoSources('glow in the dark')">Glow-in-the-dark</span>
+    <span onclick="getPhotoSources('type:fire truck')">Fire trucks</span>
+    <span onclick="getPhotoSources('type:motorcycle')">Motorcycles</span>
+    <span onclick="getPhotoSources('type:bus')">Buses</span>
+    <span onclick="getPhotoSources('tooned')">Tooned</span>
+    <span onclick="getPhotoSources('tag:premium')">Premiums</span>
+    <span onclick="getPhotoSources('tag:th')">Treasure Hunts</span>
+    <span onclick="getPhotoSources('tag:$th')">Super Treasure Hunts</span>
+    <span onclick="getPhotoSources('tag:chase')">Chases</span>
+    <span onclick="getPhotoSources('tag:zamac')">ZAMACs</span>
+    <span onclick="getPhotoSources('honda')">Honda</span>
+</div>
+
+<div id="slideshow">
+    <div id="sidebar">
+        <img class="color" src="Images/Porsche 911 Turbo (930) (Pop Culture - Cyberpunk 2077 2024).JPG" alt="Premium" />
+        <img src="Images/Toyota Land Cruiser (56th Anniversary Mix 1 2024).JPG" alt="56th Anniversary" />
+        <img src="Images/1967 Chevy C10 (55th Anniversary Mix 2 2023).JPG" alt="55th Anniversary" />
+        <img src="Images/Baja Bison T5 (57th Anniversary Mix 1 2025).JPG" alt="57th Anniversary" />
+        <img src="Images/1967 Ford GT40 Mk.IV (Then and Now 2024).JPG" alt="ZAMAC" />
+        <img src="Images/Dug (Pixar Character Cars 2022).JPG" alt="Character" />
     </div>
+    <div id="photoframe">
     </div>
+</div>
+
+    <input type="button" id="stop_button" value="" onclick="toggleSlideShow()" />
+    
+    <input type="button" id="help_button" value="" onclick="location.href='reference.html'" />
     
     <footer id="page_footer">
-        <p>Last update: <a href="">2025-08-22</a></p>
+        <p>Last update: <a href="updates.html">2025-12-15</a></p>
         <p>Site design: Konstantin A Kolosov</p>
         <hr />
-            <a href="slideshow.html">Home</a>
+            <a href="index.html">Home</a>
             <a href="preview.html">Statistics</a>
             <a href="treasures.html">Treasures</a>
             <a href="about.html">About</a>

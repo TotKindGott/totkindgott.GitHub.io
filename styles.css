@@ -679,9 +679,18 @@ div.wrapper p.facts {
 }
 
 #results {
-	width: 100%; 
-	/*height: 100%;*/
+	width: 100%;
+    /*display: flex;
+    flex-flow: column wrap;
 	margin-top: 30px;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;*/
+}
+
+#results > div.searchable {
+    scroll-snap-align: start;
+    scroll-margin: 0;
+    flex-shrink: 0;
 }
 
 /* HIDE ARROW FROM SUMMARY ELEMENT */
@@ -1079,11 +1088,13 @@ td.bignum {
 
 #frame {
     width: 100%;
+    scroll-snap-type: y mandatory;
 }
 
 #frame > div.searchable {
     display: none;
     break-before: page;
+    scroll-snap-align: start;
 }
 
 #page_footer {
@@ -1152,11 +1163,8 @@ body.dark-mode #page_footer > a, body.dark-mode #page_footer > p > a {
 
 /*      ---- SLIDESHOW ----        */
 
-#slideshow > img {
-  display: block;
-}
 
-#slideshow {
+#slideshow  {
   overflow: hidden;
   height: 300px;
   max-width: 360px;
@@ -1164,36 +1172,37 @@ body.dark-mode #page_footer > a, body.dark-mode #page_footer > p > a {
   grid-template-columns: 1fr 5fr;
   grid-gap: 0px;
   margin: auto;
-  margin-top: 42px;
   background-color: transparent;
 }
 
-.gallery {
+#photoframe {
   overflow: scroll;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
 }
 
-.gallery__img {
+#photoframe {
   scroll-snap-align: start;
   margin-bottom: 0px;
   /*min-height: 100vh;*/
   object-fit: cover;
   max-height: 300px;
+  background-color: transparent;
 }
 
-.lil-nav {
+#sidebar {
   overflow-y: scroll;
   overflow-x: hidden;
+  background-color: transparent;
 
-  a {
+  img {
     height: 50px;
     display: flex;
     margin-bottom: 5px;
   }
 }
 
-.lil-nav__img {
+#sidebar > img {
   object-fit: cover;
   filter: saturate(0);
   transition: 0.3s ease all;
@@ -1202,6 +1211,11 @@ body.dark-mode #page_footer > a, body.dark-mode #page_footer > p > a {
     transform: scale(1.05);
     filter: saturate(1);
   }
+}
+
+#sidebar > img.color {
+    transform: scale(1.05);
+    filter: saturate(1);
 }
 
 #about {
@@ -1763,4 +1777,34 @@ div.commit span.commit_date {
 
 div.commit span.commit_note {
     font-weight: bolder;
+}
+
+#photoframe {
+    width: 100%;
+    background-size: 100%;
+    opacity: 1;
+    animation-name: fadeOut;
+    transition-property: opacity;
+    transition-duration: 0.5s;
+    transition-timing-function: ease;
+}
+
+#stop_button {
+    background-image: url("Images/Icons/close-circle-outline.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 24px;
+    width: 24px;
+    position: fixed;
+    left: 15px;
+    bottom: 30px;
+    background-color: #ffffff;
+    border: 1px solid gray;
+    border-radius: 12px;
+    margin: 0; 
+    box-shadow: 0 0 5px 1px #ffffff;
+}
+
+#stop_button.stopped {
+    background-image: url("Images/Icons/caret-forward-circle-outline.svg");;
 }

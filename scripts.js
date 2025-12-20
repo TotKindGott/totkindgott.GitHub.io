@@ -290,23 +290,6 @@ async function parseAndSearch() {
 }; // function parseAndSearch ends
 
 
-function scrollShow(interval = 2000) {
-    // simple slideshow
-    slides = document.getElementsByClassName('gallery__img');
-    let i = 1;
-    function nextSlide() {
-        if (i < slides.length) {
-            i++;
-        } else {
-            i = 1;
-        };
-        let slideID = '#image-' + i.toString();
-        document.location.href = slideID;
-    };
-    setInterval(nextSlide, interval);
-};
-
-
 function replaceDaysSince() {
         var today = Date.now();
         var stores = document.getElementsByClassName('store');
