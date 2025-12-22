@@ -98,6 +98,8 @@ function findMatches() {
     updateCount(document.getElementsByClassName("visible").length);
     //restoreOptions();
     parseDatalists();
+    positionFooter();
+
 }; // finaMatches function ends
 
     

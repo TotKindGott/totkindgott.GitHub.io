@@ -10,7 +10,11 @@ const frame = document.getElementById("frame");
 const sidebar = document.getElementById("sidebar");
 const photoframe = document.getElementById("photoframe");
 const pauseButton = document.getElementById("stop_button");
-
+const slideShowControls = document.getElementById("slideshow_controls");
+const speedSelector = document.getElementById("speed_selector");
+const speedSlider = document.getElementById("speed_slider");
+const radios = speedSelector.querySelectorAll("input");
+const slider = speedSlider.querySelector("input");
 
 function processSlides() {
     slideImages = new Array();
@@ -25,8 +29,9 @@ function processSlides() {
     }); // forEach loop ends
 };
 
-
 photoframe.addEventListener("dblclick", toggleSlideShow);
+pauseButton.addEventListener("click", toggleSlideShow);
+pauseButton.addEventListener("dblclick", toggleSpeedControls);
 
 
 function startSlideShow(interval = slideInterval, index = slideIndex) {
@@ -134,3 +139,40 @@ function clearSelected() {
         each.classList.remove("active");
     });
 };
+
+
+function showSpeedControls() {
+    slideShowControls.style.display = "block";
+};
+
+function hideSpeedControls() {
+    slideShowControls.style.display = "none";
+};
+
+function toggleSpeedControls() {
+    if (slideShowControls.style.display == 'block') {
+        hideSpeedControls();
+    } else {
+        showSpeedControls();
+    }; // if else block ends
+};
+
+
+function setSpeed(ms) {
+    stopSlideShow();
+    slideInterval = parseInt(ms);
+    slider.value = slideInterval;
+    document.getElementById("speed" + slideInterval.toString()).setAttribute("checked", true);
+    startSlideShow();
+};
+
+
+radios.forEach(radio => {
+    radio.addEventListener("click", function(event) {
+            setSpeed(event.currentTarget.value);
+    }); // function ends
+}); // forEach loop ends
+
+slider.addEventListener("change", function(event) {
+        setSpeed(event.currentTarget.value);
+}); // function ends

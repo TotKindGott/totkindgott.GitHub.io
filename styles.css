@@ -52,7 +52,7 @@ table {
 /* ------- END RESET STYLES ------- */
 
 html {
-    height: 100%;
+    height: 100vw;
     max-width: 900px;
 }
 

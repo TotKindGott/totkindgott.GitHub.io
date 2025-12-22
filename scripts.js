@@ -63,10 +63,29 @@ function toggleMenu() {
 
 
 function positionFooter() {
-    if (countResults() == 0) {
-        document.getElementById("page_footer").classList.add("fixed-position");
+    //if (countResults() == 0) {
+        //document.getElementById("page_footer").classList.add("fixed-position");
+    //} else {
+        //document.getElementById("page_footer").classList.remove("fixed-position");
+    //}; // if else block ends
+
+    var body = document.body,
+        html = document.documentElement;
+    
+    var viewport = window.innerHeight;    
+    var footer = document.getElementById("page_footer");
+    var footerHeight = footer.scrollHeight;
+    var pageHeight = Math.max(
+        body.scrollHeight,
+        body.offsetHeight, 
+        html.clientHeight,
+        html.scrollHeight,
+        html.offsetHeight);
+    
+    if (pageHeight - footerHeight > viewport - footerHeight) {
+        footer.className = "";
     } else {
-        document.getElementById("page_footer").classList.remove("fixed-position");
+        footer.className = "fixed-position";
     }; // if else block ends
 }; // positionFooter function ends
 
