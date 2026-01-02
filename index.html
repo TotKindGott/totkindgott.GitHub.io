@@ -12,11 +12,13 @@
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, interactive-widget=resizes-content">
 </head>
 
-<body class="logo" onload="loadingSequence()">
+
+<body onload='setSearchRedirect(); startSlideShow()'>
 
     <script type="text/javascript">
         checkMode();
     </script>
+    <script src="slideshow.js" defer></script>
 
     <header>  <!-- NAVIGATION -->
 <div id="topbar">
@@ -53,15 +55,215 @@
     </header>  <!-- END NAVIGATION -->
 
     <h1 id="site_name_part1">Archer's</h1>
-        <h1 id="site_name_part2">COLLECTION</h1>
+    <h1 id="site_name_part2">COLLECTION</h1>
+
+<style>
+
+    div.controls {
+        min-width: 75%;
+        max-width: 100%;
+        display: inline-block;
+        text-align: center;
+        vertical-align: middle;
+        margin: auto;
+        color: black;
+        background: transparent;
+        white-space: nowrap;
+    }
     
+    div.controls > * {
+        margin: auto;
+    }
+    
+    div#slideshow_controls {
+        background: transparent;
+        width: 100%;
+        height: 24px;
+        overflow-y: scroll;
+        margin-top: 8px;
+        display: none;
+        scroll-direction: vertical;
+        scroll-snap-type: y mandatory;
+    }
+    
+    div#slideshow_controls > div#speed_selector,
+    div#slideshow_controls > div#speed_slider {
+        opacity: 1;
+        background: transparent;
+        width: 100%;
+        display: block;
+        font: normal 12px monospace;
+        color: black;
+        padding: 3px 0px;
+        margin: auto;
+        vertical-align: middle;
+        scroll-snap-align: start;
+    }
+
+    div#slideshow_controls::-webkit-scrollbar {
+        display: none;
+    }
+
+    div#speed_selector > span, 
+    div#speed_slider > span {
+        display: inline-block;
+        background: transparent;
+        height: auto;
+        width: auto;
+        color: black;
+        border: 1px solid silver;
+        text-align: center;
+        border-radius: 2px;
+        padding: 3px;
+    }
+    
+    div#speed_selector label {
+        margin-right: auto;
+        margin-left: auto;
+    }
+    
+    div#speed_selector input {
+        accent-color: gray;
+        height: 12px;
+        margin: auto;
+    }
+    
+    div#speed_slider input {
+        accent-color: gray;
+        height: 12px;
+        margin: auto;
+        min-width: 75%;
+    }
+    
+    div#speed_slider input::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 8px;
+        height: 8px;
+        border-radius: 4px;
+    }
+    
+    body.dark-mode #speed_slider span,
+    body.dark-mode #speed_selector span,
+    body.dark-mode #speed_slider label,
+    body.dark-mode #speed_selector label {
+        color: white;
+    }
+    
+</style>
+
+<div id="frame" style="display: none"></div>
+
+<script>
+    
+    getCollection();
+    
+    const collectables = document.getElementById("frame");
+
+    function getPhotoSources(query) {
+        // extracts only photos
+        searchFor(query);
+        let matches = collectables.getElementsByClassName("visible");
+        let photos = "";
+        
+        for (var i = 0; i < matches.length; i++) {
+            
+            try {
+                let path = matches[i].getElementsByClassName("photo")[0].getAttribute("src");
+            
+                if (path === "") {
+                    void(0);
+                } else {
+                    photos += "<img src='" + path + "' />"
+                };
+            } catch {
+                void(0);
+            }; // try catch block ends
+        } // for loop ends
+
+        sidebar.innerHTML = photos;
+        stopSlideShow();
+        startSlideShow(interval = slideInterval, index = 0);
+        toggleStopButton();
+    };
+
+    function searchForInput() {
+        var query = document.getElementById("slide_search").innerText;
+        if (!query == "") {
+            try {
+                getPhotoSources(query);
+            } catch {
+                void(0);
+            };
+        };
+    };
+    
+</script>
+
+<div id="horizontal_selector">
+    <span class="input" id="slide_search" onclick="searchForInput()" onkeyup="searchForInput()" contenteditable></span>
+    <span onclick="getPhotoSources('glow in the dark')">Glow-in-the-dark</span>
+    <span onclick="getPhotoSources('type:fire truck')">Fire trucks</span>
+    <span onclick="getPhotoSources('type:motorcycle')">Motorcycles</span>
+    <span onclick="getPhotoSources('type:bus')">Buses</span>
+    <span onclick="getPhotoSources('tooned')">Tooned</span>
+    <span onclick="getPhotoSources('tag:premium')">Premiums</span>
+    <span onclick="getPhotoSources('tag:th')">Treasure Hunts</span>
+    <span onclick="getPhotoSources('tag:$th')">Super Treasure Hunts</span>
+    <span onclick="getPhotoSources('tag:chase')">Chases</span>
+    <span onclick="getPhotoSources('tag:zamac')">ZAMACs</span>
+    <span onclick="getPhotoSources('honda')">Honda</span>
+</div>
+
+<div id="slideshow">
+    <div id="sidebar">
+        <img class="color" src="https://totkindgott.github.io/Images/Porsche 911 Turbo (930) (Pop Culture - Cyberpunk 2077 2024).JPG" alt="Premium" />
+        <img src="https://totkindgott.github.io/Images/2016 Honda Civic Type R (Urban Camouflage 2020).JPG" alt="2016 Honda Civic Type R" />
+        <img src="https://totkindgott.github.io/Images/Space Shuttle Orbiter (MBX Sky Busters 2025).JPG" alt="Space Shuttle Orbiter" />
+        <img src="https://totkindgott.github.io/Images/Toyota Land Cruiser (56th Anniversary Mix 1 2024).JPG" alt="56th Anniversary" />
+        <img src="https://totkindgott.github.io/Images/1967 Chevy C10 (55th Anniversary Mix 2 2023).JPG" alt="55th Anniversary" />
+        <img src="https://totkindgott.github.io/Images/Baja Bison T5 (57th Anniversary Mix 1 2025).JPG" alt="57th Anniversary" />
+        <img src="https://totkindgott.github.io/Images/1967 Ford GT40 Mk.IV (Then and Now 2024).JPG" alt="ZAMAC" />
+        <img src="https://totkindgott.github.io/Images/Dug (Pixar Character Cars 2022).JPG" alt="Character" />
+    </div>
+    <div id="photoframe">
+    </div>
+</div>
+
+<div id="slideshow_controls">
+    <div id="speed_slider">
+        <span>INTERVAL</span>
+        <div class="controls">
+            <label for="">1s</label>
+            <input type="range" name="" value="" min="1000" max="5000" step="1000" />
+            <label for="">5s</label>
+        </div>
+    </div>
+    <div id="speed_selector">
+        <span>INTERVAL</span>
+        <div class="controls">
+            <input type="radio" name="interval" id="speed1000" value="1000" />
+            <label for="speed1000">1s</label>
+            <input type="radio" name="interval" id="speed2000" value="2000" />
+            <label for="speed2000">2s</label>
+            <input type="radio" name="interval" id="speed3000" value="3000" />
+            <label for="speed3000">3s</label>
+            <input type="radio" name="interval" id="speed4000" value="4000" />
+            <label for="speed4000">4s</label>
+            <input type="radio" name="interval" id="speed5000" value="5000" />
+            <label for="speed5000">5s</label>
+        </div>
+    </div>
+</div>
+
+<input type="button" id="stop_button" value="" />
+
 
     <div id="empty_space" style="height: 60px;"></div>
     
     <input type="button" id="help_button" value="" onclick="location.href='reference.html'" />
     
     <footer id="page_footer">
-        <p>Last update: <a href="updates.html">2025-12-19</a></p>
+        <p>Last update: <a href="updates.html">2026-01-01</a></p>
         <p>Site design: Konstantin A Kolosov</p>
         <hr />
             <a href="index.html">Home</a>
@@ -71,15 +273,6 @@
     </footer>
     
 
-    </body>
     
-    <script>
-        openMenu();
-        document.getElementById("menu_close_button").classList.add("closed");
-        document.getElementById("menu").style.top = "25%";
-        document.getElementById("menu_list").style.backgroundColor = "rgba(0,0,0,0.8)"
-        document.getElementById("counter").style.display = "none";
-        setSearchRedirect();
-    </script>
-    
+</body>
 </html>

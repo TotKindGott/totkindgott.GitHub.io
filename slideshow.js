@@ -82,6 +82,7 @@ function setSlide(img) {
     } catch {
         void(0);
     };
+    // add try catch clause TypeError
     photoframe.style.backgroundImage = "url('" +  img.getAttribute("src") + "')";
 }; // function setSlide ends
 
@@ -120,7 +121,7 @@ function toggleStopButton() {
 }; // function toggleStopButton ends
 
 
-let selectors = document.getElementById("selector").querySelectorAll("span");
+let selectors = document.getElementById("horizontal_selector").querySelectorAll("span");
 
 selectors.forEach(selector => {
     selector.addEventListener("click", function(event) {

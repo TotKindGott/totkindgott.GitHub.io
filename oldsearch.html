@@ -12,15 +12,16 @@
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, interactive-widget=resizes-content">
 </head>
 
-<body onload="parseAndSearch(); addParseToSelectors()">
+<body onload="parseAndSearch();">
     <script type="text/javascript">
         checkMode();
     </script>
     <script type="text/javascript" src="search.js" defer></script>
+
     <header>  <!-- NAVIGATION -->
 <div id="topbar">
     <input type="button" id="left_button" />
-    <input type="text" id="search_bar" onchange="search()" />
+    <input type="text" id="search_bar" />
     <input type="button"  id="right_button" />
     <div id="dropdown">
         <input type="button" id="mode_button" />
@@ -50,11 +51,11 @@
 
 
     </header>  <!-- END NAVIGATION -->
-    
-<div id="frame" style="display: none"></div>
-<div id="empty_space" style="height: 10px;"></div>
-<div id="carousel"></div>
 
+    <h1 id="site_name_part1">Archer's</h1>
+    <h1 id="site_name_part2">COLLECTION</h1>
+    
+    <div id="frame"></div>
 <div id="advanced_search">
 
     <input type="search" list="tags" placeholder="TAG" class="select" id="tags_input">
@@ -503,279 +504,13 @@
     </datalist>
 
 </div>
+
+
+    <div id="empty_space" style="height: 60px;"></div>
     
-    <style>
-    
-div#carousel {
-    width: 100%;
-    height: 100vw;
-    position: fixed;
-    top: 40px;
-    left: 0;
-    margin: 0;
-    padding: 0;
-    background: transparent;
-    white-space: nowrap;
-    vertical-align: top;
-}
-
-div#carousel div#card_view {
-    width: 100%;
-    height: auto;
-    position: relative;
-    background: transparent;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    scroll-snap-type: x mandatory;
-    scroll-direction: horizontal;
-    object-fit: contain;
-}
-
-div#carousel div#card_view div.item_card {
-    width: 100%;
-    height: auto;
-    margin: auto;
-    display: inline-block;
-    background: transparent;
-    scroll-snap-align: center;
-    scroll-margin: 0;    
-}
-
-div#carousel div#card_view div.item_card div.item_name {
-    width: 100%;
-    height: 20px;
-    margin: 10px 0 0;
-	font-family: "Courier", monospace; 
-	font: "Inconsolata"; 
-	max-font-size: 20px; 
-	font-weight: bolder; 
-	text-transform: uppercase;
-	text-align: center; 
-    background: transparent;
-    overflow-x: scroll;
-    text-wrap-mode: wrap;
-}
-
-div#carousel div#card_view div.item_card div.item_photo {
-    width: 100%;
-    height: 100vw;
-    margin: 0;
-    padding: 0;
-    background: transparent;
-    position: relative;
-    top: 0;
-}
-
-div#carousel div#card_view div.item_photo img {
-    width: 100%;
-    height: 100%;
-}
-
-div#carousel div#card_view div.item_photo img.grayed {
-    filter: grayscale(1);
-}
-
-div#carousel div#card_view::-webkit-scrollbar {
-    display: none;
-}
-
-div#carousel #card_view div.item_photo img.logo {
-    height: 40px;
-    width: 40px;
-    position: absolute; 
-    top: 15px; 
-    right: 15px;
-}
-
-p.comment, p.tag {
-    display: none;
-}
-
-div#carousel #card_view div.details {
-    display: none;
-    position: absolute;
-    top: 50px;
-    width: 100%;
-    height: auto;
-    background: rgba(0,0,0,0.75);
-    color: white;
-    margin: 0;
-    white-space: wrap;
-    padding: 12.5% 0;
-    vertical-align: middle;
-}
-
-div#carousel #card_view table {
-    margin: 0;
-    padding: 0;
-}
-
-div#carousel #card_view table td:not(.tag) {
-    color: #ffffff;
-}
-
-div#carousel #card_view table td.grayed {
-    color: silver;
-}
-div#carousel div#item_list {
-    height: 60px;
-    width: 92%;
-    margin: 10px auto auto;
-    background: transparent;
-    overflow-x: scroll;
-    overflow-y: visible;
-    scroll-direction: horizontal;
-    scroll-snap-type: x mandatory;
-    vertical-align: middle;
-}
-
-div#carousel div#item_list img {
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
-    width: 50px;
-    height: 50px;
-    opacity: 0.5;
-    object-fit: contain;
-    box-shadow: 0 0 1px black
-}
-
-div#carousel div#item_list img.color {
-    opacity: 1;
-}
-
-div#carousel div#item_list img.grayed {
-    filter: grayscale(1);
-}
-
-div#carousel div#item_list::-webkit-scrollbar {
-    display: none;
-}
-
-    </style>
-
-<script>
-    getCollection();
-    
-    const collectables = document.getElementById("frame");
-    const carousel = document.getElementById("carousel");
-    
-    function parseVisible() {
-
-        let visible = collectables.getElementsByClassName("visible");
-        let icons = "";
-        let cards = "";
-        
-        for (var i = 0; i < visible.length; i++) {
-            
-            var image_path = "";
-            var name = "";
-            var id = "";
-            var wrapper = "";
-            var details = "";
-            
-            name =  visible[i].getElementsByTagName("h1")[0].innerText;
-            
-            try {
-                image_path = "https://totkindgott.github.io/" +  visible[i].getElementsByClassName("photo")[0].getAttribute("src");
-            } catch {
-                image_path = "Images/NoPhoto.JPG\" class=\"grayed";
-            };
-            try {
-                wrapper = visible[i].getElementsByClassName("wrapper")[0].innerHTML;
-                //console.log(name, path);
-            } catch {
-                wrapper = "<img class=\"photo\" src=\"Images/NoPhoto.JPG\" class=\"grayed\" />";
-                //console.log(name, path);
-            }; // try catch block ends
-            
-            try {
-                details = visible[i].getElementsByTagName("table")[0].innerHTML;
-            } catch {
-                details = "";
-            }
-
-            id = "item" + i;
-            
-            icons += '<img src="' + image_path + '" onclick="location.href=\'#' + id + '\'" />\n';
-            //cards += '<div class="item_card" id="' + id + '">\n<div class="item_name">' + name + '</div>\n<div class="item_photo">\n<img src="' + image_path + '" />\n</div>\n</div>';
-            cards += '<div class="item_card" id="' + id + '">\n<div class="item_name" onclick="toggleDetails(' + id + ')">' + name + '</div>\n<div class="item_photo">' + wrapper + '</div>\n<div class=\"details\"><table>' + details + '</table></div>\n</div>';
-            
-        }; // for loop ends
-
-        //sidebar.innerHTML = photos;
-        carousel.innerHTML = "";
-        carousel.innerHTML = '<div id="card_view">' + cards + '</div>\n<div id="item_list">\n' + icons + '</div>';
-        setActivationEvent();
-    };
-    
-    function setActivationEvent() {
-        
-    try {
-        document.getElementById("item_list").querySelectorAll("img").forEach(each => {
-            each.addEventListener("click", activate);
-        });
-    } catch {
-        void(0);
-    };
-    
-    function activate() {
-        deactivate();
-        this.classList.add('color');
-    };
-    
-    function deactivate() {
-        try {
-            document.getElementById("item_list").querySelectorAll("img").forEach(each => {
-            each.classList.remove("color");
-            }); // forEach loop ends
-        } catch {
-            void(0);
-        }; // try catch block ends
-    } // deactivate() function ends
-    };
-
-function addParseToSelectors() {
-    seriesSelectorInput.addEventListener("change", parseVisible);
-    seriesSelectorInput.addEventListener("keyup", parseVisible);
-    sourceSelectorInput.addEventListener("change", parseVisible);
-    sourceSelectorInput.addEventListener("keyup", parseVisible);
-    tagSelectorInput.addEventListener("change", parseVisible);
-    tagSelectorInput.addEventListener("keyup", parseVisible);
-    conditionSelectorInput.addEventListener("change", parseVisible);
-    conditionSelectorInput.addEventListener("keyup", parseVisible);
-    yearSelectorInput.addEventListener("change", parseVisible);
-    yearSelectorInput.addEventListener("keyup", parseVisible);
-};
-
-    function search() {
-        findMatches();
-        parseVisible();
-    };
-    
-    function toggleDetails(cardID) {
-        var card = document.getElementById(cardID.id);
-        var el = card.getElementsByClassName("details")[0];
-
-        if (el.style.display == "block") {
-            el.style.display = "none";
-        } else {
-            el.style.display = "block";
-        };
-    };
-    
-    function addDetailsToggle() {
-        let itemCards = document.getElementsByClassName("item_card");
-            
-        //itemCards.forEach(card => {
-        for (var i = 0; i < itemCards.length; i++) {
-            itemCards[i].addEventListener("click", toggleDetails);
-        };
-    };
-</script>
-
     <input type="button" id="help_button" value="" onclick="location.href='reference.html'" />
     
-    <footer id="page_footer" class="fixed-position">
+    <footer id="page_footer">
         <p>Last update: <a href="updates.html">2026-01-01</a></p>
         <p>Site design: Konstantin A Kolosov</p>
         <hr />
@@ -785,7 +520,7 @@ function addParseToSelectors() {
             <a href="about.html">About</a>
     </footer>
     
-
-    
+   
 </body>
+
 </html>

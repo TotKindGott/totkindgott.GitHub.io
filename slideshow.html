@@ -59,53 +59,9 @@
 
 <style>
 
-    div#selector {
-        height: auto;
-        width: 100%;
-        scroll-direction: horizontal;
-        overflow-x: auto;
-        background-color: transparent;
-        margin: auto auto;
-        padding: 10px 0px;
-        clear: both;
-        white-space: nowrap;
-        scroll-snap-type: x;
-    }
-    
-    div#selector::-webkit-scrollbar {
-        display: none;
-    }
-    
-    div#selector > span {
-        display: inline-block;
-        width: auto;
-        margin: auto;
-        padding: 3px;
-        font: normal 12px monospace;
-        text-transform: uppercase;
-        border: 1px solid #999;
-        border-radius: 3px;
-        scroll-snap-align: start;
-        /*box-shadow: 1px 1px 1px rgba(0,0,0,0.25);*/
-    }
-    
-    div#selector > span.active {
-        padding: 4px;
-        text-decoration: underline;
-        text-decoration-color: gray;
-        text-underline-offset: 3px;
-        border-color: black;
-        box-shadow: 0 0 2px gray;
-    }
-    
-    body.dark-mode div#selector > span.active {
-        box-shadow: 0 0 2px white;
-        border-color: white;
-        text-decoration-color: lime;
-    }
-    
     div.controls {
         min-width: 75%;
+        max-width: 100%;
         display: inline-block;
         text-align: center;
         vertical-align: middle;
@@ -192,6 +148,7 @@
     body.dark-mode #speed_selector label {
         color: white;
     }
+    
 </style>
 
 <div id="frame" style="display: none"></div>
@@ -203,6 +160,7 @@
     const collectables = document.getElementById("frame");
 
     function getPhotoSources(query) {
+        // extracts only photos
         searchFor(query);
         let matches = collectables.getElementsByClassName("visible");
         let photos = "";
@@ -228,9 +186,21 @@
         toggleStopButton();
     };
 
+    function searchForInput() {
+        var query = document.getElementById("slide_search").innerText;
+        if (!query == "") {
+            try {
+                getPhotoSources(query);
+            } catch {
+                void(0);
+            };
+        };
+    };
+    
 </script>
 
-<div id="selector">
+<div id="horizontal_selector">
+    <span class="input" id="slide_search" onclick="searchForInput()" onkeyup="searchForInput()" contenteditable></span>
     <span onclick="getPhotoSources('glow in the dark')">Glow-in-the-dark</span>
     <span onclick="getPhotoSources('type:fire truck')">Fire trucks</span>
     <span onclick="getPhotoSources('type:motorcycle')">Motorcycles</span>
@@ -246,12 +216,14 @@
 
 <div id="slideshow">
     <div id="sidebar">
-        <img class="color" src="Images/Porsche 911 Turbo (930) (Pop Culture - Cyberpunk 2077 2024).JPG" alt="Premium" />
-        <img src="Images/Toyota Land Cruiser (56th Anniversary Mix 1 2024).JPG" alt="56th Anniversary" />
-        <img src="Images/1967 Chevy C10 (55th Anniversary Mix 2 2023).JPG" alt="55th Anniversary" />
-        <img src="Images/Baja Bison T5 (57th Anniversary Mix 1 2025).JPG" alt="57th Anniversary" />
-        <img src="Images/1967 Ford GT40 Mk.IV (Then and Now 2024).JPG" alt="ZAMAC" />
-        <img src="Images/Dug (Pixar Character Cars 2022).JPG" alt="Character" />
+        <img class="color" src="https://totkindgott.github.io/Images/Porsche 911 Turbo (930) (Pop Culture - Cyberpunk 2077 2024).JPG" alt="Premium" />
+        <img src="https://totkindgott.github.io/Images/2016 Honda Civic Type R (Urban Camouflage 2020).JPG" alt="2016 Honda Civic Type R" />
+        <img src="https://totkindgott.github.io/Images/Space Shuttle Orbiter (MBX Sky Busters 2025).JPG" alt="Space Shuttle Orbiter" />
+        <img src="https://totkindgott.github.io/Images/Toyota Land Cruiser (56th Anniversary Mix 1 2024).JPG" alt="56th Anniversary" />
+        <img src="https://totkindgott.github.io/Images/1967 Chevy C10 (55th Anniversary Mix 2 2023).JPG" alt="55th Anniversary" />
+        <img src="https://totkindgott.github.io/Images/Baja Bison T5 (57th Anniversary Mix 1 2025).JPG" alt="57th Anniversary" />
+        <img src="https://totkindgott.github.io/Images/1967 Ford GT40 Mk.IV (Then and Now 2024).JPG" alt="ZAMAC" />
+        <img src="https://totkindgott.github.io/Images/Dug (Pixar Character Cars 2022).JPG" alt="Character" />
     </div>
     <div id="photoframe">
     </div>
@@ -286,7 +258,6 @@
 <input type="button" id="stop_button" value="" />
 
 <input type="button" id="help_button" value="" onclick="location.href='reference.html'" />
-
 
 <footer id="page_footer" class="fixed-position">
     <p>Last update: <a href="updates.html">2025-12-15</a></p>

@@ -12,12 +12,14 @@
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, interactive-widget=resizes-content">
 </head>
 
-<body onload="parseURL()">
+<!--optional-->
+
+<body onload="parseURL(); positionFooter(); visibleAll(); addIDs(); makeCollage();">
     <script type="text/javascript">
         checkMode();
     </script>
     <script src="search.js" defer></script>
-    
+
     <header>  <!-- NAVIGATION -->
 <div id="topbar">
     <input type="button" id="left_button" />
@@ -51,11 +53,126 @@
 
 
     </header>  <!-- END NAVIGATION -->
+
+<style>
+
+div#collage {
+    background-color: rgba(255,255,255,0.9);
+    width: 100%;
+    height: min(105vw, 105vh);
+    position: absolute;
+    display: none;
+    flex-shrink: 0;
+    left: 0;
+    overflow-y: scroll;
+    scroll-direction: vertical;
+    scroll-snap-type: y mandatory;
+}
+
+div#collage.shown {
+    display: block;
+    z-index: 8;
+}
+
+body.dark-mode div#collage {
+    background-color: rgba(0,0,0,0.9);
+}
+
+div#collage > img {
+    width: 20%;
+    height: auto;
+    display: inline-block;
+    margin: 5px 2.5%;
+    scroll-snap-align: start;
+    scroll-margin: 0;
+}
     
-    <h1 id="site_name_part1">Archer's</h1>
-    <h1 id="site_name_part2">COLLECTION</h1>
+#collage_button {
+    background-image: url("Images/Icons/apps-sharp.svg");
+    background-size: 14px;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 24px;
+    width: 24px;
+    position: fixed;
+    left: 15px;
+    bottom: 30px;
+    background-color: #ffffff;
+    border: 1px solid gray;
+    border-radius: 12px;
+    margin: 0; 
+    box-shadow: 0 0 5px 1px #ffffff;
+}
+
+</style>
+
+<script>
+    function toggleCollage() {
+        document.getElementById("collage").classList.toggle("shown");
+    };
+    
+    function showID() {
+        console.log(this.id);
+    }
+    
+    function addIDs() {
+        let divs = document.getElementsByClassName("searchable");
+        for (var i = 0; i < divs.length; i++) {
+            divs[i].setAttribute("id", "item" + i);
+        };
+    };
+    
+    function visibleAll() {
+        let divs = document.getElementsByClassName("searchable");
+        for (var i = 0; i < divs.length; i++) {
+            divs[i].classList.add("visible");
+        };
+    };
+    
+    function openPhoto(photoid) {
+        window.location.href = "#" + photoid;
+    };
+    
+    function makeCollage() {
+        let collage = document.getElementById("collage");
+        let matches = document.getElementsByClassName("visible");
+        let photos = "";
         
+        for (var i = 0; i < matches.length; i++) {
+            
+            try {
+                let match = matches[i].getElementsByClassName("photo")[0];
+                let path = encodeURI(match.getAttribute("src"));
+                //let path = encodeURI(match.getAttribute("src"));
+                let photoid = matches[i].getAttribute("id");
+//                if (path === "") {
+//                    photos += "<img class=\"photo\" src=\"Images/NoPhoto.JPG\" class=\"grayed\" onclick=\"openPhoto(" + photoID + ") />";
+//                } else {
+                photos += "<img src=\"" + path + "\" onclick=\"openPhoto('" + photoid + "')\" />";
+//                };
+            } catch {
+                photos += "<img class=\"photo\" src=\"Images/NoPhoto.JPG\" class=\"grayed\" onclick=\"openPhoto('" + matches[i].getAttribute("id") + "')\" />";
+            }; // try catch block ends
+        } // for loop ends
+        collage.innerHTML = photos;
+    };
+
+const search_bar = document.getElementById("search_bar");
+search_bar.addEventListener("keyup", searchAll);
+search_bar.addEventListener("change", searchAll);
+
+    function searchAll() {
+        findMatches();
+        makeCollage();
+    };
+    
+</script>
+
+    <h1 id="site_name_part1">Archer's</h1>
+        <h1 id="site_name_part2">COLLECTION</h1>
+    
     <div id="results">
+        <div id="collage" onclick="toggleCollage()"></div>
     <div class="searchable float" data-index="alfa romeo gtv6 3.0 series:car culture: world tour year:2024 source:target tag:chase condition:new on card ">
         <details>
             <summary>
@@ -3202,7 +3319,7 @@
         </details>
         <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Blings Mercedes-Benz G500 (Dropstars 2006).JPG" alt="Blings Mercedes-Benz G500" width="640px" /></a><p class="tag"></p></div>    </div>
 
-    <div class="searchable float" data-index="heavy hitcher series:experimotors year: source:flea market tag: condition:new on card ">
+    <div class="searchable float" data-index="heavy hitcher series:experimotors year: source:flea market tag: condition:opened ">
         <details>
             <summary>
                 <h1>Heavy Hitcher</h1>
@@ -3226,7 +3343,7 @@
                 </tr>
                 <tr>
                     <td class="grayed">status:</td>
-                    <td>New on card</td>
+                    <td>Opened</td>
                     <td colspan=2 class="tag"></td>
                 </tr>
             </table>
@@ -3264,7 +3381,7 @@
         </details>
         <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Tooligan (Experimotors).JPG" alt="Tooligan" width="640px" /></a><p class="tag"></p></div>    </div>
 
-    <div class="searchable float" data-index="see me rollin’ series:experimotors year: source:family dollar tag: condition:new on card ">
+    <div class="searchable float" data-index="see me rollin’ series:experimotors year: source:family dollar tag: condition:opened ">
         <details>
             <summary>
                 <h1>See Me Rollin’</h1>
@@ -3288,7 +3405,7 @@
                 </tr>
                 <tr>
                     <td class="grayed">status:</td>
-                    <td>New on card</td>
+                    <td>Opened</td>
                     <td colspan=2 class="tag"></td>
                 </tr>
             </table>
@@ -4010,7 +4127,7 @@
         </details>
         <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Alfa Romeo GTV6 3.0 (Factory Fresh 2024).JPG" alt="Alfa Romeo GTV6 3.0" width="640px" /></a><p class="tag"></p></div>    </div>
 
-    <div class="searchable float" data-index="carbonator series:fast foodie year:2022 source:family dollar tag: condition:new on card ">
+    <div class="searchable float" data-index="carbonator series:fast foodie year:2022 source:family dollar tag: condition:opened ">
         <details>
             <summary>
                 <h1>Carbonator</h1>
@@ -4034,7 +4151,7 @@
                 </tr>
                 <tr>
                     <td class="grayed">status:</td>
-                    <td>New on card</td>
+                    <td>Opened</td>
                     <td colspan=2 class="tag"></td>
                 </tr>
             </table>
@@ -37849,6 +37966,254 @@
         </details>
         <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Ford Taurus Stocker (Pro Racing 2002).JPG" alt="Ford Taurus Stocker" width="640px" /></a><p class="comment">from Dima</p></div>    </div>
 
+    <div class="searchable float" data-index="subaru wrx sti series:nightburnerz 5-pack year:2025 source:grandpa tag: condition:opened ">
+        <details>
+            <summary>
+                <h1>Subaru WRX STI</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>Nightburnerz 5-pack</td>
+                    <td class="grayed">part:</td>
+                    <td class="right"></td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td></td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Grandpa</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>Opened</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Subaru WRX STI (Nightburnerz 5-pack 2025).JPG" alt="Subaru WRX STI" width="640px" /></a><p class="comment">from Grandpa</p></div>    </div>
+
+    <div class="searchable float" data-index="2020 toyota gr supra series:nightburnerz 5-pack year:2025 source:grandpa tag: condition:opened ">
+        <details>
+            <summary>
+                <h1>2020 Toyota GR Supra</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>Nightburnerz 5-pack</td>
+                    <td class="grayed">part:</td>
+                    <td class="right"></td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td></td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Grandpa</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>Opened</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/2020 Toyota GR Supra (Nightburnerz 5-pack 2025).JPG" alt="2020 Toyota GR Supra" width="640px" /></a><p class="comment">from Grandpa</p></div>    </div>
+
+    <div class="searchable float" data-index="1987 ford sierra cosworth series:nightburnerz 5-pack year:2025 source:grandpa tag: condition:opened ">
+        <details>
+            <summary>
+                <h1>1987 Ford Sierra Cosworth</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>Nightburnerz 5-pack</td>
+                    <td class="grayed">part:</td>
+                    <td class="right"></td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td></td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Grandpa</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>Opened</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/1987 Ford Sierra Cosworth (Nightburnerz 5-pack 2025).JPG" alt="1987 Ford Sierra Cosworth" width="640px" /></a><p class="comment">from Grandpa</p></div>    </div>
+
+    <div class="searchable float" data-index="nissan maxima drift car series:nightburnerz 5-pack year:2025 source:grandpa tag: condition:opened ">
+        <details>
+            <summary>
+                <h1>Nissan Maxima Drift Car</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>Nightburnerz 5-pack</td>
+                    <td class="grayed">part:</td>
+                    <td class="right"></td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td></td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Grandpa</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>Opened</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Nissan Maxima Drift Car (Nightburnerz 5-pack 2025).JPG" alt="Nissan Maxima Drift Car" width="640px" /></a><p class="comment">from Grandpa</p></div>    </div>
+
+    <div class="searchable float" data-index="dimachinni veloce series:nightburnerz 5-pack year:2025 source:grandpa tag: condition:opened ">
+        <details>
+            <summary>
+                <h1>Dimachinni Veloce</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>Nightburnerz 5-pack</td>
+                    <td class="grayed">part:</td>
+                    <td class="right"></td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td></td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Grandpa</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>Opened</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Dimachinni Veloce (Nightburnerz 5-pack 2025).JPG" alt="Dimachinni Veloce" width="640px" /></a><p class="comment">from Grandpa</p></div>    </div>
+
+    <div class="searchable float" data-index="dune it up series:track aces year:2025 source:mommy tag: condition:opened ">
+        <details>
+            <summary>
+                <h1>Dune It Up</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>Track Aces</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">2/5</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>92/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2025</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Mommy</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>Opened</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Dune It Up (Track Aces 2025).JPG" alt="Dune It Up" width="640px" /></a><p class="comment">from Mommy</p></div>    </div>
+
+    <div class="searchable float" data-index="roller toaster series:experimotors year:2026 source:target tag: condition:opened ">
+        <details>
+            <summary>
+                <h1>Roller Toaster</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>Experimotors</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">3/5</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>39/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2026</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Target</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>Opened</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/Roller Toaster (Experimotors 2026).JPG" alt="Roller Toaster" width="640px" /></a><p class="tag"></p></div>    </div>
+
+    <div class="searchable float" data-index="5 alarm series:hw heavyweights year:2026 source:target tag: condition:opened type:fire truck">
+        <details>
+            <summary>
+                <h1>5 Alarm</h1>
+            </summary>
+            <table>
+                <tr>
+                    <td class="grayed">series:</td>
+                    <td>HW Heavyweights</td>
+                    <td class="grayed">part:</td>
+                    <td class="right">1/5</td>
+                </tr>
+                <tr>
+                    <td class="grayed">number:</td>
+                    <td>32/250</td>
+                    <td class="grayed">year:</td>
+                    <td class="right">2026</td>
+                </tr>
+                <tr>
+                    <td class="grayed">origin:</td>
+                    <td>Target</td>
+                </tr>
+                <tr>
+                    <td class="grayed">status:</td>
+                    <td>Opened</td>
+                    <td colspan=2 class="tag"></td>
+                </tr>
+            </table>
+        </details>
+        <div class="wrapper"><a><img class="photo" loading="lazy" src="Images/5 Alarm (HW Heavyweights 2026).JPG" alt="5 Alarm" width="640px" /></a><p class="tag"></p></div>    </div>
+
 
     </div>
 <div id="advanced_search">
@@ -38038,6 +38403,7 @@
       <option value="HW Green Speed" />
       <option value="HW Hatchbacks" />
       <option value="HW Haulers" />
+      <option value="HW Heavyweights" />
       <option value="HW Hot Trucks" />
       <option value="HW Hot Trucks 5-pack" />
       <option value="HW Imagination" />
@@ -38211,6 +38577,7 @@
       <option value="Thrill Racers - Earthquake" />
       <option value="Tooned" />
       <option value="Tooned 5-pack" />
+      <option value="Track Aces" />
       <option value="Track Builder 5-pack" />
       <option value="Track Champs" />
       <option value="Track Fleet" />
@@ -38298,13 +38665,13 @@
 
 </div>
 
-
-    <div id="empty_space" style="height: 60px;"></div>
+    
+    <input type="button" id="collage_button" onclick="toggleCollage()" />
     
     <input type="button" id="help_button" value="" onclick="location.href='reference.html'" />
     
     <footer id="page_footer">
-        <p>Last update: <a href="updates.html">2025-12-19</a></p>
+        <p>Last update: <a href="updates.html">2026-01-01</a></p>
         <p>Site design: Konstantin A Kolosov</p>
         <hr />
             <a href="index.html">Home</a>
