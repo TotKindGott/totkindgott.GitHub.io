@@ -1798,7 +1798,6 @@ div.commit span.commit_note {
     transition-timing-function: ease;
 }
 
-
 #sidebar {
   overflow-y: scroll;
   overflow-x: hidden;
@@ -1817,7 +1816,7 @@ div.commit span.commit_note {
 #sidebar > img {
   object-fit: cover;
   filter: saturate(0);
-  transition: 0.3s ease all;
+  transition: 0.25s smooth all;
 
   &:hover {
     transform: scale(1.05);

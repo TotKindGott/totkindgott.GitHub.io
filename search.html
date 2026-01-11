@@ -17,10 +17,11 @@
         checkMode();
     </script>
     <script type="text/javascript" src="search.js" defer></script>
+
     <header>  <!-- NAVIGATION -->
 <div id="topbar">
     <input type="button" id="left_button" />
-    <input type="text" id="search_bar" onchange="search()" />
+    <input type="text" id="search_bar" />
     <input type="button"  id="right_button" />
     <div id="dropdown">
         <input type="button" id="mode_button" />
@@ -50,11 +51,6 @@
 
 
     </header>  <!-- END NAVIGATION -->
-    
-<div id="frame" style="display: none"></div>
-<div id="empty_space" style="height: 10px;"></div>
-<div id="carousel"></div>
-
 <div id="advanced_search">
 
     <input type="search" list="tags" placeholder="TAG" class="select" id="tags_input">
@@ -187,6 +183,7 @@
       <option value="Demo Destruction" />
       <option value="Demo Destruction 5-pack" />
       <option value="DreamWorks Character Cars" />
+      <option value="Drop Tops" />
       <option value="Dropstars" />
       <option value="Easter 4-pack" />
       <option value="Easter Eggsclusives" />
@@ -346,7 +343,9 @@
       <option value="Matchbox Hero City" />
       <option value="Matchbox Hero City: Hospital" />
       <option value="Matchbox Mainline" />
+      <option value="Matchbox Moving Parts" />
       <option value="Matchbox Multipack" />
+      <option value="Mattel" />
       <option value="McDonald’s" />
       <option value="Minion Character Cars" />
       <option value="Modified" />
@@ -503,12 +502,25 @@
     </datalist>
 
 </div>
+
+    <div id="empty_space" style="height: 30px;"></div>
     
-    <style>
+    <div id="frame" style="display: none">
+    </div>
     
+    <div id="carousel">
+        <div id="item_list"></div>
+    </div>
+    
+<style>
+    
+body {
+    overflow: hidden;
+}
+
 div#carousel {
     width: 100%;
-    height: 100vw;
+    height: min(100vw + 115px, 100vh + 115px);
     position: fixed;
     top: 40px;
     left: 0;
@@ -517,6 +529,7 @@ div#carousel {
     background: transparent;
     white-space: nowrap;
     vertical-align: top;
+    overflow-y: hidden;
 }
 
 div#carousel div#card_view {
@@ -601,8 +614,13 @@ div#carousel #card_view div.details {
     color: white;
     margin: 0;
     white-space: wrap;
-    padding: 12.5% 0;
+    padding: 12.5% 0px;
     vertical-align: middle;
+    animation-name: ease;
+    animation-direction: normal;
+    transition-property: all;
+    transition-duration: 1s;
+    transition-timing-function: ease-out;
 }
 
 div#carousel #card_view table {
@@ -617,26 +635,74 @@ div#carousel #card_view table td:not(.tag) {
 div#carousel #card_view table td.grayed {
     color: silver;
 }
+
 div#carousel div#item_list {
     height: 60px;
-    width: 92%;
-    margin: 10px auto auto;
+    width: auto;
+    margin: 10px;
     background: transparent;
     overflow-x: scroll;
     overflow-y: visible;
     scroll-direction: horizontal;
     scroll-snap-type: x mandatory;
     vertical-align: middle;
+    animation-name: ease;
+    animation-direction: normal;
+    transition-property: transform, height, background;
+    transition-duration: 0.2s, 0.2s, 1s;
+    transition-timing-function: ease-out;
+}
+
+div#carousel div#item_list.shown {
+    width: 100%;
+    height: min(100vw + 115px, 100vh + 115px);
+    margin: 0;
+    /*position: absolute;
+    top: 0;*/
+    transform: translate(0, max(-100vw - 50px, -100vh - 50px));
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    /*grid-template-rows: repeat(999, 70px);*/
+    grid-auto-rows: 70px;
+    background: white;
+    z-index: 11;
+    overflow-y: scroll;
+    scroll-direction: vertical;
+    scroll-snap-type: y mandatory;
+    /*flex-flow: row wrap;
+    object-fit: contain;
+    white-space: nowrap;*/
+    animation-name: ease;
+    animation-direction: normal;
+    transition-property: transform;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in;
+}
+
+div#carousel div#item_list.shown img {
+    margin: 2% auto;
+}
+
+body.dark-mode div#carousel div#item_list,
+body.dark-mode div#carousel div#item_list.shown {
+    background-color: black;
+}
+
+body.dark-mode div#carousel div#item_list.shown img {
+    opacity: 1;
 }
 
 div#carousel div#item_list img {
     scroll-snap-align: start;
-    scroll-snap-stop: always;
+    /*scroll-snap-stop: always;*/
     width: 50px;
     height: 50px;
     opacity: 0.5;
-    object-fit: contain;
-    box-shadow: 0 0 1px black
+    box-shadow: 0 0 1px black;
+    /*flex-margin: auto;
+    flex-shrink: 0;*/
+    margin: auto;
+    white-space: wrap;
 }
 
 div#carousel div#item_list img.color {
@@ -651,13 +717,80 @@ div#carousel div#item_list::-webkit-scrollbar {
     display: none;
 }
 
-    </style>
+div#collage {
+    background-color: rgba(255,255,255,0.9);
+    width: 100%;
+    height: min(100vw + 115px, 100vh + 115px);
+    position: absolute;
+    flex-shrink: 0;
+    left: 0;
+    overflow-y: scroll;
+    scroll-direction: vertical;
+    scroll-snap-type: y mandatory;
+}
+
+div#collage_wrapper {
+    width: 100%;
+    height: min(100vw + 115px, 100vh + 115px);
+    position: fixed;
+    display: none;
+    top: 40px;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    z-index: 11;
+}
+
+div#collage_wrapper.shown {
+    display: block;
+    z-index: 8;
+}
+
+body.dark-mode div#collage {
+    background-color: rgba(0,0,0,0.9);
+}
+
+div#collage > img {
+    width: 20%;
+    height: auto;
+    display: inline-block;
+    margin: 5px 2.5%;
+    scroll-snap-align: start;
+    scroll-margin: 0;
+}
+
+#collage_button {
+    background-image: url("Images/Icons/apps-sharp.svg");
+    background-size: 14px;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 24px;
+    width: 24px;
+    position: fixed;
+    left: 15px;
+    bottom: 30px;
+    background-color: #ffffff;
+    border: 1px solid gray;
+    border-radius: 12px;
+    margin: 0; 
+    box-shadow: 0 0 5px 1px #ffffff;
+}
+
+</style>
 
 <script>
-    getCollection();
+    //getCollection();
     
     const collectables = document.getElementById("frame");
     const carousel = document.getElementById("carousel");
+    
+    function initSearch() {
+        //visibleAll();
+        //parseVisible();
+        //addIDs();
+        addParseToSelectors();
+    };
     
     function parseVisible() {
 
@@ -696,14 +829,15 @@ div#carousel div#item_list::-webkit-scrollbar {
 
             id = "item" + i;
             
-            icons += '<img src="' + image_path + '" onclick="location.href=\'#' + id + '\'" />\n';
+            //icons += '<img src="' + image_path + '" onclick="location.href=\'#' + id + '\'" />\n';
+                icons += '<img src="' + image_path + '" onclick="openPhoto(\'' + id + '\');" />\n';
             //cards += '<div class="item_card" id="' + id + '">\n<div class="item_name">' + name + '</div>\n<div class="item_photo">\n<img src="' + image_path + '" />\n</div>\n</div>';
             cards += '<div class="item_card" id="' + id + '">\n<div class="item_name" onclick="toggleDetails(' + id + ')">' + name + '</div>\n<div class="item_photo">' + wrapper + '</div>\n<div class=\"details\"><table>' + details + '</table></div>\n</div>';
             
         }; // for loop ends
 
         //sidebar.innerHTML = photos;
-        carousel.innerHTML = "";
+        //carousel.innerHTML = "";
         carousel.innerHTML = '<div id="card_view">' + cards + '</div>\n<div id="item_list">\n' + icons + '</div>';
         setActivationEvent();
     };
@@ -734,22 +868,44 @@ div#carousel div#item_list::-webkit-scrollbar {
     } // deactivate() function ends
     };
 
-function addParseToSelectors() {
-    seriesSelectorInput.addEventListener("change", parseVisible);
-    seriesSelectorInput.addEventListener("keyup", parseVisible);
-    sourceSelectorInput.addEventListener("change", parseVisible);
-    sourceSelectorInput.addEventListener("keyup", parseVisible);
-    tagSelectorInput.addEventListener("change", parseVisible);
-    tagSelectorInput.addEventListener("keyup", parseVisible);
-    conditionSelectorInput.addEventListener("change", parseVisible);
-    conditionSelectorInput.addEventListener("keyup", parseVisible);
-    yearSelectorInput.addEventListener("change", parseVisible);
-    yearSelectorInput.addEventListener("keyup", parseVisible);
-};
+    function addParseToSelectors() {
+    seriesSelectorInput.addEventListener("change", search);
+    seriesSelectorInput.addEventListener("keyup", search);
+    sourceSelectorInput.addEventListener("change", search);
+    sourceSelectorInput.addEventListener("keyup", search);
+    tagSelectorInput.addEventListener("change", search);
+    tagSelectorInput.addEventListener("keyup", search);
+    conditionSelectorInput.addEventListener("change", search);
+    conditionSelectorInput.addEventListener("keyup", search);
+    yearSelectorInput.addEventListener("change", search);
+    yearSelectorInput.addEventListener("keyup", search);
+    };
 
+    const processChange = debounce(() => search());        
+    
+    const search_bar = document.getElementById("search_bar");
+    search_bar.addEventListener("keyup", processChange);
+    //search_bar.addEventListener("change", search);
+
+    function debounce(func, timeout = 300){
+        let timer;
+        return (...args) => {
+            clearTimeout(timer);
+            timer = setTimeout(() => {
+                func.apply(this, args); 
+            }, timeout);
+      };
+    };
+    
     function search() {
         findMatches();
+        //setTimeout(() => {
+        //addIDs();
         parseVisible();
+        parseDatalists();
+        makeCollage();
+        //showIDs();
+        //}, 500);
     };
     
     function toggleDetails(cardID) {
@@ -768,15 +924,131 @@ function addParseToSelectors() {
             
         //itemCards.forEach(card => {
         for (var i = 0; i < itemCards.length; i++) {
-            itemCards[i].addEventListener("click", toggleDetails);
+            itemCards[i].addEventListener("click", () => toggleDetails(toString(itemCards[i].id)));
+        };
+        console.log("added to", itemCards.length);
+    };
+    
+    function toggleCollage() {
+        //document.getElementById("collage_wrapper").classList.toggle("shown");
+        try {
+        document.getElementById("item_list").classList.toggle("shown");
+    } catch (TypeError) {
+        void(0);
+    };
+    };
+    
+    function showCollage() {
+        document.getElementById("item_list").classList.add("shown");
+    };
+    
+    function hideCollage() {
+        document.getElementById("item_list").classList.remove("shown");
+    };
+    
+    function showID() {
+        console.log(this.id);
+    };
+    
+    function addIDs() {
+        let divs = document.getElementsByClassName("searchable");
+        for (var i = 0; i < divs.length; i++) {
+            divs[i].setAttribute("id", "item" + i);
         };
     };
+    
+    function visibleAll() {
+        let divs = document.getElementsByClassName("searchable");
+        for (var i = 0; i < divs.length; i++) {
+            divs[i].classList.add("visible");
+        };
+    };
+    
+    function openPhoto(photoid) {
+        window.location.href = "#" + photoid;
+        if (document.getElementById("item_list").className == "shown") {
+            toggleCollage();
+        };
+    };
+    
+    function makeCollage() {
+        let collage = document.getElementById("collage");
+        let matches = document.getElementsByClassName("visible");
+        let photos = "";
+        
+        for (var i = 0; i < matches.length; i++) {
+            
+            try {
+                let match = matches[i].getElementsByClassName("photo")[0];
+                let path = encodeURI(match.getAttribute("src"));
+                //let path = encodeURI(match.getAttribute("src"));
+                let photoid = matches[i].getAttribute("id");
+//                if (path === "") {
+//                    photos += "<img class=\"photo\" src=\"Images/NoPhoto.JPG\" class=\"grayed\" onclick=\"openPhoto(" + photoID + ") />";
+//                } else {
+                photos += "<img src=\"" + path + "\" onclick=\"openPhoto('" + photoid + "')\" />";
+//                };
+            } catch {
+                photos += "<img class=\"photo\" src=\"Images/NoPhoto.JPG\" class=\"grayed\" onclick=\"openPhoto('" + matches[i].getAttribute("id") + "')\" />";
+            }; // try catch block ends
+        } // for loop ends
+        collage.innerHTML = photos;
+        verticalSwipeActions("item_list", showCollage, hideCollage, 100);
+    };
+    
+    collectables.innerHTML = "";
+
+function verticalSwipeActions(elementID, swipeUpAction, swipeDownAction, swipeThreshold=50) {
+    const swipeElement = document.getElementById(elementID);
+    let startY;
+    let endY;
+    const threshold = swipeThreshold; // Minimum distance in pixels for a swipe to be registered
+    swipeElement.addEventListener('touchstart', (e) => {
+        startY = e.touches[0].clientY;
+    }); // addEventListener ends
+    swipeElement.addEventListener('touchmove', (e) => {
+        // Optional: Prevent default scrolling behavior if the user is interacting with this element
+        // e.preventDefault(); 
+        endY = e.touches[0].clientY;
+    }); // addEventListener ends
+    
+    const isPageScrolling = window.scrollY !== 0 || document.documentElement.scrollTop !== 0;
+    //const isPageScrolling = swipeElement.scrollY !== 0 || swipeElement.scrollTop !== 0;
+    swipeElement.addEventListener('touchend', () => {
+        if (startY && endY && !isPageScrolling) {
+            const deltaY = startY - endY; // Positive value indicates an upward swipe
+            if (deltaY > threshold) {
+                // Swipe up detected
+                swipeUpAction();
+                // Optional: Remove the element from the DOM or hide it completely after the animation
+                // setTimeout(() => {
+                //     fixedElement.style.display = 'none';
+                // }, 300); 
+            } else if (deltaY < 0 - threshold * 2 && swipeElement.scrollTop !== 0) {
+                swipeDownAction();
+            } else if (swipeElement.scrollTop == 0) {
+                swipeDownAction();
+            } else {
+                // Swipe was not significant enough, ignore
+                void(0);
+            }; // if else block ends
+        }; // if block ends
+        // Reset touch coordinates
+        startY = null;
+        endY = null;
+    });
+};
+
+
 </script>
+
+    <input type="button" id="collage_button" onclick="toggleCollage();" />
+
 
     <input type="button" id="help_button" value="" onclick="location.href='reference.html'" />
     
-    <footer id="page_footer" class="fixed-position">
-        <p>Last update: <a href="updates.html">2026-01-01</a></p>
+    <footer id="page_footer">
+        <p>Last update: <a href="updates.html">2026-01-10</a></p>
         <p>Site design: Konstantin A Kolosov</p>
         <hr />
             <a href="index.html">Home</a>
@@ -786,6 +1058,10 @@ function addParseToSelectors() {
     </footer>
     
 
+
+<script>
+document.getElementById('page_footer').classList.add('fixed-position');
+</script>
     
 </body>
 </html>

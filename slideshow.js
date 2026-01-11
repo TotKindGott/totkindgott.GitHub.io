@@ -40,6 +40,7 @@ function startSlideShow(interval = slideInterval, index = slideIndex) {
     let i = index;
     let slides = sidebar.querySelectorAll("img");
     setSlide(slides[i]);
+    slides[i].scrollIntoView({behavior: "smooth"});
     function nextSlide() {
         timeoutID = setTimeout(fadeOut, interval - 250);
         if (i < slides.length - 1) {
@@ -49,6 +50,8 @@ function startSlideShow(interval = slideInterval, index = slideIndex) {
         }; // if else block ends
         slideIndex = i;
         let img = slides[i];
+
+        img.scrollIntoView({behavior: "smooth"});
         setSlide(img);
     }; // function nextSlide ends
     

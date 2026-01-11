@@ -303,8 +303,8 @@ async function parseAndSearch() {
     await parseURL();
     setTimeout(() => {
         searchModels();
-        hideDivsOnEmpty();
-        positionFooter();
+        //hideDivsOnEmpty();
+        //positionFooter();
     }, 1000); // setTimeout ends
 }; // function parseAndSearch ends
 

@@ -55,7 +55,8 @@ document.addEventListener('click', function(event) {
         hideDynamics();
     }; // if else block ends
 }); // addEventListener ends
-document.addEventListener("dblclick", promptNewSearch);
+
+//document.addEventListener("dblclick", promptNewSearch);
 
 //clearButton.addEventListener("click", clearOptions);
 clearButton.addEventListener("click", restoreOptions);
@@ -98,7 +99,7 @@ function findMatches() {
     updateCount(document.getElementsByClassName("visible").length);
     //restoreOptions();
     parseDatalists();
-    positionFooter();
+    //positionFooter();
 
 }; // finaMatches function ends
 
