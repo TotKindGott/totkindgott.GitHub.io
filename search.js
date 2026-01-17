@@ -239,6 +239,35 @@ function clearOptions() {
 }; // clearOptions function ends
 
 
+function isClearOptions() {
+    if (seriesOptions.innerHTML == "" && yearOptions.innerHTML == "" && tagOptions.innerHTML == "" && conditionOptions.innerHTML == "" && sourceOptions.innerHTML == "") {
+        return true;
+    } else {
+        return false;
+    };
+}; // clearOptions function ends
+
+
+function isClearSearchBar() {
+    if (searchBar.value === "") {
+        return true;
+    } else {
+        return false;
+    };
+};
+
+
+function isClearSearch() {
+    if (isClearSearchBar() && isClearOptions()) {
+        console.log("not searching");
+        return true;
+    } else {
+        console.log("searching");
+        return false;
+    };
+};
+
+
 function updateCount(count = 0) {
     // outputs count in #counter
     if (count === 0) {

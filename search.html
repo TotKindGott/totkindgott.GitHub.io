@@ -12,7 +12,7 @@
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, interactive-widget=resizes-content">
 </head>
 
-<body onload="parseAndSearch(); addParseToSelectors(); parseVisible();">
+<body onload="startupSequence()">
     <script type="text/javascript">
         checkMode();
     </script>
@@ -790,8 +790,18 @@ div#collage > img {
         //parseVisible();
         //addIDs();
         addParseToSelectors();
+        visibleAll();
     };
     
+    async function initParse() {
+        await parseAndSearch();
+        setTimeout(() => {
+            //parseVisible();
+            //hideDivsOnEmpty();
+            //positionFooter();
+        }, 1000); // setTimeout ends
+    }; // function parseAndSearch ends
+
     function parseVisible() {
 
         let visible = collectables.getElementsByClassName("visible");
@@ -898,6 +908,8 @@ div#collage > img {
     };
     
     function search() {
+        //if (isClearSearch()) {
+        //} else {
         findMatches();
         //setTimeout(() => {
         //addIDs();
@@ -906,6 +918,7 @@ div#collage > img {
         makeCollage();
         //showIDs();
         //}, 500);
+        //};
     };
     
     function toggleDetails(cardID) {
@@ -997,6 +1010,15 @@ div#collage > img {
     };
     
     collectables.innerHTML = "";
+
+
+async function startupSequence() {
+    await initParse(); 
+    await initSearch(); 
+    //await searchFor("honda");
+    setTimeout(search, 100);
+};
+
 
 function verticalSwipeActions(elementID, swipeUpAction, swipeDownAction, swipeThreshold=50) {
     const swipeElement = document.getElementById(elementID);
