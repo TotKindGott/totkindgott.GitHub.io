@@ -12,7 +12,7 @@
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, interactive-widget=resizes-content">
 </head>
 
-<body onload="startupSequence()">
+<body onload="parseAndSearch(); addParseToSelectors()">
     <script type="text/javascript">
         checkMode();
     </script>
@@ -59,9 +59,11 @@
         <option value="" />
       <option value="$TH" />
       <option value="Chase" />
+      <option value="Custom" />
       <option value="ID" />
       <option value="Monster" />
       <option value="PREMIUM" />
+      <option value="Silver" />
       <option value="TH" />
       <option value="ZAMAC" />
       
@@ -118,7 +120,8 @@
     <input type="search" list="series" placeholder="SERIES" class="select" id="series_input">
 
     <datalist id="series">
-        <option value="1998 First Editions" />
+        <option value="" />
+      <option value="1998 First Editions" />
       <option value="1999 First Editions" />
       <option value="2000 First Editions" />
       <option value="2001 First Editions" />
@@ -141,6 +144,8 @@
       <option value="56th Anniversary Mix 1" />
       <option value="57th Anniversary Mix 1" />
       <option value="57th Anniversary Mix 2" />
+      <option value="58th Anniversary" />
+      <option value="70s vs 90s" />
       <option value="80th Anniversary Series" />
       <option value="Action 5-pack" />
       <option value="Avon Super Tuners" />
@@ -150,11 +155,15 @@
       <option value="Biff! Bam! Boom!" />
       <option value="Biohazard Series" />
       <option value="Blue and Pink" />
+      <option value="Boulevard" />
       <option value="Brick Rides" />
+      <option value="Brick Shop" />
       <option value="Bugging Out" />
       <option value="CD Customs" />
       <option value="Car Culture: Autostrasse" />
       <option value="Car Culture: Exotic Envy" />
+      <option value="Car Culture: Japan Historics 4" />
+      <option value="Car Culture: Modern Classics" />
       <option value="Car Culture: Ronin Run" />
       <option value="Car Culture: Slide Street 2" />
       <option value="Car Culture: Speed Machines" />
@@ -294,12 +303,15 @@
       <option value="Heat Fleet" />
       <option value="Heat Fleet 2011" />
       <option value="Heroes on Hot Wheels" />
+      <option value="Honda" />
+      <option value="Honda Collector Set" />
       <option value="Hot Trucks 5-pack" />
       <option value="Hot Wagons" />
       <option value="Hot Wheels Boulevard" />
       <option value="Hot Wheels Let’s Race" />
       <option value="Hot Wheels id: Factory Fresh" />
       <option value="Hybrid Speed" />
+      <option value="Johnny Lightning: Street Freaks" />
       <option value="MBX Adventure" />
       <option value="MBX Adventure City" />
       <option value="MBX Airport Alarm" />
@@ -313,6 +325,7 @@
       <option value="MBX Explorers" />
       <option value="MBX Fire 5-pack" />
       <option value="MBX Fire Fighters" />
+      <option value="MBX Fire Rescue" />
       <option value="MBX Germany" />
       <option value="MBX Go Diego Go 5-pack" />
       <option value="MBX Heroic Rescue" />
@@ -377,6 +390,9 @@
       <option value="Race Day" />
       <option value="Race World Cave 2010" />
       <option value="Rally Champs" />
+      <option value="Rally Racers" />
+      <option value="Rebel Rides" />
+      <option value="Red Edition" />
       <option value="Red Lines" />
       <option value="Reissues" />
       <option value="Retro Racers" />
@@ -391,6 +407,7 @@
       <option value="Space Series" />
       <option value="Speed Blur" />
       <option value="Speed Machines" />
+      <option value="Spider-Man" />
       <option value="Spider-Man Web-Car Launcher" />
       <option value="Spoiler Alert" />
       <option value="Spring" />
@@ -415,6 +432,7 @@
       <option value="Thrill Racers - Earthquake" />
       <option value="Tooned" />
       <option value="Tooned 5-pack" />
+      <option value="Tooned Golf" />
       <option value="Track Aces" />
       <option value="Track Builder 5-pack" />
       <option value="Track Champs" />
@@ -440,6 +458,7 @@
       <option value="World Racers 5-pack" />
       <option value="X-Raycers" />
       <option value="X-Treme Speed" />
+      <option value="ZAMAC Themed Multipack" />
       
     </datalist>
 
@@ -790,18 +809,8 @@ div#collage > img {
         //parseVisible();
         //addIDs();
         addParseToSelectors();
-        visibleAll();
     };
     
-    async function initParse() {
-        await parseAndSearch();
-        setTimeout(() => {
-            //parseVisible();
-            //hideDivsOnEmpty();
-            //positionFooter();
-        }, 1000); // setTimeout ends
-    }; // function parseAndSearch ends
-
     function parseVisible() {
 
         let visible = collectables.getElementsByClassName("visible");
@@ -908,8 +917,6 @@ div#collage > img {
     };
     
     function search() {
-        //if (isClearSearch()) {
-        //} else {
         findMatches();
         //setTimeout(() => {
         //addIDs();
@@ -918,7 +925,6 @@ div#collage > img {
         makeCollage();
         //showIDs();
         //}, 500);
-        //};
     };
     
     function toggleDetails(cardID) {
@@ -1011,15 +1017,6 @@ div#collage > img {
     
     collectables.innerHTML = "";
 
-
-async function startupSequence() {
-    await initParse(); 
-    await initSearch(); 
-    //await searchFor("honda");
-    setTimeout(search, 100);
-};
-
-
 function verticalSwipeActions(elementID, swipeUpAction, swipeDownAction, swipeThreshold=50) {
     const swipeElement = document.getElementById(elementID);
     let startY;
@@ -1070,7 +1067,7 @@ function verticalSwipeActions(elementID, swipeUpAction, swipeDownAction, swipeTh
     <input type="button" id="help_button" value="" onclick="location.href='reference.html'" />
     
     <footer id="page_footer">
-        <p>Last update: <a href="updates.html">2026-01-10</a></p>
+        <p>Last update: <a href="updates.html">2026-03-22</a></p>
         <p>Site design: Konstantin A Kolosov</p>
         <hr />
             <a href="index.html">Home</a>
