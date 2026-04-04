@@ -305,7 +305,7 @@ async function parseAndSearch() {
         searchModels();
         //hideDivsOnEmpty();
         //positionFooter();
-    }, 1000); // setTimeout ends
+    }, 2000); // setTimeout ends
 }; // function parseAndSearch ends
 
 
