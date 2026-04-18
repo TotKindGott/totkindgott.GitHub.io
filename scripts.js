@@ -1,5 +1,5 @@
 const collection_url = 'https://totkindgott.github.io/collection.html';
-const search_url = 'https://totkindgott.github.io/search.html?search=';
+const search_url = 'https://totkindgott.github.io/oldsearch.html?search=';
     
 const inputs = document.querySelectorAll('input');
 

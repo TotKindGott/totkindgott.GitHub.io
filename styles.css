@@ -1849,6 +1849,23 @@ div.commit span.commit_note {
     background-image: url("Images/Icons/caret-forward-circle-outline.svg");;
 }
 
+#view_toggle {
+    background-image: url("Images/Icons/apps-sharp.svg");
+    background-size: 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 24px;
+    width: 24px;
+    position: fixed;
+    left: 15px;
+    bottom: 30px;
+    background-color: #ffffff;
+    border: 1px solid gray;
+    border-radius: 12px;
+    margin: 0; 
+    box-shadow: 0 0 5px 1px #ffffff;
+}
+
 div#horizontal_selector {
     height: auto;
     width: 100%;
