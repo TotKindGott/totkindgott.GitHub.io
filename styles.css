@@ -1119,6 +1119,10 @@ td.bignum {
     scroll-snap-align: start;
 }
 
+body.dark-mode > #frame {
+    background-color: transparent;
+}
+
 #page_footer {
     animation-name: fade_in;
     animation-duration: 2s;
