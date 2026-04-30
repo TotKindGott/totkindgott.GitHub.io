@@ -14,14 +14,14 @@
 
 <body onload="">
 
-    <script type="text/javascript">
+<script type="text/javascript">
         checkMode();
     
-    function searchSeries() {
+function searchSeries() {
     // searches through data-index attribute of every table
     let search_query = document.getElementById('search_bar').value;
     search_query = search_query.toLowerCase();
-    let tables = document.getElementsByClassName('collection_status');
+    let tables = document.getElementsByClassName('searchable collection_status');
     for (i = 0; i < tables.length; i++) {
         if (
         tables[i].getAttribute("data-index").toLowerCase().includes(search_query)) {
@@ -35,7 +35,7 @@
     };
     updateCount();
 };
-    </script>
+</script>
 
     <header>  <!-- NAVIGATION -->
 <div id="topbar">
@@ -15937,12 +15937,17 @@
         </table>
     </div>
     
+<script>
+    var searchBar = document.getElementById("search_bar");
+    searchBar.addEventListener("keyup", searchSeries);
+</script>
 
+    <div id="empty_space"></div>
 
     <input type="button" id="help_button" value="" onclick="location.href='reference.html'" />
     
     <footer id="page_footer">
-        <p>Last update: <a href="updates.html">2026-04-25</a></p>
+        <p>Last update: <a href="updates.html">2026-04-29</a></p>
         <p>Site design: Konstantin A Kolosov</p>
         <hr />
             <a href="index.html">Home</a>
