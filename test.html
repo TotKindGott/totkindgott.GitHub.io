@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Models</title>
+    <link type="text/css" href="styles.css" rel="stylesheet" />
+    <script src="model.js"></script>
+</head>
+<body>
+    <div id="frame"></div>
+    <div id="content"></div>
+    
+    <style>
+#content {
+  object-fit: cover;
+  max-height: 300px;
+  background-color: transparent;
+    width: 100%;
+    background-size: 100%;
+    opacity: 1;
+    animation-name: fadeOut;
+    transition-property: opacity;
+    transition-duration: 0.5s;
+    transition-timing-function: ease;
+}
+
+#content > div.searchable {
+    break-before: page;
+    scroll-snap-align: start;
+}
+    </style>
+    
+    <script>
+        
+        var models = new Array();
+        var line_num = 2;
+        
+        async function fetchCSV(url) {
+            try {
+                //const text = await fetch(url).then($ => $.text())
+                const response = await fetch(url);
+                const data = await response.text();
+                var parser = new DOMParser();
+                var doc = parser.parseFromString(data, "text/html");
+                var paragraphs = doc.getElementsByTagName("p");
+            document.getElementById('content').innerHTML = paragraphs[0].textContent;
+            
+                let p = paragraphs[0].textContent;
+                //console.log(typeof p);
+                let ls = p.split("\n");
+                //console.log(ls.length);
+                const headers = ls.shift();
+                var models = new Array();
+                for (var l = 0; l < ls.length; l++) {
+                    //console.log(l);
+                //inner_text = document.getElementById("content").innerText;
+                m = new Model(ls[l]);
+                //console.log(m);
+                f = m.make_frame_view();
+                models.push(f);
+
+                //console.log(f);
+                //console.log(l, m.name);
+                //console.log(m.make_frame_view());
+                //console.log(lines[l]);
+                }; // for loop ends
+            } catch (error) {
+                console.error('Error fetching CSV:', error);
+            };
+        
+            document.getElementById("content").innerHTML = models.join("");
+        }; // fetchCSV() ends
+        
+        
+        async function parseCSV() {
+            //await         fetchCSV('collection.csv');
+            //const text = await fetch("collection.csv").then($ => $.text());
+            const data = document.getElementById('content').innerHTML;
+        //document.getElementById('output').innerText = "";
+            let lines = data.split("\n");
+            //console.log("lines read: " + lines.length);
+            //console.log(lines);
+            const headers = lines.shift();
+        //console.log("headers: " + headers);
+        //console.log("models: " + lines.length);
+            //m = new Model(lines[line_num]);
+        //console.log("csv: " + m.make_spreadsheet_line());
+        //console.log("html: " + m.make_frame_view());
+        //console.log("image: " + m.generate_image_name());
+        
+            const div =                 document.getElementById("frame");
+        
+            for (var l = 0; l < lines.length; l++) {
+                //inner_text = document.getElementById("content").innerText;
+                m = new Model(lines[l]);
+
+                div.innerHTML += m.make_frame_view();
+                //console.log(l, m.name);
+                //console.log(m.make_frame_view());
+                //console.log(lines[l]);
+                }; // for loop ends
+            }; // parseCSV() ends
+        
+        function readCSV() {
+            //console.log("csv:" + document.getElementById('output').innerText);
+            return document.getElementById('frame').innerText;
+        };
+
+        //console.log(data.split('\n', 1));
+        //console.log(document.getElementById('output').innerText);
+        //parseCSV();
+        //const data = readCSV();
+        //console.log("models:" + models);
+        
+        async function getcsv() {
+            const text = await fetch("collection.csv").then($ => $.text());
+            //return text;
+        };
+        
+        //getcsv();
+        fetchCSV("collection.csv");
+    </script>
+</body>
+</html>
