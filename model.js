@@ -1,29 +1,42 @@
 class Model {
 
     constructor(csv_line) {
-        const headers = csv_line.split(",");
+        const csvalues = csv_line.split(",");
         // headers in order:
         // Collection,Year,Part,Model,Number,Stamp,Condition,Origin,URL,Tags,Quantity,Image,Note
         this.csv = csv_line;
-        this.name = headers[3];
-        this.series = headers[0];
-        this.year = headers[1];
-        this.tag = headers[9];
-        this.image = headers[11];
-        this.condition = headers[6];
-        this.part = headers[2];
-        this.number = headers[4];
-        this.origin = headers[7];
-        this.stamp = headers[5];
-        this.url = headers[8];
-        this.note = headers[12];
-        this.quantity = headers[10];
+        this.name = csvalues[3];
+        this.series = csvalues[0];
+        this.year = csvalues[1];
+        this.tag = csvalues[9];
+        this.image = csvalues[11];
+        this.condition = csvalues[6];
+        this.part = csvalues[2];
+        this.number = csvalues[4];
+        this.origin = csvalues[7];
+        this.stamp = csvalues[5];
+        this.url = csvalues[8];
+        this.note = csvalues[12];
+        this.quantity = csvalues[10];
         
         this.update_image_name()
     }; // constructor ends
     
     make_spreadsheet_line() {
-        return this.csv;
+        // template literal
+        return `
+    <tr class="{row_class} searchable" data-index="{data_index}">
+        <td class="line">{count}</td>
+        <td class="model">${this.name}</td>
+        <td class="series">${this.series}</td>
+        <td class="year">${this.year}</td>
+        <td class="part">${this.part}</td>
+        <td class="origin">${this.origin}</td>
+        <td class="url">${this.url}</td>
+        <td class="quantity">${this.quantity}</td>
+        <td class="tags">${this.tag}</td>
+        <td class="condition">${this.condition}</td>
+    </tr>`
     }; // make_spreadsheet_line() ends
     
     make_photo_view() {

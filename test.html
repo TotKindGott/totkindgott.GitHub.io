@@ -1,28 +1,182 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Models</title>
+    <meta charset="utf-8">
+    <title>Collection</title>
     <link type="text/css" href="styles.css" rel="stylesheet" />
-    <script src="model.js"></script>
+    <script src="scripts.js"></script>
+    <script src="buttons.js" defer></script>
+    <script src="model.js" defer></script>
+    <!--optional-->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" 
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, interactive-widget=resizes-content" />
 </head>
-<body>
-    <div id="frame"></div>
-    <div id="content"></div>
+
+<body onload="        fetchCSV('collection.csv');">
     
+    <header>  <!-- NAVIGATION -->
+<div id="topbar">
+    <input type="button" id="left_button" />
+    <input type="text" id="search_bar" />
+    <input type="button"  id="right_button" />
+    <div id="dropdown">
+        <input type="button" id="mode_button" />
+        <input type="button" id="view_button" />
+        <input type="button" id="details_button" />
+        <input type="button" id="clear_button" />
+    </div>
+    <input type="number" name="result counter" value="" disabled="True" id="counter" />
+</div>
+
+<div id="menu" class="overlay">
+    <a id="menu_close_button">&times;</a>
+    <div id="menu_list"  class="overlay-content">
+        <p class="subheader">Collection</p>
+        <p class="separator"></p>
+        <a href="index.html">Home</a>
+        <a href="collection.html">Owned</a>
+        <a href="preview.html">Statistics</a>
+        <a href="spreadsheet.html">Spreadsheet</a>
+        <p class="subheader">Other</p>
+        <p class="separator"></p>
+        <a href="treasures.html">Treasures</a>
+        <a href="about.html">About</a>
+    </div>
+</div>
+
+    </header>  <!-- END NAVIGATION -->
+
+    <div id="empty_space" style="height:10px;"></div>
+
+    <div id="results">
+
+    </div>
+        <div id="collage" onclick="toggleCollage()">
+        </div>
+
+<style>
+
+div#collage {
+    background-color: rgba(255,255,255,0.9);
+    width: 100%;
+    height: min(105vw, 105vh);
+    position: absolute;
+    display: none;
+    flex-shrink: 0;
+    left: 0;
+    overflow-y: scroll;
+    scroll-direction: vertical;
+    scroll-snap-type: y mandatory;
+}
+
+div#collage.shown {
+    display: block;
+    z-index: 8;
+}
+
+body.dark-mode div#collage {
+    background-color: rgba(0,0,0,0.9);
+}
+
+div#collage > img {
+    width: 20%;
+    height: auto;
+    display: inline-block;
+    margin: 5px 2.5%;
+    scroll-snap-align: start;
+    scroll-margin: 0;
+}
+    
+#collage_button {
+    background-image: url("Images/Icons/apps-sharp.svg");
+    background-size: 14px;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 24px;
+    width: 24px;
+    position: fixed;
+    left: 15px;
+    bottom: 30px;
+    background-color: #ffffff;
+    border: 1px solid gray;
+    border-radius: 12px;
+    margin: 0; 
+    box-shadow: 0 0 5px 1px #ffffff;
+}
+
+</style>
+
+<script>
+    function toggleCollage() {
+        document.getElementById("collage").classList.toggle("shown");
+    };
+    
+    function showID() {
+        console.log(this.id);
+    }
+    
+    function addIDs() {
+        let divs = document.getElementsByClassName("searchable");
+        for (var i = 0; i < divs.length; i++) {
+            divs[i].setAttribute("id", "item" + i);
+        };
+    };
+    
+    function visibleAll() {
+        let divs = document.getElementsByClassName("searchable");
+        for (var i = 0; i < divs.length; i++) {
+            divs[i].classList.add("visible");
+        };
+    };
+    
+    function openPhoto(photoid) {
+        window.location.href = "#" + photoid;
+    };
+    
+    function makeCollage() {
+        let collage = document.getElementById("collage");
+        let matches = document.getElementsByClassName("searchable");
+        let photos = "";
+        
+        for (var i = 0; i < matches.length; i++) {
+            
+            try {
+                let match = matches[i].getElementsByClassName("photo")[0];
+                let path = encodeURI(match.getAttribute("src"));
+                //let path = encodeURI(match.getAttribute("src"));
+                let photoid = matches[i].getAttribute("id");
+//                if (path === "") {
+//                    photos += "<img class=\"photo\" src=\"Images/NoPhoto.JPG\" class=\"grayed\" onclick=\"openPhoto(" + photoID + ") />";
+//                } else {
+                photos += "<img src=\"" + path + "\" onclick=\"openPhoto('" + photoid + "')\" />";
+//                };
+            } catch {
+                photos += "<img class=\"photo\" src=\"Images/NoPhoto.JPG\" class=\"grayed\" onclick=\"openPhoto('" + matches[i].getAttribute("id") + "')\" />";
+            }; // try catch block ends
+        } // for loop ends
+        collage.innerHTML = photos;
+    };
+
+const search_bar = document.getElementById("search_bar");
+search_bar.addEventListener("keyup", searchAll);
+search_bar.addEventListener("change", searchAll);
+
+    function searchAll() {
+        //findMatches();
+        makeCollage();
+    };
+    
+</script>
     <style>
 #content {
-  object-fit: cover;
-  max-height: 300px;
-  background-color: transparent;
     width: 100%;
-    background-size: 100%;
-    opacity: 1;
-    animation-name: fadeOut;
-    transition-property: opacity;
-    transition-duration: 0.5s;
-    transition-timing-function: ease;
+    height: 00px;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    background-color: #f7f7f7; 
+    border: 1px solid #999;
+    border-radius: 14px;
 }
 
 #content > div.searchable {
@@ -32,7 +186,7 @@
     </style>
     
     <script>
-        
+        var search_term = "Honda";
         var models = new Array();
         var line_num = 2;
         
@@ -44,7 +198,7 @@
                 var parser = new DOMParser();
                 var doc = parser.parseFromString(data, "text/html");
                 var paragraphs = doc.getElementsByTagName("p");
-            document.getElementById('content').innerHTML = paragraphs[0].textContent;
+            document.getElementById('results').innerHTML = paragraphs[0].textContent;
             
                 let p = paragraphs[0].textContent;
                 //console.log(typeof p);
@@ -55,10 +209,11 @@
                 for (var l = 0; l < ls.length; l++) {
                     //console.log(l);
                 //inner_text = document.getElementById("content").innerText;
+                if (ls[l].includes(search_term)) {
                 m = new Model(ls[l]);
                 //console.log(m);
                 f = m.make_frame_view();
-                models.push(f);
+                models.push(f);}
 
                 //console.log(f);
                 //console.log(l, m.name);
@@ -69,7 +224,7 @@
                 console.error('Error fetching CSV:', error);
             };
         
-            document.getElementById("content").innerHTML = models.join("");
+            document.getElementById("results").innerHTML = models.join("");
         }; // fetchCSV() ends
         
         
@@ -119,7 +274,25 @@
         };
         
         //getcsv();
-        fetchCSV("collection.csv");
+        //fetchCSV("collection.csv");
     </script>
+    
+    
+    <input type="button" id="help_button" value="" onclick="location.href='reference.html'" />
+    
+    <footer id="page_footer">
+        <p>Last update: <a href="updates.html">2026-05-17</a></p>
+        <p>Site design: Konstantin A Kolosov</p>
+        <hr />
+            <a href="index.html">Home</a>
+            <a href="preview.html">Statistics</a>
+            <a href="treasures.html">Treasures</a>
+            <a href="about.html">About</a>
+    </footer>
+    
+<script>
+document.getElementById('page_footer').classList.add('fixed-position');
+</script>    
+
 </body>
 </html>
