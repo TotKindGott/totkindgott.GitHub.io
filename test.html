@@ -13,7 +13,7 @@
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, interactive-widget=resizes-content" />
 </head>
 
-<body onload="        fetchCSV('collection.csv');">
+<body onload="getCSV();">
     
     <header>  <!-- NAVIGATION -->
 <div id="topbar">
@@ -105,70 +105,6 @@ div#collage > img {
     box-shadow: 0 0 5px 1px #ffffff;
 }
 
-</style>
-
-<script>
-    function toggleCollage() {
-        document.getElementById("collage").classList.toggle("shown");
-    };
-    
-    function showID() {
-        console.log(this.id);
-    }
-    
-    function addIDs() {
-        let divs = document.getElementsByClassName("searchable");
-        for (var i = 0; i < divs.length; i++) {
-            divs[i].setAttribute("id", "item" + i);
-        };
-    };
-    
-    function visibleAll() {
-        let divs = document.getElementsByClassName("searchable");
-        for (var i = 0; i < divs.length; i++) {
-            divs[i].classList.add("visible");
-        };
-    };
-    
-    function openPhoto(photoid) {
-        window.location.href = "#" + photoid;
-    };
-    
-    function makeCollage() {
-        let collage = document.getElementById("collage");
-        let matches = document.getElementsByClassName("searchable");
-        let photos = "";
-        
-        for (var i = 0; i < matches.length; i++) {
-            
-            try {
-                let match = matches[i].getElementsByClassName("photo")[0];
-                let path = encodeURI(match.getAttribute("src"));
-                //let path = encodeURI(match.getAttribute("src"));
-                let photoid = matches[i].getAttribute("id");
-//                if (path === "") {
-//                    photos += "<img class=\"photo\" src=\"Images/NoPhoto.JPG\" class=\"grayed\" onclick=\"openPhoto(" + photoID + ") />";
-//                } else {
-                photos += "<img src=\"" + path + "\" onclick=\"openPhoto('" + photoid + "')\" />";
-//                };
-            } catch {
-                photos += "<img class=\"photo\" src=\"Images/NoPhoto.JPG\" class=\"grayed\" onclick=\"openPhoto('" + matches[i].getAttribute("id") + "')\" />";
-            }; // try catch block ends
-        } // for loop ends
-        collage.innerHTML = photos;
-    };
-
-const search_bar = document.getElementById("search_bar");
-search_bar.addEventListener("keyup", searchAll);
-search_bar.addEventListener("change", searchAll);
-
-    function searchAll() {
-        //findMatches();
-        makeCollage();
-    };
-    
-</script>
-    <style>
 #content {
     width: 100%;
     height: 00px;
@@ -186,63 +122,45 @@ search_bar.addEventListener("change", searchAll);
     </style>
     
     <script>
+        const csv_url = 'https://totkindgott.github.io/collection.csv';
         var search_term = "Honda";
         var models = new Array();
         var line_num = 2;
-        
-        async function fetchCSV(url) {
-            try {
-                //const text = await fetch(url).then($ => $.text())
-                const response = await fetch(url);
-                const data = await response.text();
-                var parser = new DOMParser();
-                var doc = parser.parseFromString(data, "text/html");
-                var paragraphs = doc.getElementsByTagName("p");
-            document.getElementById('results').innerHTML = paragraphs[0].textContent;
-            
-                let p = paragraphs[0].textContent;
-                //console.log(typeof p);
-                let ls = p.split("\n");
-                //console.log(ls.length);
-                const headers = ls.shift();
-                var models = new Array();
-                for (var l = 0; l < ls.length; l++) {
-                    //console.log(l);
-                //inner_text = document.getElementById("content").innerText;
-                if (ls[l].includes(search_term)) {
-                m = new Model(ls[l]);
-                //console.log(m);
-                f = m.make_frame_view();
-                models.push(f);}
 
-                //console.log(f);
-                //console.log(l, m.name);
-                //console.log(m.make_frame_view());
-                //console.log(lines[l]);
-                }; // for loop ends
-            } catch (error) {
-                console.error('Error fetching CSV:', error);
-            };
-        
-            document.getElementById("results").innerHTML = models.join("");
-        }; // fetchCSV() ends
-        
+const getCSV = async () => {
+    try {
+        const res = await fetch(csv_url);
+        if (res.status === 200) {
+            const data = await res.text();
+            var text = data.split("\n");
+            var headers = text.shift();
+            var lines = new Array();
+            for (var l = 0; l < text.length; l++) {
+
+                if (text[l].includes(search_term)) {
+                    m = new Model(text[l]);
+                    f = m.make_frame_view();
+                    lines.push(f);
+                }; // if block ends
+            }; // for loop ends
+        document.getElementById("results").innerHTML = lines.join("");
+            console.log(`Response status: ${res.status}`);
+            //console.log(data)
+        } else {
+            console.log(`Error code ${res.status}`);
+        };
+    } catch (err) {
+        console.error("error:", err);
+    };
+}
+
         
         async function parseCSV() {
-            //await         fetchCSV('collection.csv');
-            //const text = await fetch("collection.csv").then($ => $.text());
+
             const data = document.getElementById('content').innerHTML;
-        //document.getElementById('output').innerText = "";
             let lines = data.split("\n");
-            //console.log("lines read: " + lines.length);
-            //console.log(lines);
+            
             const headers = lines.shift();
-        //console.log("headers: " + headers);
-        //console.log("models: " + lines.length);
-            //m = new Model(lines[line_num]);
-        //console.log("csv: " + m.make_spreadsheet_line());
-        //console.log("html: " + m.make_frame_view());
-        //console.log("image: " + m.generate_image_name());
         
             const div =                 document.getElementById("frame");
         
@@ -253,28 +171,10 @@ search_bar.addEventListener("change", searchAll);
                 div.innerHTML += m.make_frame_view();
                 //console.log(l, m.name);
                 //console.log(m.make_frame_view());
-                //console.log(lines[l]);
+                console.log(lines[l]);
                 }; // for loop ends
             }; // parseCSV() ends
-        
-        function readCSV() {
-            //console.log("csv:" + document.getElementById('output').innerText);
-            return document.getElementById('frame').innerText;
-        };
 
-        //console.log(data.split('\n', 1));
-        //console.log(document.getElementById('output').innerText);
-        //parseCSV();
-        //const data = readCSV();
-        //console.log("models:" + models);
-        
-        async function getcsv() {
-            const text = await fetch("collection.csv").then($ => $.text());
-            //return text;
-        };
-        
-        //getcsv();
-        //fetchCSV("collection.csv");
     </script>
     
     
@@ -291,7 +191,7 @@ search_bar.addEventListener("change", searchAll);
     </footer>
     
 <script>
-document.getElementById('page_footer').classList.add('fixed-position');
+    document.getElementById('page_footer').classList.add('fixed-position');
 </script>    
 
 </body>
