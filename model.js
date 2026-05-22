@@ -1,6 +1,7 @@
 class Model {
 
     constructor(csv_line) {
+        const image_directory = "Images";
         const csvalues = csv_line.split(",");
         // headers in order:
         // Collection,Year,Part,Model,Number,Stamp,Condition,Origin,URL,Tags,Quantity,Image,Note
@@ -18,8 +19,11 @@ class Model {
         this.url = csvalues[8];
         this.note = csvalues[12];
         this.quantity = csvalues[10];
+        this.id = "";
+        this.image_path = "";
         
-        this.update_image_name()
+        this.update_image_name();
+        this.update_image_path();
     }; // constructor ends
     
     make_spreadsheet_line() {
@@ -38,6 +42,38 @@ class Model {
         <td class="condition">${this.condition}</td>
     </tr>`
     }; // make_spreadsheet_line() ends
+    
+    make_details_html() {
+        return `
+    <details>
+        <summary>
+            <h1>${this.name}</h1>
+        </summary>
+        <table>
+            <tr>
+                <td class="grayed">series:</td>
+                <td>${this.series}</td>
+                <td class="grayed">part:</td>
+                <td class="right">${this.part}</td>
+            </tr>
+            <tr>
+                <td class="grayed">number:</td>
+                <td>${this.number}</td>
+                <td class="grayed">year:</td>
+                <td class="right">${this.year}</td>
+            </tr>
+            <tr>
+                <td class="grayed">origin:</td>
+                <td>${this.origin}</td>
+            </tr>
+            <tr>
+                <td class="grayed">status:</td>
+                <td>${this.condition}</td>
+                <td colspan=2 class="tag">${this.tag}</td>
+            </tr>
+        </table>
+    </details>`
+    }; // make_details_html() ends
     
     make_photo_view() {
         var image_path = "Images/";
@@ -73,38 +109,33 @@ class Model {
         // template literal
         return `\n
 <div class="${div_class}">
-    <details>
-        <summary>
-            <h1>${this.name}</h1>
-        </summary>
-        <table>
-            <tr>
-                <td class="grayed">series:</td>
-                <td>${this.series}</td>
-                <td class="grayed">part:</td>
-                <td class="right">${this.part}</td>
-            </tr>
-            <tr>
-                <td class="grayed">number:</td>
-                <td>${this.number}</td>
-                <td class="grayed">year:</td>
-                <td class="right">${this.year}</td>
-            </tr>
-            <tr>
-                <td class="grayed">origin:</td>
-                <td>${this.origin}</td>
-            </tr>
-            <tr>
-                <td class="grayed">status:</td>
-                <td>${this.condition}</td>
-                <td colspan=2 class="tag">${this.tag}</td>
-            </tr>
-        </table>
-    </details>
+    ${this.make_details_html()}
     ${this.make_photo_view()}
 </div>
         \n`;
     }; // make_frame_view() ends
+    
+    make_card_view() {
+        return `
+        <div class="item_card" id="${this.id}">
+            <div class="item_name" onclick="toggleDetails('${this.id}')">
+                ${this.name}
+            </div>
+            <div class="item_photo">
+                ${this.make_photo_view()}
+            </div>
+            <div class="details">
+                <table>
+                    ${this.make_details_html()}
+                </table>
+            </div>
+        </div>`;
+    }; // make_card_view() ends
+    
+    make_thumbnail_view() {
+        return `
+        <img src="${this.image_path}" id="thumb_${this.id}" onclick="openPhoto('${this.id}')" />`
+    }; // make_thumbnail_view() ends
     
     generate_image_name() {
         if (this.image.endsWith(".JPG")) {
@@ -136,8 +167,17 @@ class Model {
         return image_name + ".JPG";
     }; // generate_image_name() ends
     
+    generate_image_path() {
+        return "Images/" + this.image;
+
+    }; // generate_image_path() ends
+    
     update_image_name() {
         this.image = this.generate_image_name();
-    };
+    }; // update_image_name() ends
+    
+    update_image_path() {
+        this.image_path = this.generate_image_path();
+    }; // update_image_path() ends
 
 }; // class declaration ends

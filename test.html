@@ -4,16 +4,18 @@
     <meta charset="utf-8">
     <title>Collection</title>
     <link type="text/css" href="styles.css" rel="stylesheet" />
+    <link type="text/css" href="collage.css" rel="stylesheet" />
     <script src="scripts.js"></script>
     <script src="buttons.js" defer></script>
     <script src="model.js" defer></script>
+    <script src="collage.js" defer></script>
     <!--optional-->
     <meta name="format-detection" content="telephone=no" />
     <meta name="viewport" 
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, interactive-widget=resizes-content" />
 </head>
 
-<body onload="getCSV();">
+<body onload="getCSV(); ">
     
     <header>  <!-- NAVIGATION -->
 <div id="topbar">
@@ -50,83 +52,34 @@
     <div id="empty_space" style="height:10px;"></div>
 
     <div id="results">
+    </div>
+
+    <div id="carousel">
+        <div id="card_view"></div>
+        <div id="item_list"></div>
 
     </div>
-        <div id="collage" onclick="toggleCollage()">
-        </div>
-
+    
 <style>
 
-div#collage {
-    background-color: rgba(255,255,255,0.9);
-    width: 100%;
-    height: min(105vw, 105vh);
-    position: absolute;
-    display: none;
-    flex-shrink: 0;
-    left: 0;
-    overflow-y: scroll;
-    scroll-direction: vertical;
-    scroll-snap-type: y mandatory;
-}
-
-div#collage.shown {
-    display: block;
-    z-index: 8;
-}
-
-body.dark-mode div#collage {
-    background-color: rgba(0,0,0,0.9);
-}
-
-div#collage > img {
-    width: 20%;
-    height: auto;
-    display: inline-block;
-    margin: 5px 2.5%;
-    scroll-snap-align: start;
-    scroll-margin: 0;
-}
-    
-#collage_button {
-    background-image: url("Images/Icons/apps-sharp.svg");
-    background-size: 14px;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 24px;
-    width: 24px;
-    position: fixed;
-    left: 15px;
-    bottom: 30px;
-    background-color: #ffffff;
-    border: 1px solid gray;
-    border-radius: 12px;
-    margin: 0; 
-    box-shadow: 0 0 5px 1px #ffffff;
-}
-
-#content {
-    width: 100%;
-    height: 00px;
-    overflow-y: scroll;
-    scroll-snap-type: y mandatory;
-    background-color: #f7f7f7; 
-    border: 1px solid #999;
-    border-radius: 14px;
-}
-
-#content > div.searchable {
-    break-before: page;
-    scroll-snap-align: start;
+body {
+    overflow: hidden;
+    opacity: 0;
+    transition-property: opacity;
+    animation-name: fade_in;
+    animation-duration: 2s;
+    opacity: 1;
 }
     </style>
     
     <script>
-        const csv_url = 'https://totkindgott.github.io/collection.csv';
-        var search_term = "Honda";
-        var models = new Array();
-        var line_num = 2;
+const csv_url = 'https://totkindgott.github.io/collection.csv';
+var search_term = "Honda";
 
+//var line_num = 2;
+const collectables = document.getElementById("results");
+const carousel = document.getElementById("carousel");
+    
 const getCSV = async () => {
     try {
         const res = await fetch(csv_url);
@@ -135,48 +88,41 @@ const getCSV = async () => {
             var text = data.split("\n");
             var headers = text.shift();
             var lines = new Array();
+            var images = new Array();
             for (var l = 0; l < text.length; l++) {
 
-                if (text[l].includes(search_term)) {
+                if (text[l].toLowerCase().includes(search_term.toLowerCase())) {
                     m = new Model(text[l]);
-                    f = m.make_frame_view();
+                    m.id = `item${l}`;
+                    //f = m.make_frame_view();
+                    f = m.make_card_view();
                     lines.push(f);
+                    i = m.make_thumbnail_view();
+                    images.push(i);
                 }; // if block ends
             }; // for loop ends
-        document.getElementById("results").innerHTML = lines.join("");
+            
+        document.getElementById("results").innerHTML = text.join('');
+        //document.getElementById("carousel").innerHTML = lines.join("");
+        document.getElementById("card_view").innerHTML = lines.join('');
+        document.getElementById("item_list").innerHTML = images.join("");
+        
             console.log(`Response status: ${res.status}`);
             //console.log(data)
+            setActivationEvent();
+        verticalSwipeActions("item_list", showCollage, hideCollage, 100); 
         } else {
             console.log(`Error code ${res.status}`);
-        };
+        }; // if / else block ends
     } catch (err) {
         console.error("error:", err);
-    };
-}
-
-        
-        async function parseCSV() {
-
-            const data = document.getElementById('content').innerHTML;
-            let lines = data.split("\n");
-            
-            const headers = lines.shift();
-        
-            const div =                 document.getElementById("frame");
-        
-            for (var l = 0; l < lines.length; l++) {
-                //inner_text = document.getElementById("content").innerText;
-                m = new Model(lines[l]);
-
-                div.innerHTML += m.make_frame_view();
-                //console.log(l, m.name);
-                //console.log(m.make_frame_view());
-                console.log(lines[l]);
-                }; // for loop ends
-            }; // parseCSV() ends
-
-    </script>
+    }; // try / catch block ends
+}; // getCSV declaration ends
     
+
+        </script>
+    
+    <input type="button" id="collage_button" onclick="toggleCollage();" />
     
     <input type="button" id="help_button" value="" onclick="location.href='reference.html'" />
     
