@@ -1,10 +1,12 @@
 class Model {
 
-    constructor(csv_line) {
-        const image_directory = "Images";
+    constructor(id, csv_line) {
+        this.images_directory = "Images";
         const csvalues = csv_line.split(",");
         // headers in order:
         // Collection,Year,Part,Model,Number,Stamp,Condition,Origin,URL,Tags,Quantity,Image,Note
+        this.id = id;
+        
         this.csv = csv_line;
         this.name = csvalues[3];
         this.series = csvalues[0];
@@ -19,11 +21,14 @@ class Model {
         this.url = csvalues[8];
         this.note = csvalues[12];
         this.quantity = csvalues[10];
-        this.id = "";
         this.image_path = "";
+        this.thumbnail = "";
         
-        this.update_image_name();
-        this.update_image_path();
+        if (!this.quantity) {
+            this.quantity = 1;
+        };
+        
+        this.update_images();
     }; // constructor ends
     
     make_spreadsheet_line() {
@@ -45,7 +50,7 @@ class Model {
     
     make_details_html() {
         return `
-    <details>
+    <details id="details_${this.id}">
         <summary>
             <h1>${this.name}</h1>
         </summary>
@@ -76,35 +81,36 @@ class Model {
     }; // make_details_html() ends
     
     make_photo_view() {
-        var image_path = "Images/";
-        var th_logo_path = "Images/Logos/TH Logo Mini.PNG";
-        var sth_logo_path = "Images/Logos/STH Logo.PNG";
+
+        var th_logo_path = this.images_directory + "/Logos/TH Logo Mini.PNG";
+        var sth_logo_path = this.images_directory + "/Logos/STH Logo.PNG";
+        
         if (this.tag == "$TH") {
         // template literal
             return `
-    <div class="wrapper">
-        <a><img class="photo" loading="lazy" src="Images/${this.image}" alt="${this.image}" width="640px" /></a><img class="logo" src="${sth_logo_path}" width="30px" alt="$TH" />
+    <div class="wrapper" id="photo_${this.id}">
+        <a><img class="photo_full" loading="lazy" src="${this.images_directory}/${this.image}" alt="${this.image}" /></a><img class="logo" src="${sth_logo_path}" alt="$TH" />
     </div>\n`;
             } else if (this.tag == "TH") {
         // template literal
                 return `
-    <div class="wrapper">
-        <a><img class="photo" loading="lazy" src="Images/${this.image}" alt="${this.image}" width="640px" /></a><img class="logo" src="${th_logo_path}" width="30px" alt="TH" />
+    <div class="wrapper" id="photo_${this.id}">
+        <a><img class="photo_full" loading="lazy" src="${this.images_directory}/${this.image}" alt="${this.image}" /></a><img class="logo" src="${th_logo_path}" alt="TH" />
     </div>\n`;
         } else {
         // template literal
             return `\n
-    <div class="wrapper">
-        <a><img class="photo" loading="lazy" src="Images/${this.image}" alt="${this.image}" width="640px" /></a>
+    <div class="wrapper" id="photo_${this.id}">
+        <a><img class="photo_full" loading="lazy" src="${this.images_directory}/${this.image}" alt="${this.image}" /></a>
     </div>\n`;
         };
     }; // make_photo_view() ends
     
     make_frame_view() {
-        if (this.quantity !== "0") {
-            var div_class = "searchable float";
+        if (parseInt(this.quantity) > 0) {
+            var div_class = "searchable";
         } else {
-            var div_class = "searchable float gone";
+            var div_class = "searchable gone";
         };
         // template literal
         return `\n
@@ -116,25 +122,26 @@ class Model {
     }; // make_frame_view() ends
     
     make_card_view() {
+        if (parseInt(this.quantity) > 0) {
+            var div_class = "searchable";
+        } else {
+            var div_class = "searchable gone";
+        };
         return `
-        <div class="item_card" id="${this.id}">
+        <div class="item_card ${div_class}" id="item_${this.id}">
             <div class="item_name" onclick="toggleDetails('${this.id}')">
-                ${this.name}
+                <span>${this.name}</span>
             </div>
             <div class="item_photo">
                 ${this.make_photo_view()}
-            </div>
-            <div class="details">
-                <table>
-                    ${this.make_details_html()}
-                </table>
-            </div>
+            </div>            
+            ${this.make_details_html()}
         </div>`;
     }; // make_card_view() ends
     
     make_thumbnail_view() {
         return `
-        <img src="${this.image_path}" id="thumb_${this.id}" onclick="openPhoto('${this.id}')" />`
+        <img class="${this.quantity == 0 ? 'grayed' : ''}" src="${this.image_path}" id="thumb_${this.id}" onclick="openPhoto('${this.id}')" />`
     }; // make_thumbnail_view() ends
     
     generate_image_name() {
@@ -168,9 +175,21 @@ class Model {
     }; // generate_image_name() ends
     
     generate_image_path() {
-        return "Images/" + this.image;
+        return `${this.images_directory}/${this.image}`;
 
     }; // generate_image_path() ends
+    
+    check_image_path() {
+        var req = new XMLHttpRequest();
+        req.open('HEAD', this.image_path, false);
+        req.send();
+     
+        if (req.status == "404") {
+            WARN(this.image);
+        } else {
+            return true;
+        };
+    }; // check_image_path() ends
     
     update_image_name() {
         this.image = this.generate_image_name();
@@ -178,6 +197,20 @@ class Model {
     
     update_image_path() {
         this.image_path = this.generate_image_path();
+        if (!this.check_image_path()) {
+            this.image = "NoPhoto.JPG";
+            this.image_path = `${this.images_directory}/NoPhoto.JPG`;
+        };
     }; // update_image_path() ends
+    
+    update_thumbnail() {
+        this.thumbnail = "thumb_" + this.image;
+    }; // update_thumbnail() ends
+    
+    update_images() {
+        this.update_image_name();
+        this.update_image_path();
+        this.update_thumbnail();
+    } // update_images() ends
 
 }; // class declaration ends

@@ -15,7 +15,7 @@
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, interactive-widget=resizes-content" />
 </head>
 
-<body onload="getCSV(); ">
+<body onload="getCSV();">
     
     <header>  <!-- NAVIGATION -->
 <div id="topbar">
@@ -73,8 +73,34 @@ body {
     </style>
     
     <script>
+        
 const csv_url = 'https://totkindgott.github.io/collection.csv';
 var search_term = "Honda";
+
+function search(term="honda") {
+    var data = results.innerText;
+    var text = data.split("\n");
+    var headers = text.shift();
+    var lines = new Array();
+    var images = new Array();
+    for (var l = 0; l < text.length; l++) {
+
+        if (text[l].toLowerCase().includes(term.toLowerCase())) {
+            m = new Model(l, text[l]);
+            //m.id = `item${l}`;
+            //f = m.make_frame_view();
+            f = m.make_card_view();
+            lines.push(f);
+            i = m.make_thumbnail_view();
+            images.push(i);
+        }; // if block ends
+    }; // for loop ends
+    
+    document.getElementById("results").innerHTML = text.join('');
+    document.getElementById("card_view").innerHTML = lines.join('');
+    document.getElementById("item_list").innerHTML = images.join("");
+
+};
 
 //var line_num = 2;
 const collectables = document.getElementById("results");
@@ -92,8 +118,7 @@ const getCSV = async () => {
             for (var l = 0; l < text.length; l++) {
 
                 if (text[l].toLowerCase().includes(search_term.toLowerCase())) {
-                    m = new Model(text[l]);
-                    m.id = `item${l}`;
+                    m = new Model(l, text[l]);
                     //f = m.make_frame_view();
                     f = m.make_card_view();
                     lines.push(f);
@@ -102,7 +127,7 @@ const getCSV = async () => {
                 }; // if block ends
             }; // for loop ends
             
-        document.getElementById("results").innerHTML = text.join('');
+        document.getElementById("results").innerHTML = text;
         //document.getElementById("carousel").innerHTML = lines.join("");
         document.getElementById("card_view").innerHTML = lines.join('');
         document.getElementById("item_list").innerHTML = images.join("");
@@ -115,8 +140,12 @@ const getCSV = async () => {
             console.log(`Error code ${res.status}`);
         }; // if / else block ends
     } catch (err) {
-        console.error("error:", err);
-    }; // try / catch block ends
+        console.error("Error in getCSV():", err);
+    } finally {
+        addIDs();
+        //addDetailsToggle();
+    }
+    ; // try / catch block ends
 }; // getCSV declaration ends
     
 
@@ -138,6 +167,30 @@ const getCSV = async () => {
     
 <script>
     document.getElementById('page_footer').classList.add('fixed-position');
+    
+    //setTimeout(search, 3000);
+
+    function searchcount() {
+        var results = document.getElementById("results").innerText.split("\n");
+        console.log(results.length);
+        console.log(results[0]);
+    };
+    
+    function search_here(query="Honda") {
+        var results = new Array();
+        console.log("search_here()");
+        var lines = document.getElementById("results").innerText.split("\n");
+        lines.forEach(line => {
+            if (line.toLowerCase().includes(query.toLowerCase())) {
+                results.push(line);
+            }; // if ends
+        }); // forEach ends
+        console.log("results:", results.length);
+        
+    }; // search function ends
+    
+setTimeout(search_here, 3000);
+
 </script>    
 
 </body>

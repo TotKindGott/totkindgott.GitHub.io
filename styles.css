@@ -1181,6 +1181,7 @@ body.dark-mode #page_footer > a, body.dark-mode #page_footer > p > a {
 }
 
 #page_footer.fixed-position {
+    display: block;
     position: fixed;
     bottom: 0;
     padding-bottom: 20px;

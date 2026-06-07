@@ -161,16 +161,53 @@ function verticalSwipeActions(elementID, swipeUpAction, swipeDownAction, swipeTh
         //document.getElementById("collage_wrapper").classList.toggle("shown");
         try {
         document.getElementById("item_list").classList.toggle("shown");
+        hyperlinks();
     } catch (TypeError) {
         void(0);
     };
     };    
     
-    function openPhoto(photoid) {
-        window.location.href = "#" + photoid;
+    function openPhoto(id) {
         if (document.getElementById("item_list").className == "shown") {
             toggleCollage();
-            window.location.href = "#thumb_" + photoid;
+        };
+        window.location.href = "#item_" + id;
+        window.location.href = "#thumb_" + id;
+    };
+    
+    function addDetailsToggle() {
+        let itemCards = document.getElementsByClassName("item_card");
+            
+        //itemCards.forEach(card => {
+        for (var i = 0; i < itemCards.length; i++) {
+            itemCards[i].addEventListener("click", () => toggleDetails(itemCards[i].id));
+            
+                console.log(`${i}: ID ${itemCards[i].id}`);
+            
+        };
+        console.log(`IDs added to ${itemCards.length} elements`);
+    };
+    
+    function toggleDetails(id) {
+//        var card = document.getElementById(cardID);
+//        var el = card.getElementsByClassName("details")[0];
+    var el = document.getElementById("details_" + id);
+
+        if (el.style.display == "block") {
+            el.style.display = "none";
+        } else {
+            el.style.display = "block";
+        };
+    };
+    
+    function hyperlinks() {
+        try {
+            setTimeout( () => {
+            el = document.getElementsByClassName("color")[0];
+        }, 250);
+        console.log(el.id);
+        } catch (error) {
+           console.log(error);
         };
     };
     

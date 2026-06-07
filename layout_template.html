@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Collection</title>
+    <link type="text/css" href="styles.css" rel="stylesheet" />
+    <script src="scripts.js"></script>
+    <script src="buttons.js" defer></script>
+    <script src="model.js" defer></script>
+    <script src="collage.js" defer></script>
+    <!--optional-->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" 
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, interactive-widget=resizes-content">
+</head>
+
+<body>
+    
+    <script type="text/javascript">
+        checkMode();
+    </script>
+
+    <header>  <!-- NAVIGATION -->
+<div id="topbar">
+    <input type="button" id="left_button" />
+    <input type="text" id="search_bar" />
+    <input type="button"  id="right_button" />
+    <div id="dropdown">
+        <input type="button" id="mode_button" />
+        <input type="button" id="view_button" />
+        <input type="button" id="details_button" />
+        <input type="button" id="clear_button" />
+    </div>
+    <input type="number" name="result counter" value="" disabled="True" id="counter" />
+</div>
+
+<div id="menu" class="overlay">
+    <a id="menu_close_button">&times;</a>
+    <div id="menu_list"  class="overlay-content">
+        <p class="subheader">Collection</p>
+        <p class="separator"></p>
+        <a href="index.html">Home</a>
+        <a href="collection.html">Owned</a>
+        <a href="preview.html">Statistics</a>
+        <a href="spreadsheet.html">Spreadsheet</a>
+        <p class="subheader">Other</p>
+        <p class="separator"></p>
+        <a href="treasures.html">Treasures</a>
+        <a href="about.html">About</a>
+    </div>
+</div>
+
+    </header>  <!-- END NAVIGATION -->
+
+    <div id="csv"></div>
+    <div id="carousel">
+        <div id="card_view">
+            <div id="item1" class="item_card" style="background-color: blue">
+                <div class="item_name">
+                    <span>1</span>
+                </div>
+                <div class="item_photo"></div>
+            </div>
+            <div id="item2" class="item_card" style="background-color: yellow">
+                <div class="item_name">
+                    <span>2</span>
+                </div>
+                <div class="item_photo"></div>
+            </div>
+            <div id="item3" class="item_card" style="background-color: green">
+                <div class="item_name">
+                    <span>3</span>
+                </div>
+                <div class="item_photo"></div>
+            </div>
+            <div id="item4" class="item_card" style="background-color: red">
+                <div class="item_name">
+                    <span>4</span>
+                </div>
+                <div class="item_photo"></div>
+            </div>
+        </div>
+        <div id="item_list"></div>
+    </div>
+    
+<style>
+
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+div#csv {
+    display: none;
+}
+
+@media only screen and (orientation: portrait) {
+    
+    #carousel {
+        width: 98vw;
+        margin: auto;
+        margin-top: 10vw;
+        background-color: black;
+    }
+
+    #card_view {
+        width: 98vw;
+        height: 108vw;
+        margin: auto;
+        display: flex;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        scroll-direction: horizontal;
+    }
+    
+    div.item_card {
+        width: 98vw;
+        height: 108vw;
+        margin: auto;
+        background-color: blue;
+        scroll-snap-align: center;
+        scroll-margin: 0;
+        flex: 0 0 auto;
+    }
+    
+    div.item_name {
+        width: 98vw;
+        height: 10vw;
+        margin: auto;
+    }
+    
+    div.item_name > span {
+        width: 100%;
+        height: 100%;
+        margin: auto;
+        font-family: "Courier", monospace; 
+        font: "Inconsolata"; 
+        max-font-size: 20px; 
+        font-weight: bolder; 
+        text-transform: uppercase;
+        overflow-x: scroll;
+        text-wrap-mode: wrap;
+        background-color: goldenrod;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    div.item_photo {
+        width: 100%;
+        height: 100%;
+        margin: auto;
+        background-color: transparent;
+    }
+
+    div#carousel div#item_list {
+        height: min(20vw, 20vh);
+        width: 98vw;
+        margin: auto;
+        padding: 0;
+        left: 0;
+        background: transparent;
+        overflow-x: scroll;
+        overflow-y: visible;
+        scroll-direction: horizontal;
+        scroll-snap-type: x mandatory;
+        vertical-align: middle;
+        animation-name: ease;
+        animation-direction: normal;
+        transition-property: transform, height;
+        transition-duration: 0.2s, 0.2s, 1s;
+        transition-timing-function: ease-out;
+        display: grid;
+        grid-template-columns: repeat(555, min(18.8vw, 18.8vh));
+        grid-auto-rows: min(18.8vw, 18.8vh);
+        grid-auto-columns: min(18.8vw, 18.8vh);
+        grid-gap: min(1vw, 1vh);
+        background-color: orange;
+    }
+    
+    div#carousel div#item_list img {
+        scroll-snap-align: start;
+        /*scroll-snap-stop: always;*/
+        width: min(18.8vw, 18.8vh);
+        height: auto;
+        opacity: 0.75;
+        box-shadow: 0 0 1px black;
+        /*flex-margin: auto;
+        flex-shrink: 0;*/
+        white-space: wrap;
+        margin: 0;
+        padding: 0;
+    }
+    
+    div#carousel div#item_list.shown img {
+        margin: auto;
+    }
+    
+    div#carousel div#item_list img.color {
+        opacity: 1;
+    }
+    
+    div#carousel div#item_list img.grayed {
+        filter: grayscale(1);
+    }
+    
+    div#carousel div#item_list::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+</style>
+
+<input type="button" id="stop_button" value="" onclick="" />
+
+    <input type="button" id="help_button" value="" onclick="location.href='reference.html'" />
+    
+    <footer id="page_footer">
+        <p>Last update: <a href="updates.html">2026-5-26</a></p>
+        <p>Site design: Konstantin A Kolosov</p>
+        <hr />
+            <a href="index.html">Home</a>
+            <a href="preview.html">Statistics</a>
+            <a href="treasures.html">Treasures</a>
+            <a href="about.html">About</a>
+    </footer>
+
+<script>
+    
+document.getElementById('page_footer').classList.add('fixed-position');
+    
+</script>
+
+</body>
+</html>

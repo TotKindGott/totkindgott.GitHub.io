@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Collection</title>
+    <link type="text/css" href="styles.css" rel="stylesheet" />
+    <script src="scripts.js"></script>
+    <script src="buttons.js" defer></script>
+    <script src="model.js" defer></script>
+    <script src="collage.js"></script>
+    <script src="renders.js"></script>
+    <!--optional-->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" 
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, interactive-widget=resizes-content">
+</head>
+
+<body>
+    <header>  <!-- NAVIGATION -->
+<div id="topbar">
+    <input type="button" id="left_button" />
+    <input type="text" id="search_bar" value="honda" />
+    <input type="button"  id="right_button" />
+    <div id="dropdown">
+        <input type="button" id="mode_button" />
+        <input type="button" id="view_button" />
+        <input type="button" id="details_button" />
+        <input type="button" id="clear_button" />
+    </div>
+    <input type="number" name="result counter" value="" disabled="True" id="counter" />
+</div>
+
+<div id="menu" class="overlay">
+    <a id="menu_close_button">&times;</a>
+    <div id="menu_list"  class="overlay-content">
+        <p class="subheader">Collection</p>
+        <p class="separator"></p>
+        <a href="index.html">Home</a>
+        <a href="collection.html">Owned</a>
+        <a href="preview.html">Statistics</a>
+        <a href="spreadsheet.html">Spreadsheet</a>
+        <p class="subheader">Other</p>
+        <p class="separator"></p>
+        <a href="treasures.html">Treasures</a>
+        <a href="about.html">About</a>
+    </div>
+</div>
+
+    </header>  <!-- END NAVIGATION -->
+    
+    <div id="notification"></div>
+
+    <div id="csv"></div>
+    <div id="carousel">
+        <div id="card_view"></div>
+        <div id="item_list"></div>
+    </div>
+    
+    <div id="messages"></div>
+    
+<style>
+
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+}
+
+div#csv {
+    display: none;
+}
+
+div#notification {
+    display: none;
+    background-color: black;
+    width: 100vw;
+    height: 35px;
+    position: absolute;
+    top: 0;
+    z-index: 99;
+    font: bold 17px monospace;
+    color: yellow;
+    text-align: center;
+    vertical-align: middle;
+    animation-name: fade_out;
+    animation-iteration-count: 1;
+    animation-delay: 1s;
+    animation-duration: 2s;
+}
+
+div#notification > * {
+    padding: 9px;
+    width: auto;
+    height: 100%;
+    vertical-align: middle;
+}
+
+#collage_button {
+    background-image: url("Images/Icons/apps-sharp.svg");
+    background-size: 14px;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 24px;
+    width: 24px;
+    position: fixed;
+    left: 15px;
+    bottom: 10px;
+    background-color: #ffffff;
+    border: 1px solid gray;
+    border-radius: 12px;
+    margin: 0; 
+    box-shadow: 0 0 5px 1px #ffffff;
+}
+
+div.item_card:has(div.gone) {
+    color: red;
+    background: red;
+    border: 1px solid red;
+}
+
+#help_button {
+    bottom: 10px;
+}
+
+#page_footer {
+    position: fixed;
+    bottom: 0;
+    left: 12.5%;
+}
+
+div.gone img.photo_full,
+img.gone, img.gone.color {
+    filter: grayscale(0.75);
+    box-shadow: none;
+}
+
+body.dark-mode div#carousel,
+body.dark-mode div#carousel div#card_view,
+body.dark-mode div#carousel div#card_view div.item_card,
+body.dark-mode div#carousel div#card_view div.item_card div.item_name,
+body.dark-mode div#carousel div#card_view div.item_card div.wrapper,
+body.dark-mode div#carousel div#item_list {
+    color: white;
+    background-color: black;
+}
+
+@media only screen and (orientation: portrait) {
+    
+    #carousel, #messages {
+        width: 98vw;
+        height: 130vw;
+        margin: auto;
+        position: fixed;
+        top: 10vw;
+        left: 1vw;
+    }
+
+    #messages {
+        display: block;
+        overflow-wrap: break-all;
+        white-space: pre-wrap;
+        overflow-y: scroll;
+        background: black;
+        color: white;
+        padding: 2.5% 0;
+    }
+    
+    #messages > p {
+        width: 95%;
+        margin: 2px auto;
+        display: block;
+        font: 14px monospace;
+        overflow-wrap: break-word;
+    }
+    
+    #messages > hr {
+        color: silver;
+        margin: 2px auto;
+        width: 95%;
+    }
+        
+    #messages > p.message {
+        color: white;
+    }
+    
+    #messages > p.warning {
+        color: orange;
+    }
+    
+    #messages > p.error {
+        color: red;
+    }
+    
+    #messages > p.success {
+        color: lime;
+    }
+    
+    #messages > p.highlight {
+        color: yellow;
+    }
+    
+    #card_view {
+        width: 98vw;
+        height: 108vw;
+        margin: auto;
+        display: flex;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        scroll-direction: horizontal;
+    }
+    
+    div.item_card {
+        width: 98vw;
+        height: 108vw;
+        margin: auto;
+        scroll-snap-align: center;
+        scroll-margin: 0;
+        flex: 0 0 auto;
+    }
+    
+    div.item_name {
+        width: 98vw;
+        height: 10vw;
+        margin: auto;
+    }
+    
+    div.item_name > span {
+        width: 100%;
+        height: 100%;
+        margin: auto;
+        font-family: "Courier", monospace; 
+        font: "Inconsolata"; 
+        max-font-size: 20px; 
+        font-weight: bolder; 
+        text-transform: uppercase;
+        overflow-x: scroll;
+        text-wrap-mode: wrap;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    div.item_photo {
+        width: 98vw;
+        height: 98vw;
+        margin: auto;
+        background-color: transparent;
+    }
+    
+    div.wrapper {
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+    }
+    
+    img.photo_full {
+        width: 100%;
+        height: 100%;
+    }
+    
+    img.logo {
+        position: absolute;
+        top: 7.5vw;
+        right: 7.5vw;
+        width: 12.5vw;
+        height: 12.5vw;
+    }
+
+    div#carousel div#card_view div.item_photo img.grayed {
+        filter: grayscale(1);
+    }
+    
+    div#carousel div#card_view::-webkit-scrollbar {
+        display: none;
+    }
+
+    div#carousel div#item_list {
+        height: min(20vw, 20vh);
+        width: 98vw;
+        margin: 1vw auto;
+        padding: 0;
+        left: 0;
+        background: transparent;
+        overflow-x: scroll;
+        overflow-y: visible;
+        scroll-direction: horizontal;
+        scroll-snap-type: x mandatory;
+        vertical-align: middle;
+        animation-name: ease;
+        animation-direction: normal;
+        transition-property: transform, height;
+        transition-duration: 0.2s, 0.2s, 1s;
+        transition-timing-function: ease-out;
+        display: grid;
+        grid-template-columns: repeat(9999, min(18.8vw, 18.8vh));
+        grid-auto-rows: min(18.8vw, 18.8vh);
+        grid-auto-columns: min(18.8vw, 18.8vh);
+        grid-gap: min(1vw, 1vh);
+    }
+    
+    div#carousel div#item_list img {
+        scroll-snap-align: start;
+        /*scroll-snap-stop: always;*/
+        width: auto;
+        height: 100%;
+        opacity: 0.75;
+        /*flex-margin: auto;
+        flex-shrink: 0;*/
+        white-space: wrap;
+        margin: 0;
+        padding: 0;
+    }
+    
+    div#carousel div#item_list.shown {
+        width: 98vw;
+        height: 128vw;
+        margin: auto
+        padding: 0;
+        top: 10vw;
+        /*position: absolute;
+        top: min(10vw, 10vh);*/
+        transform: translate(0, -108vw);
+        display: grid;
+        grid-template-columns: auto auto auto auto auto;
+        /*grid-template-rows: repeat(999, 70px);*/
+        grid-auto-rows: min(18.8vw, 18.8vh);
+        grid-auto-columns: min(18.8vw, 18.8vh);
+        grid-gap: 1vw;
+        background: white;
+        z-index: 11;
+        overflow-y: scroll;
+        scroll-direction: vertical;
+        scroll-snap-type: y mandatory;
+        /*flex-flow: row wrap;
+        object-fit: contain;
+        white-space: nowrap;*/
+        animation-name: ease;
+        animation-direction: normal;
+        transition-property: transform;
+        transition-duration: 0s;
+        transition-timing-function: ease-in;
+    }
+
+    div#carousel div#item_list.shown img {
+        margin: auto;
+    }
+    
+    div#carousel div#item_list img.color {
+        opacity: 1;
+        filter: saturate(1);
+    }
+    
+    div#carousel div#item_list img.grayed,
+    div#carousel div#item_list img.grayed.color {
+        filter: grayscale(1);
+    }
+    
+    div#carousel div#item_list::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+#console_button {
+    background-image: url("Images/Icons/chevron-forward-circle-outline.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 24px;
+    width: 24px;
+    position: fixed;
+    left: 15px;
+    bottom: 10px;
+    background-color: #ffffff;
+    border: 1px solid gray;
+    border-radius: 12px;
+    margin: 0; 
+    box-shadow: 0 0 5px 1px #ffffff;
+}
+
+</style>
+
+    <input type="button" id="console_button" onclick="toggleMessages();" />
+
+    <input type="button" id="help_button" value="" onclick="location.href='reference.html'" />
+    
+    <footer id="page_footer">
+        <p>Last update: <a href="updates.html">2026-05-26</a></p>
+        <p>Site design: Konstantin A Kolosov</p>
+        <hr />
+            <a href="index.html">Home</a>
+            <a href="preview.html">Statistics</a>
+            <a href="treasures.html">Treasures</a>
+            <a href="about.html">About</a>
+    </footer>
+    
+
+
+<script>
+checkMode();
+//document.getElementById('page_footer').classList.add('fixed-position');
+    
+const csv_url = 'https://totkindgott.github.io/collection.csv';
+var search_term = "Honda";
+    
+const getCSV = async () => {
+    try {
+        LOG(">>> running getCSV() ...")
+        const res = await fetch(csv_url);
+        if (res.status === 200) {
+            const data = await res.text();
+            
+            LOG(`fetched ${data.length.toLocaleString("en-US")} characters`);
+        document.getElementById("csv").innerHTML = data;
+        
+            SUCCESS(`fetch("${csv_url}") response status: ${res.status}`);
+        } else {
+            ERROR(`Error code ${res.status} in fetch(${csv_url})`);
+        }; // if / else block ends
+    } catch (error) {
+        ERROR(`Error in getCSV(): ${error}`);
+    } finally {
+        SUCCESS("getCSV() run status: OK");
+    }; // try / catch block ends
+}; // getCSV declaration ends
+
+
+
+function debounce(func, timeout = 300){
+    let timer;
+    return (...args) => {
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+            func.apply(this, args); 
+        }, timeout);
+  };
+};
+
+function copy(text) {
+    navigator.clipboard.writeText(text);
+    showNotification("copied");
+}
+
+function search() {
+    openMessages();
+    LOG(">>> running search() in main file ...");
+    var query = document.getElementById("search_bar").value;
+
+    if (!query) {
+        WARN("empty search string");
+        void(0);
+    } else {
+        LOG(`searching for ${query}`)
+        var count = 0;
+        var data = document.getElementById("csv").innerText;
+        var text = data.split("\n");
+        var headers = text.shift();
+        var lines = new Array();
+        var images = new Array();
+        for (var l = 0; l < text.length; l++) {
+    
+            if (text[l].toLowerCase().includes(query.toLowerCase())) {
+                m = new Model(l, text[l]);
+                //m.id = `item${l}`;
+                //f = m.make_frame_view();
+                f = m.make_card_view();
+                lines.push(f);
+                i = m.make_thumbnail_view();
+                images.push(i);
+                count += 1;
+            }; // if block ends
+        }; // for loop ends
+        LOG(`search() returned ${count} matches`);
+        document.getElementById("card_view").innerHTML = lines.join('');
+        document.getElementById("item_list").innerHTML = images.join("");
+            setActivationEvent();
+            updateCount(count);
+    }; // if else block ends
+    SUCCESS('search() run status: OK');
+    hideMessages();
+};
+
+function showNotification(text) {
+    var el = document.getElementById("notification");
+    el.innerHTML = `<pre>${text}</pre>`;
+    el.style.display = "block";
+    setTimeout(hideNotification, 1000);
+}
+
+function hideNotification() {
+    document.getElementById("notification").style.display = "none";
+}
+
+function toggleMessages() {
+    let msgs = document.getElementById("messages");
+    if (msgs.style.display == "none") {
+        msgs.style.display = "block";
+    } else {
+        msgs.style.display = "none";
+    };
+};
+
+function openMessages() {
+    document.getElementById("messages").style.display = "block";
+};
+
+function hideMessages() {
+    document.getElementById("messages").style.display = "none";
+};
+
+getCSV();
+
+document.getElementById("search_bar").addEventListener("change", search);
+verticalSwipeActions("item_list", showCollage, hideCollage, 100); 
+// Collage view by default
+document.getElementById('item_list').classList.add('shown');
+setTimeout(search, 1000);
+setTimeout(option_fill, 2500);
+//setTimeout(toggleMessages, 2000)
+</script>
+    
+
+</body>
+</html>

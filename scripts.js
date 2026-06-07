@@ -1,8 +1,9 @@
+const DEBUG = false;
+
 const collection_url = 'https://totkindgott.github.io/collection.html';
 const search_url = 'https://totkindgott.github.io/oldsearch.html?search=';
     
 const inputs = document.querySelectorAll('input');
-
 
 inputs.forEach(input => {
     input.setAttribute('autocomplete', 'off');
@@ -11,12 +12,46 @@ inputs.forEach(input => {
     input.setAttribute('spellcheck', false);
 }); // forEach block ends
 
+function LOG(...text) {
+    DEBUG && console.log(text.join(" "));
+    OUTPUT(text.join(" "), "message")
+};
+
+function ERROR(...text) {
+    DEBUG && console.error(text.join(" "));
+    OUTPUT(text.join(" "), "error")
+};
+
+function WARN(...text) {
+    DEBUG && console.warn(text.join(" "));
+    OUTPUT(text.join(" "), "warning");
+};
+
+function SUCCESS(...text) {
+    DEBUG && console.log(text.join(" "));
+    OUTPUT(text.join(" "), "success");
+};
+
+function HIGHLIGHT(...text) {
+    OUTPUT(text.join(" "), "highlight");
+};
+
+function OUTPUT(text, alert_type) {
+    //setTimeout(() => {document.getElementById("messages").innerHTML += `<p class="${alert_type}" onclick="copy('${text}')">${text}</p><hr />`;
+    //document.getElementById("messages").lastChild.scrollIntoView()}, 100);
+    document.getElementById("messages").innerHTML += `<p class="${alert_type}" onclick="copy('${text}')">${text}</p>`;
+    document.getElementById("messages").lastChild.scrollIntoView();
+};
 
 function checkMode() {
     // checks if dark mode was previously selected
+    LOG(">>> running checkMode() ...")
     if (localStorage.getItem("mode") == "dark") {
             var element = document.body;
             element.classList.toggle("dark-mode");
+            SUCCESS("localStorage status: OK")
+        } else {
+            LOG("using light mode");
         }; // if block ends
 }; // checkMode function ends
 
@@ -278,7 +313,7 @@ function getCollection() {
                 var result_html = models_html.innerHTML;
                 document.getElementById("frame").innerHTML = result_html;
             })
-        .catch(error => console.error('Error fetching file:', error));
+        .catch(error => console.error('Error fetching file:', error))
 }; // getCollection function ends
 
 
