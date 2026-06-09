@@ -12,8 +12,8 @@ let sources_set = new Set();
 
 const options = ["Collection","Year","Part","Model","Number","Stamp","Condition","Origin","URL","Tags","Quantity","Image","Note"];
 
-function option_fill() {
-    var function_name = "option_fill";
+function initialOptionParse() {
+    var function_name = "initialOptionParse";
     LOG(`>>> running ${function_name}() ...`);
     var csv = document.getElementById("csv").innerHTML;
     LOG(`${function_name}() read ${csv.length.toLocaleString("en-US")} characters`);
@@ -44,21 +44,36 @@ function option_fill() {
     } catch (error) {
         ERROR(`error in ${function_name}(): ${error}`);
     };
-    LOG(`>>> parsing data with ${function_name}`);
+    LOG(`>>> parsing data with ${function_name}()`);
+    
     years = Array.from(years_set).sort();
     HIGHLIGHT("years:", years.length);
     DEBUG && LOG(years);
+    
     conditions = Array.from(conditions_set).sort();
     HIGHLIGHT("conditions:", conditions.length);
     DEBUG && LOG(conditions);
+    
     collections = Array.from(collections_set).sort();
     HIGHLIGHT("collections:", collections.length);
     DEBUG && LOG(collections);
+    
     tags = Array.from(tags_set).sort();
     HIGHLIGHT("tags:", tags.length);
     DEBUG && LOG(tags);
+    
     sources = Array.from(sources_set).sort();
     HIGHLIGHT("sources:", sources.length);
     DEBUG && LOG(sources);
+    
     SUCCESS(`${function_name}() run status: OK`);
+    updateDatalists();
 };
+
+function updateDatalists() {
+    years.forEach(year => document.getElementById("years").innerHTML += `<option value="${year}">`);
+    conditions.forEach(condition => document.getElementById("conditions").innerHTML += `<option value="${condition}">`);
+    collections.forEach(collection => document.getElementById("series").innerHTML += `<option value="${collection}">`);
+    tags.forEach(tag => document.getElementById("tags").innerHTML += `<option value="${tag}">`);    
+    sources.forEach(source => document.getElementById("sources").innerHTML += `<option value="${source}">`);    
+}

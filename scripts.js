@@ -1,7 +1,9 @@
 const DEBUG = false;
+const DATA_SOURCE = "local" // remote or local
 
 const collection_url = 'https://totkindgott.github.io/collection.html';
 const search_url = 'https://totkindgott.github.io/oldsearch.html?search=';
+const csv_file = "./collection.csv"
     
 const inputs = document.querySelectorAll('input');
 
@@ -158,6 +160,7 @@ function hideDivsOnEmpty() {
 
 function toggleDetails() {
     detailsTags = document.getElementsByTagName('details');
+    LOG(">>> running toggleDetails() ...")
     for (let i = 0; i < detailsTags.length; i++) {
         detailsTag = detailsTags[i];
         if (detailsTag.open == true) {

@@ -177,6 +177,7 @@ function verticalSwipeActions(elementID, swipeUpAction, swipeDownAction, swipeTh
     
     function addDetailsToggle() {
         let itemCards = document.getElementsByClassName("item_card");
+        LOG(">>> running addDetailsToggle() ...");
             
         //itemCards.forEach(card => {
         for (var i = 0; i < itemCards.length; i++) {
@@ -195,8 +196,10 @@ function verticalSwipeActions(elementID, swipeUpAction, swipeDownAction, swipeTh
 
         if (el.style.display == "block") {
             el.style.display = "none";
+            LOG(`toggleDetails() status: details_${id} closed`);
         } else {
             el.style.display = "block";
+            LOG(`toggleDetails() status: details_${id} opened`);
         };
     };
     

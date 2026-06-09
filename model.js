@@ -80,6 +80,36 @@ class Model {
     </details>`
     }; // make_details_html() ends
     
+    make_details_div() {
+        return `
+    <div id="details_${this.id}" class="details">
+        <table>
+            <tr>
+                <td class="grayed">series:</td>
+                <td>${this.series}</td>
+                <td class="grayed">part:</td>
+                <td class="right">${this.part}</td>
+            </tr>
+            <tr>
+                <td class="grayed">number:</td>
+                <td>${this.number}</td>
+                <td class="grayed">year:</td>
+                <td class="right">${this.year}</td>
+            </tr>
+            <tr>
+                <td class="grayed">origin:</td>
+                <td>${this.origin}</td>
+            </tr>
+            <tr>
+                <td class="grayed">status:</td>
+                <td>${this.condition}</td>
+                <td colspan=2 class="tag">${this.tag}</td>
+            </tr>
+        </table>
+    </div>`
+    }; // make_details_html() ends
+    
+    
     make_photo_view() {
 
         var th_logo_path = this.images_directory + "/Logos/TH Logo Mini.PNG";
@@ -115,7 +145,7 @@ class Model {
         // template literal
         return `\n
 <div class="${div_class}">
-    ${this.make_details_html()}
+    ${this.make_details_div()}
     ${this.make_photo_view()}
 </div>
         \n`;
@@ -128,14 +158,14 @@ class Model {
             var div_class = "searchable gone";
         };
         return `
-        <div class="item_card ${div_class}" id="item_${this.id}">
-            <div class="item_name" onclick="toggleDetails('${this.id}')">
+        <div class="item_card ${div_class}" id="item_${this.id}" onclick="toggleDetails('${this.id}')">
+            <div class="item_name">
                 <span>${this.name}</span>
             </div>
             <div class="item_photo">
                 ${this.make_photo_view()}
             </div>            
-            ${this.make_details_html()}
+            ${this.make_details_div()}
         </div>`;
     }; // make_card_view() ends
     
@@ -160,7 +190,7 @@ class Model {
             if (this.image) {
                 // color variation
                 image_name += " [" + this.image + "]";
-            } else if (this.tag == "Zamac" || this.tag == "STH") {
+            } else if (this.tag == "Zamac" || this.tag == "$TH") {
                 // type variation
                 image_name += " [" + this.tag + "]";
             };

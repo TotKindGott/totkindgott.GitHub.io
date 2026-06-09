@@ -9,6 +9,7 @@
     <script src="model.js" defer></script>
     <script src="collage.js"></script>
     <script src="renders.js"></script>
+    <script type="text/javascript" src="search.js" defer></script>
     <!--optional-->
     <meta name="format-detection" content="telephone=no" />
     <meta name="viewport" 
@@ -49,8 +50,28 @@
     </header>  <!-- END NAVIGATION -->
     
     <div id="notification"></div>
+    
+    <div id="advanced_search">
+
+        <input type="search" list="tags" placeholder="TAG" class="select" id="tags_input">    
+        <datalist id="tags"></datalist>
+    
+        <input type="search" list="years" placeholder="YEAR" class="select" id="years_input">    
+        <datalist id="years"></datalist>
+    
+        <input type="search" list="series" placeholder="SERIES" class="select" id="series_input">    
+        <datalist id="series"></datalist>
+    
+        <input type="search" list="conditions" placeholder="CONDITION" class="select" id="conditions_input">    
+        <datalist id="conditions"></datalist>
+    
+        <input type="search" list="sources" placeholder="SOURCE" class="select" id="sources_input">    
+        <datalist id="sources"></datalist>
+    
+    </div>
 
     <div id="csv"></div>
+    
     <div id="carousel">
         <div id="card_view"></div>
         <div id="item_list"></div>
@@ -144,6 +165,30 @@ body.dark-mode div#carousel div#card_view div.item_card div.wrapper,
 body.dark-mode div#carousel div#item_list {
     color: white;
     background-color: black;
+}
+
+.details {
+    display: none;
+    width: 94vw;
+    height: auto;
+    background: rgba(0,0,0,0.75);
+    margin: 0px auto;
+    white-space: wrap;
+    padding: 7vw 2vw 12vw;
+    vertical-align: middle;
+    animation-name: ease;
+    animation-direction: normal;
+    transition-property: all;
+    transition-duration: 1s;
+    transition-timing-function: ease-out;
+    position: relative;
+    top: -98vw;
+    left: 0;
+    z-index: 1;
+}
+
+.details td:not(.grayed) {
+    color: white;
 }
 
 @media only screen and (orientation: portrait) {
@@ -332,7 +377,9 @@ body.dark-mode div#carousel div#item_list {
         grid-auto-columns: min(18.8vw, 18.8vh);
         grid-gap: 1vw;
         background: white;
-        z-index: 11;
+        position: relative;
+        top: 0;
+        z-index: 99;
         overflow-y: scroll;
         scroll-direction: vertical;
         scroll-snap-type: y mandatory;
@@ -448,10 +495,10 @@ function search() {
     openMessages();
     LOG(">>> running search() in main file ...");
     var query = document.getElementById("search_bar").value;
+    var match_count = 0;
 
     if (!query) {
         WARN("empty search string");
-        void(0);
     } else {
         LOG(`searching for ${query}`)
         var count = 0;
@@ -478,8 +525,9 @@ function search() {
         document.getElementById("item_list").innerHTML = images.join("");
             setActivationEvent();
             updateCount(count);
+            match_count = count;
     }; // if else block ends
-    SUCCESS('search() run status: OK');
+    match_count > 0 ? SUCCESS('search() run status: OK') : ERROR('search() run status: error [nothing found]') & show_messages();
     hideMessages();
 };
 
@@ -512,13 +560,13 @@ function hideMessages() {
 };
 
 getCSV();
-
+setTimeout(search, 1000);
 document.getElementById("search_bar").addEventListener("change", search);
 verticalSwipeActions("item_list", showCollage, hideCollage, 100); 
 // Collage view by default
 document.getElementById('item_list').classList.add('shown');
-setTimeout(search, 1000);
-setTimeout(option_fill, 2500);
+
+setTimeout(initialOptionParse, 2500);
 //setTimeout(toggleMessages, 2000)
 </script>
     
