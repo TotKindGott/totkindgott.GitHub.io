@@ -38,6 +38,10 @@ function HIGHLIGHT(...text) {
     OUTPUT(text.join(" "), "highlight");
 };
 
+function NOTE(...text) {
+    OUTPUT(text.join(" "), "note");
+};
+
 function OUTPUT(text, alert_type) {
     //setTimeout(() => {document.getElementById("messages").innerHTML += `<p class="${alert_type}" onclick="copy('${text}')">${text}</p><hr />`;
     //document.getElementById("messages").lastChild.scrollIntoView()}, 100);
@@ -53,7 +57,7 @@ function checkMode() {
             element.classList.toggle("dark-mode");
             SUCCESS("localStorage status: OK")
         } else {
-            LOG("using light mode");
+            NOTE("using light mode");
         }; // if block ends
 }; // checkMode function ends
 
@@ -388,3 +392,36 @@ function toggleExtraControls() {
         showExtraControls();
     };
 };
+
+function showNotification(text) {
+    var el = document.getElementById("notification");
+    el.innerHTML = `<pre>${text}</pre>`;
+    el.style.display = "block";
+    setTimeout(hideNotification, 1000);
+}
+
+function hideNotification() {
+    document.getElementById("notification").style.display = "none";
+}
+
+function toggleMessages() {
+    let msgs = document.getElementById("messages");
+    if (msgs.style.display == "none") {
+        msgs.style.display = "block";
+    } else {
+        msgs.style.display = "none";
+    };
+};
+
+function openMessages() {
+    document.getElementById("messages").style.display = "block";
+};
+
+function hideMessages() {
+    document.getElementById("messages").style.display = "none";
+};
+
+function copy(text) {
+    navigator.clipboard.writeText(text);
+    showNotification("copied");
+}

@@ -158,7 +158,7 @@ class Model {
             var div_class = "searchable gone";
         };
         return `
-        <div class="item_card ${div_class}" id="item_${this.id}" onclick="toggleDetails('${this.id}')">
+        <div class="item_card ${div_class}" id="item_${this.id}" onclick="toggleDetails('${this.id}')" data-index="year:${this.year} series:${this.series} condition:${this.condition} tag:${this.tag} source:${this.origin}">
             <div class="item_name">
                 <span>${this.name}</span>
             </div>
@@ -215,7 +215,7 @@ class Model {
         req.send();
      
         if (req.status == "404") {
-            WARN(this.image);
+            //WARN(this.image);
         } else {
             return true;
         };
@@ -243,4 +243,78 @@ class Model {
         this.update_thumbnail();
     } // update_images() ends
 
+}; // class declaration ends
+
+
+class Filter {
+    constructor() {
+        this.collections = new Set();
+        this.years = new Set();
+        this.tags = new Set();
+        this.conditions = new Set();
+        this.sources = new Set();
+    }; // constructor ends
+    
+    add_collection(name) {
+        this.collections.add(name);
+    };
+    
+    add_year(year) {
+        this.years.add(year);
+    };
+    
+    add_tag(tag) {
+        this.tags.add(tag);
+    };
+    
+    add_condition(condition) {
+        this.conditions.add(condition);
+    };
+    
+    add_source(source) {
+        this.sources.add(source);
+    };
+    
+    add_data(model) {
+        this.collections.add(model.series);
+        this.years.add(model.year);
+        this.tags.add(model.tag);
+        this.conditions.add(model.condition);
+        this.sources.add(model.origin);
+    };
+    
+    clear_filters() {
+        // manipulating innerHTML
+        document.getElementById("series").innerHTML = "";
+        document.getElementById("years").innerHTML = "";
+        document.getElementById("tags").innerHTML = "";
+        document.getElementById("conditions").innerHTML = "";
+        document.getElementById("sources").innerHTML = "";
+        NOTE("search filters cleared");
+    }; // clear_filters() ends
+
+    
+    apply_filters() {
+        
+        let _collections = Array.from(this.collections).sort();
+        let _years = Array.from(this.years).sort();
+        let _tags = Array.from(this.tags).sort();
+        let _conditions = Array.from(this.conditions).sort();
+        let _sources = Array.from(this.sources).sort();
+        
+        this.clear_filters();
+
+        _collections.forEach(name => document.getElementById("series").innerHTML += `<option value="${name}">`);
+        _years.forEach(year => document.getElementById("years").innerHTML += `<option value="${year}">`);
+        _tags.forEach(tag => document.getElementById("tags").innerHTML += `<option value="${tag}">`);
+        _conditions.forEach(condition => document.getElementById("conditions").innerHTML += `<option value="${condition}">`);
+        _sources.forEach(source => document.getElementById("sources").innerHTML += `<option value="${source}">`);
+        
+        HIGHLIGHT("collections:", _collections.length);
+        HIGHLIGHT("years:", _years.length);
+        HIGHLIGHT("tags:", _tags.length);
+        HIGHLIGHT("conditions:", _conditions.length);
+        HIGHLIGHT("sources:", _sources.length);
+    }; // apply() ends
+    
 }; // class declaration ends

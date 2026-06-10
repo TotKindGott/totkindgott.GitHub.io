@@ -1,3 +1,5 @@
+const options = ["Collection","Year","Part","Model","Number","Stamp","Condition","Origin","URL","Tags","Quantity","Image","Note"];
+
 const searchBar = document.getElementById("search_bar");
 const leftMenuButton = document.getElementById("left_button");
 const rightMenuButton = document.getElementById("right_button");
@@ -22,7 +24,19 @@ const tagSelectorInput = document.getElementById("tags_input");
 const conditionSelectorInput = document.getElementById("conditions_input"); 
 const sourceSelectorInput = document.getElementById("sources_input");
 
-document.body.setAttribute("load", parseAndSearch);
+let years = new Array();
+let conditions = new Array();
+let collections = new Array();
+let tags = new Array();
+let sources = new Array();
+
+let collections_set = new Set();
+let years_set = new Set();
+let conditions_set = new Set();
+let tags_set = new Set();
+let sources_set = new Set();
+
+//document.body.setAttribute("load", parseAndSearch);
 
 yearSelectorInput.classList.add("half");
 yearSelectorInput.classList.add("right");
@@ -34,16 +48,27 @@ sourceSelectorInput.classList.add("left");
 conditionSelectorInput.classList.add("half");
 conditionSelectorInput.classList.add("right");
 
-seriesSelectorInput.addEventListener("change", findMatches);
-seriesSelectorInput.addEventListener("keyup", findMatches);
-sourceSelectorInput.addEventListener("change", findMatches);
-sourceSelectorInput.addEventListener("keyup", findMatches);
-tagSelectorInput.addEventListener("change", findMatches);
-tagSelectorInput.addEventListener("keyup", findMatches);
-conditionSelectorInput.addEventListener("change", findMatches);
-conditionSelectorInput.addEventListener("keyup", findMatches);
-yearSelectorInput.addEventListener("change", findMatches);
-yearSelectorInput.addEventListener("keyup", findMatches);
+seriesSelectorInput.addEventListener("change", search);
+//seriesSelectorInput.addEventListener("keyup", search);
+sourceSelectorInput.addEventListener("change", search);
+//sourceSelectorInput.addEventListener("keyup", search);
+tagSelectorInput.addEventListener("change", search);
+//tagSelectorInput.addEventListener("keyup", search);
+conditionSelectorInput.addEventListener("change", search);
+//conditionSelectorInput.addEventListener("keyup", search);
+yearSelectorInput.addEventListener("change", search);
+//yearSelectorInput.addEventListener("keyup", search);
+
+// seriesSelectorInput.addEventListener("change", findMatches);
+// seriesSelectorInput.addEventListener("keyup", findMatches);
+// sourceSelectorInput.addEventListener("change", findMatches);
+// sourceSelectorInput.addEventListener("keyup", findMatches);
+// tagSelectorInput.addEventListener("change", findMatches);
+// tagSelectorInput.addEventListener("keyup", findMatches);
+// conditionSelectorInput.addEventListener("change", findMatches);
+// conditionSelectorInput.addEventListener("keyup", findMatches);
+// yearSelectorInput.addEventListener("change", findMatches);
+// yearSelectorInput.addEventListener("keyup", findMatches);
 
 searchBar.addEventListener("focus", showSearchTools);
 searchBar.addEventListener("keyup", findMatches);
@@ -283,3 +308,70 @@ function promptNewSearch() {
     clearOptions();
     restoreOptions();
 };
+
+
+function initialOptionParse() {
+    var function_name = "initialOptionParse";
+    LOG(`>>> running ${function_name}() ...`);
+    var csv = document.getElementById("csv").innerHTML;
+    NOTE(`${function_name}() read ${csv.length.toLocaleString("en-US")} characters`);
+    let year_index = options.indexOf("Year");
+    let condition_index = options.indexOf("Condition");
+    let collection_index = options.indexOf("Collection");
+    let tag_index = options.indexOf("Tags");
+    let source_index = options.indexOf("Origin");
+       
+    let lines = csv.split("\n");
+    NOTE(`${function_name}() split ${lines.length.toLocaleString("en-US")} lines`);
+    try {
+        for (var i = 1; i < lines.length; i++) {
+            var items = lines[i].split(",");
+        //console.log(option, items[option_index]);
+            var year = items[year_index].toString();
+            years_set.add(year);
+            var condition = items[condition_index].toString();
+            conditions_set.add(condition);
+            var collection = items[collection_index].toString();
+        collections_set.add(collection);
+            var tag = items[tag_index].toString();
+            tags_set.add(tag);
+            var source = items[source_index].toString();
+            sources_set.add(source);
+            //console.log(items[option_index]);
+        }; // for loop ends
+    } catch (error) {
+        ERROR(`error in ${function_name}(): ${error}`);
+    };
+    LOG(`>>> parsing data with ${function_name}()`);
+    
+    years = Array.from(years_set).sort();
+    HIGHLIGHT("years:", years.length);
+    DEBUG && LOG(years);
+    
+    conditions = Array.from(conditions_set).sort();
+    HIGHLIGHT("conditions:", conditions.length);
+    DEBUG && LOG(conditions);
+    
+    collections = Array.from(collections_set).sort();
+    HIGHLIGHT("collections:", collections.length);
+    DEBUG && LOG(collections);
+    
+    tags = Array.from(tags_set).sort();
+    HIGHLIGHT("tags:", tags.length);
+    DEBUG && LOG(tags);
+    
+    sources = Array.from(sources_set).sort();
+    HIGHLIGHT("sources:", sources.length);
+    DEBUG && LOG(sources);
+    
+    SUCCESS(`${function_name}() run status: OK`);
+    updateDatalists();
+};
+
+function updateDatalists() {
+    years.forEach(year => document.getElementById("years").innerHTML += `<option value="${year}">`);
+    conditions.forEach(condition => document.getElementById("conditions").innerHTML += `<option value="${condition}">`);
+    collections.forEach(collection => document.getElementById("series").innerHTML += `<option value="${collection}">`);
+    tags.forEach(tag => document.getElementById("tags").innerHTML += `<option value="${tag}">`);    
+    sources.forEach(source => document.getElementById("sources").innerHTML += `<option value="${source}">`);    
+}

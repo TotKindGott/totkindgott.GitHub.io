@@ -655,6 +655,7 @@
     //search_bar.addEventListener("change", search);
 
     function debounce(func, timeout = 300){
+        WARN("debounce()");
         let timer;
         return (...args) => {
             clearTimeout(timer);

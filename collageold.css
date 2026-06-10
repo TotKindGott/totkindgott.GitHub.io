@@ -1,0 +1,300 @@
+div#results {
+    opacity: 0.1;
+    font-size: 0.5em;
+    height: min(120vw, 120vh);
+    width: auto;
+    display: none;
+}
+
+body {
+    overflow: hidden;
+    position: fixed;
+}
+
+div#carousel {
+    width: 100%;
+    position: fixed;
+    top: min(10vw, 10vh);
+    left: 0;
+    margin: 0;
+    padding: min(1vw, 1vh);
+    background: transparent;
+    white-space: nowrap;
+    vertical-align: top;
+    overflow-y: hidden;
+}
+
+div#carousel div#card_view {
+    padding: 0;
+    background: transparent;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-direction: horizontal;
+    position: relative;
+    top: 0;
+    display: flex;
+}
+
+div#carousel div#card_view div.item_card {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    scroll-snap-align: center;
+    scroll-margin: 0;
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    float: left;
+    flex: 0 0 auto;
+}
+
+div#carousel div#card_view div.item_card div.item_name {
+    width: min(98vw, 98vh);;
+    height: min(10vw, 10vh);
+    margin: 0;
+    padding: 0;
+	font-family: "Courier", monospace; 
+	font: "Inconsolata"; 
+	max-font-size: 20px; 
+	font-weight: bolder; 
+	text-transform: uppercase;
+	text-align: center; 
+    background: transparent;
+    overflow-x: scroll;
+    text-wrap-mode: wrap;
+    position: absolute;
+    top: 0;
+}
+
+div#carousel div#card_view div.item_card div.wrapper {
+    position: relative;
+    top: 0;
+    margin: 0;
+    border-radius: 0; 
+	padding: 0;
+	box-shadow: none;
+    height: 98vw;
+    width: 100%;
+}
+
+div#carousel div#card_view div.item_card div.item_photo {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+}
+
+img.photo_full {
+    width: 100%;
+    height: 100%;
+}
+
+div#carousel div#card_view div.item_photo img.grayed {
+    filter: grayscale(1);
+}
+
+div#carousel div#card_view::-webkit-scrollbar {
+    display: none;
+}
+
+div#carousel #card_view div.item_card div.item_photo img.logo {
+    height: min(10vw, 10vh);
+    width: min(10vw, 10vh);
+    position: absolute; 
+    top: min(5vw, 5vh); 
+    right: min(5vw, 5vh);
+    padding: 0;
+}
+
+p.comment, p.tag {
+    display: none;
+}
+
+div.item_card > div > details {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: rgba(0,0,0,0.75);
+    color: white;
+    margin: 0;
+    white-space: wrap;
+    padding: 12.5% 0px;
+    vertical-align: middle;
+    animation-name: ease;
+    animation-direction: normal;
+    transition-property: all;
+    transition-duration: 1s;
+    transition-timing-function: ease-out;
+    background-color: lime;
+    position: fixed;
+    top: 10vw;
+}
+
+div#carousel #card_view table {
+    margin: 0;
+    padding: 0;
+}
+
+div#carousel #card_view table td:not(.tag) {
+    color: #ffffff;
+}
+
+div#carousel #card_view table td.grayed {
+    color: silver;
+}
+
+div#carousel div#item_list.shown {
+	width: min(98vw, 98vh);
+    height: min(125vw, 125vh);
+    margin: 0;
+    padding: 0;
+    left: 0;
+    /*position: absolute;
+    top: min(10vw, 10vh);*/
+    transform: translate(0, max(-110vw, -110vh));
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    /*grid-template-rows: repeat(999, 70px);*/
+    grid-auto-rows: min(18.8vw, 18.8vh);
+    grid-auto-columns: min(18.8vw, 18.8vh);
+    grid-gap: min(1vw, 1vh);
+    background: white;
+    z-index: 11;
+    overflow-y: scroll;
+    scroll-direction: vertical;
+    scroll-snap-type: y mandatory;
+    /*flex-flow: row wrap;
+    object-fit: contain;
+    white-space: nowrap;*/
+    animation-name: ease;
+    animation-direction: normal;
+    transition-property: transform;
+    transition-duration: 0s;
+    transition-timing-function: ease-in;
+}
+
+body.dark-mode div#carousel div#item_list,
+body.dark-mode div#carousel div#item_list.shown {
+    background-color: black;
+}
+
+body.dark-mode div#carousel div#item_list.shown img {
+    opacity: 1;
+}
+
+div#carousel div#item_list img {
+    scroll-snap-align: start;
+    /*scroll-snap-stop: always;*/
+    width: min(18.8vw, 18.8vh);
+    height: auto;
+    opacity: 0.75;
+    box-shadow: 0 0 1px black;
+    /*flex-margin: auto;
+    flex-shrink: 0;*/
+    white-space: wrap;
+    margin: 0;
+    padding: 0;
+}
+
+div#carousel div#item_list.shown img {
+    margin: auto;
+}
+
+div#carousel div#item_list img.color {
+    opacity: 1;
+}
+
+div#carousel div#item_list img.grayed {
+    filter: grayscale(1);
+}
+
+div#carousel div#item_list::-webkit-scrollbar {
+    display: none;
+}
+
+#collage_button {
+    background-image: url("Images/Icons/apps-sharp.svg");
+    background-size: 14px;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 24px;
+    width: 24px;
+    position: fixed;
+    left: 15px;
+    bottom: 30px;
+    background-color: #ffffff;
+    border: 1px solid gray;
+    border-radius: 12px;
+    margin: 0; 
+    box-shadow: 0 0 5px 1px #ffffff;
+}
+
+@media only screen and (orientation: portrait) {
+
+    #card_view {
+        width: 98vw;
+        height: 108vw;
+    }
+    
+    #item_card {
+        width: 98vw;
+        height: 98vw;
+    }
+    
+    div#carousel div#item_list {
+        height: min(20vw, 20vh);
+        width: min(98vw, 98vh);
+        margin: 0;
+        padding: 0;
+        left: 0;
+        background: transparent;
+        overflow-x: scroll;
+        overflow-y: visible;
+        scroll-direction: horizontal;
+        scroll-snap-type: x mandatory;
+        vertical-align: middle;
+        animation-name: ease;
+        animation-direction: normal;
+        transition-property: transform, height;
+        transition-duration: 0.2s, 0.2s, 1s;
+        transition-timing-function: ease-out;
+        display: grid;
+        grid-template-columns: repeat(555, min(18.8vw, 18.8vh));
+        grid-auto-rows: min(18.8vw, 18.8vh);
+        grid-auto-columns: min(18.8vw, 18.8vh);
+        grid-gap: min(1vw, 1vh);
+    }
+}
+
+@media only screen and (orientation: landscape) {
+    
+    div#carousel #item_list,
+    div#carousel #item_list.shown {
+        width: 50%;
+        height: auto;
+        margin: 0;
+        padding: 0;
+        left: 0;
+        display: grid;
+        grid-template-columns: auto auto auto auto auto;
+        grid-auto-rows: auto;
+        grid-auto-columns: 18.8%;
+        grid-gap: 1%;
+        background: white;
+        overflow-y: scroll;
+        scroll-direction: vertical;
+        scroll-snap-type: y mandatory;
+    }
+    
+    #card_view {
+        height: auto;
+        width: 50%;
+        background-color: orange;
+        float: right;
+    }
+    
+    #page_footer {
+        position: static;
+    }
+}
