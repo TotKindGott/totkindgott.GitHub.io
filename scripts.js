@@ -38,6 +38,10 @@ function HIGHLIGHT(...text) {
     OUTPUT(text.join(" "), "highlight");
 };
 
+function OPTION(...text) {
+    OUTPUT(text.join(" "), "option");
+};
+
 function NOTE(...text) {
     OUTPUT(text.join(" "), "note");
 };
@@ -60,7 +64,6 @@ function checkMode() {
             NOTE("using light mode");
         }; // if block ends
 }; // checkMode function ends
-
 
 function toggleDarkMode() {
     // switches between dark & light modes

@@ -23,6 +23,7 @@ class Model {
         this.quantity = csvalues[10];
         this.image_path = "";
         this.thumbnail = "";
+        this.missing_photo = "";
         
         if (!this.quantity) {
             this.quantity = 1;
@@ -215,11 +216,16 @@ class Model {
         req.send();
      
         if (req.status == "404") {
-            //WARN(this.image);
+            this.missing_photo =             this.image;
+            return false;
         } else {
             return true;
         };
     }; // check_image_path() ends
+    
+    missing_image() {
+        
+    }
     
     update_image_name() {
         this.image = this.generate_image_name();
@@ -310,11 +316,14 @@ class Filter {
         _conditions.forEach(condition => document.getElementById("conditions").innerHTML += `<option value="${condition}">`);
         _sources.forEach(source => document.getElementById("sources").innerHTML += `<option value="${source}">`);
         
-        HIGHLIGHT("collections:", _collections.length);
-        HIGHLIGHT("years:", _years.length);
+        NOTE("search filters overwritten");
+        
         HIGHLIGHT("tags:", _tags.length);
-        HIGHLIGHT("conditions:", _conditions.length);
+        HIGHLIGHT("years:", _years.length);
+        HIGHLIGHT("collections:", _collections.length);
         HIGHLIGHT("sources:", _sources.length);
+        HIGHLIGHT("conditions:", _conditions.length);
+
     }; // apply() ends
     
 }; // class declaration ends

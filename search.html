@@ -3,25 +3,27 @@
 <head>
     <meta charset="utf-8">
     <title>Collection</title>
+    
     <link type="text/css" href="styles.css" rel="stylesheet" />
-    <script src="scripts.js"></script>
-    <script src="buttons.js" defer></script>
+    <link type="text/css" href="collage.css" rel="stylesheet" />
+    
+    <script type="text/javascript" src="scripts.js"></script>
+    <script type="text/javascript" src="buttons.js" defer></script>
+    <script type="text/javascript" src="model.js"></script>
+    <script type="text/javascript" src="collage.js"></script>
+    <script type="text/javascript" src="search.js" defer></script>
     <!--optional-->
+    
     <meta name="format-detection" content="telephone=no" />
     <meta name="viewport" 
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, interactive-widget=resizes-content">
 </head>
 
-<body onload="parseAndSearch(); addParseToSelectors()">
-    <script type="text/javascript">
-        checkMode();
-    </script>
-    <script type="text/javascript" src="search.js" defer></script>
-
+<body onload="SUCCESS(`< webpage body fully loaded >`)">
     <header>  <!-- NAVIGATION -->
 <div id="topbar">
     <input type="button" id="left_button" />
-    <input type="text" id="search_bar" />
+    <input type="text" id="search_bar" value="" />
     <input type="button"  id="right_button" />
     <div id="dropdown">
         <input type="button" id="mode_button" />
@@ -31,7 +33,6 @@
     </div>
     <input type="number" name="result counter" value="" disabled="True" id="counter" />
 </div>
-
 
 <div id="menu" class="overlay">
     <a id="menu_close_button">&times;</a>
@@ -49,774 +50,45 @@
     </div>
 </div>
 
-
     </header>  <!-- END NAVIGATION -->
-<div id="advanced_search">
-
-    <input type="search" list="tags" placeholder="TAG" class="select" id="tags_input">
-
-    <datalist id="tags">
-        <option value="" />
-      <option value="$TH" />
-      <option value="Chase" />
-      <option value="Custom" />
-      <option value="ID" />
-      <option value="Monster" />
-      <option value="PREMIUM" />
-      <option value="Silver" />
-      <option value="TH" />
-      <option value="ZAMAC" />
-      
-    </datalist>
-
-    <input type="search" list="years" placeholder="YEAR" class="select" id="years_input">
-
-    <datalist id="years">
-        <option value="" />
-      <option value="1981" />
-      <option value="1982" />
-      <option value="1984" />
-      <option value="1986" />
-      <option value="1987" />
-      <option value="1988" />
-      <option value="1989" />
-      <option value="1990" />
-      <option value="1991" />
-      <option value="1992" />
-      <option value="1994" />
-      <option value="1996" />
-      <option value="1997" />
-      <option value="1998" />
-      <option value="1999" />
-      <option value="2000" />
-      <option value="2001" />
-      <option value="2002" />
-      <option value="2003" />
-      <option value="2004" />
-      <option value="2005" />
-      <option value="2006" />
-      <option value="2007" />
-      <option value="2008" />
-      <option value="2009" />
-      <option value="2010" />
-      <option value="2011" />
-      <option value="2012" />
-      <option value="2013" />
-      <option value="2014" />
-      <option value="2015" />
-      <option value="2016" />
-      <option value="2017" />
-      <option value="2018" />
-      <option value="2019" />
-      <option value="2020" />
-      <option value="2021" />
-      <option value="2022" />
-      <option value="2023" />
-      <option value="2024" />
-      <option value="2025" />
-      <option value="2026" />
-      
-    </datalist>
-
-    <input type="search" list="series" placeholder="SERIES" class="select" id="series_input">
-
-    <datalist id="series">
-        <option value="1998 First Editions" />
-      <option value="1999 First Editions" />
-      <option value="2000 First Editions" />
-      <option value="2001 First Editions" />
-      <option value="2002 First Editions" />
-      <option value="2003 First Editions" />
-      <option value="2004 First Editions" />
-      <option value="2005 First Editions - Blings" />
-      <option value="2005 First Editions - Drop Tops" />
-      <option value="2005 First Editions - Torpedoes" />
-      <option value="2006 First Editions" />
-      <option value="2007 All Stars" />
-      <option value="2008 First Editions" />
-      <option value="2008 New Models" />
-      <option value="2009 New Models" />
-      <option value="2010 New Models" />
-      <option value="2011 New Models" />
-      <option value="2012 New Models" />
-      <option value="50th Anniversary" />
-      <option value="55th Anniversary Mix 2" />
-      <option value="56th Anniversary Mix 1" />
-      <option value="57th Anniversary Mix 1" />
-      <option value="57th Anniversary Mix 2" />
-      <option value="58th Anniversary" />
-      <option value="70s vs 90s" />
-      <option value="80th Anniversary Series" />
-      <option value="Action 5-pack" />
-      <option value="Avon Super Tuners" />
-      <option value="Baja Blazers" />
-      <option value="Batman" />
-      <option value="Batman 5-pack" />
-      <option value="Biff! Bam! Boom!" />
-      <option value="Biohazard Series" />
-      <option value="Blue and Pink" />
-      <option value="Boulevard" />
-      <option value="Brick Rides" />
-      <option value="Brick Shop" />
-      <option value="Bugging Out" />
-      <option value="CD Customs" />
-      <option value="Car Culture: Autostrasse" />
-      <option value="Car Culture: Exotic Envy" />
-      <option value="Car Culture: Japan Historics 4" />
-      <option value="Car Culture: Modern Classics" />
-      <option value="Car Culture: Ronin Run" />
-      <option value="Car Culture: Slide Street 2" />
-      <option value="Car Culture: Speed Machines" />
-      <option value="Car Culture: Spoon Honda 2-pack" />
-      <option value="Car Culture: Team Transport" />
-      <option value="Car Culture: World Tour" />
-      <option value="Car Meet 5-pack" />
-      <option value="Car-Toon Friends" />
-      <option value="Champion Crashers" />
-      <option value="Circus On Wheels" />
-      <option value="City 5-pack" />
-      <option value="Color Changers" />
-      <option value="Color Racers" />
-      <option value="Color Racers 3-pack" />
-      <option value="Color Shifters" />
-      <option value="Compact Kings" />
-      <option value="Company Cars" />
-      <option value="Cool Classics" />
-      <option value="Corvette 5-pack" />
-      <option value="Corvette 70 1953-2023" />
-      <option value="Crack-Ups" />
-      <option value="Crank Itz" />
-      <option value="Crazy Croc 5-pack" />
-      <option value="DC Batman" />
-      <option value="DC Character Cars" />
-      <option value="Dash 4 Cash" />
-      <option value="Demo Destruction" />
-      <option value="Demo Destruction 5-pack" />
-      <option value="Double Jump Duel 5-pack" />
-      <option value="Drag Racers" />
-      <option value="DreamWorks Character Cars" />
-      <option value="Drop Tops" />
-      <option value="Dropstars" />
-      <option value="Easter 4-pack" />
-      <option value="Easter Eggsclusives" />
-      <option value="Exoticars" />
-      <option value="Exotics" />
-      <option value="Experimotors" />
-      <option value="Factory Fresh" />
-      <option value="Fantastic Sams" />
-      <option value="Fast & Furious" />
-      <option value="Fast & Furious: Graphic Remix" />
-      <option value="Fast Foodie" />
-      <option value="Figure 8 Racers 5-pack" />
-      <option value="Figure 8 Starter Set" />
-      <option value="Final Run" />
-      <option value="Fire Squad" />
-      <option value="First Response" />
-      <option value="Flaming Hot Wheels" />
-      <option value="Flyin’ Aces" />
-      <option value="Fright Cars" />
-      <option value="Future Fleet 2000" />
-      <option value="Game Over Series" />
-      <option value="Gold Rides" />
-      <option value="Grave Rave" />
-      <option value="HW 55 Race Team" />
-      <option value="HW 70s vs 90s" />
-      <option value="HW Art Cars" />
-      <option value="HW CODE Cars 2012" />
-      <option value="HW Celebration Racers" />
-      <option value="HW City" />
-      <option value="HW City Works" />
-      <option value="HW City Works 5-pack" />
-      <option value="HW City: HW Rescue" />
-      <option value="HW Daredevils" />
-      <option value="HW Designed By" />
-      <option value="HW Designs" />
-      <option value="HW Digital Circuit" />
-      <option value="HW Dirt" />
-      <option value="HW Drag Strip" />
-      <option value="HW Drag Strip 5-pack" />
-      <option value="HW Dream Garage" />
-      <option value="HW Drift" />
-      <option value="HW EV" />
-      <option value="HW Exotics" />
-      <option value="HW Exotics 5-pack" />
-      <option value="HW Extreme Sports" />
-      <option value="HW Fast Transit" />
-      <option value="HW First Response" />
-      <option value="HW Fun Park" />
-      <option value="HW Fun Park 5-pack" />
-      <option value="HW Games" />
-      <option value="HW Gassers" />
-      <option value="HW Gassers 5-pack" />
-      <option value="HW Getaways" />
-      <option value="HW Glow Wheels" />
-      <option value="HW Green Speed" />
-      <option value="HW Hatchbacks" />
-      <option value="HW Haulers" />
-      <option value="HW Heavyweights" />
-      <option value="HW Hot Trucks" />
-      <option value="HW Hot Trucks 5-pack" />
-      <option value="HW Imagination" />
-      <option value="HW J-Imports" />
-      <option value="HW Legends Tour" />
-      <option value="HW Main Street" />
-      <option value="HW Mega Bite" />
-      <option value="HW Metro" />
-      <option value="HW Modified" />
-      <option value="HW Moto" />
-      <option value="HW Off-Road" />
-      <option value="HW Race - Night Storm" />
-      <option value="HW Race Day" />
-      <option value="HW Race Team" />
-      <option value="HW Race: Night Storm" />
-      <option value="HW Raceday" />
-      <option value="HW Racing" />
-      <option value="HW Remote Adventures" />
-      <option value="HW Rescue" />
-      <option value="HW Reverse Rake" />
-      <option value="HW Ride-Ons" />
-      <option value="HW Roadsters" />
-      <option value="HW Rolling Metal" />
-      <option value="HW Screen Time" />
-      <option value="HW Showroom" />
-      <option value="HW Slammed" />
-      <option value="HW Space" />
-      <option value="HW Speed Graphics" />
-      <option value="HW Speed Team" />
-      <option value="HW Sports" />
-      <option value="HW Starting Grid" />
-      <option value="HW Stunt" />
-      <option value="HW Tool-in-1" />
-      <option value="HW Track Champs" />
-      <option value="HW Turbo" />
-      <option value="HW Vans" />
-      <option value="HW Wagons" />
-      <option value="HW Workshop" />
-      <option value="HW Xtreme Sports" />
-      <option value="HW Zombies 5-pack" />
-      <option value="HW the 80s" />
-      <option value="HW the 90s" />
-      <option value="HWMT" />
-      <option value="HWMT Back to Basics" />
-      <option value="HWMT Big Rigs" />
-      <option value="HWMT Champion Crashers" />
-      <option value="HWMT Crash Legends" />
-      <option value="HWMT DC" />
-      <option value="HWMT HW Flames" />
-      <option value="HWMT Trophy Champions" />
-      <option value="Halloween 4-pack" />
-      <option value="Halloween Series" />
-      <option value="Heat Fleet" />
-      <option value="Heat Fleet 2011" />
-      <option value="Heroes on Hot Wheels" />
-      <option value="Honda" />
-      <option value="Honda Collector Set" />
-      <option value="Hot Trucks 5-pack" />
-      <option value="Hot Wagons" />
-      <option value="Hot Wheels Boulevard" />
-      <option value="Hot Wheels Let’s Race" />
-      <option value="Hot Wheels id: Factory Fresh" />
-      <option value="Hybrid Speed" />
-      <option value="Johnny Lightning: Street Freaks" />
-      <option value="MBX Adventure" />
-      <option value="MBX Adventure City" />
-      <option value="MBX Airport 5-pack" />
-      <option value="MBX Airport Alarm" />
-      <option value="MBX Airport II 5-pack" />
-      <option value="MBX Animals" />
-      <option value="MBX CIty Drivers" />
-      <option value="MBX Candy Series Mix 2" />
-      <option value="MBX City" />
-      <option value="MBX Construction" />
-      <option value="MBX County Rescue" />
-      <option value="MBX EMT 5-pack" />
-      <option value="MBX Explorers" />
-      <option value="MBX Fire 5-pack" />
-      <option value="MBX Fire Fighters" />
-      <option value="MBX Fire Rescue" />
-      <option value="MBX Germany" />
-      <option value="MBX Go Diego Go 5-pack" />
-      <option value="MBX Heroic Rescue" />
-      <option value="MBX Heroic Rescue 5-pack" />
-      <option value="MBX Highway" />
-      <option value="MBX Hometown Heroes" />
-      <option value="MBX Japan Origins" />
-      <option value="MBX Jurassic World 5-pack: Island Explorers" />
-      <option value="MBX Marine Rescue" />
-      <option value="MBX Metal" />
-      <option value="MBX Metro" />
-      <option value="MBX Metro Transit 5-pack" />
-      <option value="MBX Mickey Mouse Clubhouse 5-pack" />
-      <option value="MBX Models of Yesteryear" />
-      <option value="MBX Off-Road" />
-      <option value="MBX Rescue" />
-      <option value="MBX Rescue Rookies" />
-      <option value="MBX Rescue V 5-pack" />
-      <option value="MBX Retro 5-pack" />
-      <option value="MBX Road Trip" />
-      <option value="MBX Service" />
-      <option value="MBX Showroom" />
-      <option value="MBX Sky Busters" />
-      <option value="MBX Super Star Transporters" />
-      <option value="MBX Ultimate Rescue" />
-      <option value="MBX Working Rigs" />
-      <option value="Mainline" />
-      <option value="Mainline Classics" />
-      <option value="Marvel Character Cars" />
-      <option value="Matchbox Collectors Series" />
-      <option value="Matchbox Hero City" />
-      <option value="Matchbox Hero City: Hospital" />
-      <option value="Matchbox Mainline" />
-      <option value="Matchbox Moving Parts" />
-      <option value="Matchbox Multipack" />
-      <option value="Mattel" />
-      <option value="McDonald’s" />
-      <option value="Minion Character Cars" />
-      <option value="Modified" />
-      <option value="Modified Rides" />
-      <option value="Monster Truck + Car pack" />
-      <option value="Mud Runners" />
-      <option value="Mud Studs" />
-      <option value="Multipack Exclusive" />
-      <option value="Muscle Mania" />
-      <option value="Mustang 60" />
-      <option value="Mystery Car" />
-      <option value="Mystery Models" />
-      <option value="Neon Speeders" />
-      <option value="Nightburnerz" />
-      <option value="Nightburnerz 5-pack" />
-      <option value="Nightspeed" />
-      <option value="Peak Pursuit" />
-      <option value="Peanuts" />
-      <option value="Peanuts 75 Years" />
-      <option value="Pixar Character Cars" />
-      <option value="Police Pursuit 5-pack" />
-      <option value="Pop Culture: Cyberpunk 2077" />
-      <option value="Pop Culture: Jurassic Park" />
-      <option value="Power Launcher pack" />
-      <option value="Pro Racing" />
-      <option value="Pro Racing Race Day" />
-      <option value="Pro Racing: Basic" />
-      <option value="Quarter Mile Heroes" />
-      <option value="Race Day" />
-      <option value="Race World Cave 2010" />
-      <option value="Race World: City" />
-      <option value="Rally Champs" />
-      <option value="Rally Racers" />
-      <option value="Rebel Rides" />
-      <option value="Red Edition" />
-      <option value="Red Lines" />
-      <option value="Reissues" />
-      <option value="Retro Racers" />
-      <option value="Rocking’ Rods Series" />
-      <option value="Rod Squad" />
-      <option value="Rod Squadron" />
-      <option value="Roll Patrol" />
-      <option value="Safari Mode" />
-      <option value="Scrapheads" />
-      <option value="Silver Series II" />
-      <option value="Sky Show" />
-      <option value="Space Series" />
-      <option value="Speed Blur" />
-      <option value="Speed Machines" />
-      <option value="Spider-Man" />
-      <option value="Spider-Man Web-Car Launcher" />
-      <option value="Spoiler Alert" />
-      <option value="Spring" />
-      <option value="Spring Series" />
-      <option value="Spy Print Series" />
-      <option value="Star-Spangled Series" />
-      <option value="Street Art" />
-      <option value="Street Beasts" />
-      <option value="Street Beasts 5-pack" />
-      <option value="Super Chromes" />
-      <option value="Super Rigs" />
-      <option value="Surf’s Up" />
-      <option value="Sweet Rides" />
-      <option value="Team: Ford Racing" />
-      <option value="Team: Rat Rods" />
-      <option value="Techno Bits" />
-      <option value="Terrordactyl 5-pack" />
-      <option value="Terrorific Series" />
-      <option value="Tesla: Greetings from Space" />
-      <option value="The Hot Ones" />
-      <option value="Then and Now" />
-      <option value="Thrill Racers - Earthquake" />
-      <option value="Thrill Racers - Raceway" />
-      <option value="Tooned" />
-      <option value="Tooned 5-pack" />
-      <option value="Tooned Golf" />
-      <option value="Track Aces" />
-      <option value="Track Builder 5-pack" />
-      <option value="Track Champs" />
-      <option value="Track Fleet" />
-      <option value="Track Set" />
-      <option value="Track Stars" />
-      <option value="Track Stars Haulers" />
-      <option value="Treasure Hunts 2010" />
-      <option value="Truckin Along" />
-      <option value="Tuners" />
-      <option value="Turbo Trax Set" />
-      <option value="Twenty +" />
-      <option value="Ultra Hots" />
-      <option value="Urban Camouflage" />
-      <option value="Vintage American Muscle" />
-      <option value="Vintage Club" />
-      <option value="Vintage Racing Club" />
-      <option value="Virtual Collection" />
-      <option value="Volkswagen" />
-      <option value="Wagons" />
-      <option value="Web Trading Cars" />
-      <option value="Wild Widebody" />
-      <option value="Work Crewsers" />
-      <option value="World Class Racers" />
-      <option value="World Racers 5-pack" />
-      <option value="X-Raycers" />
-      <option value="X-Treme Speed" />
-      <option value="ZAMAC Themed Multipack" />
-      
-    </datalist>
-
-    <input type="search" list="conditions" placeholder="CONDITION" class="select" id="conditions_input">
-
-    <datalist id="conditions">
-        <option value="" />
-      <option value="New (open)" />
-      <option value="New in 3-pack" />
-      <option value="New in 4-pack" />
-      <option value="New in 5-pack" />
-      <option value="New in 50-pack" />
-      <option value="New in 6-pack" />
-      <option value="New in box" />
-      <option value="New on card" />
-      <option value="Opened" />
-      <option value="Used" />
-      
-    </datalist>
-
-    <input type="search" list="sources" placeholder="SOURCE" class="select" id="sources_input">
-
-    <datalist id="sources">
-        <option value="" />
-      <option value="Ace Hardware" />
-      <option value="Archer" />
-      <option value="Big Lots" />
-      <option value="Brother" />
-      <option value="CVS" />
-      <option value="Community Thrift" />
-      <option value="DD’s Discount" />
-      <option value="Debbie & Mindy" />
-      <option value="Dima" />
-      <option value="Dollar General" />
-      <option value="Dollar Tree" />
-      <option value="Family Dollar" />
-      <option value="Flea Market" />
-      <option value="Found" />
-      <option value="Gina" />
-      <option value="Goodwill" />
-      <option value="Grandma" />
-      <option value="Grandpa" />
-      <option value="Isa" />
-      <option value="Lidl" />
-      <option value="Marketplace" />
-      <option value="Mommy" />
-      <option value="OfferUp" />
-      <option value="Ollie’s" />
-      <option value="Publix" />
-      <option value="Ross" />
-      <option value="Sandy" />
-      <option value="Sissy" />
-      <option value="Steve" />
-      <option value="Target" />
-      <option value="Trade" />
-      <option value="Walgreens" />
-      <option value="Walmart" />
-      <option value="eBay" />
-      
-    </datalist>
-
-</div>
-
-    <div id="empty_space" style="height: 30px;"></div>
     
-    <div id="frame" style="display: none">
+    <div id="notification"></div>
+    
+    <div id="advanced_search">
+
+        <input type="search" list="tags" placeholder="TAG" class="select" id="tags_input">    
+        <datalist id="tags"></datalist>
+    
+        <input type="search" list="years" placeholder="YEAR" class="select" id="years_input">    
+        <datalist id="years"></datalist>
+    
+        <input type="search" list="series" placeholder="SERIES" class="select" id="series_input">    
+        <datalist id="series"></datalist>
+    
+        <input type="search" list="conditions" placeholder="CONDITION" class="select" id="conditions_input">    
+        <datalist id="conditions"></datalist>
+    
+        <input type="search" list="sources" placeholder="SOURCE" class="select" id="sources_input">    
+        <datalist id="sources"></datalist>
+    
     </div>
+
+    <div id="csv"></div>
     
     <div id="carousel">
+        <div id="card_view"></div>
         <div id="item_list"></div>
     </div>
+    
+    <div id="messages"></div>
+    
 
-<script>
-    //getCollection();
-    
-    const collectables = document.getElementById("frame");
-    const carousel = document.getElementById("carousel");
-    
-    function initSearch() {
-        //visibleAll();
-        //parseVisible();
-        //addIDs();
-        addParseToSelectors();
-    };
-    
-    function parseVisible() {
-
-        let visible = collectables.getElementsByClassName("visible");
-        let icons = "";
-        let cards = "";
-        
-        for (var i = 0; i < visible.length; i++) {
-            
-            var image_path = "";
-            var name = "";
-            var id = "";
-            var wrapper = "";
-            var details = "";
-            
-            name =  visible[i].getElementsByTagName("h1")[0].innerText;
-            
-            try {
-                image_path = "https://totkindgott.github.io/" +  visible[i].getElementsByClassName("photo")[0].getAttribute("src");
-            } catch {
-                image_path = "Images/NoPhoto.JPG\" class=\"grayed";
-            };
-            try {
-                wrapper = visible[i].getElementsByClassName("wrapper")[0].innerHTML;
-                //console.log(name, path);
-            } catch {
-                wrapper = "<img class=\"photo\" src=\"Images/NoPhoto.JPG\" class=\"grayed\" />";
-                //console.log(name, path);
-            }; // try catch block ends
-            
-            try {
-                details = visible[i].getElementsByTagName("table")[0].innerHTML;
-            } catch {
-                details = "";
-            }
-
-            id = "item" + i;
-            
-            //icons += '<img src="' + image_path + '" onclick="location.href=\'#' + id + '\'" />\n';
-                icons += '<img src="' + image_path + '" onclick="openPhoto(\'' + id + '\');" />\n';
-            //cards += '<div class="item_card" id="' + id + '">\n<div class="item_name">' + name + '</div>\n<div class="item_photo">\n<img src="' + image_path + '" />\n</div>\n</div>';
-            cards += '<div class="item_card" id="' + id + '">\n<div class="item_name" onclick="toggleDetails(' + id + ')">' + name + '</div>\n<div class="item_photo">' + wrapper + '</div>\n<div class=\"details\"><table>' + details + '</table></div>\n</div>';
-            
-        }; // for loop ends
-
-        //sidebar.innerHTML = photos;
-        //carousel.innerHTML = "";
-        carousel.innerHTML = '<div id="card_view">' + cards + '</div>\n<div id="item_list">\n' + icons + '</div>';
-        setActivationEvent();
-    };
-    
-    function setActivationEvent() {
-        
-    try {
-        document.getElementById("item_list").querySelectorAll("img").forEach(each => {
-            each.addEventListener("click", activate);
-        });
-    } catch {
-        void(0);
-    };
-    
-    function activate() {
-        deactivate();
-        this.classList.add('color');
-    };
-    
-    function deactivate() {
-        try {
-            document.getElementById("item_list").querySelectorAll("img").forEach(each => {
-            each.classList.remove("color");
-            }); // forEach loop ends
-        } catch {
-            void(0);
-        }; // try catch block ends
-    } // deactivate() function ends
-    };
-
-    function addParseToSelectors() {
-    seriesSelectorInput.addEventListener("change", search);
-    //seriesSelectorInput.addEventListener("keyup", search);
-    sourceSelectorInput.addEventListener("change", search);
-    //sourceSelectorInput.addEventListener("keyup", search);
-    tagSelectorInput.addEventListener("change", search);
-    //tagSelectorInput.addEventListener("keyup", search);
-    conditionSelectorInput.addEventListener("change", search);
-    //conditionSelectorInput.addEventListener("keyup", search);
-    yearSelectorInput.addEventListener("change", search);
-    //yearSelectorInput.addEventListener("keyup", search);
-    };
-
-    const processChange = debounce(() => search());        
-    
-    const search_bar = document.getElementById("search_bar");
-    search_bar.addEventListener("keyup", processChange);
-    //search_bar.addEventListener("change", search);
-
-    function debounce(func, timeout = 300){
-        WARN("debounce()");
-        let timer;
-        return (...args) => {
-            clearTimeout(timer);
-            timer = setTimeout(() => {
-                func.apply(this, args); 
-            }, timeout);
-      };
-    };
-    
-    function search() {
-        findMatches();
-        //setTimeout(() => {
-        //addIDs();
-        parseVisible();
-        parseDatalists();
-        makeCollage();
-        //showIDs();
-        //}, 500);
-    };
-    
-    function toggleDetails(cardID) {
-        var card = document.getElementById(cardID.id);
-        var el = card.getElementsByClassName("details")[0];
-
-        if (el.style.display == "block") {
-            el.style.display = "none";
-        } else {
-            el.style.display = "block";
-        };
-    };
-    
-    function addDetailsToggle() {
-        let itemCards = document.getElementsByClassName("item_card");
-            
-        //itemCards.forEach(card => {
-        for (var i = 0; i < itemCards.length; i++) {
-            itemCards[i].addEventListener("click", () => toggleDetails(toString(itemCards[i].id)));
-        };
-        console.log("added to", itemCards.length);
-    };
-    
-    function toggleCollage() {
-        //document.getElementById("collage_wrapper").classList.toggle("shown");
-        try {
-        document.getElementById("item_list").classList.toggle("shown");
-    } catch (TypeError) {
-        void(0);
-    };
-    };
-    
-    function showCollage() {
-        document.getElementById("item_list").classList.add("shown");
-    };
-    
-    function hideCollage() {
-        document.getElementById("item_list").classList.remove("shown");
-    };
-    
-    function showID() {
-        console.log(this.id);
-    };
-    
-    function addIDs() {
-        let divs = document.getElementsByClassName("searchable");
-        for (var i = 0; i < divs.length; i++) {
-            divs[i].setAttribute("id", "item" + i);
-        };
-    };
-    
-    function visibleAll() {
-        let divs = document.getElementsByClassName("searchable");
-        for (var i = 0; i < divs.length; i++) {
-            divs[i].classList.add("visible");
-        };
-    };
-    
-    function openPhoto(photoid) {
-        window.location.href = "#" + photoid;
-        if (document.getElementById("item_list").className == "shown") {
-            toggleCollage();
-        };
-    };
-    
-    function makeCollage() {
-        let collage = document.getElementById("collage");
-        let matches = document.getElementsByClassName("visible");
-        let photos = "";
-        
-        for (var i = 0; i < matches.length; i++) {
-            
-            try {
-                let match = matches[i].getElementsByClassName("photo")[0];
-                let path = encodeURI(match.getAttribute("src"));
-                //let path = encodeURI(match.getAttribute("src"));
-                let photoid = matches[i].getAttribute("id");
-//                if (path === "") {
-//                    photos += "<img class=\"photo\" src=\"Images/NoPhoto.JPG\" class=\"grayed\" onclick=\"openPhoto(" + photoID + ") />";
-//                } else {
-                photos += "<img src=\"" + path + "\" onclick=\"openPhoto('" + photoid + "')\" />";
-//                };
-            } catch {
-                photos += "<img class=\"photo\" src=\"Images/NoPhoto.JPG\" class=\"grayed\" onclick=\"openPhoto('" + matches[i].getAttribute("id") + "')\" />";
-            }; // try catch block ends
-        } // for loop ends
-        collage.innerHTML = photos;
-        verticalSwipeActions("item_list", showCollage, hideCollage, 100);
-    };
-    
-    collectables.innerHTML = "";
-
-function verticalSwipeActions(elementID, swipeUpAction, swipeDownAction, swipeThreshold=50) {
-    const swipeElement = document.getElementById(elementID);
-    let startY;
-    let endY;
-    const threshold = swipeThreshold; // Minimum distance in pixels for a swipe to be registered
-    swipeElement.addEventListener('touchstart', (e) => {
-        startY = e.touches[0].clientY;
-    }); // addEventListener ends
-    swipeElement.addEventListener('touchmove', (e) => {
-        // Optional: Prevent default scrolling behavior if the user is interacting with this element
-        // e.preventDefault(); 
-        endY = e.touches[0].clientY;
-    }); // addEventListener ends
-    
-    const isPageScrolling = window.scrollY !== 0 || document.documentElement.scrollTop !== 0;
-    //const isPageScrolling = swipeElement.scrollY !== 0 || swipeElement.scrollTop !== 0;
-    swipeElement.addEventListener('touchend', () => {
-        if (startY && endY && !isPageScrolling) {
-            const deltaY = startY - endY; // Positive value indicates an upward swipe
-            if (deltaY > threshold) {
-                // Swipe up detected
-                swipeUpAction();
-                // Optional: Remove the element from the DOM or hide it completely after the animation
-                // setTimeout(() => {
-                //     fixedElement.style.display = 'none';
-                // }, 300); 
-            } else if (deltaY < 0 - threshold * 2 && swipeElement.scrollTop !== 0) {
-                swipeDownAction();
-            } else if (swipeElement.scrollTop == 0) {
-                swipeDownAction();
-            } else {
-                // Swipe was not significant enough, ignore
-                void(0);
-            }; // if else block ends
-        }; // if block ends
-        // Reset touch coordinates
-        startY = null;
-        endY = null;
-    });
-};
-
-
-</script>
-
-    <input type="button" id="collage_button" onclick="toggleCollage();" />
-
+    <input type="button" id="console_button" onclick="toggleMessages();" />
 
     <input type="button" id="help_button" value="" onclick="location.href='reference.html'" />
     
     <footer id="page_footer">
-        <p>Last update: <a href="updates.html">2026-04-29</a></p>
+        <p>Last update: <a href="updates.html">2026-05-26</a></p>
         <p>Site design: Konstantin A Kolosov</p>
         <hr />
             <a href="index.html">Home</a>
@@ -828,8 +100,152 @@ function verticalSwipeActions(elementID, swipeUpAction, swipeDownAction, swipeTh
 
 
 <script>
-document.getElementById('page_footer').classList.add('fixed-position');
+    
+function timed(func) {
+    return function (...args) {
+        let start_time = performance.now();
+        LOG(`>>> running ${func.name}() ...`)
+        const result = func(...args);
+        let end_time = performance.now();
+        NOTE(`${func.name}() executed in ${Number((end_time - start_time)/1000).toFixed(2)} s`);
+        return result;
+    };
+};
+
+const models = new Array();
+const csv_url = 'https://totkindgott.github.io/collection.csv';
+//var search_term = "Honda";
+    
+const getCSV = async () => {
+    try {
+        let start = performance.now();
+        LOG(">>> running getCSV() ...")
+        const res = await fetch(csv_url);
+        if (res.status === 200) {
+            const data = await res.text();
+        document.getElementById("csv").innerHTML = data;
+            SUCCESS(`fetch("${csv_url}") response status: ${res.status}`);
+            NOTE(`fetched ${data.length.toLocaleString("en-US")} characters`);
+            let end = performance.now();
+            NOTE(`getCSV() executed in ${Number((end - start)/1000).toFixed(2)} s`);
+        } else {
+            ERROR(`Error code ${res.status} in fetch(${csv_url})`);
+        }; // if / else block ends
+    } catch (error) {
+        ERROR(`Error in getCSV(): ${error}`);
+    } finally {
+        SUCCESS("getCSV() run status: OK");
+    }; // try / catch block ends
+}; // getCSV declaration ends
+
+function parseCSV() {
+    let start = performance.now();
+    LOG(">>> running parseCSV()");
+    let count = 0;
+    let csv =  document.getElementById("csv").innerHTML;
+    let lines = csv.split("\n");
+    let headers = lines.shift();
+    NOTE(lines.length, "lines in csv");
+    try {
+        lines.forEach(line => {
+            count += 1;
+            models.push(new Model(count, line));
+            });
+    } catch (error) {
+        ERROR(error);
+    };
+    SUCCESS(models.length, "models processed");
+    let end = performance.now();
+    NOTE(`parseCSV() executed in ${Number((end - start)/1000).toFixed(2)} s`);
+}
+
+function search() {
+    //console.time("timer");
+    let start = performance.now();
+    openMessages();
+    LOG(">>> running search() in main file ...");
+            
+    var query = document.getElementById("search_bar").value;
+    var filter = new Filter();
+    var match_count = 0;
+
+    if (!query) {
+        WARN("empty search string");
+    };
+    OPTION(`searching for ${query}`);
+
+    tagSelectorInput.value ? OPTION("tag:", tagSelectorInput.value) : void(0);
+    yearSelectorInput.value ? OPTION("year:", yearSelectorInput.value) : void(0);
+    seriesSelectorInput.value ? OPTION("series:", seriesSelectorInput.value) : void(0);
+    sourceSelectorInput.value ? OPTION("source:", sourceSelectorInput.value) : void(0);
+    conditionSelectorInput.value ? OPTION("condition:", conditionSelectorInput.value) : void(0);
+    
+    var count = 0;
+    var data = document.getElementById("csv").innerText;
+    var text = data.split("\n");
+    var headers = text.shift();
+    var lines = new Array();
+    var images = new Array();
+    for (var l = 0; l < text.length; l++) {
+        
+        let line = text[l].toLowerCase();
+
+        if (line.includes(query.toLowerCase(), yearSelectorInput.value, tagSelectorInput.value.toLowerCase(), seriesSelectorInput.value.toLowerCase(), conditionSelectorInput.value.toLowerCase(), sourceSelectorInput.value)) {
+            m = new Model(l, text[l]);
+            //m.id = `item${l}`;
+            //f = m.make_frame_view();
+            if (m.series.toLowerCase().includes(seriesSelectorInput.value.toLowerCase()) && m.tag.toLowerCase().includes(tagSelectorInput.value.toLowerCase()) && m.year.includes(yearSelectorInput.value) && m.condition.toLowerCase().includes(conditionSelectorInput.value.toLowerCase()) && m.origin.toLowerCase().includes(sourceSelectorInput.value.toLowerCase())) {
+            f = m.make_card_view();
+            lines.push(f);
+            i = m.make_thumbnail_view();
+            images.push(i);
+            filter.add_data(m);
+            WARN(m.missing_photo);
+            count += 1;
+            }; // nested if ends
+        }; // if block ends
+    }; // for loop ends
+        LOG(`search() returned ${count} matches`);
+        document.getElementById("card_view").innerHTML = lines.join('');
+        document.getElementById("item_list").innerHTML = images.join("");
+            setActivationEvent();
+            updateCount(count);
+            match_count = count;
+    //console.timeEnd("timer");
+    let end = performance.now();
+    NOTE(`search() executed in ${Number((end - start)/1000).toFixed(2)} s`);
+    match_count > 0 ? SUCCESS('search() run status: OK') : ERROR('search() run status: error [nothing found]') & show_messages();
+    filter.apply_filters();
+    hideMessages();
+};
+
+async function initialSetup() {
+    let init_start = performance.now();
+    LOG(">>> running initialSetup() ...");
+    checkMode();
+    await parseURL();
+    await getCSV();
+    //await parseCSV();
+    //await initialOptionParse();
+    searchBar.value == "" ? await initialOptionParse() & showSearchTools() : await search();
+    let init_end = performance.now();
+    NOTE(`initialSetup() executed in ${Number((init_end - init_start)/1000).toFixed(2)} s`);
+};
+
+initialSetup();
+//getCSV();
+//setTimeout(search, 1000);
+document.getElementById("search_bar").addEventListener("change", search);
+//document.getElementById("search_bar").addEventListener("keyup", processChange);
+verticalSwipeActions("item_list", showCollage, hideCollage, 100); 
+// Collage view by default
+document.getElementById('item_list').classList.add('shown');
+
+//setTimeout(initialOptionParse, 2500);
+//setTimeout(toggleMessages, 2000)
+
 </script>
     
+
 </body>
 </html>

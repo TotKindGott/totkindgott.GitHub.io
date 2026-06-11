@@ -343,26 +343,26 @@ function initialOptionParse() {
         ERROR(`error in ${function_name}(): ${error}`);
     };
     LOG(`>>> parsing data with ${function_name}()`);
-    
-    years = Array.from(years_set).sort();
-    HIGHLIGHT("years:", years.length);
-    DEBUG && LOG(years);
-    
-    conditions = Array.from(conditions_set).sort();
-    HIGHLIGHT("conditions:", conditions.length);
-    DEBUG && LOG(conditions);
-    
-    collections = Array.from(collections_set).sort();
-    HIGHLIGHT("collections:", collections.length);
-    DEBUG && LOG(collections);
-    
+
     tags = Array.from(tags_set).sort();
     HIGHLIGHT("tags:", tags.length);
     DEBUG && LOG(tags);
     
+    years = Array.from(years_set).sort();
+    HIGHLIGHT("years:", years.length);
+    DEBUG && LOG(years);
+
+    collections = Array.from(collections_set).sort();
+    HIGHLIGHT("collections:", collections.length);
+    DEBUG && LOG(collections);
+    
     sources = Array.from(sources_set).sort();
     HIGHLIGHT("sources:", sources.length);
     DEBUG && LOG(sources);
+    
+    conditions = Array.from(conditions_set).sort();
+    HIGHLIGHT("conditions:", conditions.length);
+    DEBUG && LOG(conditions);
     
     SUCCESS(`${function_name}() run status: OK`);
     updateDatalists();

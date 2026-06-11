@@ -357,6 +357,10 @@ input.mode_button {
     margin-right: 18px;
 }
 
+#view_button, #details_button {
+    display: none;
+}
+
 #details_button, .details_button {
     background-image: url("Images/Icons/newspaper-outline.svg");
     background-size: 16px;

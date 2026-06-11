@@ -167,6 +167,11 @@ body.dark-mode div#carousel div#item_list {
         color: gray;
     }
     
+    #messages > p.option {
+        color: lightblue;
+        font-weight: bold;
+    }
+    
     #card_view {
         width: 98vw;
         height: 108vw;
