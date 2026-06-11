@@ -2,7 +2,7 @@ const DEBUG = false;
 const DATA_SOURCE = "local" // remote or local
 
 const collection_url = 'https://totkindgott.github.io/collection.html';
-const search_url = 'https://totkindgott.github.io/oldsearch.html?search=';
+const search_url = 'https://totkindgott.github.io/search.html?search=';
 const csv_file = "./collection.csv"
     
 const inputs = document.querySelectorAll('input');

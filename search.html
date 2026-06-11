@@ -171,9 +171,9 @@ function search() {
 
     if (!query) {
         WARN("empty search string");
+    } else {
+        OPTION(`searching for ${query}`);
     };
-    OPTION(`searching for ${query}`);
-
     tagSelectorInput.value ? OPTION("tag:", tagSelectorInput.value) : void(0);
     yearSelectorInput.value ? OPTION("year:", yearSelectorInput.value) : void(0);
     seriesSelectorInput.value ? OPTION("series:", seriesSelectorInput.value) : void(0);
