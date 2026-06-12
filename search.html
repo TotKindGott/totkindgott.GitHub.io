@@ -307,8 +307,8 @@ async function initialSetup() {
     let init_start = performance.now();
     LOG(">>> running initialSetup() ...");
     checkMode();
-    await parseURL();
     await getCSV();
+    await parseURL();
     //await parseCSV();
     //await initialOptionParse();
     searchBar.value == "" ? await initialOptionParse() & showSearchTools() : await search();
