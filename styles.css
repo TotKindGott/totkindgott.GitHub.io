@@ -1978,3 +1978,21 @@ body.dark-mode div#horizontal_selector > span.active {
     margin: 0; 
     box-shadow: 0 0 5px 1px #ffffff;
 }
+
+#console_toggle {
+    background-image: url("Images/Icons/terminal-outline.svg");
+    background-size: 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 24px;
+    width: 24px;
+    position: static;
+    right: 15px;
+    border-radius: 12px;
+    border: 1px solid gray;
+    background-color: #ffffff;
+    margin: 5px auto; 
+    padding: 0;
+    box-shadow: 0 0 5px 1px #ffffff;
+    z-index: 10;
+}

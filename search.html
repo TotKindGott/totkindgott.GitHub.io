@@ -28,6 +28,7 @@
     <div id="dropdown">
         <input type="button" id="mode_button" />
         <input type="button" id="view_button" />
+        <input type="button" id="console_toggle" onclick="toggleConsoleState()" />
         <input type="button" id="details_button" />
         <input type="button" id="clear_button" />
     </div>
@@ -84,7 +85,6 @@
     
 
     <input type="button" id="console_button" onclick="toggleMessages();" />
-
     <input type="button" id="help_button" value="" onclick="location.href='reference.html'" />
     
     <footer id="page_footer">
@@ -167,6 +167,8 @@ function search() {
     //console.time("timer");
     let start = performance.now();
     openMessages();
+    
+    LOG("<hr />");
     LOG(">>> running search() in main file ...");
             
     var query = document.getElementById("search_bar").value;
@@ -192,6 +194,7 @@ function search() {
     _series ? OPTION("with series:", _series) : void(0);
     _source ? OPTION("with source:", _source) : void(0);
     _condition ? OPTION("with condition:", _condition) : void(0);
+    LOG("<hr />");
     
     var count = 0;
     var data = document.getElementById("csv").innerText;
@@ -215,7 +218,7 @@ function search() {
             i = m.make_thumbnail_view();
             images.push(i);
             filter.add_data(m);
-            WARN(m.missing_photo);
+            CLIP(m.missing_photo);
             count += 1;
             matches.push(m);
             }; // nested if ends
@@ -246,6 +249,7 @@ function match() {
         return;
     };
     
+    LOG("<hr />");
     LOG(">>> running match() on", search_result.length, "objects from recent search for", searchBar.value);
     
     let matched = new Array();
@@ -262,6 +266,7 @@ function match() {
     _series ? OPTION("with series:", _series) : void(0);
     _source ? OPTION("with source:", _source) : void(0);
     _condition ? OPTION("with condition:", _condition) : void(0);
+    LOG("<hr />");
     
     search_result.forEach(m => {
         if (m.series.toLowerCase().includes(_series.toLowerCase()) && m.tag.toLowerCase().includes(_tag.toLowerCase()) && m.year.toString().includes(_year) && m.condition.toLowerCase().includes(_condition.toLowerCase()) && m.origin.toLowerCase().includes(_source.toLowerCase())) {
@@ -291,7 +296,7 @@ function display(models) {
             lines.push(f);
             i = model.make_thumbnail_view();
             images.push(i);
-            WARN(model.missing_photo);
+            CLIP(model.missing_photo);
     });
     document.getElementById("card_view").innerHTML = lines.join('');
     document.getElementById("item_list").innerHTML = images.join("");
@@ -334,6 +339,26 @@ async function altSetup() {
     let end = performance.now();
     NOTE(`altSetup() executed in ${Number((end - start)/1000).toFixed(2)} s`);
 }
+
+function consoleAutoDismiss() {
+    CONSOLE_STATE = "";
+    document.getElementById("console_toggle").style.backgroundImage = 'url("Images/Icons/terminal-outline.svg")';
+        LOG("console auto-dismiss: ON")
+}; 
+
+function consoleKeepOpen() {
+    CONSOLE_STATE = "open";
+    document.getElementById("console_toggle").style.backgroundImage = 'url("Images/Icons/terminal.svg")';
+    LOG("console auto-dismiss: OFF")
+};
+
+function toggleConsoleState() {
+    if (CONSOLE_STATE == "") {
+        consoleKeepOpen();
+    } else {
+        consoleAutoDismiss();
+    };
+};
 
 initialSetup();
 //altSetup()

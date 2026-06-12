@@ -1,6 +1,6 @@
 const DEBUG = false;
 const DATA_SOURCE = "local" // remote or local
-const CONSOLE_STATE = ""; // open keeps console open
+let CONSOLE_STATE = ""; // open keeps console open
 
 const collection_url = 'https://totkindgott.github.io/collection.html';
 const search_url = 'https://totkindgott.github.io/search.html?search=';
@@ -47,10 +47,18 @@ function NOTE(...text) {
     OUTPUT(text.join(" "), "note");
 };
 
+function CLIP(...text) {
+    OUTPUT(text.join(" "), "clip");
+};
+
 function OUTPUT(text, alert_type) {
     //setTimeout(() => {document.getElementById("messages").innerHTML += `<p class="${alert_type}" onclick="copy('${text}')">${text}</p><hr />`;
     //document.getElementById("messages").lastChild.scrollIntoView()}, 100);
+    if (alert_type == "clip") {
     document.getElementById("messages").innerHTML += `<p class="${alert_type}" onclick="copy('${text}')">${text}</p>`;
+    } else {
+    document.getElementById("messages").innerHTML += `<p class="${alert_type}">${text}</p>`;
+    };
     document.getElementById("messages").lastChild.scrollIntoView();
 };
 
@@ -62,7 +70,7 @@ function checkMode() {
             element.classList.toggle("dark-mode");
             SUCCESS("localStorage status: OK")
         } else {
-            NOTE("using light mode");
+            NOTE("dark mode: OFF");
         }; // if block ends
 }; // checkMode function ends
 
@@ -72,8 +80,10 @@ function toggleDarkMode() {
     element.classList.toggle("dark-mode");
     if (localStorage.getItem("mode") !== "dark") {
         localStorage.setItem("mode", "dark");
+        LOG("dark mode: ON");
     } else {
         localStorage.setItem("mode", "light");
+        LOG("dark mode: OFF");
     }; // if else block ends
 }; // toggleDarkMode function ends
 

@@ -138,9 +138,12 @@ body.dark-mode div#carousel div#item_list {
     }
     
     #messages > hr {
-        color: silver;
+        background-color: black;
+        color: black;
+        border: 0.5px solid darkgray;
         margin: 2px auto;
         width: 95%;
+        height: 0;
     }
         
     #messages > p.message {
@@ -170,6 +173,10 @@ body.dark-mode div#carousel div#item_list {
     #messages > p.option {
         color: lightblue;
         font-weight: bold;
+    }
+    
+    #messages > p.clip {
+        color: orange;
     }
     
     #card_view {
