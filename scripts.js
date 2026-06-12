@@ -1,5 +1,6 @@
 const DEBUG = false;
 const DATA_SOURCE = "local" // remote or local
+const CONSOLE_STATE = ""; // open keeps console open
 
 const collection_url = 'https://totkindgott.github.io/collection.html';
 const search_url = 'https://totkindgott.github.io/search.html?search=';

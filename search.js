@@ -48,15 +48,15 @@ sourceSelectorInput.classList.add("left");
 conditionSelectorInput.classList.add("half");
 conditionSelectorInput.classList.add("right");
 
-seriesSelectorInput.addEventListener("change", search);
+seriesSelectorInput.addEventListener("change", match);
 //seriesSelectorInput.addEventListener("keyup", search);
-sourceSelectorInput.addEventListener("change", search);
+sourceSelectorInput.addEventListener("change", match);
 //sourceSelectorInput.addEventListener("keyup", search);
-tagSelectorInput.addEventListener("change", search);
+tagSelectorInput.addEventListener("change", match);
 //tagSelectorInput.addEventListener("keyup", search);
-conditionSelectorInput.addEventListener("change", search);
+conditionSelectorInput.addEventListener("change", match);
 //conditionSelectorInput.addEventListener("keyup", search);
-yearSelectorInput.addEventListener("change", search);
+yearSelectorInput.addEventListener("change", match);
 //yearSelectorInput.addEventListener("keyup", search);
 
 // seriesSelectorInput.addEventListener("change", findMatches);
@@ -71,7 +71,7 @@ yearSelectorInput.addEventListener("change", search);
 // yearSelectorInput.addEventListener("keyup", findMatches);
 
 searchBar.addEventListener("focus", showSearchTools);
-searchBar.addEventListener("keyup", findMatches);
+//searchBar.addEventListener("keyup", findMatches);
 
 //const multiButton = document.getElementById("multibutton");
 
@@ -84,7 +84,7 @@ document.addEventListener('click', function(event) {
 //document.addEventListener("dblclick", promptNewSearch);
 
 //clearButton.addEventListener("click", clearOptions);
-clearButton.addEventListener("click", restoreOptions);
+//clearButton.addEventListener("click", restoreOptions);
 
 //searchBar.addEventListener("blur", hideDynamics);
 
@@ -345,24 +345,21 @@ function initialOptionParse() {
     LOG(`>>> parsing data with ${function_name}()`);
 
     tags = Array.from(tags_set).sort();
-    HIGHLIGHT("tags:", tags.length);
     DEBUG && LOG(tags);
     
     years = Array.from(years_set).sort();
-    HIGHLIGHT("years:", years.length);
     DEBUG && LOG(years);
 
     collections = Array.from(collections_set).sort();
-    HIGHLIGHT("collections:", collections.length);
     DEBUG && LOG(collections);
     
     sources = Array.from(sources_set).sort();
-    HIGHLIGHT("sources:", sources.length);
     DEBUG && LOG(sources);
     
     conditions = Array.from(conditions_set).sort();
-    HIGHLIGHT("conditions:", conditions.length);
     DEBUG && LOG(conditions);
+    
+    HIGHLIGHT(`tags: ${tags.length} | years: ${years.length} | collections: ${collections.length} | sources: ${sources.length} | conditions: ${conditions.length}`);
     
     SUCCESS(`${function_name}() run status: OK`);
     updateDatalists();

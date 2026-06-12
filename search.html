@@ -114,6 +114,7 @@ function timed(func) {
 
 const models = new Array();
 const csv_url = 'https://totkindgott.github.io/collection.csv';
+let search_result = new Array();
 //var search_term = "Honda";
     
 const getCSV = async () => {
@@ -159,6 +160,9 @@ function parseCSV() {
     NOTE(`parseCSV() executed in ${Number((end - start)/1000).toFixed(2)} s`);
 }
 
+// TODO: separate csv into tags/collections/years etc at initialOptionParse() to search by selectors through
+// possibly apply Model class there too - needs testing
+
 function search() {
     //console.time("timer");
     let start = performance.now();
@@ -168,17 +172,26 @@ function search() {
     var query = document.getElementById("search_bar").value;
     var filter = new Filter();
     var match_count = 0;
+    let SELECTORS = false;
+    
+    let _tag = tagSelectorInput.value;
+    let _year = yearSelectorInput.value;
+    let _series = seriesSelectorInput.value;
+    let _source = sourceSelectorInput.value;
+    let _condition = conditionSelectorInput.value;
 
     if (!query) {
         WARN("empty search string");
+        SELECTORS = true;
     } else {
-        OPTION(`searching for ${query}`);
+        OPTION(`searching for: ${query}`);
     };
-    tagSelectorInput.value ? OPTION("tag:", tagSelectorInput.value) : void(0);
-    yearSelectorInput.value ? OPTION("year:", yearSelectorInput.value) : void(0);
-    seriesSelectorInput.value ? OPTION("series:", seriesSelectorInput.value) : void(0);
-    sourceSelectorInput.value ? OPTION("source:", sourceSelectorInput.value) : void(0);
-    conditionSelectorInput.value ? OPTION("condition:", conditionSelectorInput.value) : void(0);
+    
+    _tag ? OPTION("with tag:", _tag) : void(0);
+    _year ? OPTION("with year:", _year) : void(0);
+    _series ? OPTION("with series:", _series) : void(0);
+    _source ? OPTION("with source:", _source) : void(0);
+    _condition ? OPTION("with condition:", _condition) : void(0);
     
     var count = 0;
     var data = document.getElementById("csv").innerText;
@@ -186,15 +199,17 @@ function search() {
     var headers = text.shift();
     var lines = new Array();
     var images = new Array();
+    let matches = new Array();
     for (var l = 0; l < text.length; l++) {
         
-        let line = text[l].toLowerCase();
+        //let line = text[l].toLowerCase();
 
-        if (line.includes(query.toLowerCase(), yearSelectorInput.value, tagSelectorInput.value.toLowerCase(), seriesSelectorInput.value.toLowerCase(), conditionSelectorInput.value.toLowerCase(), sourceSelectorInput.value)) {
+        if (text[l].toLowerCase().includes(query.toLowerCase(), _tag.toLowerCase(), _series.toLowerCase(), _condition.toLowerCase(), _source.toLowerCase())) {
             m = new Model(l, text[l]);
+            // filtering by year is not working above
             //m.id = `item${l}`;
             //f = m.make_frame_view();
-            if (m.series.toLowerCase().includes(seriesSelectorInput.value.toLowerCase()) && m.tag.toLowerCase().includes(tagSelectorInput.value.toLowerCase()) && m.year.includes(yearSelectorInput.value) && m.condition.toLowerCase().includes(conditionSelectorInput.value.toLowerCase()) && m.origin.toLowerCase().includes(sourceSelectorInput.value.toLowerCase())) {
+            if (m.series.toLowerCase().includes(_series.toLowerCase()) && m.tag.toLowerCase().includes(_tag.toLowerCase()) && m.year.toString().includes(_year) && m.condition.toLowerCase().includes(_condition.toLowerCase()) && m.origin.toLowerCase().includes(_source.toLowerCase())) {
             f = m.make_card_view();
             lines.push(f);
             i = m.make_thumbnail_view();
@@ -202,21 +217,85 @@ function search() {
             filter.add_data(m);
             WARN(m.missing_photo);
             count += 1;
+            matches.push(m);
             }; // nested if ends
         }; // if block ends
     }; // for loop ends
-        LOG(`search() returned ${count} matches`);
+        NOTE(`search() returned ${count} ${count == 1 ? "items" : "items"}`);
         document.getElementById("card_view").innerHTML = lines.join('');
         document.getElementById("item_list").innerHTML = images.join("");
             setActivationEvent();
-            updateCount(count);
             match_count = count;
     //console.timeEnd("timer");
+    updateCount(match_count);
+    filter.apply_filters();
+    search_result = matches;
+    
     let end = performance.now();
     NOTE(`search() executed in ${Number((end - start)/1000).toFixed(2)} s`);
-    match_count > 0 ? SUCCESS('search() run status: OK') : ERROR('search() run status: error [nothing found]') & show_messages();
+    match_count > 0 ? SUCCESS(`search() run status: OK [ ${count} ${count == 1 ? "items" : "items"} ]`) & (CONSOLE_STATE == "" && hideMessages()) : ERROR('search() run status: error [ nothing found ]') & openMessages();
+};
+
+function match() {
+    
+    let start = performance.now();
+    
+    if (search_result.length < 1) {
+        LOG(">>> match() redirecting to search()");
+        search();
+        return;
+    };
+    
+    LOG(">>> running match() on", search_result.length, "objects from recent search for", searchBar.value);
+    
+    let matched = new Array();
+    let filter = new Filter();
+    
+    let _tag = tagSelectorInput.value;
+    let _year = yearSelectorInput.value;
+    let _series = seriesSelectorInput.value;
+    let _source = sourceSelectorInput.value;
+    let _condition = conditionSelectorInput.value;
+    
+    _tag ? OPTION("with tag:", _tag) : void(0);
+    _year ? OPTION("with year:", _year) : void(0);
+    _series ? OPTION("with series:", _series) : void(0);
+    _source ? OPTION("with source:", _source) : void(0);
+    _condition ? OPTION("with condition:", _condition) : void(0);
+    
+    search_result.forEach(m => {
+        if (m.series.toLowerCase().includes(_series.toLowerCase()) && m.tag.toLowerCase().includes(_tag.toLowerCase()) && m.year.toString().includes(_year) && m.condition.toLowerCase().includes(_condition.toLowerCase()) && m.origin.toLowerCase().includes(_source.toLowerCase())) {
+            matched.push(m);
+            filter.add_data(m);
+        }; // if block ends
+    }); // forEach block ends
+    NOTE("match() returned", matched.length,   matched.length == 1 ? "item" : "items");
+    
+    display(matched);
     filter.apply_filters();
-    hideMessages();
+    updateCount(matched.length);
+    
+    let end = performance.now();
+    NOTE(`match() executed in ${Number((end - start)/1000).toFixed(2)} s`);
+    matched.length > 0 ? SUCCESS(`match() run status: OK [ ${matched.length} ${matched.length == 1 ? "item" : "items"} ]`) & (CONSOLE_STATE == "" && hideMessages()) : ERROR('match() run status: error [nothing found]') & openMessages();
+}; // match() declaration ends
+
+function display(models) {
+    LOG(">>> running display() on", models.length, models.length == 1 ? "item" : "items");
+    
+    let lines = new Array();
+    let images = new Array();
+
+    models.forEach(model => {
+            f = model.make_card_view();
+            lines.push(f);
+            i = model.make_thumbnail_view();
+            images.push(i);
+            WARN(model.missing_photo);
+    });
+    document.getElementById("card_view").innerHTML = lines.join('');
+    document.getElementById("item_list").innerHTML = images.join("");
+    setActivationEvent();
 };
 
 async function initialSetup() {
@@ -232,14 +311,37 @@ async function initialSetup() {
     NOTE(`initialSetup() executed in ${Number((init_end - init_start)/1000).toFixed(2)} s`);
 };
 
+//const cars = new Collection();
+
+async function altSetup() {
+    let start = performance.now();
+    LOG(">>> running altSetup()");
+    let count = 0;
+    await getCSV();
+    let csv =  document.getElementById("csv").innerHTML;
+    let lines = csv.split("\n");
+    let headers = lines.shift();
+    NOTE(lines.length, "lines in csv");
+    try {
+        lines.forEach(line => {
+            count += 1;
+            cars.addModel(line);
+            });
+    } catch (error) {
+        ERROR(error);
+    };
+    SUCCESS(count, "models processed");
+    let end = performance.now();
+    NOTE(`altSetup() executed in ${Number((end - start)/1000).toFixed(2)} s`);
+}
+
 initialSetup();
-//getCSV();
-//setTimeout(search, 1000);
+//altSetup()
 document.getElementById("search_bar").addEventListener("change", search);
 //document.getElementById("search_bar").addEventListener("keyup", processChange);
 verticalSwipeActions("item_list", showCollage, hideCollage, 100); 
 // Collage view by default
-document.getElementById('item_list').classList.add('shown');
+//document.getElementById('item_list').classList.add('shown');
 
 //setTimeout(initialOptionParse, 2500);
 //setTimeout(toggleMessages, 2000)

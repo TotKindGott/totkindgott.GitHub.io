@@ -1,3 +1,37 @@
+
+class Collection {
+    
+    constructor() {
+        this.models = new Array;
+        this.years = new Array;
+        this.series = new Array;
+        this.tags = new Array;
+        this.conditions = new Array;
+        this.sources = new Array;
+        this.count = 0;
+    };
+    
+    addModel(text) { // from csv line
+        this.count += 1;
+        let model = new Model(this.count, text);
+        this.models.push(model);
+        this.years[model.year] ??= new Array();
+        this.years[model.year].push(model);
+        this.series[model.series] ??= new Array();
+        this.series[model.series].push(model);
+        this.tags[model.tag] ??= new Array();
+        this.tags[model.tag].push(this.model);
+        this.conditions[model.condition] ??= new Array();
+        this.conditions[model.condition].push(model);
+        this.sources[model.source] ??= new Array();
+        this.sources[model.source].push(model);
+    };
+    
+    search(query="", year="", series="", tag="", condition="", source="") {
+        let priorities = [series, year, tag, source, condition];
+    }
+};
+
 class Model {
 
     constructor(id, csv_line) {
@@ -223,10 +257,6 @@ class Model {
         };
     }; // check_image_path() ends
     
-    missing_image() {
-        
-    }
-    
     update_image_name() {
         this.image = this.generate_image_name();
     }; // update_image_name() ends
@@ -318,11 +348,13 @@ class Filter {
         
         NOTE("search filters overwritten");
         
-        HIGHLIGHT("tags:", _tags.length);
-        HIGHLIGHT("years:", _years.length);
-        HIGHLIGHT("collections:", _collections.length);
-        HIGHLIGHT("sources:", _sources.length);
-        HIGHLIGHT("conditions:", _conditions.length);
+        HIGHLIGHT(`tags: ${_tags.length} | years: ${_years.length} | collections: ${_collections.length} | sources: ${_sources.length} | conditions: ${_conditions.length}`);
+        
+        // HIGHLIGHT("tags:", _tags.length);
+        // HIGHLIGHT("years:", _years.length);
+        // HIGHLIGHT("collections:", _collections.length);
+        // HIGHLIGHT("sources:", _sources.length);
+        // HIGHLIGHT("conditions:", _conditions.length);
 
     }; // apply() ends
     
