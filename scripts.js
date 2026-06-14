@@ -439,3 +439,23 @@ function copy(text) {
     navigator.clipboard.writeText(text);
     showNotification("copied");
 }
+
+function consoleAutoDismiss() {
+    CONSOLE_STATE = "";
+    document.getElementById("console_toggle").style.backgroundImage = 'url("Images/Icons/terminal-outline.svg")';
+        LOG("console auto-dismiss: ON")
+}; 
+
+function consoleKeepOpen() {
+    CONSOLE_STATE = "open";
+    document.getElementById("console_toggle").style.backgroundImage = 'url("Images/Icons/terminal.svg")';
+    LOG("console auto-dismiss: OFF")
+};
+
+function toggleConsoleState() {
+    if (CONSOLE_STATE == "") {
+        consoleKeepOpen();
+    } else {
+        consoleAutoDismiss();
+    };
+};

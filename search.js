@@ -359,7 +359,7 @@ function initialOptionParse() {
     conditions = Array.from(conditions_set).sort();
     DEBUG && LOG(conditions);
     
-    HIGHLIGHT(`tags: ${tags.length} | years: ${years.length} | collections: ${collections.length} | sources: ${sources.length} | conditions: ${conditions.length}`);
+    HIGHLIGHT(`tags: ${tags.length} | years: ${years.length} | collections: ${collections.length} | sources: ${sources.length} | conditions: ${conditions.length} | models: ${lines.length - 1}`);
     
     SUCCESS(`${function_name}() run status: OK`);
     updateDatalists();

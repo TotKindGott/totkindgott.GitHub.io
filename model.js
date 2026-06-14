@@ -1,34 +1,73 @@
+// const headers = [Collection,Year,Part,Model,Number,Stamp,Condition,Origin,URL,Tags,Quantity,Image,Note]
+
 
 class Collection {
     
     constructor() {
-        this.models = new Array;
-        this.years = new Array;
-        this.series = new Array;
-        this.tags = new Array;
-        this.conditions = new Array;
-        this.sources = new Array;
+        this.models = new Array();
+        this.years = new Array();
+        this.series = new Array();
+        this.tags = new Array();
+        this.conditions = new Array();
+        this.sources = new Array();
+        this._years = new Set();
+        this._series = new Set();
+        this._tags = new Set();
+        this._conditions = new Set();
+        this._sources = new Set()
         this.count = 0;
     };
     
-    addModel(text) { // from csv line
+    add(text) { // from csv line
         this.count += 1;
-        let model = new Model(this.count, text);
-        this.models.push(model);
-        this.years[model.year] ??= new Array();
-        this.years[model.year].push(model);
-        this.series[model.series] ??= new Array();
-        this.series[model.series].push(model);
-        this.tags[model.tag] ??= new Array();
-        this.tags[model.tag].push(this.model);
-        this.conditions[model.condition] ??= new Array();
-        this.conditions[model.condition].push(model);
-        this.sources[model.source] ??= new Array();
-        this.sources[model.source].push(model);
+        let csvalues = text.split(",");
+        let series = csvalues[0];
+        let year = csvalues[1];
+        let tag = csvalues[9];
+        let condition = csvalues[6];
+        let origin = csvalues[7];
+
+        this.models.push(text);
+        this._years.add(year);
+        this.years[year] ??= new Array();
+        this.years[year].push(text);
+        this._series.add(series);
+        this.series[series] ??= new Array();
+        this.series[series].push(text);
+        this._tags.add(tag);
+        this.tags[tag] ??= new Array();
+        this.tags[tag].push(text);
+        this._conditions.add(condition);
+        this.conditions[condition] ??= new Array();
+        this.conditions[condition].push(text);
+        this._sources.add(origin);
+        this.sources[origin] ??= new Array();
+        this.sources[origin].push(text);
     };
     
     search(query="", year="", series="", tag="", condition="", source="") {
         let priorities = [series, year, tag, source, condition];
+    };
+    
+    convertToModel() {
+        
+    }
+    
+    updateViews() {
+        
+    }
+    
+    updateSelectors() {
+        clearOptions();
+    Array.from(this._years).sort().forEach(year => document.getElementById("years").innerHTML += `<option value="${year}">`);
+    Array.from(this._conditions).sort().forEach(condition => document.getElementById("conditions").innerHTML += `<option value="${condition}">`);
+    Array.from(this._series).sort().forEach(collection => document.getElementById("series").innerHTML += `<option value="${collection}">`);
+    Array.from(this._tags).sort().forEach(tag => document.getElementById("tags").innerHTML += `<option value="${tag}">`);    
+    Array.from(this._sources).sort().forEach(source => document.getElementById("sources").innerHTML += `<option value="${source}">`); 
+    };
+    
+    test() {
+        HIGHLIGHT(`tags: ${Array.from(this._tags).length} | years: ${Array.from(this._years).length} | collections: ${Array.from(this._series).length} | sources: ${Array.from(this._sources).length} | conditions: ${Array.from(this._conditions).length} | models: ${this.models.length}`);
     }
 };
 
@@ -187,6 +226,7 @@ class Model {
     }; // make_frame_view() ends
     
     make_card_view() {
+    try {
         if (parseInt(this.quantity) > 0) {
             var div_class = "searchable";
         } else {
@@ -202,6 +242,9 @@ class Model {
             </div>            
             ${this.make_details_div()}
         </div>`;
+    } catch (error) {
+        ERROR("Error in make_card_view() method of class Model:", error);
+    }
     }; // make_card_view() ends
     
     make_thumbnail_view() {
@@ -284,6 +327,7 @@ class Model {
 
 class Filter {
     constructor() {
+        this.models = new Array();
         this.collections = new Set();
         this.years = new Set();
         this.tags = new Set();
@@ -317,6 +361,7 @@ class Filter {
         this.tags.add(model.tag);
         this.conditions.add(model.condition);
         this.sources.add(model.origin);
+        this.models.push(model);
     };
     
     clear_filters() {

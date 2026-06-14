@@ -28,6 +28,36 @@ div#notification {
     animation-duration: 2s;
 }
 
+#progress_bar {
+    display: block;
+    background-color: transparent;
+    width: 100%;
+    height: 3px;
+    position: fixed;
+    top: 00px;
+    z-index: 99;
+    font: bold 17px monospace;
+    color: yellow;
+    text-align: center;
+    vertical-align: middle;
+}
+
+progress::-webkit-progress-bar {
+  background-color: black;
+}
+
+/* Styles the active progress fill value (Chrome, Safari, Edge) */
+progress::-webkit-progress-value {
+  background-color: lime;
+  transition: width 0.3s ease;
+}
+
+/* Styles the active progress fill value (Firefox) */
+progress::-moz-progress-bar {
+  background-color: lime;
+  border-radius: 10px;
+}
+
 div#notification > * {
     padding: 9px;
     width: auto;

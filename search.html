@@ -54,6 +54,8 @@
     </header>  <!-- END NAVIGATION -->
     
     <div id="notification"></div>
+
+    <progress id="progress_bar" value="0" max="100"></progress>
     
     <div id="advanced_search">
 
@@ -75,7 +77,7 @@
     </div>
 
     <div id="csv"></div>
-    
+        <div id="csve"></div>
     <div id="carousel">
         <div id="card_view"></div>
         <div id="item_list"></div>
@@ -112,7 +114,8 @@ function timed(func) {
     };
 };
 
-const models = new Array();
+//const models = new Array();
+const cars = new Collection();
 const csv_url = 'https://totkindgott.github.io/collection.csv';
 let search_result = new Array();
 //var search_term = "Honda";
@@ -174,6 +177,7 @@ function search() {
     var query = document.getElementById("search_bar").value;
     var filter = new Filter();
     var match_count = 0;
+    var count = 0;
     let SELECTORS = false;
     
     let _tag = tagSelectorInput.value;
@@ -183,11 +187,21 @@ function search() {
     let _condition = conditionSelectorInput.value;
 
     if (!query) {
-        WARN("empty search string");
+        //WARN("Attention in search(): empty search string");
         SELECTORS = true;
+        
+        if (_tag) {
+            LOG("tag detected:", _tag);
+            let sub_cars = new Collection();
+            let cars_by_tag = cars.tags[_tag];
+            cars_by_tag.forEach(m => sub_cars.add(m));
+            search_result = cars.tags[_tag];
+            display(search_result);
+            count = sub_cars.models.length;
+        }
+        
     } else {
         OPTION(`searching for: ${query}`);
-    };
     
     _tag ? OPTION("with tag:", _tag) : void(0);
     _year ? OPTION("with year:", _year) : void(0);
@@ -196,47 +210,67 @@ function search() {
     _condition ? OPTION("with condition:", _condition) : void(0);
     LOG("<hr />");
     
-    var count = 0;
-    var data = document.getElementById("csv").innerText;
-    var text = data.split("\n");
-    var headers = text.shift();
+    //var data = document.getElementById("csv").innerText;
+    //var text = data.split("\n");
+    //var headers = text.shift();
+    var text = cars.models;
     var lines = new Array();
     var images = new Array();
     let matches = new Array();
+    let _matches = new Array(); // gets written to recent_search variable as a search result
+    // var increment = Number(text.length / 10).toFixed(0);
     for (var l = 0; l < text.length; l++) {
-        
         //let line = text[l].toLowerCase();
-
+        
+        // function update_progress(value) {
+        //     document.getElementById("progress_bar").value = value;
+        // };
+        
+        // if ((l + 1) % increment === 0) {
+        //     update_progress((l + 1) / increment * 10);
+        // };
+        
+        if (text[l].toLowerCase().includes(query.toLowerCase())) {
+            _matches.push(new Model(l, text[l]));
+        } else {
+            continue;
+        };
+        
         if (text[l].toLowerCase().includes(query.toLowerCase(), _tag.toLowerCase(), _series.toLowerCase(), _condition.toLowerCase(), _source.toLowerCase())) {
             m = new Model(l, text[l]);
-            // filtering by year is not working above
+            // filtering by year is not working above, wtf
             //m.id = `item${l}`;
             //f = m.make_frame_view();
             if (m.series.toLowerCase().includes(_series.toLowerCase()) && m.tag.toLowerCase().includes(_tag.toLowerCase()) && m.year.toString().includes(_year) && m.condition.toLowerCase().includes(_condition.toLowerCase()) && m.origin.toLowerCase().includes(_source.toLowerCase())) {
-            f = m.make_card_view();
-            lines.push(f);
-            i = m.make_thumbnail_view();
-            images.push(i);
-            filter.add_data(m);
-            CLIP(m.missing_photo);
-            count += 1;
-            matches.push(m);
+                f = m.make_card_view();
+                lines.push(f);
+                i = m.make_thumbnail_view();
+                images.push(i);
+                filter.add_data(m);
+                CLIP(m.missing_photo);
+                count += 1;            
+                matches.push(m);
             }; // nested if ends
         }; // if block ends
     }; // for loop ends
-        NOTE(`search() returned ${count} ${count == 1 ? "items" : "items"}`);
-        document.getElementById("card_view").innerHTML = lines.join('');
-        document.getElementById("item_list").innerHTML = images.join("");
-            setActivationEvent();
-            match_count = count;
+    document.getElementById("card_view").innerHTML = lines.join('');
+    document.getElementById("item_list").innerHTML = images.join("");
+        search_result = matches;
+    }; // if block ends
+    
+    NOTE(`search() returned ${count} ${count == 1 ? "items" : "items"}`);
+
+    setActivationEvent();
+    LOG("got here")
+    //match_count = count;
     //console.timeEnd("timer");
-    updateCount(match_count);
+    updateCount(count);
     filter.apply_filters();
-    search_result = matches;
+    //SELECTORS == true ? search_result = matches : search_result = _matches;
     
     let end = performance.now();
     NOTE(`search() executed in ${Number((end - start)/1000).toFixed(2)} s`);
-    match_count > 0 ? SUCCESS(`search() run status: OK [ ${count} ${count == 1 ? "items" : "items"} ]`) & (CONSOLE_STATE == "" && hideMessages()) : ERROR('search() run status: error [ nothing found ]') & openMessages();
+    count > 0 ? SUCCESS(`search() run status: OK [ ${count} ${count == 1 ? "items" : "items"} ]`) & (CONSOLE_STATE == "" && hideMessages()) : ERROR('search() run status: error [ nothing found ]') & openMessages();
 };
 
 function match() {
@@ -290,17 +324,30 @@ function display(models) {
     
     let lines = new Array();
     let images = new Array();
+    let count = 0;
+    let result = new Array();
+    let filter = new Filter();
 
-    models.forEach(model => {
-            f = model.make_card_view();
-            lines.push(f);
-            i = model.make_thumbnail_view();
-            images.push(i);
-            CLIP(model.missing_photo);
-    });
+    models.forEach(model => { // expects object of type Model
+        if (typeof model == "string") {
+            //ERROR("Error in display(): expecting object not string");
+            model = new Model(count, model);
+            count += 1;
+        };
+        f = model.make_card_view();
+        lines.push(f);
+        i = model.make_thumbnail_view();
+        images.push(i);
+        filter.add_data(model);
+        CLIP(model.missing_photo);
     document.getElementById("card_view").innerHTML = lines.join('');
     document.getElementById("item_list").innerHTML = images.join("");
+    result.push(model);
+    }); // for loop ends
+    search_result = result;
+    filter.apply_filters();
     setActivationEvent();
+    NOTE("display() run status: OK");
 };
 
 async function initialSetup() {
@@ -311,9 +358,12 @@ async function initialSetup() {
     await parseURL();
     //await parseCSV();
     //await initialOptionParse();
-    searchBar.value == "" ? await initialOptionParse() & showSearchTools() : await search();
+    await initializeCollection();
+    //searchBar.value == "" ? await initialOptionParse() & showSearchTools() : await search();
     let init_end = performance.now();
     NOTE(`initialSetup() executed in ${Number((init_end - init_start)/1000).toFixed(2)} s`);
+    //HIGHLIGHT(`tags: ${tags.length} | years: ${years.length} | collections: ${collections.length} | sources: ${sources.length} | conditions: ${conditions.length}`);
+    SUCCESS("initialSetup() run status: OK");
 };
 
 //const cars = new Collection();
@@ -340,31 +390,35 @@ async function altSetup() {
     NOTE(`altSetup() executed in ${Number((end - start)/1000).toFixed(2)} s`);
 }
 
-function consoleAutoDismiss() {
-    CONSOLE_STATE = "";
-    document.getElementById("console_toggle").style.backgroundImage = 'url("Images/Icons/terminal-outline.svg")';
-        LOG("console auto-dismiss: ON")
-}; 
 
-function consoleKeepOpen() {
-    CONSOLE_STATE = "open";
-    document.getElementById("console_toggle").style.backgroundImage = 'url("Images/Icons/terminal.svg")';
-    LOG("console auto-dismiss: OFF")
-};
-
-function toggleConsoleState() {
-    if (CONSOLE_STATE == "") {
-        consoleKeepOpen();
-    } else {
-        consoleAutoDismiss();
+function initializeCollection() {
+    let start = performance.now();
+    LOG(">>> initializing Collection() ...")
+    let csv = document.getElementById("csv").innerHTML;
+    let lines = csv.split("\n");
+    let headers = lines.shift();
+    if (lines.length == 0) {
+        ERROR("Error: no content [ 0 lines read ]");
+        throw error;
     };
+    lines.forEach(line => {
+        cars.add(line);
+    });
+    NOTE(lines.length, "items indexed");
+    //LOG("updating search selectors");
+    cars.updateSelectors();
+    //cars.test();
+    let end = performance.now();
+    NOTE(`initializeCollection() executed in ${Number((end - start)/1000).toFixed(2)} s`);
+    cars.test();
 };
+
 
 initialSetup();
 //altSetup()
 document.getElementById("search_bar").addEventListener("change", search);
 //document.getElementById("search_bar").addEventListener("keyup", processChange);
-verticalSwipeActions("item_list", showCollage, hideCollage, 100); 
+verticalSwipeActions("item_list", showCollage, hideCollage, 100);
 // Collage view by default
 //document.getElementById('item_list').classList.add('shown');
 
