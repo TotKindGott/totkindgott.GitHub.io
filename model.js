@@ -289,7 +289,7 @@ class Model {
     
     check_image_path() {
         var req = new XMLHttpRequest();
-        req.open('HEAD', this.image_path, false);
+        req.open('HEAD', encodeURIComponent(this.image_path), false);
         req.send();
      
         if (req.status == "404") {
@@ -362,6 +362,23 @@ class Filter {
         this.conditions.add(model.condition);
         this.sources.add(model.origin);
         this.models.push(model);
+    };
+    
+    add(text) { // from csv line
+        this.count += 1;
+        let csvalues = text.split(",");
+        let series = csvalues[0];
+        let year = csvalues[1];
+        let tag = csvalues[9];
+        let condition = csvalues[6];
+        let origin = csvalues[7];
+
+        this.models.push(text);
+        this.years.add(year);
+        this.collections.add(series);
+        this.tags.add(tag);
+        this.conditions.add(condition);
+        this.sources.add(origin);
     };
     
     clear_filters() {

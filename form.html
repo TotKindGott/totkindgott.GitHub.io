@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Collection</title>
+    
+    <link type="text/css" href="styles.css" rel="stylesheet" />
+    <link type="text/css" href="collage.css" rel="stylesheet" />
+    
+    <script type="text/javascript" src="scripts.js"></script>
+    <script type="text/javascript" src="buttons.js" defer></script>
+    <script type="text/javascript" src="model.js"></script>
+    <script type="text/javascript" src="collage.js"></script>
+    <script type="text/javascript" src="search.js" defer></script>
+    <!--optional-->
+    
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" 
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, interactive-widget=resizes-content">
+</head>
+
+<body onload="SUCCESS(`< webpage body fully loaded >`)">
+    <header>  <!-- NAVIGATION -->
+<div id="topbar">
+    <input type="button" id="left_button" />
+    <input type="text" id="search_bar" value="" />
+    <input type="button"  id="right_button" />
+    <div id="dropdown">
+        <input type="button" id="mode_button" />
+        <input type="button" id="view_button" />
+        <input type="button" id="console_toggle" onclick="toggleConsoleState()" />
+        <input type="button" id="details_button" />
+        <input type="button" id="clear_button" />
+    </div>
+    <input type="number" name="result counter" value="" disabled="True" id="counter" />
+</div>
+
+<div id="menu" class="overlay">
+    <a id="menu_close_button">&times;</a>
+    <div id="menu_list"  class="overlay-content">
+        <p class="subheader">Collection</p>
+        <p class="separator"></p>
+        <a href="index.html">Home</a>
+        <a href="collection.html">Owned</a>
+        <a href="preview.html">Statistics</a>
+        <a href="spreadsheet.html">Spreadsheet</a>
+        <p class="subheader">Other</p>
+        <p class="separator"></p>
+        <a href="treasures.html">Treasures</a>
+        <a href="about.html">About</a>
+    </div>
+</div>
+
+    </header>  <!-- END NAVIGATION -->
+    
+    <div id="notification"></div>
+    
+<style>
+
+div#model_form {
+    margin-top: 40px;
+    padding: 20px;
+    position: fixed;
+    top: 0px;
+}
+
+form.form-example {
+  display: table;
+}
+
+div.form-example {
+  display: table-row;
+}
+
+label,
+input {
+  display: table-cell;
+  margin-bottom: 10px;
+  font: bold 16px monospace;
+}
+
+label {
+  padding-right: 10px;
+}
+
+</style>
+
+<div id="csv"></div>
+
+<div id="model_form">
+<form action="#" method="" class="form-example">
+  <div class="form-example">
+    <label for="model">Model: </label>
+    <input type="text" name="model" id="model" list="models" required />
+    <datalist id="models"></datalist>
+  </div>
+  <div class="form-example">
+    <label for="tag">Tag: </label>
+    <input type="text" name="tag" id="tag"  list="tags" />
+    <datalist id="tags"></datalist>
+  </div>
+  <div class="form-example">
+    <label for="series">Series: </label>
+    <input type="text" name="series" id="collection" list="series" />
+    <datalist id="series"></datalist>
+  </div>
+  <div class="form-example">
+    <label for="year">Year: </label>
+    <input type="text" inputmode="numeric" name="year" id="year" list="years" />
+    <datalist id="years"></datalist>
+  </div>
+  <div class="form-example">
+    <label for="part">Part: </label>
+    <input type="text" inputmode="decimal" name="part" id="part" />
+    <datalist id="parts"></datalist>
+  </div>
+  <div class="form-example">
+    <label for="number">Number: </label>
+    <input type="text" inputmode="decimal" name="number" id="number" />
+    <datalist id="numbers"></datalist>
+  </div>
+  <div class="form-example">
+    <label for="source">Source: </label>
+    <input type="text" name="source" id="source" list="sources" />
+    <datalist id="sources"></datalist>
+  </div>
+  <div class="form-example">
+    <label for="condition">Condition: </label>
+    <input type="text" name="condition" id="condition" list="conditions" />
+    <datalist id="conditions"></datalist>
+  </div>
+  <div class="form-example">
+    <label for="quantity">Quantity: </label>
+    <input type="number" inputmode="numeric" name="quantity" id="quantity" />
+  </div>
+  <div class="form-example">
+    <label for="note">Note: </label>
+    <input type="text" name="note" id="note" list="notes" />
+    <datalist id="notes"></datalist>
+  </div>
+  <div>
+    <input type="submit" value="Generate!" />
+    <input type="reset" value="RESET!" />
+  </div>
+</form>
+</div>
+    <div id="messages"></div>
+    
+
+    <input type="button" id="console_button" onclick="toggleMessages();" />
+    <input type="button" id="help_button" value="" onclick="location.href='reference.html'" />
+    
+    <footer id="page_footer">
+        <p>Last update: <a href="updates.html">2026-05-26</a></p>
+        <p>Site design: Konstantin A Kolosov</p>
+        <hr />
+            <a href="index.html">Home</a>
+            <a href="preview.html">Statistics</a>
+            <a href="treasures.html">Treasures</a>
+            <a href="about.html">About</a>
+    </footer>
+
+<script>
+    
+const csv_url = 'https://totkindgott.github.io/collection.csv';
+
+// 1. Select the form element
+const form = document.getElementById('model_form');
+// 2. Attach the submit event listener
+form.addEventListener('submit', function(event) {
+// 3. Stop the browser from performing a full page reload
+    event.preventDefault(); 
+  
+  // 4. Run your custom JavaScript function code
+    handleFormAction(event); 
+});
+
+form.addEventListener('reset', function(event) {
+    showNotification("form reset");
+});
+
+function handleFormAction(event) {
+  // Get data from form fields
+    const model_name = document.getElementById('model').value;
+    const series_name = document.getElementById('collection').value;
+    const tag_name = document.getElementById('tag').value;
+    const condition = document.getElementById('condition').value;
+    const year = document.getElementById('year').value
+    const source = document.getElementById('source').value
+    const quantity = document.getElementById('quantity').value;
+    const number = document.getElementById('number').value;
+    const part = document.getElementById('part').value;
+    const note = document.getElementById('note').value;
+// const headers = [Collection,Year,Part,Model,Number,Stamp,Condition,Origin,URL,Tags,Quantity,Image,Note]
+  let csv_line = `${series_name},${year},${part.toString().replace(".", "/")},${model_name},${number.toString().replace(".", "/")},,${condition},${source},,${tag_name},${quantity},,${note}`;
+  m = new Model(0, csv_line);
+  NOTE("<hr />");
+  CLIP(csv_line);
+  CLIP(m.missing_photo);
+  NOTE("<hr />");
+  copy(csv_line);
+  // Optional: You can send data via an API using fetch() here
+};
+
+const getCSV = async () => {
+    try {
+        let start = performance.now();
+        LOG(">>> running getCSV() ...")
+        const res = await fetch(csv_url);
+        if (res.status === 200) {
+            const data = await res.text();
+        document.getElementById("csv").innerHTML = data;
+            SUCCESS(`fetch("${csv_url}") response status: ${res.status}`);
+            NOTE(`fetched ${data.length.toLocaleString("en-US")} characters`);
+            let end = performance.now();
+            NOTE(`getCSV() executed in ${Number((end - start)/1000).toFixed(2)} s`);
+        } else {
+            ERROR(`Error code ${res.status} in fetch(${csv_url})`);
+        }; // if / else block ends
+    } catch (error) {
+        ERROR(`Error in getCSV(): ${error}`);
+    } finally {
+        SUCCESS("getCSV() run status: OK");
+    }; // try / catch block ends
+}; // getCSV declaration ends
+
+function parseCSV() {
+    let start = performance.now();
+    LOG(">>> running parseCSV()");
+    let filter = new FormFilter();
+    let count = 0;
+    let csv =  document.getElementById("csv").innerHTML;
+    let lines = csv.split("\n");
+    let headers = lines.shift();
+    NOTE(lines.length, "lines in csv");
+    try {
+        lines.forEach(line => {
+            count += 1;
+            filter.parse(line);
+            //models.push(new Model(count, line));
+            });
+    } catch (error) {
+        ERROR(error);
+    };
+    filter.apply_filters();
+    SUCCESS(count, "models processed");
+    let end = performance.now();
+    NOTE(`parseCSV() executed in ${Number((end - start)/1000).toFixed(2)} s`);
+}
+
+class FormFilter {
+    constructor() {
+        this.models      = new Set();
+        this.collections = new Set();
+        this.years       = new Set();
+        this.tags        = new Set();
+        this.conditions  = new Set();
+        this.sources     = new Set();
+        this.parts       = new Set();
+        this.numbers     = new Set();
+        this.notes       = new Set();
+    }; // constructor ends
+    
+    parse(text) { // from csv line
+        let csvalues = text.split(",");
+        this.models.add(csvalues[3]);
+        this.collections.add(csvalues[0]);
+        this.years.add(csvalues[1]);
+        this.tags.add(csvalues[9]);
+        //this.images.add(csvalues[11]);
+        this.conditions.add(csvalues[6]);
+        this.parts.add(csvalues[2]);
+        this.numbers.add(csvalues[4]);
+        this.sources.add(csvalues[7]);
+        //this.stamp = csvalues[5];
+        //this.url = csvalues[8];
+        this.notes.add(csvalues[12]);
+        //this.quantity = csvalues[10];
+    };
+    
+    clear_filters() {
+        // manipulating innerHTML
+        document.getElementById("series").innerHTML = "";
+        document.getElementById("years").innerHTML = "";
+        document.getElementById("tags").innerHTML = "";
+        document.getElementById("conditions").innerHTML = "";
+        document.getElementById("sources").innerHTML = "";
+        NOTE("search filters cleared");
+    }; // clear_filters() ends
+
+    
+    apply_filters() {
+        
+        let _collections = Array.from(this.collections).sort();
+        let _years = Array.from(this.years).sort();
+        let _tags = Array.from(this.tags).sort();
+        let _conditions = Array.from(this.conditions).sort();
+        let _sources = Array.from(this.sources).sort();
+        let _models = Array.from(this.models).sort();
+        let _parts = Array.from(this.parts).sort();
+        let _numbers = Array.from(this.numbers).sort();
+        let _notes = Array.from(this.notes).sort();
+        
+        this.clear_filters();
+
+        _collections.forEach(name => document.getElementById("series").innerHTML += `<option value="${name}">`);
+        _years.forEach(year => document.getElementById("years").innerHTML += `<option value="${year}">`);
+        _tags.forEach(tag => document.getElementById("tags").innerHTML += `<option value="${tag}">`);
+        _conditions.forEach(condition => document.getElementById("conditions").innerHTML += `<option value="${condition}">`);
+        _sources.forEach(source => document.getElementById("sources").innerHTML += `<option value="${source}">`);
+        _models.forEach(model => document.getElementById("models").innerHTML += `<option value="${model}">`);
+        _numbers.forEach(number => document.getElementById("numbers").innerHTML += `<option value="${number}">`);
+        _parts.forEach(part => document.getElementById("parts").innerHTML += `<option value="${part}">`);
+        _notes.forEach(note => document.getElementById("notes").innerHTML += `<option value="${note}">`);
+        
+        NOTE("search filters overwritten");
+        
+        HIGHLIGHT(`tags: ${_tags.length} | years: ${_years.length} | collections: ${_collections.length} | sources: ${_sources.length} | conditions: ${_conditions.length}`);
+        
+        // HIGHLIGHT("tags:", _tags.length);
+        // HIGHLIGHT("years:", _years.length);
+        // HIGHLIGHT("collections:", _collections.length);
+        // HIGHLIGHT("sources:", _sources.length);
+        // HIGHLIGHT("conditions:", _conditions.length);
+
+    }; // apply() ends
+    
+}; // class declaration ends
+
+async function setupForm() {
+    await getCSV();
+    parseCSV();
+setTimeout(hideMessages, 500)
+}
+
+setupForm();
+</script>
+    
+</body>
+</html>

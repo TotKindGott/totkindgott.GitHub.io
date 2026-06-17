@@ -394,22 +394,22 @@ input.mode_button {
 
 #counter  {
     font: "Inconsolata", monospace; 
-    font-size: 16px; 
-    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
     border-radius: 10px;
-    position: fixed; 
-    right: 20%;
-    top: 5px;
-    transform: translate(-50%);
+    position: absolute; 
+    right: 12.5%;
+    top: 6px;
     height: 24px; 
     margin: auto;
     text-align: right;
-    width: 40px;
+    width: 12.5%;
     border: none;
     z-index: 100;
-    margin: auto;
+    margin: 0;
     padding: 0;
-    background-color: white;
+    background-color: transparent;
 }
 
 #clear_button, .clear_button {

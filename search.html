@@ -117,7 +117,7 @@ function timed(func) {
 //const models = new Array();
 const cars = new Collection();
 const csv_url = 'https://totkindgott.github.io/collection.csv';
-let search_result = new Array();
+let search_result = new Array(); // list of objects of type Model
 //var search_term = "Honda";
     
 const getCSV = async () => {
@@ -192,13 +192,14 @@ function search() {
         
         if (_tag) {
             LOG("tag detected:", _tag);
-            let sub_cars = new Collection();
-            let cars_by_tag = cars.tags[_tag];
-            cars_by_tag.forEach(m => sub_cars.add(m));
-            search_result = cars.tags[_tag];
-            display(search_result);
-            count = sub_cars.models.length;
-        }
+            search_result = processResults(cars.tags[_tag]);
+            //let sub_cars = new Collection();
+            //let cars_by_tag = cars.tags[_tag];
+            //cars_by_tag.forEach(m => sub_cars.add(m));
+            //search_result = cars.tags[_tag];
+            //display(search_result);
+            count = search_result.length;
+        };
         
     } else {
         OPTION(`searching for: ${query}`);
@@ -261,13 +262,13 @@ function search() {
     NOTE(`search() returned ${count} ${count == 1 ? "items" : "items"}`);
 
     setActivationEvent();
-    LOG("got here")
+
     //match_count = count;
     //console.timeEnd("timer");
     updateCount(count);
     filter.apply_filters();
     //SELECTORS == true ? search_result = matches : search_result = _matches;
-    
+    display(search_result);
     let end = performance.now();
     NOTE(`search() executed in ${Number((end - start)/1000).toFixed(2)} s`);
     count > 0 ? SUCCESS(`search() run status: OK [ ${count} ${count == 1 ? "items" : "items"} ]`) & (CONSOLE_STATE == "" && hideMessages()) : ERROR('search() run status: error [ nothing found ]') & openMessages();
@@ -318,6 +319,21 @@ function match() {
     NOTE(`match() executed in ${Number((end - start)/1000).toFixed(2)} s`);
     matched.length > 0 ? SUCCESS(`match() run status: OK [ ${matched.length} ${matched.length == 1 ? "item" : "items"} ]`) & (CONSOLE_STATE == "" && hideMessages()) : ERROR('match() run status: error [nothing found]') & openMessages();
 }; // match() declaration ends
+
+function processResults(models) { // expects a list of strings
+    LOG(">>> running processResults() ...")
+    let _count = 0;
+    let _filter = new Filter();
+    let _subcollection = new Collection();
+    models.forEach(model => {
+        _count += 1;
+        m = new Model(_count, model);
+        _subcollection.add(model);
+        _filter.add_data(m)
+    }); // forEach loop ends
+    LOG("returning", _subcollection.models.length, "Model() objects");
+    return _filter.models;
+};
 
 function display(models) {
     LOG(">>> running display() on", models.length, models.length == 1 ? "item" : "items");
