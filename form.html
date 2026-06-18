@@ -30,7 +30,7 @@
         <input type="button" id="view_button" />
         <input type="button" id="console_toggle" onclick="toggleConsoleState()" />
         <input type="button" id="details_button" />
-        <input type="button" id="clear_button" />
+        <input type="button" id="clear_button" onclick="removeLocalText()" />
     </div>
     <input type="number" name="result counter" value="" disabled="True" id="counter" />
 </div>
@@ -57,93 +57,135 @@
     
 <style>
 
-div#model_form {
-    margin-top: 40px;
-    padding: 20px;
+body {
+    width: 100vw;
+}
+
+form {
+    width: 100%;
     position: fixed;
-    top: 0px;
+    top: 60px;
 }
 
-form.form-example {
-  display: table;
+body.dark-mode div {
+    background-color: black;
 }
 
-div.form-example {
-  display: table-row;
+div#model_form {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-auto-columns: auto;
+    max-width: 80%;
+    margin: auto;
+    padding: 15px;
+    box-shadow: 1px 1px 10px gray;
+    text-overflow: scroll;
+    border: 1px solid silver;
 }
 
 label,
 input {
-  display: table-cell;
-  margin-bottom: 10px;
-  font: bold 16px monospace;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font: bold 16px monospace;
+    width: auto;
+    height: 20px;
+    vertical-align: middle;
 }
 
 label {
-  padding-right: 10px;
+    font-size: 16px;
+}
+
+input.form_button {
+
+}
+
+div#form_buttons {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: auto;
+}
+
+#form_buttons input {
+    width: auto;
+    margin: auto;
+    margin-top: 10px;
+    background-color: transparent;
+    border: none;
+}
+
+#apply_button {
+    color: green;
+}
+
+body.dark-mode #apply_button {
+    color: lime;
+}
+
+#reset_button {
+    color: red;
 }
 
 </style>
 
 <div id="csv"></div>
 
+
+<form action="#" method="" class="form" id="model_form">
+    
 <div id="model_form">
-<form action="#" method="" class="form-example">
-  <div class="form-example">
     <label for="model">Model: </label>
     <input type="text" name="model" id="model" list="models" required />
     <datalist id="models"></datalist>
-  </div>
-  <div class="form-example">
+
     <label for="tag">Tag: </label>
     <input type="text" name="tag" id="tag"  list="tags" />
     <datalist id="tags"></datalist>
-  </div>
-  <div class="form-example">
+
     <label for="series">Series: </label>
     <input type="text" name="series" id="collection" list="series" />
     <datalist id="series"></datalist>
-  </div>
-  <div class="form-example">
+
     <label for="year">Year: </label>
     <input type="text" inputmode="numeric" name="year" id="year" list="years" />
     <datalist id="years"></datalist>
-  </div>
-  <div class="form-example">
+
     <label for="part">Part: </label>
     <input type="text" inputmode="decimal" name="part" id="part" />
     <datalist id="parts"></datalist>
-  </div>
-  <div class="form-example">
+
     <label for="number">Number: </label>
     <input type="text" inputmode="decimal" name="number" id="number" />
     <datalist id="numbers"></datalist>
-  </div>
-  <div class="form-example">
+
     <label for="source">Source: </label>
     <input type="text" name="source" id="source" list="sources" />
     <datalist id="sources"></datalist>
-  </div>
-  <div class="form-example">
+
     <label for="condition">Condition: </label>
     <input type="text" name="condition" id="condition" list="conditions" />
     <datalist id="conditions"></datalist>
-  </div>
-  <div class="form-example">
+
     <label for="quantity">Quantity: </label>
     <input type="number" inputmode="numeric" name="quantity" id="quantity" />
-  </div>
-  <div class="form-example">
+
+
     <label for="note">Note: </label>
     <input type="text" name="note" id="note" list="notes" />
     <datalist id="notes"></datalist>
-  </div>
-  <div>
-    <input type="submit" value="Generate!" />
-    <input type="reset" value="RESET!" />
-  </div>
-</form>
+
+<div id="form_buttons">
+    
+    <input type="submit" value="APPLY" class="form_button" id="apply_button" />
+    <input type="reset" value="RESET" class="form_button" id="reset_button" />
+    
 </div>
+
+</div>
+</form>
+
     <div id="messages"></div>
     
 
@@ -161,6 +203,51 @@ label {
     </footer>
 
 <script>
+
+function getLocalText() {
+    let _result = new Array();
+    try {
+    localStorage.getItem("models").split("\n").forEach(line => {
+            _result.push(line)
+        });
+    } catch (TypeError) {
+        void(0);
+    };
+    return _result;
+};
+
+function addToLocalText(line) {
+    let _result = getLocalText();
+    _result += "\n" + line;
+    localStorage.setItem("models", _result);
+    NOTE("written to localStorage");
+};
+
+function displayLocalText() {
+    try {
+        LOG(">>> checking localStorage ...");
+        let _models = getLocalText();
+        if (_models.length > 0) {
+            NOTE("localStorage items:", _models.length);
+            SUCCESS("localStorage status: OK");
+            NOTE("<hr />");
+            _models.forEach(line => {
+                CLIP(line);
+            });
+            NOTE("<hr />");
+        } else {
+            throw Error("localStorage status: empty");
+        }
+    } catch (error) {
+        NOTE(error);
+    };
+};
+
+function removeLocalText() {
+    localStorage.removeItem("models");
+    LOG("localStorage cleared");
+    showNotification("localStorage cleared");
+};
     
 const csv_url = 'https://totkindgott.github.io/collection.csv';
 
@@ -196,7 +283,8 @@ function handleFormAction(event) {
   m = new Model(0, csv_line);
   NOTE("<hr />");
   CLIP(csv_line);
-  CLIP(m.missing_photo);
+  addToLocalText(csv_line);
+  //CLIP(m.missing_photo);
   NOTE("<hr />");
   copy(csv_line);
   // Optional: You can send data via an API using fetch() here
@@ -226,7 +314,7 @@ const getCSV = async () => {
 
 function parseCSV() {
     let start = performance.now();
-    LOG(">>> running parseCSV()");
+    LOG(">>> running parseCSV() ...");
     let filter = new FormFilter();
     let count = 0;
     let csv =  document.getElementById("csv").innerHTML;
@@ -243,9 +331,10 @@ function parseCSV() {
         ERROR(error);
     };
     filter.apply_filters();
-    SUCCESS(count, "models processed");
+    NOTE(count, "models processed");
     let end = performance.now();
     NOTE(`parseCSV() executed in ${Number((end - start)/1000).toFixed(2)} s`);
+    SUCCESS("parseCSV status: OK");
 }
 
 class FormFilter {
@@ -330,8 +419,10 @@ class FormFilter {
 async function setupForm() {
     await getCSV();
     parseCSV();
-setTimeout(hideMessages, 500)
-}
+    displayLocalText();
+    setTimeout(hideMessages, 500);
+    //removeLocalText();
+};
 
 setupForm();
 </script>
