@@ -279,7 +279,7 @@ class Model {
         image_name = image_name.replace(":", " -");
         // replace forward slashes with underscores
         image_name = image_name.replace("/", "_");
-        return image_name + ".JPG";
+        return image_name + ".jpeg";
     }; // generate_image_name() ends
     
     generate_image_path() {
