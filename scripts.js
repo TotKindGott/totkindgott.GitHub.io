@@ -68,6 +68,7 @@ function checkMode() {
     if (localStorage.getItem("mode") == "dark") {
             var element = document.body;
             element.classList.toggle("dark-mode");
+            NOTE("dark mode: ON");
             SUCCESS("localStorage status: OK")
         } else {
             NOTE("dark mode: OFF");
@@ -351,6 +352,7 @@ function setSearchRedirect() {
         let parsing_url = search_url + encodeURI(search_query.toLowerCase());
         window.open(parsing_url, '_self');
         }); // function event ends
+        NOTE(`==> search redirect set to search.html`);
 }; // function setSearchRedirect ends
 
 

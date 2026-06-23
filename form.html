@@ -153,11 +153,11 @@ body.dark-mode #apply_button {
     <datalist id="years"></datalist>
 
     <label for="part">Part: </label>
-    <input type="text" inputmode="decimal" name="part" id="part" />
+    <input type="text" inputmode="decimal" name="part" id="part" list="parts" />
     <datalist id="parts"></datalist>
 
     <label for="number">Number: </label>
-    <input type="text" inputmode="decimal" name="number" id="number" />
+    <input type="text" inputmode="decimal" name="number" id="number" list="numbers" />
     <datalist id="numbers"></datalist>
 
     <label for="source">Source: </label>
@@ -169,7 +169,12 @@ body.dark-mode #apply_button {
     <datalist id="conditions"></datalist>
 
     <label for="quantity">Quantity: </label>
-    <input type="number" inputmode="numeric" name="quantity" id="quantity" />
+    <input type="number" inputmode="numeric" name="quantity" id="quantity" list="quantities" />
+    <datalist id="quantities">
+        <option>0</option>
+        <option>1</option>
+        <option>2</option>
+    </datalist>
 
 
     <label for="note">Note: </label>
@@ -188,7 +193,6 @@ body.dark-mode #apply_button {
 
     <div id="messages"></div>
     
-
     <input type="button" id="console_button" onclick="toggleMessages();" />
     <input type="button" id="help_button" value="" onclick="location.href='reference.html'" />
     
@@ -217,8 +221,12 @@ function getLocalText() {
 };
 
 function addToLocalText(line) {
-    let _result = getLocalText();
-    _result += "\n" + line;
+    let _result = getLocalText().join("\n");
+    if (_result.length > 0) {
+        _result += "\n" + line;
+    } else {
+        _result = line;
+    };
     localStorage.setItem("models", _result);
     NOTE("written to localStorage");
 };
@@ -239,7 +247,7 @@ function displayLocalText() {
             throw Error("localStorage status: empty");
         }
     } catch (error) {
-        NOTE(error);
+        NOTE(error.message);
     };
 };
 
@@ -272,8 +280,8 @@ function handleFormAction(event) {
     const series_name = document.getElementById('collection').value;
     const tag_name = document.getElementById('tag').value;
     const condition = document.getElementById('condition').value;
-    const year = document.getElementById('year').value
-    const source = document.getElementById('source').value
+    const year = document.getElementById('year').value;
+    const source = document.getElementById('source').value;
     const quantity = document.getElementById('quantity').value;
     const number = document.getElementById('number').value;
     const part = document.getElementById('part').value;
@@ -334,7 +342,7 @@ function parseCSV() {
     NOTE(count, "models processed");
     let end = performance.now();
     NOTE(`parseCSV() executed in ${Number((end - start)/1000).toFixed(2)} s`);
-    SUCCESS("parseCSV status: OK");
+    SUCCESS("parseCSV() run status: OK");
 }
 
 class FormFilter {
@@ -392,11 +400,31 @@ class FormFilter {
         
         this.clear_filters();
 
-        _collections.forEach(name => document.getElementById("series").innerHTML += `<option value="${name}">`);
-        _years.forEach(year => document.getElementById("years").innerHTML += `<option value="${year}">`);
-        _tags.forEach(tag => document.getElementById("tags").innerHTML += `<option value="${tag}">`);
-        _conditions.forEach(condition => document.getElementById("conditions").innerHTML += `<option value="${condition}">`);
-        _sources.forEach(source => document.getElementById("sources").innerHTML += `<option value="${source}">`);
+        _collections.forEach(name => {
+            if (name) {
+                document.getElementById("series").innerHTML += `<option value="${name}">`
+            };
+        });
+        _years.forEach(year => {
+            if (year) {
+                document.getElementById("years").innerHTML += `<option value="${year}">`
+            };
+        });
+        _tags.forEach(tag => {
+            if (tag) {
+               document.getElementById("tags").innerHTML += `<option value="${tag}">`
+            };
+        });
+        _conditions.forEach(condition => {
+            if (condition) {
+                document.getElementById("conditions").innerHTML += `<option value="${condition}">`
+            };
+        });
+        _sources.forEach(source => {
+            if (source) {
+                document.getElementById("sources").innerHTML += `<option value="${source}">`
+            };
+        });
         _models.forEach(model => document.getElementById("models").innerHTML += `<option value="${model}">`);
         _numbers.forEach(number => document.getElementById("numbers").innerHTML += `<option value="${number}">`);
         _parts.forEach(part => document.getElementById("parts").innerHTML += `<option value="${part}">`);
@@ -417,6 +445,8 @@ class FormFilter {
 }; // class declaration ends
 
 async function setupForm() {
+    checkMode();
+    setSearchRedirect();
     await getCSV();
     parseCSV();
     displayLocalText();
