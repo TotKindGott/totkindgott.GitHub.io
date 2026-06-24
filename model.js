@@ -253,7 +253,7 @@ class Model {
     }; // make_thumbnail_view() ends
     
     generate_image_name() {
-        if (this.image.endsWith(".JPG")) {
+        if (this.image.endsWith(".jpeg")) {
             // hardcoded image name
             return this.image;
         };
@@ -307,8 +307,8 @@ class Model {
     update_image_path() {
         this.image_path = this.generate_image_path();
         if (!this.check_image_path()) {
-            this.image = "NoPhoto.JPG";
-            this.image_path = `${this.images_directory}/NoPhoto.JPG`;
+            this.image = "NoPhoto.jpeg";
+            this.image_path = `${this.images_directory}/NoPhoto.jpeg`;
         };
     }; // update_image_path() ends
     
