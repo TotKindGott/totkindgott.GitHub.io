@@ -374,9 +374,9 @@ async function initialSetup() {
     await parseURL();
     //await parseCSV();
     //await initialOptionParse();
-    //await initializeCollection();
+    await initializeCollection();
     //searchBar.value == "" ? await initialOptionParse() & showSearchTools() : await search();
-    searchBar.value == "" ? await initializeCollection() : await search();
+    searchBar.value == "" ? void(0) : await search();
     let init_end = performance.now();
     NOTE(`initialSetup() executed in ${Number((init_end - init_start)/1000).toFixed(2)} s`);
     //HIGHLIGHT(`tags: ${tags.length} | years: ${years.length} | collections: ${collections.length} | sources: ${sources.length} | conditions: ${conditions.length}`);
