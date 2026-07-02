@@ -69,10 +69,14 @@ function checkMode() {
             var element = document.body;
             element.classList.toggle("dark-mode");
             NOTE("dark mode: ON");
-            SUCCESS("localStorage status: OK")
         } else {
             NOTE("dark mode: OFF");
         }; // if block ends
+    if (localStorage.getItem("console") == "open") {
+        consoleKeepOpen();
+    } else {
+        NOTE("console auto-dismiss: ON");
+    };
 }; // checkMode function ends
 
 function toggleDarkMode() {
@@ -81,10 +85,10 @@ function toggleDarkMode() {
     element.classList.toggle("dark-mode");
     if (localStorage.getItem("mode") !== "dark") {
         localStorage.setItem("mode", "dark");
-        LOG("dark mode: ON");
+        NOTE("dark mode: ON");
     } else {
         localStorage.setItem("mode", "light");
-        LOG("dark mode: OFF");
+        NOTE("dark mode: OFF");
     }; // if else block ends
 }; // toggleDarkMode function ends
 
@@ -445,13 +449,15 @@ function copy(text) {
 function consoleAutoDismiss() {
     CONSOLE_STATE = "";
     document.getElementById("console_toggle").style.backgroundImage = 'url("Images/Icons/terminal-outline.svg")';
-        LOG("console auto-dismiss: ON")
+    localStorage.setItem("console", "")
+        NOTE("console auto-dismiss: ON")
 }; 
 
 function consoleKeepOpen() {
     CONSOLE_STATE = "open";
     document.getElementById("console_toggle").style.backgroundImage = 'url("Images/Icons/terminal.svg")';
-    LOG("console auto-dismiss: OFF")
+    localStorage.setItem("console", "open")
+    NOTE("console auto-dismiss: OFF")
 };
 
 function toggleConsoleState() {

@@ -19,7 +19,7 @@
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, interactive-widget=resizes-content">
 </head>
 
-<body onload="SUCCESS(`< webpage body fully loaded >`)">
+<body onload="SUCCESS(`<-- webpage body fully loaded -->`)">
     <header>  <!-- NAVIGATION -->
 <div id="topbar">
     <input type="button" id="left_button" />
@@ -171,7 +171,6 @@ function search() {
     let start = performance.now();
     openMessages();
     
-    LOG("<hr />");
     LOG(">>> running search() in main file ...");
             
     var query = document.getElementById("search_bar").value;
@@ -187,7 +186,7 @@ function search() {
     let _condition = conditionSelectorInput.value;
 
     if (!query) {
-        //WARN("Attention in search(): empty search string");
+        WARN("Attention in search(): empty search string");
         SELECTORS = true;
         
         if (_tag) {
@@ -209,7 +208,6 @@ function search() {
     _series ? OPTION("with series:", _series) : void(0);
     _source ? OPTION("with source:", _source) : void(0);
     _condition ? OPTION("with condition:", _condition) : void(0);
-    LOG("<hr />");
     
     //var data = document.getElementById("csv").innerText;
     //var text = data.split("\n");
@@ -248,30 +246,32 @@ function search() {
                 i = m.make_thumbnail_view();
                 images.push(i);
                 filter.add_data(m);
-                CLIP(m.missing_photo);
+                //CLIP(m.missing_photo);
                 count += 1;            
                 matches.push(m);
             }; // nested if ends
         }; // if block ends
     }; // for loop ends
-    document.getElementById("card_view").innerHTML = lines.join('');
-    document.getElementById("item_list").innerHTML = images.join("");
+    //document.getElementById("card_view").innerHTML = lines.join('');
+    //document.getElementById("item_list").innerHTML = images.join("");
         search_result = matches;
     }; // if block ends
     
-    NOTE(`search() returned ${count} ${count == 1 ? "items" : "items"}`);
+    NOTE(`search() returned ${count} ${count == 1 ? "item" : "items"}`);
 
     setActivationEvent();
 
     //match_count = count;
     //console.timeEnd("timer");
     updateCount(count);
-    filter.apply_filters();
+    //filter.apply_filters();
     //SELECTORS == true ? search_result = matches : search_result = _matches;
-    display(search_result);
+    //display(search_result);
     let end = performance.now();
     NOTE(`search() executed in ${Number((end - start)/1000).toFixed(2)} s`);
-    count > 0 ? SUCCESS(`search() run status: OK [ ${count} ${count == 1 ? "items" : "items"} ]`) & (CONSOLE_STATE == "" && hideMessages()) : ERROR('search() run status: error [ nothing found ]') & openMessages();
+    count > 0 ? SUCCESS(`search() run status: OK [ ${count} ${count == 1 ? "item" : "items"} ]`) & (CONSOLE_STATE == "" && hideMessages()) : ERROR('search() run status: error [ nothing found ]') & openMessages();
+    LOG("<hr />");
+    search_result.length ? display(search_result) : void(0);
 };
 
 function match() {
@@ -363,7 +363,8 @@ function display(models) {
     search_result = result;
     filter.apply_filters();
     setActivationEvent();
-    NOTE("display() run status: OK");
+    SUCCESS(`display() run status: OK [ ${result.length} ${result.length == 1 ? "item" : "items"} ]`);
+    LOG("<hr />");
 };
 
 async function initialSetup() {
@@ -381,6 +382,7 @@ async function initialSetup() {
     NOTE(`initialSetup() executed in ${Number((init_end - init_start)/1000).toFixed(2)} s`);
     //HIGHLIGHT(`tags: ${tags.length} | years: ${years.length} | collections: ${collections.length} | sources: ${sources.length} | conditions: ${conditions.length}`);
     SUCCESS("initialSetup() run status: OK");
+    LOG("<hr />");
 };
 
 //const cars = new Collection();
