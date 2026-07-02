@@ -268,13 +268,17 @@ class Model {
             if (this.image) {
                 // color variation
                 image_name += " [" + this.image + "]";
-            } else if (this.tag == "Zamac" || this.tag == "$TH") {
+            } else if (this.tag) {
                 // type variation
                 image_name += " [" + this.tag + "]";
             };
         } else {
-            image_name = this.name + " (" + this.series + ")";
-        }
+            if (this.tag) {
+                image_name = this.name + " (" + this.series + ") [" + this.tag + "]";
+            } else {
+                image_name = this.name + " (" + this.series + ")";
+            };
+        };
         // replace colons with dashes
         image_name = image_name.replace(":", " -");
         // replace forward slashes with underscores
