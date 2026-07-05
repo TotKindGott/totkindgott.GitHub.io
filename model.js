@@ -1,3 +1,99 @@
+class Tracker {
+    
+    constructor() {
+        this.state = false;
+        this.search_query = false;
+        this.year_selector = false;
+        this.series_selector = false;
+        this.tag_selector = false;
+        this.condition_selector = false;
+        this.source_selector = false;
+    }
+    
+    set() {
+        this.get();
+        this.state = true;
+        this.search_query = this.search_field;
+        //NOTE("search_query: " + this.search_query)
+        this.year_selector = this.year_field;
+        //NOTE("year_selector: " + this.year_selector)
+        this.series_selector = this.series_field;
+        //NOTE("series_selector: " + this.series_selector)
+        this.tag_selector = this.tag_field;
+        //NOTE("tag_selector: " + this.tag_selector)
+        this.condition_selector = this.condition_field;
+        //NOTE("condition_selector: " + this.condition_selector)
+        this.source_selector = this.source_field;
+        //NOTE("source_selector: " + this.source_selector)
+        //LOG("current search state set");
+    }
+    
+    get() {
+        this.search_field = document.getElementById("search_bar").value;
+        this.year_field = yearSelectorInput.value;
+        this.series_field = seriesSelectorInput.value;
+        this.tag_field = tagSelectorInput.value;
+        this.condition_field = conditionSelectorInput.value;
+        this.source_field = sourceSelectorInput.value;
+    };
+    
+    compare() { // determine whether a new search() required or would a match() suffice
+        // true if search can be narrowed down
+        let current_state = new Tracker();
+        current_state.set();
+        //WARN(this.search_query);
+        
+        if (this.search_query) {
+            if (this.search_query !== current_state.search_query) {                
+                NOTE("!!! search query changed");
+                return false;
+            };
+        } else {
+            if (current_state.search_query) {
+                NOTE("!!! search query changed");
+                return false;
+            };
+        }; // if search_query ends
+        
+        if (this.year_selector) {
+            if (this.year_selector !== currect_state.year_selector) {
+                NOTE("!!! year selector changed");
+                return false;
+            };
+        };
+        
+        if (this.series_selector) {
+            if (this.series_selector !== currect_state.series_selector) {
+                LOG("!!! series selector changed");
+                return false;
+            };
+        };
+        
+        if (this.tag_selector) {
+            if (this.tag_selector !== currect_state.tag_selector) {
+                LOG("!!! tag selector changed");
+                return false;
+            };
+        };
+        
+        if (this.condition_selector) {
+            if (this.condition_selector !== currect_state.condition_selector) {
+                LOG("!!! condition selector changed");
+                return false;
+            };
+        };
+        
+        if (this.source_selector) {
+            if (this.source_selector !== currect_state.source_selector) {
+                LOG("!!! source selector changed");
+                return false;
+            };
+        };
+        
+        return true;
+    };
+};
+
 // const headers = [Collection,Year,Part,Model,Number,Stamp,Condition,Origin,URL,Tags,Quantity,Image,Note]
 
 

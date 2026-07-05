@@ -117,6 +117,7 @@ function timed(func) {
 //const models = new Array();
 const cars = new Collection();
 const csv_url = 'https://totkindgott.github.io/collection.csv';
+let tracker = new Tracker();
 let search_result = new Array(); // list of objects of type Model
 //var search_term = "Honda";
     
@@ -167,6 +168,8 @@ function parseCSV() {
 // possibly apply Model class there too - needs testing
 
 function search() {
+    NOTE("tracker.compare() state: " + tracker.compare());
+    tracker.set();
     //console.time("timer");
     let start = performance.now();
     openMessages();
@@ -198,6 +201,31 @@ function search() {
             //search_result = cars.tags[_tag];
             //display(search_result);
             count = search_result.length;
+        } else if (_year) {
+            LOG("year detected:", _year);
+            search_result = processResults(cars.years[_year]);
+            count = search_result.length;
+        } else if (_series) {
+            LOG("series detected:", _series);
+            try {
+                search_result = processResults(cars.series[_series]);
+                count = search_result.length;
+            } catch (error) {
+                WARN("Error in search(): error getting value at index", _series);
+            }
+        } else if (_source) {
+            LOG("source detected:", _source);
+            search_result = processResults(cars.sources[_source]);
+            count = search_result.length;
+        } else if (_condition) {
+            LOG("condition detected:", _condition);
+            search_result = processResults(cars.conditions[_condition]);
+            count = search_result.length;
+        } else {
+            WARN("Attention in search(): empty selectors");
+            ERROR("Error in search(): no search parameters");
+            initializeCollection();
+            return;
         };
         
     } else {
@@ -269,20 +297,23 @@ function search() {
     //display(search_result);
     let end = performance.now();
     NOTE(`search() executed in ${Number((end - start)/1000).toFixed(2)} s`);
-    count > 0 ? SUCCESS(`search() run status: OK [ ${count} ${count == 1 ? "item" : "items"} ]`) & (CONSOLE_STATE == "" && hideMessages()) : ERROR('search() run status: error [ nothing found ]') & openMessages();
+    count > 0 ? SUCCESS(`search() run status: OK [ ${count} ${count == 1 ? "item" : "items"} ]`) & (CONSOLE_STATE == "" && hideMessages()) & showNotification(`${count} ${count == 1 ? "match found" : "matches found"}`) : ERROR('search() run status: error [ nothing found ]') & openMessages() & showNotification("no matches found");
     LOG("<hr />");
     search_result.length ? display(search_result) : void(0);
-};
+    
+}; // search() declaration ends
 
 function match() {
     
-    let start = performance.now();
-    
     if (search_result.length < 1) {
         LOG(">>> match() redirecting to search()");
-        search();
-        return;
+        return search();
+        //return;
     };
+    
+    NOTE("tracker.compare() state: " + tracker.compare());
+    tracker.set();
+    let start = performance.now();
     
     LOG("<hr />");
     LOG(">>> running match() on", search_result.length, "objects from recent search for", searchBar.value);
@@ -312,12 +343,14 @@ function match() {
     NOTE("match() returned", matched.length,   matched.length == 1 ? "item" : "items");
     
     display(matched);
-    filter.apply_filters();
+    //filter.apply_filters();
     updateCount(matched.length);
     
     let end = performance.now();
     NOTE(`match() executed in ${Number((end - start)/1000).toFixed(2)} s`);
     matched.length > 0 ? SUCCESS(`match() run status: OK [ ${matched.length} ${matched.length == 1 ? "item" : "items"} ]`) & (CONSOLE_STATE == "" && hideMessages()) : ERROR('match() run status: error [nothing found]') & openMessages();
+    LOG("<hr />");
+    
 }; // match() declaration ends
 
 function processResults(models) { // expects a list of strings
@@ -378,6 +411,11 @@ async function initialSetup() {
     await initializeCollection();
     //searchBar.value == "" ? await initialOptionParse() & showSearchTools() : await search();
     searchBar.value == "" ? void(0) : await search();
+    try {
+        tracker.set();
+    } catch (error) {
+        ERROR("error in Tracker:", error);
+    }; // try catch block ends
     let init_end = performance.now();
     NOTE(`initialSetup() executed in ${Number((init_end - init_start)/1000).toFixed(2)} s`);
     //HIGHLIGHT(`tags: ${tags.length} | years: ${years.length} | collections: ${collections.length} | sources: ${sources.length} | conditions: ${conditions.length}`);
