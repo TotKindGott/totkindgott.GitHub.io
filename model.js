@@ -56,35 +56,35 @@ class Tracker {
         }; // if search_query ends
         
         if (this.year_selector) {
-            if (this.year_selector !== currect_state.year_selector) {
+            if (this.year_selector !== current_state.year_selector) {
                 NOTE("!!! year selector changed");
                 return false;
             };
         };
         
         if (this.series_selector) {
-            if (this.series_selector !== currect_state.series_selector) {
+            if (this.series_selector !== current_state.series_selector) {
                 LOG("!!! series selector changed");
                 return false;
             };
         };
         
         if (this.tag_selector) {
-            if (this.tag_selector !== currect_state.tag_selector) {
+            if (this.tag_selector !== current_state.tag_selector) {
                 LOG("!!! tag selector changed");
                 return false;
             };
         };
         
         if (this.condition_selector) {
-            if (this.condition_selector !== currect_state.condition_selector) {
+            if (this.condition_selector !== current_state.condition_selector) {
                 LOG("!!! condition selector changed");
                 return false;
             };
         };
         
         if (this.source_selector) {
-            if (this.source_selector !== currect_state.source_selector) {
+            if (this.source_selector !== current_state.source_selector) {
                 LOG("!!! source selector changed");
                 return false;
             };
