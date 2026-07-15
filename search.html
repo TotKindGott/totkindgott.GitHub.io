@@ -263,16 +263,16 @@ function search() {
             continue;
         };
         
-        if (text[l].toLowerCase().includes(query.toLowerCase(), _tag.toLowerCase(), _series.toLowerCase(), _condition.toLowerCase(), _source.toLowerCase())) {
+        if (text[l].toLowerCase().includes(query.toLowerCase(), _tag.toLowerCase(), _series.toLowerCase(), _condition.toLowerCase(), _source.toLowerCase(), _year)) {
             m = new Model(l, text[l]);
             // filtering by year is not working above, wtf
             //m.id = `item${l}`;
             //f = m.make_frame_view();
             if (m.series.toLowerCase().includes(_series.toLowerCase()) && m.tag.toLowerCase().includes(_tag.toLowerCase()) && m.year.toString().includes(_year) && m.condition.toLowerCase().includes(_condition.toLowerCase()) && m.origin.toLowerCase().includes(_source.toLowerCase())) {
-                f = m.make_card_view();
-                lines.push(f);
-                i = m.make_thumbnail_view();
-                images.push(i);
+                //f = m.make_card_view();
+                //lines.push(f);
+                //i = m.make_thumbnail_view();
+                //images.push(i);
                 filter.add_data(m);
                 //CLIP(m.missing_photo);
                 count += 1;            
@@ -424,29 +424,6 @@ async function initialSetup() {
 };
 
 //const cars = new Collection();
-
-async function altSetup() {
-    let start = performance.now();
-    LOG(">>> running altSetup()");
-    let count = 0;
-    await getCSV();
-    let csv =  document.getElementById("csv").innerHTML;
-    let lines = csv.split("\n");
-    let headers = lines.shift();
-    NOTE(lines.length, "lines in csv");
-    try {
-        lines.forEach(line => {
-            count += 1;
-            cars.addModel(line);
-            });
-    } catch (error) {
-        ERROR(error);
-    };
-    SUCCESS(count, "models processed");
-    let end = performance.now();
-    NOTE(`altSetup() executed in ${Number((end - start)/1000).toFixed(2)} s`);
-}
-
 
 function initializeCollection() {
     let start = performance.now();

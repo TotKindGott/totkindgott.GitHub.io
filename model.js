@@ -1,5 +1,5 @@
 class Tracker {
-    
+// TODO: rename to Watcher    
     constructor() {
         this.state = false;
         this.search_query = false;
@@ -64,28 +64,28 @@ class Tracker {
         
         if (this.series_selector) {
             if (this.series_selector !== current_state.series_selector) {
-                LOG("!!! series selector changed");
+                NOTE("!!! series selector changed");
                 return false;
             };
         };
         
         if (this.tag_selector) {
             if (this.tag_selector !== current_state.tag_selector) {
-                LOG("!!! tag selector changed");
+                NOTE("!!! tag selector changed");
                 return false;
             };
         };
         
         if (this.condition_selector) {
             if (this.condition_selector !== current_state.condition_selector) {
-                LOG("!!! condition selector changed");
+                NOTE("!!! condition selector changed");
                 return false;
             };
         };
         
         if (this.source_selector) {
             if (this.source_selector !== current_state.source_selector) {
-                LOG("!!! source selector changed");
+                NOTE("!!! source selector changed");
                 return false;
             };
         };
