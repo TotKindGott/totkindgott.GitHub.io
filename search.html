@@ -364,7 +364,7 @@ function processResults(models) { // expects a list of strings
         _subcollection.add(model);
         _filter.add_data(m)
     }); // forEach loop ends
-    LOG("returning", _subcollection.models.length, "Model() objects");
+    NOTE("returning", _subcollection.models.length, "Model() objects");
     return _filter.models;
 };
 
