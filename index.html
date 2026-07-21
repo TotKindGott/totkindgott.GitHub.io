@@ -34,6 +34,8 @@
     <input type="number" name="result counter" value="" disabled="True" id="counter" />
 </div>
 
+<div id="notification"></div>
+<div id="messages"></div>
 
 <div id="menu" class="overlay">
     <a id="menu_close_button">&times;</a>
@@ -147,6 +149,10 @@
     body.dark-mode #speed_slider label,
     body.dark-mode #speed_selector label {
         color: white;
+    }
+    
+    div#messages {
+        display: none;
     }
     
 </style>
