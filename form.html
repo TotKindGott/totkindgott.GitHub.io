@@ -176,17 +176,16 @@ body.dark-mode #apply_button {
         <option>2</option>
     </datalist>
 
-
     <label for="note">Note: </label>
     <input type="text" name="note" id="note" list="notes" />
     <datalist id="notes"></datalist>
 
-<div id="form_buttons">
-    
-    <input type="submit" value="APPLY" class="form_button" id="apply_button" />
-    <input type="reset" value="RESET" class="form_button" id="reset_button" />
-    
-</div>
+    <div id="form_buttons">
+        
+        <input type="submit" value="APPLY" class="form_button" id="apply_button" />
+        <input type="reset" value="RESET" class="form_button" id="reset_button" />
+        
+    </div>
 
 </div>
 </form>
@@ -448,7 +447,7 @@ async function setupForm() {
     checkMode();
     setSearchRedirect();
     await getCSV();
-    parseCSV();
+    await parseCSV();
     displayLocalText();
     setTimeout(hideMessages, 500);
     //removeLocalText();
@@ -456,6 +455,25 @@ async function setupForm() {
 
 setupForm();
 </script>
+
+    <div id="advanced_search">
+
+        <input type="search" list="tags" placeholder="TAG" class="select" id="tags_input">    
+        <datalist id="tags"></datalist>
     
+        <input type="search" list="years" placeholder="YEAR" class="select" id="years_input">    
+        <datalist id="years"></datalist>
+    
+        <input type="search" list="series" placeholder="SERIES" class="select" id="series_input">    
+        <datalist id="series"></datalist>
+    
+        <input type="search" list="conditions" placeholder="CONDITION" class="select" id="conditions_input">    
+        <datalist id="conditions"></datalist>
+    
+        <input type="search" list="sources" placeholder="SOURCE" class="select" id="sources_input">    
+        <datalist id="sources"></datalist>
+    
+    </div>
+
 </body>
 </html>

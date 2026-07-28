@@ -89,11 +89,11 @@
     <input type="button" id="help_button" value="" onclick="location.href='reference.html'" />
     
     <footer id="page_footer">
-        <p>Last update: <a href="updates.html">2026-05-26</a></p>
-        <p>Site design: Konstantin A Kolosov</p>
+        <p>Last update: <a href="updates.html">2026-07-21</a></p>
         <hr />
             <a href="index.html">Home</a>
             <a href="preview.html">Statistics</a>
+            <a href="form.html">Form</a>
             <a href="treasures.html">Treasures</a>
             <a href="about.html">About</a>
     </footer>
@@ -114,39 +114,18 @@ function timed(func) {
 };
 
 //const models = new Array();
-const cars = new Collection();
-const csv_url = 'https://totkindgott.github.io/collection.csv';
+let cars = new Collection();
+
 let tracker = new Tracker();
 let search_result = new Array(); // list of objects of type Model
 //var search_term = "Honda";
-    
-const getCSV = async () => {
-    try {
-        let start = performance.now();
-        LOG(">>> running getCSV() ...")
-        const res = await fetch(csv_url);
-        if (res.status === 200) {
-            const data = await res.text();
-        document.getElementById("csv").innerHTML = data;
-            SUCCESS(`fetch("${csv_url}") response status: ${res.status}`);
-            NOTE(`fetched ${data.length.toLocaleString("en-US")} characters`);
-            let end = performance.now();
-            NOTE(`getCSV() executed in ${Number((end - start)/1000).toFixed(2)} s`);
-        } else {
-            ERROR(`Error code ${res.status} in fetch(${csv_url})`);
-        }; // if / else block ends
-    } catch (error) {
-        ERROR(`Error in getCSV(): ${error}`);
-    } finally {
-        SUCCESS("getCSV() run status: OK");
-    }; // try / catch block ends
-}; // getCSV declaration ends
 
 function parseCSV() {
     let start = performance.now();
     LOG(">>> running parseCSV()");
     let count = 0;
     let csv =  document.getElementById("csv").innerHTML;
+    let models = new Array();
     let lines = csv.split("\n");
     let headers = lines.shift();
     NOTE(lines.length, "lines in csv");
@@ -352,7 +331,7 @@ function match() {
     
 }; // match() declaration ends
 
-function processResults(models) { // expects a list of strings
+function processResults(models) { // expects a list of strings ( csv lines??? )
     LOG(">>> running processResults() ...")
     let _count = 0;
     let _filter = new Filter();
@@ -397,7 +376,8 @@ function display(models) {
     setActivationEvent();
     SUCCESS(`display() run status: OK [ ${result.length} ${result.length == 1 ? "item" : "items"} ]`);
     LOG("<hr />");
-};
+
+}; // display() declaration ends
 
 async function initialSetup() {
     let init_start = performance.now();
@@ -417,16 +397,17 @@ async function initialSetup() {
     }; // try catch block ends
     let init_end = performance.now();
     NOTE(`initialSetup() executed in ${Number((init_end - init_start)/1000).toFixed(2)} s`);
-    //HIGHLIGHT(`tags: ${tags.length} | years: ${years.length} | collections: ${collections.length} | sources: ${sources.length} | conditions: ${conditions.length}`);
     SUCCESS("initialSetup() run status: OK");
     LOG("<hr />");
-};
+    
+}; // initialSetup() declaration ends
 
 //const cars = new Collection();
 
 function initializeCollection() {
     let start = performance.now();
-    LOG(">>> initializing Collection() ...")
+    LOG(">>> initializing Collection() ...");
+    cars = new Collection();
     let csv = document.getElementById("csv").innerHTML;
     let lines = csv.split("\n");
     let headers = lines.shift();
@@ -444,19 +425,31 @@ function initializeCollection() {
     let end = performance.now();
     NOTE(`initializeCollection() executed in ${Number((end - start)/1000).toFixed(2)} s`);
     cars.test();
-};
+    
+}; // initializeCollection() ends
 
+function resetSearch() {
+    search_result = new Array();
+    if (!isClearOptions) {
+        clearOptions();
+    };
+    document.getElementById("card_view").innerHTML = "";
+    document.getElementById("item_list").innerHTML = "";
+    initializeCollection();
+    WARN("search and filters reset");
+    showNotification("search reset");
+    LOG("<hr />");
+}
 
 initialSetup();
-//altSetup()
 document.getElementById("search_bar").addEventListener("change", search);
 //document.getElementById("search_bar").addEventListener("keyup", processChange);
 verticalSwipeActions("item_list", showCollage, hideCollage, 100);
 // Collage view by default
-//document.getElementById('item_list').classList.add('shown');
+document.getElementById('item_list').classList.add('shown');
+document.getElementById("clear_button").addEventListener("click", resetSearch);
 
 //setTimeout(initialOptionParse, 2500);
-//setTimeout(toggleMessages, 2000)
 
 </script>
     

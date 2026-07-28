@@ -4,7 +4,8 @@ let CONSOLE_STATE = ""; // open keeps console open
 
 const collection_url = 'https://totkindgott.github.io/collection.html';
 const search_url = 'https://totkindgott.github.io/search.html?search=';
-const csv_file = "./collection.csv"
+const csv_url = 'https://totkindgott.github.io/collection.csv';
+//const csv_url = './collection.csv';  // local file
     
 const inputs = document.querySelectorAll('input');
 
@@ -467,3 +468,26 @@ function toggleConsoleState() {
         consoleAutoDismiss();
     };
 };
+
+const getCSV = async () => {
+    try {
+        let start = performance.now();
+        LOG(">>> running getCSV() ...")
+        const res = await fetch(csv_url);
+        if (res.status === 200) {
+            const data = await res.text();
+        document.getElementById("csv").innerHTML = data;
+            SUCCESS(`fetch("${csv_url}") response status: ${res.status}`);
+            NOTE(`fetched ${data.length.toLocaleString("en-US")} characters`);
+            //OUTPUT(data.trim());
+            let end = performance.now();
+            NOTE(`getCSV() executed in ${Number((end - start)/1000).toFixed(2)} s`);
+        } else {
+            ERROR(`Error code ${res.status} in fetch(${csv_url})`);
+        }; // if / else block ends
+    } catch (error) {
+        ERROR(`Error in getCSV(): ${error}`);
+    } finally {
+        SUCCESS("getCSV() run status: OK");
+    }; // try / catch block ends
+}; // getCSV declaration ends

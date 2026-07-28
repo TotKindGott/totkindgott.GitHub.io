@@ -154,11 +154,15 @@ class Collection {
     }
     
     updateSelectors() {
-        clearOptions();
+        document.getElementById("years").innerHTML = "";
     Array.from(this._years).sort().forEach(year => document.getElementById("years").innerHTML += `<option value="${year}">`);
+        document.getElementById("conditions").innerHTML = "";
     Array.from(this._conditions).sort().forEach(condition => document.getElementById("conditions").innerHTML += `<option value="${condition}">`);
+        document.getElementById("series").innerHTML = "";
     Array.from(this._series).sort().forEach(collection => document.getElementById("series").innerHTML += `<option value="${collection}">`);
-    Array.from(this._tags).sort().forEach(tag => document.getElementById("tags").innerHTML += `<option value="${tag}">`);    
+        document.getElementById("tags").innerHTML = "";
+    Array.from(this._tags).sort().forEach(tag => document.getElementById("tags").innerHTML += `<option value="${tag}">`);
+        document.getElementById("sources").innerHTML = "";
     Array.from(this._sources).sort().forEach(source => document.getElementById("sources").innerHTML += `<option value="${source}">`); 
     };
     
@@ -170,11 +174,17 @@ class Collection {
 class Model {
 
     constructor(id, csv_line) {
-        this.images_directory = "Images";
+        this.images_directory = "./Images";
         const csvalues = csv_line.split(",");
         // headers in order:
         // Collection,Year,Part,Model,Number,Stamp,Condition,Origin,URL,Tags,Quantity,Image,Note
         this.id = id;
+    
+        if (csvalues.length != 13) {
+            WARN("warning in Model.constructor(): number of values in csv line incorrect");
+            NOTE(csv_line);
+                return;
+        };
         
         this.csv = csv_line;
         this.name = csvalues[3];
@@ -202,10 +212,11 @@ class Model {
     }; // constructor ends
     
     make_spreadsheet_line() {
+        let data_index = `${this.name} ${this.series} ${this.year} ${this.tag} ${this.origin} ${this.condition} ${this.note}`;
         // template literal
         return `
-    <tr class="{row_class} searchable" data-index="{data_index}">
-        <td class="line">{count}</td>
+    <tr class="searchable" data-index="${data_index}">
+        <td class="line">${this.id}</td>
         <td class="model">${this.name}</td>
         <td class="series">${this.series}</td>
         <td class="year">${this.year}</td>
@@ -277,8 +288,7 @@ class Model {
             </tr>
         </table>
     </div>`
-    }; // make_details_html() ends
-    
+    }; // make_details_div() ends
     
     make_photo_view() {
 

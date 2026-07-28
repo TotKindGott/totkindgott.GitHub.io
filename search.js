@@ -38,6 +38,8 @@ let sources_set = new Set();
 
 //document.body.setAttribute("load", parseAndSearch);
 
+try {
+
 yearSelectorInput.classList.add("half");
 yearSelectorInput.classList.add("right");
 tagSelectorInput.classList.add("half");
@@ -69,6 +71,9 @@ yearSelectorInput.addEventListener("change", match);
 // conditionSelectorInput.addEventListener("keyup", findMatches);
 // yearSelectorInput.addEventListener("change", findMatches);
 // yearSelectorInput.addEventListener("keyup", findMatches);
+} catch (error) {
+    ERROR("error in file search.js:", error);
+};
 
 searchBar.addEventListener("focus", showSearchTools);
 //searchBar.addEventListener("keyup", findMatches);
@@ -256,6 +261,8 @@ function restoreOptions() {
 
 function clearOptions() {
     // manipulating innerHTML
+    WARN("clearing options");
+    WARN(seriesOptions.innerHTML);
     seriesOptions.innerHTML = "";
     yearOptions.innerHTML = "";
     tagOptions.innerHTML = "";

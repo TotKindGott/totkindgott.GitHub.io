@@ -5,6 +5,7 @@
     <title>Collection</title>
     <link type="text/css" href="styles.css" rel="stylesheet" />
     <script src="scripts.js"></script>
+    <script src="model.js"></script>
     <script src="buttons.js" defer></script>
     <!--optional-->
     <meta name="format-detection" content="telephone=no" />
@@ -29,6 +30,7 @@
         <input type="button" id="mode_button" />
         <input type="button" id="view_button" />
         <input type="button" id="details_button" />
+        <input type="button" id="console_button" onclick="toggleMessages();" />        
         <input type="button" id="clear_button" />
     </div>
     <input type="number" name="result counter" value="" disabled="True" id="counter" />
@@ -52,7 +54,6 @@
         <a href="about.html">About</a>
     </div>
 </div>
-
 
     </header>  <!-- END NAVIGATION -->
 
@@ -155,36 +156,46 @@
         display: none;
     }
     
+    #console_button {
+        z-index: 100;
+        position: static;
+        right: 15px;
+    }
+    
 </style>
 
+<div id="csv" style="display: none"></div>
+<div id="messages"></div>
 <div id="frame" style="display: none"></div>
 
 <script>
     
-    getCollection();
-    
-    const collectables = document.getElementById("frame");
+    //getCollection();
+    getCSV();
 
     function getPhotoSources(query) {
         // extracts only photos
-        searchFor(query);
-        let matches = collectables.getElementsByClassName("visible");
+        LOG(">>> running getPhotoSources() with query:", query);
+        let cars = new Collection();
+        let csv =  document.getElementById("csv").innerHTML;
+        let lines = csv.split("\n");
+        let headers = lines.shift();
         let photos = "";
-        
-        for (var i = 0; i < matches.length; i++) {
-            
-            try {
-                let path = matches[i].getElementsByClassName("photo")[0].getAttribute("src");
-            
-                if (path === "") {
-                    void(0);
-                } else {
-                    photos += "<img src='" + path + "' />"
-                };
-            } catch {
-                void(0);
-            }; // try catch block ends
+        let count = 0;
+        document.getElementById('search_bar').setAttribute("value", query);
+        for (var i = 0; i < lines.length; i++) {
+            if (lines[i].toLowerCase().includes(query.toLowerCase())) {
+                let model = new Model(i, lines[i]);
+                model.update_image_path();
+                let photo = model.image_path;
+                LOG(photo);
+                photos += "<img src='" + photo + "' />"
+                count += 1;
+        } else {
+            continue;
+        };
         } // for loop ends
+        updateCount(count);
 
         sidebar.innerHTML = photos;
         stopSlideShow();
@@ -193,20 +204,17 @@
     };
 
     function searchForInput() {
-        var query = document.getElementById("slide_search").innerText;
+        LOG(">>> running searchForInput()");
+        let query = document.getElementById("slide_search").innerText;
         if (!query == "") {
-            try {
-                getPhotoSources(query);
-            } catch {
-                void(0);
-            };
+            getPhotoSources(query);
         };
     };
     
 </script>
 
 <div id="horizontal_selector">
-    <span class="input" id="slide_search" onclick="searchForInput()" onkeyup="searchForInput()" contenteditable></span>
+    <span class="input" id="slide_search" onblur="searchForInput()" contenteditable></span>
     <span onclick="getPhotoSources('glow in the dark')">Glow-in-the-dark</span>
     <span onclick="getPhotoSources('type:fire truck')">Fire trucks</span>
     <span onclick="getPhotoSources('type:motorcycle')">Motorcycles</span>
@@ -269,7 +277,6 @@
     
     <footer id="page_footer">
         <p>Last update: <a href="updates.html">2026-06-28</a></p>
-        <p>Site design: Konstantin A Kolosov</p>
         <hr />
             <a href="index.html">Home</a>
             <a href="preview.html">Statistics</a>
