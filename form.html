@@ -255,8 +255,6 @@ function removeLocalText() {
     LOG("localStorage cleared");
     showNotification("localStorage cleared");
 };
-    
-const csv_url = 'https://totkindgott.github.io/collection.csv';
 
 // 1. Select the form element
 const form = document.getElementById('model_form');
@@ -286,40 +284,19 @@ function handleFormAction(event) {
     const part = document.getElementById('part').value;
     const note = document.getElementById('note').value;
 // const headers = [Collection,Year,Part,Model,Number,Stamp,Condition,Origin,URL,Tags,Quantity,Image,Note]
-  let csv_line = `${series_name},${year},${part.toString().replace(".", "/")},${model_name},${number.toString().replace(".", "/")},,${condition},${source},,${tag_name},${quantity},,${note}`;
-  m = new Model(0, csv_line);
-  NOTE("<hr />");
-  CLIP(csv_line);
-  addToLocalText(csv_line);
-  //CLIP(m.missing_photo);
-  NOTE("<hr />");
-  copy(csv_line);
-  // Optional: You can send data via an API using fetch() here
+    let csv_line = `${series_name},${year},${part.toString().replace(".", "/")},${model_name},${number.toString().replace(".", "/")},,${condition},${source},,${tag_name},${quantity},,${note}`;
+    m = new Model(0, csv_line);
+    NOTE("<hr />");
+    CLIP(csv_line);
+    addToLocalText(csv_line);
+    //CLIP(m.missing_photo);
+    NOTE("<hr />");
+    copy(csv_line);
+    // Optional: You can send data via an API using fetch() here
 };
 
-const getCSV = async () => {
-    try {
-        let start = performance.now();
-        LOG(">>> running getCSV() ...")
-        const res = await fetch(csv_url);
-        if (res.status === 200) {
-            const data = await res.text();
-        document.getElementById("csv").innerHTML = data;
-            SUCCESS(`fetch("${csv_url}") response status: ${res.status}`);
-            NOTE(`fetched ${data.length.toLocaleString("en-US")} characters`);
-            let end = performance.now();
-            NOTE(`getCSV() executed in ${Number((end - start)/1000).toFixed(2)} s`);
-        } else {
-            ERROR(`Error code ${res.status} in fetch(${csv_url})`);
-        }; // if / else block ends
-    } catch (error) {
-        ERROR(`Error in getCSV(): ${error}`);
-    } finally {
-        SUCCESS("getCSV() run status: OK");
-    }; // try / catch block ends
-}; // getCSV declaration ends
 
-function parseCSV() {
+function parseCSV2() {
     let start = performance.now();
     LOG(">>> running parseCSV() ...");
     let filter = new FormFilter();
@@ -337,6 +314,7 @@ function parseCSV() {
     } catch (error) {
         ERROR(error);
     };
+    
     filter.apply_filters();
     NOTE(count, "models processed");
     let end = performance.now();
@@ -345,6 +323,7 @@ function parseCSV() {
 }
 
 class FormFilter {
+
     constructor() {
         this.models      = new Set();
         this.collections = new Set();
@@ -424,7 +403,7 @@ class FormFilter {
                 document.getElementById("sources").innerHTML += `<option value="${source}">`
             };
         });
-        _models.forEach(model => document.getElementById("models").innerHTML += `<option value="${model}">`);
+        _models.forEach(_model => document.getElementById("models").innerHTML += `<option value="${_model}">`);
         _numbers.forEach(number => document.getElementById("numbers").innerHTML += `<option value="${number}">`);
         _parts.forEach(part => document.getElementById("parts").innerHTML += `<option value="${part}">`);
         _notes.forEach(note => document.getElementById("notes").innerHTML += `<option value="${note}">`);
@@ -439,7 +418,7 @@ class FormFilter {
         // HIGHLIGHT("sources:", _sources.length);
         // HIGHLIGHT("conditions:", _conditions.length);
 
-    }; // apply() ends
+    }; // apply_filters() ends
     
 }; // class declaration ends
 
@@ -447,13 +426,14 @@ async function setupForm() {
     checkMode();
     setSearchRedirect();
     await getCSV();
-    await parseCSV();
+    await parseCSV2();
     displayLocalText();
     setTimeout(hideMessages, 500);
     //removeLocalText();
 };
 
 setupForm();
+
 </script>
 
     <div id="advanced_search">

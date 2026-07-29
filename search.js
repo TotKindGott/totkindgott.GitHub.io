@@ -50,17 +50,6 @@ sourceSelectorInput.classList.add("left");
 conditionSelectorInput.classList.add("half");
 conditionSelectorInput.classList.add("right");
 
-seriesSelectorInput.addEventListener("change", match);
-//seriesSelectorInput.addEventListener("keyup", search);
-sourceSelectorInput.addEventListener("change", match);
-//sourceSelectorInput.addEventListener("keyup", search);
-tagSelectorInput.addEventListener("change", match);
-//tagSelectorInput.addEventListener("keyup", search);
-conditionSelectorInput.addEventListener("change", match);
-//conditionSelectorInput.addEventListener("keyup", search);
-yearSelectorInput.addEventListener("change", match);
-//yearSelectorInput.addEventListener("keyup", search);
-
 // seriesSelectorInput.addEventListener("change", findMatches);
 // seriesSelectorInput.addEventListener("keyup", findMatches);
 // sourceSelectorInput.addEventListener("change", findMatches);

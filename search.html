@@ -395,6 +395,18 @@ async function initialSetup() {
     } catch (error) {
         ERROR("error in Tracker:", error);
     }; // try catch block ends
+seriesSelectorInput.addEventListener("change", match);
+//seriesSelectorInput.addEventListener("keyup", search);
+sourceSelectorInput.addEventListener("change", match);
+//sourceSelectorInput.addEventListener("keyup", search);
+tagSelectorInput.addEventListener("change", match);
+//tagSelectorInput.addEventListener("keyup", search);
+conditionSelectorInput.addEventListener("change", match);
+//conditionSelectorInput.addEventListener("keyup", search);
+yearSelectorInput.addEventListener("change", match);
+//yearSelectorInput.addEventListener("keyup", search);
+
+
     let init_end = performance.now();
     NOTE(`initialSetup() executed in ${Number((init_end - init_start)/1000).toFixed(2)} s`);
     SUCCESS("initialSetup() run status: OK");
