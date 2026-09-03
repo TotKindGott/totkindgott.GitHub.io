@@ -152,6 +152,73 @@
         color: white;
     }
     
+    #messages {
+        display: none;
+        width: 98vw;
+        height: 130vw;
+        margin: auto;
+        position: fixed;
+        top: 10vw;
+        left: 1vw;
+        overflow-wrap: break-all;
+        white-space: pre-wrap;
+        overflow-y: scroll;
+        background: black;
+        color: white;
+        padding: 2.5% 0;
+        z-index: 8;
+    }
+    
+    #messages > p {
+        width: 95%;
+        margin: 2px auto;
+        display: block;
+        font: 14px monospace;
+        overflow-wrap: break-word;
+    }
+    
+    #messages > hr {
+        background-color: black;
+        color: black;
+        border: 0.5px solid darkgray;
+        margin: 2px auto;
+        width: 95%;
+        height: 0;
+    }
+        
+    #messages > p.message {
+        color: white;
+    }
+    
+    #messages > p.warning {
+        color: orange;
+    }
+    
+    #messages > p.error {
+        color: red;
+    }
+    
+    #messages > p.success {
+        color: lime;
+    }
+    
+    #messages > p.highlight {
+        color: yellow;
+    }
+    
+    #messages > p.note {
+        color: gray;
+    }
+    
+    #messages > p.option {
+        color: lightblue;
+        font-weight: bold;
+    }
+    
+    #messages > p.clip {
+        color: lightblue;
+    }
+    
     div#messages {
         display: none;
     }
@@ -184,11 +251,10 @@
         let count = 0;
         document.getElementById('search_bar').setAttribute("value", query);
         for (var i = 0; i < lines.length; i++) {
-            if (lines[i].toLowerCase().includes(query.toLowerCase())) {
+            if (generateDataIndex(lines[i]).toLowerCase().includes(query.toLowerCase())) {
                 let model = new Model(i, lines[i]);
                 model.update_image_path();
                 let photo = model.image_path;
-                LOG(photo);
                 photos += "<img src='" + photo + "' />"
                 count += 1;
         } else {
@@ -204,7 +270,7 @@
     };
 
     function searchForInput() {
-        LOG(">>> running searchForInput()");
+        LOG(">>> running searchForInput() ...");
         let query = document.getElementById("slide_search").innerText;
         if (!query == "") {
             getPhotoSources(query);

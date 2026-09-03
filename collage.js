@@ -196,10 +196,10 @@ function verticalSwipeActions(elementID, swipeUpAction, swipeDownAction, swipeTh
 
         if (el.style.display == "block") {
             el.style.display = "none";
-            LOG(`toggleDetails() status: details_${id} closed`);
+            NOTE(`toggleDetails(): details_${id} closed`);
         } else {
             el.style.display = "block";
-            LOG(`toggleDetails() status: details_${id} opened`);
+            NOTE(`toggleDetails(): details_${id} opened`);
         };
     };
     

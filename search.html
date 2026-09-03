@@ -140,10 +140,8 @@ function parseCSV() {
     SUCCESS(models.length, "models processed");
     let end = performance.now();
     NOTE(`parseCSV() executed in ${Number((end - start)/1000).toFixed(2)} s`);
-}
+}; // parseCSV() declaration ends
 
-// TODO: separate csv into tags/collections/years etc at initialOptionParse() to search by selectors through
-// possibly apply Model class there too - needs testing
 
 function search() {
     NOTE("tracker.compare() state: " + tracker.compare());
@@ -219,6 +217,7 @@ function search() {
     //var text = data.split("\n");
     //var headers = text.shift();
     var text = cars.models;
+    let prog = new ProgressTracker(text.length);
     var lines = new Array();
     var images = new Array();
     let matches = new Array();
@@ -234,7 +233,7 @@ function search() {
         // if ((l + 1) % increment === 0) {
         //     update_progress((l + 1) / increment * 10);
         // };
-        
+        prog.update(l);
         if (text[l].toLowerCase().includes(query.toLowerCase())) {
             _matches.push(new Model(l, text[l]));
         } else {
@@ -261,6 +260,7 @@ function search() {
     //document.getElementById("card_view").innerHTML = lines.join('');
     //document.getElementById("item_list").innerHTML = images.join("");
         search_result = matches;
+        setTimeout(prog.reset, 2500);
     }; // if block ends
     
     NOTE(`search() returned ${count} ${count == 1 ? "item" : "items"}`);
@@ -383,11 +383,15 @@ async function initialSetup() {
     let init_start = performance.now();
     LOG(">>> running initialSetup() ...");
     checkMode();
+    let prog = new ProgressTracker(4, 4);
     await getCSV();
+    prog.update(1);
     await parseURL();
+    prog.update(2);
     //await parseCSV();
     //await initialOptionParse();
     await initializeCollection();
+    prog.update(3);
     //searchBar.value == "" ? await initialOptionParse() & showSearchTools() : await search();
     searchBar.value == "" ? void(0) : await search();
     try {
@@ -395,6 +399,8 @@ async function initialSetup() {
     } catch (error) {
         ERROR("error in Tracker:", error);
     }; // try catch block ends
+    prog.update(4);
+    setTimeout(prog.reset, 2500);
 seriesSelectorInput.addEventListener("change", match);
 //seriesSelectorInput.addEventListener("keyup", search);
 sourceSelectorInput.addEventListener("change", match);
@@ -411,6 +417,7 @@ yearSelectorInput.addEventListener("change", match);
     NOTE(`initialSetup() executed in ${Number((init_end - init_start)/1000).toFixed(2)} s`);
     SUCCESS("initialSetup() run status: OK");
     LOG("<hr />");
+    progbar.value = 100;
     
 }; // initialSetup() declaration ends
 

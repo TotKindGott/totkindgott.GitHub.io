@@ -283,24 +283,31 @@
         var l = document.getElementById('filterToggle');
         if(f.style.display == 'none') {
             f.style.display = 'table';
+            NOTE("column filter exposed");
         } else {
             f.style.display = 'none';
+            NOTE("column filter hidden");
         };
     };
     
     function toggleCol(name) {
-        cells = document.getElementsByClassName(name);
+        let cells = document.getElementsByClassName(name);
+        let state = "";
+        
         for(var i = 0; i < cells.length; i++) {
             var e = cells[i];
             var t = document.getElementById(name+'Toggle');
             if (e.style.display !== 'none') {
                 e.style.display = 'none';
                 t.style.color = 'silver';
+                state = false;
             } else {
                 e.style.display = 'table-cell';
                 t.style.color = 'black';
+                state = true;
             };
         };
+        NOTE("column", name, "toggled", state);
     };
     
     function onMouseOver(name) {
@@ -321,9 +328,10 @@
     
     function searchLines() {
         // searches through data-index attribute of every carDiv
+        LOG(">>> running searchLines() ...")
         let search_query = document.getElementById('search_bar').value;
         let count = 0;
-        LOG("searching for", search_query);
+        OPTION("searching for", search_query);
         search_query = search_query.toLowerCase();
         let carDivs = document.getElementsByClassName('searchable');
         for (i = 0; i < carDivs.length; i++) {
@@ -339,6 +347,7 @@
             }
         };
         NOTE("searchLines() returned", count, "matches");
+        LOG("<hr />");
         updateCount();
         positionFooter();
     };
@@ -403,9 +412,9 @@
     <script>
         
 function parseCSV() {
-    // TODO: strikethrough when quantity is zero
+
     let start = performance.now();
-    LOG(">>> running parseCSV()");
+    LOG(">>> running parseCSV() in this file ...");
     let count = 0;
     let csv =  document.getElementById("csv").innerHTML;
     let models = new Array();
@@ -466,18 +475,19 @@ function parseCSV() {
         //LOG(new Model(count, line).make_spreadsheet_line());
         });
 
-    SUCCESS(models.length, "models processed");
+    NOTE(models.length, "models processed");
     let end = performance.now();
     NOTE(`parseCSV() executed in ${Number((end - start)/1000).toFixed(2)} s`);
-    document.getElementById("main_table").innerHTML = models.join("\n");
+    SUCCESS("parseCSV() run status: OK");
+    return models.join("\n");
 };
 
 async function initSpreadsheet() {
     let start = performance.now();
-    LOG(">>> running initSpreadsheet()");
+    LOG(">>> running initSpreadsheet() in this file ...");
     await getCSV();
-    await parseCSV();
-    toggleFilter(); 
+    document.getElementById("main_table").innerHTML = await parseCSV();
+    toggleFilter();    
     toggleCol('url'); 
     toggleCol('part'); 
     toggleCol('origin'); 
@@ -485,7 +495,7 @@ async function initSpreadsheet() {
     toggleCol('condition');
     let end = performance.now();
     NOTE(`initSpreadsheet() executed in ${Number((end - start)/1000).toFixed(2)} s`);
-    SUCCESS("")
+    SUCCESS("initSpreadsheet() run status: OK");
     LOG("<hr />");
 }
 

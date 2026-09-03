@@ -247,6 +247,7 @@ function toggleView() {
 
 function searchModels() {
     // searches through data-index attribute of every carDiv
+    LOG(">>> running searchModels() in scripts.js ...");
     let search_query = document.getElementById('search_bar').value;
     search_query = search_query.toLowerCase();
     let carDivs = document.getElementsByClassName('searchable');
@@ -267,10 +268,12 @@ function searchModels() {
         }; // if else block ends
     }; // for loop ends
     updateCount();
+    SUCCESS("searchModels() run status: OK");
 }; // searcbModels function ends
 
 
 function clearSearch() {
+    LOG(">>> running clearSearch() in scripts.js ...");
     document.getElementById("search_bar").setAttribute("value", '');
     document.getElementById("search_bar").value = "";
     try {
@@ -284,6 +287,8 @@ function clearSearch() {
         void(0);
     }; // try catch block ends
     searchModels();
+    SUCCESS("clearSearch() run status: OK");
+    LOG("<hr />");
 }; // clearSearch function ends
 
 
@@ -472,7 +477,7 @@ function toggleConsoleState() {
 const getCSV = async () => {
     try {
         let start = performance.now();
-        LOG(">>> running getCSV() ...")
+        LOG(">>> running getCSV() in scripts.js ...")
         const res = await fetch(csv_url);
         if (res.status === 200) {
             const data = await res.text();
@@ -491,3 +496,31 @@ const getCSV = async () => {
         SUCCESS("getCSV() run status: OK");
     }; // try / catch block ends
 }; // getCSV declaration ends
+
+
+function importExternalJS(url) {
+    let script = document.createElement('script');
+    script.src = url;
+    script.type = 'text/javascript';
+    script.defer = true;
+    document.head.appendChild(script);
+};
+
+
+function generateDataIndex(csv) {
+    let csvalues = csv.split(",");
+    let _name = csvalues[3];
+    let _series = csvalues[0];
+    let _year = csvalues[1];
+    let _tag = csvalues[9];
+    //let _image = csvalues[11];
+    let _condition = csvalues[6];
+    //let _part = csvalues[2];
+    let _number = csvalues[4];
+    let _origin = csvalues[7];
+    //let _stamp = csvalues[5];
+    //let _url = csvalues[8];
+    let _note = csvalues[12];
+    //let _quantity = csvalues[10];
+    return `model:${_name} series:${_series} year:${_year} tag:${_tag} source:${_origin} number:${_number} ${_condition} note:${_note}`;
+}

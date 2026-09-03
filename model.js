@@ -1,5 +1,7 @@
 class Tracker {
-// TODO: rename to Watcher    
+    // tracks state of selectors in the advanced search section
+    // is used to determine type of search
+
     constructor() {
         this.state = false;
         this.search_query = false;
@@ -97,6 +99,44 @@ class Tracker {
 // const headers = [Collection,Year,Part,Model,Number,Stamp,Condition,Origin,URL,Tags,Quantity,Image,Note]
 
 
+class ProgressTracker {
+    
+    constructor(total, steps=10) {
+        this.total = total;
+        this.value = 1;
+        this.steps = steps;
+        this.step = this.total / this.steps;
+        this.progress_bar = document.getElementById("progress_bar");
+        this.progress_bar.value = 0;
+        this.progress = 0;
+        this.next = Math.round(this.step * this.value);
+    };
+    
+    update(count) {
+        this.count = count;
+        if (this.count >= this.next) {
+            this.setProgress(100 / this.steps * this.step * this.value);
+            this.value += 1;
+            this.next = Math.round(this.step * this.value);
+            //setTimeout(() => {void(0)}, 100);
+            NOTE(`value: ${this.value}/${this.total}\t count: ${this.count}\t next: ${Math.round(this.next)}`);
+        };
+    };
+    
+    setProgress(value) {
+        this.progress_bar.value = value;
+    };
+    
+    reset() {
+        this.progress = 0;
+        this.progress_bar.value = 0;
+        this.value = 1;
+        NOTE("progress bar reset");
+    };
+    
+} // ProgressTracker declaration ends
+
+
 class Collection {
     
     constructor() {
@@ -169,7 +209,9 @@ class Collection {
     test() {
         HIGHLIGHT(`tags: ${Array.from(this._tags).length} | years: ${Array.from(this._years).length} | collections: ${Array.from(this._series).length} | sources: ${Array.from(this._sources).length} | conditions: ${Array.from(this._conditions).length} | models: ${this.models.length}`);
     }
-};
+
+}; // Collection declaration ends
+
 
 class Model {
 
@@ -432,7 +474,7 @@ class Model {
         this.update_thumbnail();
     } // update_images() ends
 
-}; // class declaration ends
+}; // Model declaration ends
 
 
 class Filter {
@@ -518,7 +560,7 @@ class Filter {
         _conditions.forEach(condition => document.getElementById("conditions").innerHTML += `<option value="${condition}">`);
         _sources.forEach(source => document.getElementById("sources").innerHTML += `<option value="${source}">`);
         
-        NOTE("search filters overwritten");
+        NOTE("search filters updated");
         
         HIGHLIGHT(`tags: ${_tags.length} | years: ${_years.length} | collections: ${_collections.length} | sources: ${_sources.length} | conditions: ${_conditions.length}`);
         
@@ -530,4 +572,4 @@ class Filter {
 
     }; // apply() ends
     
-}; // class declaration ends
+}; // Filter declaration ends
