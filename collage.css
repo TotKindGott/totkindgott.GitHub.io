@@ -316,7 +316,7 @@ body.dark-mode div#carousel div#item_list {
         /*scroll-snap-stop: always;*/
         width: auto;
         height: 100%;
-        opacity: 0.75;
+        /*opacity: 0.75;
         /*flex-margin: auto;
         flex-shrink: 0;*/
         white-space: wrap;

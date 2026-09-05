@@ -103,23 +103,31 @@ class ProgressTracker {
     
     constructor(total, steps=10) {
         this.total = total;
-        this.value = 1;
+        this.value = 0;
         this.steps = steps;
-        this.step = this.total / this.steps;
+        this.step = 0;
         this.progress_bar = document.getElementById("progress_bar");
         this.progress_bar.value = 0;
         this.progress = 0;
-        this.next = Math.round(this.step * this.value);
+        this.next = Math.round(this.step);
     };
     
     update(count) {
         this.count = count;
         if (this.count >= this.next) {
-            this.setProgress(100 / this.steps * this.step * this.value);
             this.value += 1;
-            this.next = Math.round(this.step * this.value);
+            this.step += 1;
+            this.next = Math.round(this.step * (this.value + 1));
+            if (this.next > this.total) {
+                this.next = "";
+            };
             //setTimeout(() => {void(0)}, 100);
-            NOTE(`value: ${this.value}/${this.total}\t count: ${this.count}\t next: ${Math.round(this.next)}`);
+            let progress_value = 100 / this.steps * this.step;            
+            NOTE(`${this.progress_bar.value}%\t${this.value}/${this.steps}\tcount: ${this.count}\tnext: ${this.next}`);
+            this.setProgress(progress_value);
+        };
+        if (this.count >= this.total) {
+            NOTE(`ProgressTracker status: completed`);
         };
     };
     
