@@ -524,3 +524,48 @@ function generateDataIndex(csv) {
     //let _quantity = csvalues[10];
     return `model:${_name} series:${_series} year:${_year} tag:${_tag} source:${_origin} number:${_number} ${_condition} note:${_note}`;
 }
+
+function generateImageName(csv) {
+    var image_name;
+    let csvalues = csv.split(",");
+    let _name = csvalues[3];
+    let _series = csvalues[0];
+    let _year = csvalues[1];
+    let _tag = csvalues[9];
+    //let _image = csvalues[11];
+    let _condition = csvalues[6];
+    //let _part = csvalues[2];
+    let _number = csvalues[4];
+    let _origin = csvalues[7];
+    //let _stamp = csvalues[5];
+    //let _url = csvalues[8];
+    let _note = csvalues[12];
+        
+    if (_year) {
+        if (_series.includes(_year)) {
+            // omit year if it is in series name
+            image_name = _name + " (" + _series + ")";
+        } else {
+            image_name = _name + " (" + _series + " " + _year.toString() + ")";
+    };
+        
+    if (_image) {
+        // color variation
+        image_name += " [" + _image + "]";
+    } else if (_tag) {
+        // type variation
+        image_name += " [" + _tag + "]";
+        };
+    } else {
+        if (_tag) {
+            image_name = _name + " (" + _series + ") [" + _tag + "]";
+        } else {
+            image_name = _name + " (" + _series + ")";
+        };
+    };
+    // replace colons with dashes
+    image_name = image_name.replace(":", " -");
+    // replace forward slashes with underscores
+    image_name = image_name.replace("/", "_");
+    return image_name + ".jpeg";
+};

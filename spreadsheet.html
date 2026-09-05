@@ -381,6 +381,8 @@
                 <td id="quantityToggle" onclick="toggleCol('quantity')" onmouseover="onMouseOver('quantity')" onmouseout="onMouseOut('quantity')">Quantity</td>
                 <td id="tagsToggle" onclick="toggleCol('tags')" onmouseover="onMouseOver('tags')" onmouseout="onMouseOut('tags')">Tags</td>
                 <td id="conditionToggle" onclick="toggleCol('condition')" onmouseover="onMouseOver('condition')" onmouseout="onMouseOut('condition')">Condition</td>
+                <td id="imageToggle" onclick="toggleCol('image')" onmouseover="onMouseOver('image')" onmouseout="onMouseOut('image')">Image</td>
+                <td id="noteToggle" onclick="toggleCol('note')" onmouseover="onMouseOver('note')" onmouseout="onMouseOut('note')">Note</td>
             </tr>
         </table>
     </fieldset>
@@ -399,6 +401,8 @@
                 <th class="quantity">Quantity</th>
                 <th class="tags">Tags</th>
                 <th class="condition">Condition</th>
+                <th class="image">Image</th>
+                <th class="note">Note</th>
             </tr>
         </thead>
 
@@ -463,6 +467,8 @@ function parseCSV() {
             <td class="quantity">${_quantity}</td>
             <td class="tags">${_tag}</td>
             <td class="condition">${_condition}</td>
+            <td class="image">${_image}</td>
+            <td class="note">${_note}</td>
         </tr>`
             models.push(table_row);
         } catch (error) {
@@ -493,6 +499,8 @@ async function initSpreadsheet() {
     toggleCol('origin'); 
     toggleCol('quantity'); 
     toggleCol('condition');
+    toggleCol('image');
+    toggleCol('note');
     let end = performance.now();
     NOTE(`initSpreadsheet() executed in ${Number((end - start)/1000).toFixed(2)} s`);
     SUCCESS("initSpreadsheet() run status: OK");
