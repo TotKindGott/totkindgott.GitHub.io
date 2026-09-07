@@ -104,12 +104,13 @@ class ProgressTracker {
     constructor(total, steps=10) {
         this.total = total;
         this.value = 0;
+        this.count = 0;
         this.steps = steps;
         this.step = 0;
         this.progress_bar = document.getElementById("progress_bar");
         this.progress_bar.value = 0;
         this.progress = 0;
-        this.next = Math.round(this.step);
+        this.next = Math.round(this.total / this.steps);
     };
     
     update(count) {
@@ -117,17 +118,20 @@ class ProgressTracker {
         if (this.count >= this.next) {
             this.value += 1;
             this.step += 1;
-            this.next = Math.round(this.step * (this.value + 1));
+            this.next = Math.round((this.total / this.steps) * (this.step + 1));
             if (this.next > this.total) {
                 this.next = "";
             };
             //setTimeout(() => {void(0)}, 100);
-            let progress_value = 100 / this.steps * this.step;            
-            NOTE(`${this.progress_bar.value}%\t${this.value}/${this.steps}\tcount: ${this.count}\tnext: ${this.next}`);
+            let progress_value = (100 / this.steps) * this.step;            
+            NOTE(`${progress_value}%\t${this.value}/${this.steps}\tcount: ${this.count}\tnext: ${this.next}`);
             this.setProgress(progress_value);
         };
         if (this.count >= this.total) {
             NOTE(`ProgressTracker status: completed`);
+        };
+        if (this.next > this.total) {
+            this.next = this.total;
         };
     };
     
