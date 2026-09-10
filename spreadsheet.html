@@ -107,6 +107,10 @@
         font-weight: bold;
     }
     
+    #mainTable td.seen {
+        background-color: #c3e6e5;
+    }
+    
     body.dark-mode #mainTable td.line {
         color: gray;
     }
@@ -137,22 +141,23 @@
     
     /* FILTER TABLE CSS - START */
     fieldset {
-        width: 100%;
-        margin: 60px 0px auto;
+        max-width: 100%;
+        margin: 60px auto 20px;
         cursor: pointer;
+        overflow-x: scroll;
+        background-color: transparent;
     }
     
-    #filterTable {
-        width: 100%;
-        background-color: #FFF;
-        border: 1px solid black; 
+    fieldset #filterTable {
+        width: auto;
+        border: 1px solid white; 
         border-radius: 2px;
         text-align: justify;
         font-weight: bold; 
         size: 12px; 
-        margin: 0px auto; 
-        padding: 0px;
+        margin: 20px 0px 0px; 
         z-index: 9;
+        display: none;
     }
     
     #filterToggle {
@@ -202,14 +207,17 @@
     }
     
     #filterTable tr {
-        width: 100%; margin: 5px;
+        max-width: 100%; 
+        overflow-x: scroll;
+        text-align: center;
     }
     
     #filterTable td {
         text-align: center;
-        margin: 5px; 
-        padding: 2px;
+        margin: auto; 
+        padding: 5px;
         color: #000;
+        display: inline-block;
     }
     /* FILTER TABLE CSS - END */
     
@@ -349,8 +357,8 @@
         };
         NOTE("searchLines() returned", count, "matches");
         LOG("<hr />");
-        updateCount();
-        positionFooter();
+        updateCount(count);
+        //positionFooter();
     };
 
     function printTable() {
@@ -413,8 +421,8 @@
     </table>
     </div>
     
-    <div id="carousel" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 99; background-color: rgba(0,0,0,0.75); margin: auto;" onclick="hideCardView()">
-        <div id="card_view" style="height: 50%; width: auto; margin-top: 25vw"></div>
+    <div id="carousel" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: 99; background-color: rgba(0,0,0,0.85); margin: auto;" onclick="hideCardView()">
+        <div id="card_view" style="height: auto; width: 100%; margin-top: 25vw"></div>
     </div>
     
     <div id="notification"></div>
@@ -535,6 +543,18 @@ function generateModelView(obj) {
     let cardview = document.getElementById("carousel");
     card.innerHTML = model.make_frame_view();
     cardview.style.display = "block";
+    
+    let cells = obj.parentElement.getElementsByTagName("td");
+    for(var i = 0; i < cells.length; i++) {
+            let e = cells[i];
+            e.classList.add('highlighted');
+            setTimeout(() => {
+                e.classList.remove('highlighted');
+                if (e.className == "line") {
+                    e.classList.add("seen");
+                };
+            }, 5000);
+        };
 };
 
 function hideCardView() {
@@ -646,7 +666,7 @@ initSpreadsheet();
     }
     </style>
 
-    <div id="empty_space"></div>
+    <div id="empty_space" style="height: 50px"></div>
 
     <footer id="page_footer">
         <p>Last update: <a href="updates.html">2026-07-27</a></p>
