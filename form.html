@@ -128,6 +128,18 @@ body.dark-mode #apply_button {
     color: red;
 }
 
+div#photo_field {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-auto-columns: auto;
+    max-width: 80%;
+    margin: 5vw auto auto;
+    padding: 15px;
+    box-shadow: 1px 1px 10px gray;
+    text-overflow: scroll;
+    border: 1px solid silver;
+}
+
 </style>
 
 <div id="csv"></div>
@@ -145,7 +157,7 @@ body.dark-mode #apply_button {
     <datalist id="tags"></datalist>
 
     <label for="series">Series: </label>
-    <input type="text" name="series" id="collection" list="series" />
+    <input type="text" name="series" id="collection" list="series"  onchange="" />
     <datalist id="series"></datalist>
 
     <label for="year">Year: </label>
@@ -188,6 +200,9 @@ body.dark-mode #apply_button {
     </div>
 
 </div>
+
+<div id="photo_field"></div>
+
 </form>
 
     <div id="messages"></div>

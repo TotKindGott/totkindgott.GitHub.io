@@ -6,65 +6,6 @@ body {
     background-color: white;
 }
 
-div#csv {
-    display: none;
-}
-
-div#notification {
-    display: none;
-    background-color: rgba(0,0,0,0.9);
-    width: 100vw;
-    height: 35px;
-    position: absolute;
-    top: 0;
-    z-index: 99;
-    font: bold 17px monospace;
-    color: yellow;
-    text-align: center;
-    vertical-align: middle;
-    animation-name: fade_out;
-    animation-iteration-count: 1;
-    animation-delay: 1s;
-    animation-duration: 2s;
-}
-
-#progress_bar {
-    display: block;
-    background-color: transparent;
-    width: 100%;
-    height: 1px;
-    position: fixed;
-    top: 00px;
-    z-index: 99;
-    font: bold 17px monospace;
-    color: yellow;
-    text-align: center;
-    vertical-align: middle;
-}
-
-progress::-webkit-progress-bar {
-  background-color: black;
-}
-
-/* Styles the active progress fill value (Chrome, Safari, Edge) */
-progress::-webkit-progress-value {
-  background-color: lime;
-  transition: width 0.3s ease;
-}
-
-/* Styles the active progress fill value (Firefox) */
-progress::-moz-progress-bar {
-  background-color: lime;
-  border-radius: 10px;
-}
-
-div#notification > * {
-    padding: 9px;
-    width: auto;
-    height: 100%;
-    vertical-align: middle;
-}
-
 #collage_button {
     background-image: url("Images/Icons/apps-sharp.svg");
     background-size: 14px;
@@ -140,73 +81,13 @@ body.dark-mode div#carousel div#item_list {
 
 @media only screen and (orientation: portrait) {
     
-    #carousel, #messages {
+    #carousel {
         width: 98vw;
         height: 130vw;
         margin: auto;
         position: fixed;
         top: 10vw;
         left: 1vw;
-    }
-
-    #messages {
-        display: block;
-        overflow-wrap: break-all;
-        white-space: pre-wrap;
-        overflow-y: scroll;
-        background: black;
-        color: white;
-        padding: 2.5% 0;
-    }
-    
-    #messages > p {
-        width: 95%;
-        margin: 2px auto;
-        display: block;
-        font: 14px monospace;
-        overflow-wrap: break-word;
-    }
-    
-    #messages > hr {
-        background-color: black;
-        color: black;
-        border: 0.5px solid darkgray;
-        margin: 2px auto;
-        width: 95%;
-        height: 0;
-    }
-        
-    #messages > p.message {
-        color: white;
-    }
-    
-    #messages > p.warning {
-        color: orange;
-    }
-    
-    #messages > p.error {
-        color: red;
-    }
-    
-    #messages > p.success {
-        color: lime;
-    }
-    
-    #messages > p.highlight {
-        color: yellow;
-    }
-    
-    #messages > p.note {
-        color: gray;
-    }
-    
-    #messages > p.option {
-        color: lightblue;
-        font-weight: bold;
-    }
-    
-    #messages > p.clip {
-        color: lightblue;
     }
     
     #card_view {

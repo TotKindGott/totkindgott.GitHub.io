@@ -532,9 +532,9 @@ function generateImageName(csv) {
     let _series = csvalues[0];
     let _year = csvalues[1];
     let _tag = csvalues[9];
-    //let _image = csvalues[11];
+    let _image = csvalues[11];
     let _condition = csvalues[6];
-    //let _part = csvalues[2];
+    let _part = csvalues[2];
     let _number = csvalues[4];
     let _origin = csvalues[7];
     //let _stamp = csvalues[5];
@@ -568,4 +568,10 @@ function generateImageName(csv) {
     // replace forward slashes with underscores
     image_name = image_name.replace("/", "_");
     return image_name + ".jpeg";
-};
+}; // generateImageName() ends
+
+function generateCSV(series, year, part, name, number, stamp, condition, origin, url, tag, quantity, image, note) {
+
+    return `${series},${year},${part},${name},${number},${stamp},${condition},${origin},${url},${tag},${quantity},${image},${note}`;
+    
+}; // generateCSV() ends

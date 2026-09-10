@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Collection</title>
     <link type="text/css" href="styles.css" rel="stylesheet" />
+    <link type="text/css" href="collage.css" rel="stylesheet" />
     <script src="scripts.js"></script>
     <script src="buttons.js" defer></script>
     <script type="text/javascript" src="model.js"></script>
@@ -411,6 +412,11 @@
         </tbody>
     </table>
     </div>
+    
+    <div id="carousel" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 99; background-color: rgba(0,0,0,0.75); margin: auto;" onclick="hideCardView()">
+        <div id="card_view" style="height: 50%; width: auto; margin-top: 25vw"></div>
+    </div>
+    
     <div id="notification"></div>
     
     <script>
@@ -457,8 +463,8 @@ function parseCSV() {
         
             let table_row = `
         <tr class="searchable ${_row_class}" data-index="${_data_index}">
-            <td class="line">${count}</td>
-            <td class="model">${_name}</td>
+            <td class="line" onclick="generateAndCopyImageName(this)">${count}</td>
+            <td class="model" onclick="generateModelView(this)">${_name}</td>
             <td class="series">${_series}</td>
             <td class="year">${_year}</td>
             <td class="part">${_part}</td>
@@ -487,6 +493,54 @@ function parseCSV() {
     SUCCESS("parseCSV() run status: OK");
     return models.join("\n");
 };
+
+function generateAndCopyImageName(obj) {
+    let _series = obj.parentElement.querySelector('.series').innerText;
+    let _year = obj.parentElement.querySelector('.year').innerText;
+    let _part = obj.parentElement.querySelector('.part').innerText;
+    let _name = obj.parentElement.querySelector('.model').innerText;
+    //let _number = obj.parentElement.querySelector('.number').innerText;
+    let _number = "";
+    let _stamp = "";
+    let _origin = obj.parentElement.querySelector('.origin').innerText;    
+    let _url = obj.parentElement.querySelector('.url').innerText;    
+    let _quantity = obj.parentElement.querySelector('.quantity').innerText;
+    let _tag = obj.parentElement.querySelector('.tags').innerText;
+    let _condition = obj.parentElement.querySelector('.condition').innerText;
+    let _image = obj.parentElement.querySelector('.image').innerText;
+    let _note = obj.parentElement.querySelector('.note').innerText;    
+    let image_name = generateImageName(generateCSV(_series, _year, _part, _name, _number, _stamp, _condition, _origin, _url, _tag, _quantity, _image, _note));
+    CLIP(image_name);
+    copy(image_name);
+    showNotification(image_name);
+};
+
+function generateModelView(obj) {
+    let _series = obj.parentElement.querySelector('.series').innerText;
+    let _year = obj.parentElement.querySelector('.year').innerText;
+    let _part = obj.parentElement.querySelector('.part').innerText;
+    let _name = obj.parentElement.querySelector('.model').innerText;
+    //let _number = obj.parentElement.querySelector('.number').innerText;
+    let _number = "";
+    let _stamp = "";
+    let _origin = obj.parentElement.querySelector('.origin').innerText;    
+    let _url = obj.parentElement.querySelector('.url').innerText;    
+    let _quantity = obj.parentElement.querySelector('.quantity').innerText;
+    let _tag = obj.parentElement.querySelector('.tags').innerText;
+    let _condition = obj.parentElement.querySelector('.condition').innerText;
+    let _image = obj.parentElement.querySelector('.image').innerText;
+    let _note = obj.parentElement.querySelector('.note').innerText;    
+    let model = new Model(0, generateCSV(_series, _year, _part, _name, _number, _stamp, _condition, _origin, _url, _tag, _quantity, _image, _note));
+    let card = document.getElementById("card_view");
+    let cardview = document.getElementById("carousel");
+    card.innerHTML = model.make_frame_view();
+    cardview.style.display = "block";
+};
+
+function hideCardView() {
+    let cardview = document.getElementById("carousel");
+    cardview.style.display = "none";
+}
 
 async function initSpreadsheet() {
     let start = performance.now();
