@@ -14,8 +14,9 @@
 </head>
 
 
-<body onload='setSearchRedirect(); startSlideShow()'>
-
+<body onload='setSearchRedirect(); startSlideShow(); SUCCESS("< webpage body fully loaded >");' ondblclick='toggleMessages();'>
+<div id="notification"></div>
+<div id="messages"></div>
     <script type="text/javascript">
         checkMode();
     </script>
@@ -35,9 +36,6 @@
     </div>
     <input type="number" name="result counter" value="" disabled="True" id="counter" />
 </div>
-
-<div id="notification"></div>
-<div id="messages"></div>
 
 <div id="menu" class="overlay">
     <a id="menu_close_button">&times;</a>
@@ -265,6 +263,7 @@
 
         sidebar.innerHTML = photos;
         stopSlideShow();
+        NOTE("starting slideshow with", count, "photos");
         startSlideShow(interval = slideInterval, index = 0);
         toggleStopButton();
     };
@@ -342,15 +341,13 @@
     <input type="button" id="help_button" value="" onclick="location.href='reference.html'" />
     
     <footer id="page_footer">
-        <p>Last update: <a href="updates.html">2026-06-28</a></p>
+        <p>Last update: <a href="updates.html">2026-09-09</a></p>
         <hr />
             <a href="index.html">Home</a>
-            <a href="preview.html">Statistics</a>
-            <a href="treasures.html">Treasures</a>
-            <a href="about.html">About</a>
+            <a href="search.html">Search</a>
+            <a href="spreadsheet.html">Spreadsheet</a>
+            <a href="form.html">Form</a>
     </footer>
-    
-
 
 <script>
 document.getElementById('page_footer').classList.add('fixed-position');

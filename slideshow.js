@@ -22,14 +22,18 @@ function processSlides() {
         each.addEventListener("click", () => {
             setSlide(each);
         });
-        each.addEventListener("dblclick", () => {
+        each.addEventListener("dblclick", (e) => {
             setIndex(each);
+            e.stopPropagation();
         });
         slideImages.push(each.getAttribute("src"));
     }); // forEach loop ends
 };
 
-photoframe.addEventListener("dblclick", toggleSlideShow);
+photoframe.addEventListener("dblclick", (e) => {
+    toggleSlideShow();
+    e.stopPropagation();
+});
 pauseButton.addEventListener("click", toggleSlideShow);
 pauseButton.addEventListener("dblclick", toggleSpeedControls);
 

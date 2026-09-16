@@ -63,21 +63,43 @@ function OUTPUT(text, alert_type) {
     document.getElementById("messages").lastChild.scrollIntoView();
 };
 
+function INLINE_ACTION(title, action, dangerous=false) {
+    let _console = document.getElementById("messages");
+    if (!dangerous) {
+        _console.innerHTML += `<p class="inline_action" onclick="${action}">[ ${title} ] </p>`;
+    } else {
+        _console.innerHTML += `<p class="inline_action critical" onclick="${action}">[ ${title} ] </p>`;
+    }
+    NOTE("<hr />");    
+};
+
+
 function checkMode() {
     // checks if dark mode was previously selected
     LOG(">>> running checkMode() ...")
-    if (localStorage.getItem("mode") == "dark") {
-            var element = document.body;
+    try {
+        if (localStorage.getItem("mode") == "dark") {
+            let element = document.body;
             element.classList.toggle("dark-mode");
-            NOTE("dark mode: ON");
+                NOTE("dark mode: ON");
         } else {
-            NOTE("dark mode: OFF");
+                NOTE("dark mode: OFF");
         }; // if block ends
+    } catch {
+        let element = document.body;
+        if (element.classList.includes("dark-mode")) {
+            WARN("alt dark mode: ON");
+        } else {
+            WARN("alt dark mode: OFF");
+        };
+    };
     if (localStorage.getItem("console") == "open") {
         consoleKeepOpen();
+        //NOTE("console auto-dismiss: OFF");
     } else {
         NOTE("console auto-dismiss: ON");
     };
+    INLINE_ACTION("toggle between dark/light modes", "toggleDarkMode()");
 }; // checkMode function ends
 
 function toggleDarkMode() {
@@ -86,10 +108,10 @@ function toggleDarkMode() {
     element.classList.toggle("dark-mode");
     if (localStorage.getItem("mode") !== "dark") {
         localStorage.setItem("mode", "dark");
-        NOTE("dark mode: ON");
+        //NOTE("dark mode: ON");
     } else {
         localStorage.setItem("mode", "light");
-        NOTE("dark mode: OFF");
+        //NOTE("dark mode: OFF");
     }; // if else block ends
 }; // toggleDarkMode function ends
 

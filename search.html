@@ -19,11 +19,11 @@
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, interactive-widget=resizes-content">
 </head>
 
-<body onload="SUCCESS(`<-- webpage body fully loaded -->`)">
+<body onload="SUCCESS(`< webpage body fully loaded >`)" ondblclick="toggleMessages();">
     <header>  <!-- NAVIGATION -->
 <div id="topbar">
     <input type="button" id="left_button" />
-    <input type="text" id="search_bar" value="" />
+    <input type="text" id="search_bar" value="" autofocus />
     <input type="button"  id="right_button" />
     <div id="dropdown">
         <input type="button" id="mode_button" />
@@ -82,23 +82,20 @@
         <div id="item_list"></div>
     </div>
     
-    <div id="messages"></div>
+    <div id="messages" style="display: none"></div>
     
 
     <input type="button" id="console_button" onclick="toggleMessages();" />
     <input type="button" id="help_button" value="" onclick="location.href='reference.html'" />
     
     <footer id="page_footer">
-        <p>Last update: <a href="updates.html">2026-07-21</a></p>
+        <p>Last update: <a href="updates.html">2026-09-09</a></p>
         <hr />
             <a href="index.html">Home</a>
-            <a href="preview.html">Statistics</a>
+            <a href="search.html">Search</a>
+            <a href="spreadsheet.html">Spreadsheet</a>
             <a href="form.html">Form</a>
-            <a href="treasures.html">Treasures</a>
-            <a href="about.html">About</a>
     </footer>
-    
-
 
 <script>
     
@@ -469,6 +466,8 @@ document.getElementById('item_list').classList.add('shown');
 document.getElementById("clear_button").addEventListener("click", resetSearch);
 
 //setTimeout(initialOptionParse, 2500);
+
+//document.getElementById("search_bar").focus();
 
 </script>
     

@@ -14,7 +14,7 @@
     
 </head>
 
-<body onload="">
+<body onload="OUTOFDATEALERT()">
 
     <script type="text/javascript">
         checkMode();
@@ -993,7 +993,16 @@
 
 </div>
 
+<div id="notification"></div>
+<div id="messages" style="display: none"></div>
+
 <script>
+    
+    function OUTOFDATEALERT() {
+
+        setInterval(() => {showNotification("outdated")}, 2000);
+
+    };
     
     function getNext(arr, current) {
         let i = arr.indexOf(current);

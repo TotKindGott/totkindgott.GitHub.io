@@ -15,7 +15,7 @@
 </head>
 
 
-<body onload="">
+<body onload="SUCCESS(`< webpage body fully loaded >`)" ondblclick="toggleMessages();">
     
     <script type="text/javascript">
 
@@ -542,6 +542,7 @@ function generateModelView(obj) {
     let card = document.getElementById("card_view");
     let cardview = document.getElementById("carousel");
     card.innerHTML = model.make_frame_view();
+    NOTE("cardview generated for", _name);
     cardview.style.display = "block";
     
     let cells = obj.parentElement.getElementsByTagName("td");
@@ -669,14 +670,13 @@ initSpreadsheet();
     <div id="empty_space" style="height: 50px"></div>
 
     <footer id="page_footer">
-        <p>Last update: <a href="updates.html">2026-07-27</a></p>
+        <p>Last update: <a href="updates.html">2026-09-09</a></p>
         <hr />
             <a href="index.html">Home</a>
-            <a href="preview.html">Statistics</a>
-            <a href="treasures.html">Treasures</a>
-            <a href="about.html">About</a>
+            <a href="search.html">Search</a>
+            <a href="spreadsheet.html">Spreadsheet</a>
+            <a href="form.html">Form</a>
     </footer>
-    
 
 </body>
 </html>
