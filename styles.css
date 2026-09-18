@@ -289,10 +289,13 @@ input.right_button {
     right: 0;
     top: 35px;
     background-color: transparent;
-    z-index: 10;
     width: 39px;
     opacity: 0; /* Or other properties for the animation */
     transition: opacity 0.5s, display 0.5s allow-discrete;
+}
+
+#dropdown > input {
+    z-index: 99;
 }
 
 /*.dropdown:hover .dropdown-content {
@@ -967,7 +970,7 @@ td.bignum {
     position: fixed;
     top: 25%;
     left: 0;
-    z-index: 9;
+    z-index: 99;
     transition: 0s;
     opacity: 0; /* Or other properties for the animation */
     transition: opacity 0.5s, display 0.5s allow-discrete;
@@ -2060,89 +2063,3 @@ div#notification > * {
     vertical-align: middle;
 }
 
-@media only screen and (orientation: portrait) {
-    
-    #messages {
-        width: 98vw;
-        height: 130vw;
-        margin: auto;
-        position: fixed;
-        top: 10vw;
-        left: 1vw;
-    }
-
-    #messages {
-        display: block;
-        overflow-wrap: break-all;
-        white-space: pre-wrap;
-        overflow-y: scroll;
-        background: black;
-        color: white;
-        padding: 2.5% 0;
-    }
-    
-    #messages > p {
-        width: 95%;
-        margin: 2px auto;
-        display: block;
-        font: 14px monospace;
-        overflow-wrap: break-word;
-    }
-    
-    #messages > hr {
-        background-color: black;
-        color: black;
-        border: 0.5px solid darkgray;
-        margin: 2px auto;
-        width: 95%;
-        height: 0;
-    }
-        
-    #messages > p.message {
-        color: white;
-    }
-    
-    #messages > p.warning {
-        color: orange;
-    }
-    
-    #messages > p.error {
-        color: red;
-    }
-    
-    #messages > p.success {
-        color: lime;
-    }
-    
-    #messages > p.highlight {
-        color: yellow;
-    }
-    
-    #messages > p.note {
-        color: gray;
-    }
-    
-    #messages > p.option {
-        color: lightblue;
-        font-weight: bold;
-    }
-    
-    #messages > p.clip {
-        color: lightblue;
-        background-color: rgba(255,255,255,0.1);
-    }
-    
-    #messages > p.inline_action {
-        text-align: center;
-        color: white;
-        font-weight: bold;
-        text-shadow: 0px 0px 2px black;
-        background-color: rgba(0,255,0,0.25);
-    }
-    
-    #messages > p.inline_action.critical {
-        color: white;
-        text-shadow: none;        
-        background-color: rgba(255,0,0,0.25);
-    }
-}

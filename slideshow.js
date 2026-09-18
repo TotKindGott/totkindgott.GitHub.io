@@ -35,7 +35,10 @@ photoframe.addEventListener("dblclick", (e) => {
     e.stopPropagation();
 });
 pauseButton.addEventListener("click", toggleSlideShow);
-pauseButton.addEventListener("dblclick", toggleSpeedControls);
+pauseButton.addEventListener("dblclick", (e) => {
+    toggleSpeedControls(); 
+    e.stopPropagation();
+    });
 
 
 function startSlideShow(interval = slideInterval, index = slideIndex) {
@@ -61,7 +64,10 @@ function startSlideShow(interval = slideInterval, index = slideIndex) {
     
     intervalID = setInterval(nextSlide, interval);
     playState = "on";
+    NOTE("slideshow started");
     toggleStopButton();
+    NOTE("<hr />");
+    INLINE_ACTION("toggle slideshow on/off", "toggleSlideShow()")
 }; // function scrollShow ends
 
 
@@ -91,6 +97,7 @@ function setSlide(img) {
     };
     // add try catch clause TypeError
     photoframe.style.backgroundImage = "url('" +  img.getAttribute("src") + "')";
+    NOTE(`slide set to <a class="link" href="${decodeURI(img.src)}">${decodeURI(img.src).split("/").at(-1)}</a>`);
 }; // function setSlide ends
 
 
@@ -103,8 +110,10 @@ function setIndex(img) {
 
 function stopSlideShow() {
     playState = "off";
+    NOTE("slideshow paused");
     window.clearInterval(intervalID);
     window.clearTimeout(timeoutID);
+    toggleStopButton();
 }; // function stopSlideShow ends
 
 
@@ -114,7 +123,6 @@ function toggleSlideShow() {
     } else {
         startSlideShow(interval = slideInterval, index = slideIndex);
     }; // if else block ends
-    toggleStopButton();
 }; // functiob toggleSlideShow ends
 
 
@@ -122,8 +130,10 @@ function toggleStopButton() {
     let playPauseButton = document.getElementById("stop_button");
     if (playState == "on") {
         playPauseButton.classList.remove("stopped");
+        NOTE("slideshow button state: click to stop");
     } else {
         playPauseButton.className = "stopped";
+        NOTE("sildeshow button state: click to play");
     }; // if else block ends
 }; // function toggleStopButton ends
 
@@ -141,20 +151,20 @@ function markSelected(button) {
     button.classList.add("active");
 };
 
-
 function clearSelected() {
     selectors.forEach(each => {
         each.classList.remove("active");
     });
 };
 
-
 function showSpeedControls() {
     slideShowControls.style.display = "block";
+    NOTE("slideshow speed controls status: shown");
 };
 
 function hideSpeedControls() {
     slideShowControls.style.display = "none";
+    NOTE("slideshow speed controls status: hidden");
 };
 
 function toggleSpeedControls() {
@@ -171,6 +181,7 @@ function setSpeed(ms) {
     slideInterval = parseInt(ms);
     slider.value = slideInterval;
     document.getElementById("speed" + slideInterval.toString()).setAttribute("checked", true);
+    NOTE("slideshow speed set at", slideInterval, "ms");
     startSlideShow();
 };
 

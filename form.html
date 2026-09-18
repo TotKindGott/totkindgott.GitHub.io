@@ -5,6 +5,7 @@
     <title>Collection</title>
     
     <link type="text/css" href="styles.css" rel="stylesheet" />
+    <link type="text/css" href="console.css" rel="stylesheet" />    
     <link type="text/css" href="collage.css" rel="stylesheet" />
     
     <script type="text/javascript" src="scripts.js"></script>
@@ -20,6 +21,12 @@
 </head>
 
 <body onload="SUCCESS(`< webpage body fully loaded >`)" ondblclick="toggleMessages();">
+    
+<!-- out-of-flow DOM elements -->
+<progress id="progress_bar" value="0" max="100"></progress>
+<div id="notification"></div>
+<div id="messages" style="display: none"></div>    
+    
     <header>  <!-- NAVIGATION -->
 <div id="topbar">
     <input type="button" id="left_button" />
@@ -52,8 +59,6 @@
 </div>
 
     </header>  <!-- END NAVIGATION -->
-    
-    <div id="notification"></div>
     
 <style>
 
@@ -102,6 +107,7 @@ input.form_button {
 }
 
 div#form_buttons {
+    margin-top: 20px;
     grid-column: span 2;
     display: grid;
     grid-template-columns: auto auto;
@@ -111,9 +117,10 @@ div#form_buttons {
 #form_buttons input {
     width: auto;
     margin: auto;
-    margin-top: 10px;
+    height: auto;
     background-color: transparent;
-    border: none;
+    border-bottom: 1px solid #999;
+    padding-bottom: 4px;
 }
 
 #apply_button {
@@ -128,16 +135,11 @@ body.dark-mode #apply_button {
     color: red;
 }
 
-div#photo_field {
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-auto-columns: auto;
-    max-width: 80%;
-    margin: 5vw auto auto;
-    padding: 15px;
-    box-shadow: 1px 1px 10px gray;
-    text-overflow: scroll;
-    border: 1px solid silver;
+#form_buttons > #form_search {
+    grid-column: span 2;
+    color: black;
+    margin-top: 20px;
+    background-color: white;
 }
 
 </style>
@@ -192,20 +194,15 @@ div#photo_field {
     <input type="text" name="note" id="note" list="notes" />
     <datalist id="notes"></datalist>
 
-    <div id="form_buttons">
-        
+    <div id="form_buttons">        
         <input type="submit" value="APPLY" class="form_button" id="apply_button" />
         <input type="reset" value="RESET" class="form_button" id="reset_button" />
-        
+        <input type="button" id="form_search" value="SEARCH WITH PARAMETERS" />
     </div>
 
 </div>
 
-<div id="photo_field"></div>
-
 </form>
-
-    <div id="messages" style="display: none"></div>
     
     <input type="button" id="console_button" onclick="toggleMessages();" />
     <input type="button" id="help_button" value="" onclick="location.href='reference.html'" />
@@ -289,6 +286,7 @@ form.addEventListener('reset', function(event) {
 
 function handleFormAction(event) {
   // Get data from form fields
+
     const model_name = document.getElementById('model').value;
     const series_name = document.getElementById('collection').value;
     const tag_name = document.getElementById('tag').value;

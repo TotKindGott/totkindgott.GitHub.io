@@ -10,6 +10,7 @@ class Tracker {
         this.tag_selector = false;
         this.condition_selector = false;
         this.source_selector = false;
+        NOTE("SearchTracker initialized <span class='codepath'>./model.js</span>");
     }
     
     set() {
@@ -27,7 +28,7 @@ class Tracker {
         //NOTE("condition_selector: " + this.condition_selector)
         this.source_selector = this.source_field;
         //NOTE("source_selector: " + this.source_selector)
-        //LOG("current search state set");
+        NOTE("current search state set");
     }
     
     get() {
@@ -111,6 +112,7 @@ class ProgressTracker {
         this.progress_bar.value = 0;
         this.progress = 0;
         this.next = Math.round(this.total / this.steps);
+        NOTE("ProgressTracker initialized <span class='codepath'>./model.js</span>");
     };
     
     update(count) {
@@ -124,7 +126,7 @@ class ProgressTracker {
             };
             //setTimeout(() => {void(0)}, 100);
             let progress_value = (100 / this.steps) * this.step;            
-            NOTE(`${progress_value}%\t${this.value}/${this.steps}\tcount: ${this.count}\tnext: ${this.next}`);
+            TRACK(`${progress_value}%\t${this.value}/${this.steps}\tcount: ${this.count}\tnext: ${this.next}`);
             this.setProgress(progress_value);
         };
         if (this.count >= this.total) {
@@ -152,6 +154,7 @@ class ProgressTracker {
 class Collection {
     
     constructor() {
+        LOG(">>> Collection.constructor() <span class='codepath'>./model.js</span>");
         this.models = new Array();
         this.years = new Array();
         this.series = new Array();
@@ -206,6 +209,7 @@ class Collection {
     }
     
     updateSelectors() {
+        LOG(">>> Collection.updateSelectors() <span class='codepath'>./model.js</span>");
         document.getElementById("years").innerHTML = "";
     Array.from(this._years).sort().forEach(year => document.getElementById("years").innerHTML += `<option value="${year}">`);
         document.getElementById("conditions").innerHTML = "";
@@ -216,6 +220,7 @@ class Collection {
     Array.from(this._tags).sort().forEach(tag => document.getElementById("tags").innerHTML += `<option value="${tag}">`);
         document.getElementById("sources").innerHTML = "";
     Array.from(this._sources).sort().forEach(source => document.getElementById("sources").innerHTML += `<option value="${source}">`); 
+    NOTE("search selectors updated");
     };
     
     test() {

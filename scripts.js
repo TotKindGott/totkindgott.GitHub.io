@@ -52,6 +52,10 @@ function CLIP(...text) {
     OUTPUT(text.join(" "), "clip");
 };
 
+function TRACK(...text) {
+    OUTPUT(text.join(" "), "track")
+}
+
 function OUTPUT(text, alert_type) {
     //setTimeout(() => {document.getElementById("messages").innerHTML += `<p class="${alert_type}" onclick="copy('${text}')">${text}</p><hr />`;
     //document.getElementById("messages").lastChild.scrollIntoView()}, 100);
@@ -76,7 +80,7 @@ function INLINE_ACTION(title, action, dangerous=false) {
 
 function checkMode() {
     // checks if dark mode was previously selected
-    LOG(">>> running checkMode() ...")
+    LOG(">>> running checkMode() <span class='codepath'>./scripts.js</span>");
     try {
         if (localStorage.getItem("mode") == "dark") {
             let element = document.body;
@@ -85,7 +89,7 @@ function checkMode() {
         } else {
                 NOTE("dark mode: OFF");
         }; // if block ends
-    } catch {
+    } catch (error) {
         let element = document.body;
         if (element.classList.includes("dark-mode")) {
             WARN("alt dark mode: ON");
@@ -93,12 +97,17 @@ function checkMode() {
             WARN("alt dark mode: OFF");
         };
     };
-    if (localStorage.getItem("console") == "open") {
-        consoleKeepOpen();
-        //NOTE("console auto-dismiss: OFF");
-    } else {
-        NOTE("console auto-dismiss: ON");
+    try {
+        if (localStorage.getItem("console") == "open") {
+            consoleKeepOpen();
+            //NOTE("console auto-dismiss: OFF");
+        } else {
+            NOTE("console auto-dismiss: ON");
+        };
+    } catch (error) {
+        NOTE("no value in localStorage for console");
     };
+    NOTE("<hr>");
     INLINE_ACTION("toggle between dark/light modes", "toggleDarkMode()");
 }; // checkMode function ends
 
@@ -269,7 +278,7 @@ function toggleView() {
 
 function searchModels() {
     // searches through data-index attribute of every carDiv
-    LOG(">>> running searchModels() in scripts.js ...");
+    LOG(">>> running searchModels() <span class='codepath'>./scripts.js</span>");
     let search_query = document.getElementById('search_bar').value;
     search_query = search_query.toLowerCase();
     let carDivs = document.getElementsByClassName('searchable');
@@ -295,7 +304,7 @@ function searchModels() {
 
 
 function clearSearch() {
-    LOG(">>> running clearSearch() in scripts.js ...");
+    LOG(">>> running clearSearch() <span class='codepath'>./scripts.js</span>");
     document.getElementById("search_bar").setAttribute("value", '');
     document.getElementById("search_bar").value = "";
     try {
@@ -308,7 +317,7 @@ function clearSearch() {
     } catch (error) {
         void(0);
     }; // try catch block ends
-    searchModels();
+    //searchModels();
     SUCCESS("clearSearch() run status: OK");
     LOG("<hr />");
 }; // clearSearch function ends
@@ -340,12 +349,15 @@ function searchFor(search_query) {
 function parseURL() {
     // search by parsing url parameter
     // add ?search= + query at url end
+    LOG(">>> running parseURL() <span class='codepath'>./scripts.js</span>");
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     if (urlParams.has('search') == true) {
         var searchQuery = urlParams.get('search');
         document.getElementById('search_bar').setAttribute("value", searchQuery);
         //searchModels();
+    } else {
+        NOTE("parseURL() has not detected any parameters");
     }; // if block ends
     if (urlParams.has('mode') == true) {
         var mode = urlParams.get('mode');
@@ -499,7 +511,7 @@ function toggleConsoleState() {
 const getCSV = async () => {
     try {
         let start = performance.now();
-        LOG(">>> running getCSV() in scripts.js ...")
+        LOG(">>> running getCSV() <span class='codepath'>./scripts.js</span>");
         const res = await fetch(csv_url);
         if (res.status === 200) {
             const data = await res.text();
