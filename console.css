@@ -81,11 +81,11 @@
         color: white;
         font-weight: bold;
         text-shadow: 0px 0px 2px black;
-        background-color: rgba(0,255,0,0.25);
-        background-color: rgba(195,230,229,0.5);
+        
         border-radius: 2px;
         border-bottom: 1px solid rgba(255,255,255,0.25);
         border-top: 1px solid rgba(255,255,255,0.25);
+        animation: blinker 1s step-end infinite;
     }
     
     #messages > p.inline_action.critical {
@@ -105,4 +105,10 @@
         padding: 0px 4px;
         border-radius: 4px;
     } 
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0.8;
+  }
 }
