@@ -4,6 +4,7 @@ class Tracker {
 
     constructor() {
         this.state = false;
+        this.initial = false;
         this.search_query = false;
         this.year_selector = false;
         this.series_selector = false;
@@ -225,7 +226,7 @@ class Collection {
     
     test() {
         HIGHLIGHT(`tags: ${Array.from(this._tags).length} | years: ${Array.from(this._years).length} | collections: ${Array.from(this._series).length} | sources: ${Array.from(this._sources).length} | conditions: ${Array.from(this._conditions).length} | models: ${this.models.length}`);
-    }
+    };
 
 }; // Collection declaration ends
 

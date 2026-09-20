@@ -423,6 +423,9 @@ function display(models) {
                 CLIP(photo);
             });`);
     };
+    results_missing_photo.forEach(photo => {
+                CLIP(photo);
+            });
     SUCCESS(`display() run status: OK [ ${result.length} ${result.length == 1 ? "item" : "items"} ]`);
     LOG("<hr />");
 
@@ -493,7 +496,7 @@ function initializeCollection() {
     let end = performance.now();
     NOTE(`initializeCollection() executed in ${Number((end - start)/1000).toFixed(2)} s`);
     cars.test();
-    
+
 }; // initializeCollection() ends
 
 function resetSearch() {
