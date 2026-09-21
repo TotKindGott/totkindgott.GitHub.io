@@ -74,7 +74,6 @@ function INLINE_ACTION(title, action, dangerous=false) {
     } else {
         _console.innerHTML += `<p class="inline_action critical" onclick="${action}">[ ${title} ] </p>`;
     }
-    NOTE("<hr />");    
 };
 
 
@@ -319,7 +318,6 @@ function clearSearch() {
     }; // try catch block ends
     //searchModels();
     SUCCESS("clearSearch() run status: OK");
-    LOG("<hr />");
 }; // clearSearch function ends
 
 

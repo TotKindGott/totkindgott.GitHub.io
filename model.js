@@ -155,6 +155,7 @@ class ProgressTracker {
 class Collection {
     
     constructor() {
+        // !TODO: add sorting methods and toggles in setting to switch between sorted and default views
         LOG(">>> Collection.constructor() <span class='codepath'>./model.js</span>");
         this.models = new Array();
         this.years = new Array();

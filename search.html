@@ -312,7 +312,6 @@ function search() {
     NOTE(`search() executed in ${Number((end - start)/1000).toFixed(2)} s`);
     count > 0 ? SUCCESS(`search() run status: OK [ ${count} ${count == 1 ? "item" : "items"} ]`) & (CONSOLE_STATE == "" && hideMessages()) & showNotification(`${count} ${count == 1 ? "match found" : "matches found"}`) : ERROR('search() run status: error [ 0 matches ]') & openMessages() & showNotification("no matches found");
     search_result.length ? display(search_result) : void(0);
-    LOG("<hr />");
     INLINE_ACTION("clear search", "resetSearch()", true);
 }; // search() declaration ends
 
@@ -345,7 +344,6 @@ function match() {
     _series ? OPTION("with series:", _series) : void(0);
     _source ? OPTION("with source:", _source) : void(0);
     _condition ? OPTION("with condition:", _condition) : void(0);
-    LOG("<hr />");
     
     search_result.forEach(m => {
         if (m.series.toLowerCase().includes(_series.toLowerCase()) && m.tag.toLowerCase().includes(_tag.toLowerCase()) && m.year.toString().includes(_year) && m.condition.toLowerCase().includes(_condition.toLowerCase()) && m.origin.toLowerCase().includes(_source.toLowerCase())) {
@@ -362,7 +360,6 @@ function match() {
     let end = performance.now();
     NOTE(`match() executed in ${Number((end - start)/1000).toFixed(2)} s`);
     matched.length > 0 ? SUCCESS(`match() run status: OK [ ${matched.length} ${matched.length == 1 ? "item" : "items"} ]`) & (CONSOLE_STATE == "" && hideMessages()) : ERROR('match() run status: error [0 matches]') & openMessages();
-    LOG("<hr />");
     
 }; // match() declaration ends
 
@@ -427,7 +424,6 @@ function display(models) {
                 CLIP(photo);
             });
     SUCCESS(`display() run status: OK [ ${result.length} ${result.length == 1 ? "item" : "items"} ]`);
-    LOG("<hr />");
 
 }; // display() declaration ends
 
@@ -468,7 +464,6 @@ yearSelectorInput.addEventListener("change", match);
     let init_end = performance.now();
     NOTE(`initialSetup() executed in ${Number((init_end - init_start)/1000).toFixed(2)} s`);
     SUCCESS("initialSetup() run status: OK");
-    LOG("<hr />");
     progbar.value = 100;
     
 }; // initialSetup() declaration ends
@@ -512,7 +507,6 @@ function resetSearch() {
     NOTE("search and filters reset");
     showNotification("search reset");
     updateCount();
-    LOG("<hr />");
 }
 
 initialSetup();
