@@ -338,7 +338,7 @@
     
     function searchLines() {
         // searches through data-index attribute of every carDiv
-        LOG(">>> running searchLines() ...")
+        LOG(">>> searchLines() <span class='tag'>spreadsheet.html</span>");
         let search_query = document.getElementById('search_bar').value;
         let count = 0;
         OPTION("searching for", search_query);
@@ -431,7 +431,7 @@
 function parseCSV() {
 
     let start = performance.now();
-    LOG(">>> running parseCSV() in this file ...");
+    LOG(">>> parseCSV() <span class='tag'>spreadsheet.html</span>");
     let count = 0;
     let csv =  document.getElementById("csv").innerHTML;
     let models = new Array();
@@ -564,7 +564,7 @@ function hideCardView() {
 
 async function initSpreadsheet() {
     let start = performance.now();
-    LOG(">>> running initSpreadsheet() in this file ...");
+    LOG(">>> initSpreadsheet() <span class='tag'>spreadsheet.html</span>");
     await getCSV();
     document.getElementById("main_table").innerHTML = await parseCSV();
     toggleFilter();    

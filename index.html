@@ -175,7 +175,8 @@
 
     function getPhotoSources(query) {
         // extracts only photos
-        LOG(">>> running getPhotoSources() with query", query);
+        LOG(">>> getPhotoSources() <span class='tag'>./index.html</span>");
+        NOTE("search query:", query);
         let cars = new Collection();
         let csv =  document.getElementById("csv").innerHTML;
         let lines = csv.split("\n");
@@ -210,7 +211,7 @@
     };
 
     function searchForInput() {
-        LOG(">>> running searchForInput() ...");
+        LOG(">>> searchForInput() ...");
         let query = document.getElementById("slide_search").innerText;
         if (!query == "") {
             NOTE("search query:", query);

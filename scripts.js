@@ -73,13 +73,14 @@ function INLINE_ACTION(title, action, dangerous=false) {
         _console.innerHTML += `<p class="inline_action" onclick="${action}">[ ${title} ] </p>`;
     } else {
         _console.innerHTML += `<p class="inline_action critical" onclick="${action}">[ ${title} ] </p>`;
-    }
+    };
+    _console.lastChild.scrollIntoView();
 };
 
 
 function checkMode() {
     // checks if dark mode was previously selected
-    LOG(">>> running checkMode() <span class='codepath'>./scripts.js</span>");
+    LOG(">>> checkMode() <span class='tag'>./scripts.js</span>");
     try {
         if (localStorage.getItem("mode") == "dark") {
             let element = document.body;
@@ -106,7 +107,6 @@ function checkMode() {
     } catch (error) {
         NOTE("no value in localStorage for console");
     };
-    NOTE("<hr>");
     INLINE_ACTION("toggle between dark/light modes", "toggleDarkMode()");
 }; // checkMode function ends
 
@@ -214,7 +214,7 @@ function hideDivsOnEmpty() {
 
 function toggleDetails() {
     detailsTags = document.getElementsByTagName('details');
-    LOG(">>> running toggleDetails() ...")
+    LOG(">>> toggleDetails() ...")
     for (let i = 0; i < detailsTags.length; i++) {
         detailsTag = detailsTags[i];
         if (detailsTag.open == true) {
@@ -277,7 +277,7 @@ function toggleView() {
 
 function searchModels() {
     // searches through data-index attribute of every carDiv
-    LOG(">>> running searchModels() <span class='codepath'>./scripts.js</span>");
+    LOG(">>> searchModels() <span class='tag'>./scripts.js</span>");
     let search_query = document.getElementById('search_bar').value;
     search_query = search_query.toLowerCase();
     let carDivs = document.getElementsByClassName('searchable');
@@ -303,7 +303,7 @@ function searchModels() {
 
 
 function clearSearch() {
-    LOG(">>> running clearSearch() <span class='codepath'>./scripts.js</span>");
+    LOG(">>> clearSearch() <span class='tag'>./scripts.js</span>");
     document.getElementById("search_bar").setAttribute("value", '');
     document.getElementById("search_bar").value = "";
     try {
@@ -347,7 +347,7 @@ function searchFor(search_query) {
 function parseURL() {
     // search by parsing url parameter
     // add ?search= + query at url end
-    LOG(">>> running parseURL() <span class='codepath'>./scripts.js</span>");
+    LOG(">>> parseURL() <span class='tag'>./scripts.js</span>");
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     if (urlParams.has('search') == true) {
@@ -509,7 +509,7 @@ function toggleConsoleState() {
 const getCSV = async () => {
     try {
         let start = performance.now();
-        LOG(">>> running getCSV() <span class='codepath'>./scripts.js</span>");
+        LOG(">>> getCSV() <span class='tag'>./scripts.js</span>");
         const res = await fetch(csv_url);
         if (res.status === 200) {
             const data = await res.text();

@@ -131,7 +131,7 @@
 function timed(func) {
     return function (...args) {
         let start_time = performance.now();
-        LOG(`>>> running ${func.name}() ...`)
+        LOG(`>>> ${func.name}() ...`)
         const result = func(...args);
         let end_time = performance.now();
         NOTE(`${func.name}() executed in ${Number((end_time - start_time)/1000).toFixed(2)} s`);
@@ -143,13 +143,13 @@ function timed(func) {
 let cars = new Collection();
 let unique_results = new Array();
 let results_missing_photo = new Array();
-let tracker = new Tracker();
+let tracker = new SearchTracker();
 let search_result = new Array(); // list of objects of type Model
 //var search_term = "Honda";
 
 function parseCSV() {
     let start = performance.now();
-    LOG(">>> running parseCSV() <span class='codepath'>./search.html</span>");
+    LOG(">>> parseCSV() <span class='tag'>./search.html</span>");
     let count = 0;
     let csv =  document.getElementById("csv").innerHTML;
     let models = new Array();
@@ -177,11 +177,11 @@ function search() {
     let start = performance.now();
     openMessages();
     
-    LOG(">>> running search() <span class='codepath'>./search.html</span>");
+    LOG(">>> search() <span class='tag'>./search.html</span>");
             
     let query = document.getElementById("search_bar").value;
-    let filter = new Filter();
-    NOTE("SearchFilter initialized <span class='codepath'>./model.js</span>");
+    let filter = new SearchFilter();
+    NOTE("SearchFilter initialized <span class='tag'>./model.js</span>");
     let match_count = 0;
     let count = 0;
     let SELECTORS = false;
@@ -311,8 +311,15 @@ function search() {
     let end = performance.now();
     NOTE(`search() executed in ${Number((end - start)/1000).toFixed(2)} s`);
     count > 0 ? SUCCESS(`search() run status: OK [ ${count} ${count == 1 ? "item" : "items"} ]`) & (CONSOLE_STATE == "" && hideMessages()) & showNotification(`${count} ${count == 1 ? "match found" : "matches found"}`) : ERROR('search() run status: error [ 0 matches ]') & openMessages() & showNotification("no matches found");
+    INLINE_ACTION("print details of results", "print_detes(search_result)");
     search_result.length ? display(search_result) : void(0);
     INLINE_ACTION("clear search", "resetSearch()", true);
+    WARN("- - - - - - - TEST ZONE - - - - - - -");
+    LOG("SearchFilter model count:", filter.models.length);
+    LOG("SearchFilter series count:", Array.from(filter.collections).length);
+    LOG("SearchFilter source count:", Array.from(filter.sources).length);
+    LOG("SearchFilter condition count:", Array.from(filter.conditions).length);
+    LOG("SearchFilter year count:", Array.from(filter.years).length);
 }; // search() declaration ends
 
 function match() {
@@ -328,10 +335,10 @@ function match() {
     let start = performance.now();
     
     //LOG("<hr />");
-    LOG(">>> running match() on", search_result.length, "objects from recent search for", searchBar.value);
+    LOG(">>> match() on", search_result.length, "objects from recent search for", searchBar.value);
     
     let matched = new Array();
-    let filter = new Filter();
+    let filter = new SearchFilter();
     
     let _tag = tagSelectorInput.value;
     let _year = yearSelectorInput.value;
@@ -364,9 +371,9 @@ function match() {
 }; // match() declaration ends
 
 function processResults(models) { // expects a list of strings ( csv lines??? )
-    LOG(">>> running processResults()  <span class='codepath'>./search.html</span>");
+    LOG(">>> processResults()  <span class='tag'>./search.html</span>");
     let _count = 0;
-    let _filter = new Filter();
+    let _filter = new SearchFilter();
     let _subcollection = new Collection();
     models.forEach(model => {
         _count += 1;
@@ -383,13 +390,13 @@ function processResults(models) { // expects a list of strings ( csv lines??? )
 };
 
 function display(models) {
-    LOG(">>> running display() <span class='codepath'>./search.html</span>");
+    LOG(">>> display() <span class='tag'>./search.html</span>");
     
     let lines = new Array();
     let images = new Array();
     let count = 0;
     let result = new Array();
-    let filter = new Filter();
+    let filter = new SearchFilter();
     let _missing_photos = new Set();
 
     models.forEach(model => { // expects object of type Model
@@ -429,7 +436,7 @@ function display(models) {
 
 async function initialSetup() {
     let init_start = performance.now();
-    LOG(">>> running initialSetup() <span class='codepath'>./search.html</span>");
+    LOG(">>> initialSetup() <span class='tag'>./search.html</span>");
     //checkMode();
     let prog = new ProgressTracker(4, 4);
     await getCSV();
@@ -472,7 +479,7 @@ yearSelectorInput.addEventListener("change", match);
 
 function initializeCollection() {
     let start = performance.now();
-    LOG(">>> initializing Collection() <span class='codepath'>./search.html</span>");
+    LOG(">>> initializing Collection() <span class='tag'>./search.html</span>");
     cars = new Collection();
     let csv = document.getElementById("csv").innerHTML;
     let lines = csv.split("\n");
@@ -491,12 +498,28 @@ function initializeCollection() {
     let end = performance.now();
     NOTE(`initializeCollection() executed in ${Number((end - start)/1000).toFixed(2)} s`);
     cars.test();
+    
+    INLINE_ACTION("print details of Collection", "print_detes(cars)");
 
 }; // initializeCollection() ends
 
+function print_detes(obj) {
+
+    HIGHLIGHT("Collection breakdown by YEARS")
+    Array.from(obj._years).sort().forEach(year => {NOTE(year + ': ' + obj.years[year].length)});
+       HIGHLIGHT("Collection breakdown by TAGS");
+    Array.from(obj._tags).sort().forEach(tag => {NOTE(tag + ": " + obj.tags[tag].length)});
+    //Array.from(cars._series).sort().forEach(collection => {NOTE(collection + ": " + cars.series[collection].length)});
+       HIGHLIGHT("Collection breakdown by CONDITIONS");
+    Array.from(obj._conditions).sort().forEach(condition => {NOTE(condition + ": " + obj.conditions[condition].length)});
+    HIGHLIGHT("Collection breakdown by SOURCES");
+    Array.from(obj._sources).sort().forEach(source => {NOTE(source + ": " + obj.sources[source].length)});
+};
+    
+
 function resetSearch() {
     search_result = new Array();
-    LOG(">>> running resetSearch() <span class='codepath'>./search.html</span>");
+    LOG(">>> resetSearch() <span class='tag'>./search.html</span>");
     clearSearch();
     if (!isClearOptions) {
         clearOptions();

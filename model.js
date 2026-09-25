@@ -1,4 +1,4 @@
-class Tracker {
+class SearchTracker {
     // tracks state of selectors in the advanced search section
     // is used to determine type of search
 
@@ -11,7 +11,7 @@ class Tracker {
         this.tag_selector = false;
         this.condition_selector = false;
         this.source_selector = false;
-        NOTE("SearchTracker initialized <span class='codepath'>./model.js</span>");
+        NOTE("SearchTracker initialized <span class='tag'>./model.js</span>");
     }
     
     set() {
@@ -43,7 +43,7 @@ class Tracker {
     
     compare() { // determine whether a new search() required or would a match() suffice
         // true if search can be narrowed down
-        let current_state = new Tracker();
+        let current_state = new SearchTracker();
         current_state.set();
         //WARN(this.search_query);
         
@@ -108,12 +108,15 @@ class ProgressTracker {
         this.value = 0;
         this.count = 0;
         this.steps = steps;
+        if (this.total < this.steps) {
+            this.steps = this.total;
+        };
         this.step = 0;
         this.progress_bar = document.getElementById("progress_bar");
         this.progress_bar.value = 0;
         this.progress = 0;
         this.next = Math.round(this.total / this.steps);
-        NOTE("ProgressTracker initialized <span class='codepath'>./model.js</span>");
+        NOTE("ProgressTracker initialized <span class='tag'>./model.js</span>");
     };
     
     update(count) {
@@ -156,7 +159,7 @@ class Collection {
     
     constructor() {
         // !TODO: add sorting methods and toggles in setting to switch between sorted and default views
-        LOG(">>> Collection.constructor() <span class='codepath'>./model.js</span>");
+        LOG(">>> Collection.constructor() <span class='tag'>./model.js</span>");
         this.models = new Array();
         this.years = new Array();
         this.series = new Array();
@@ -211,7 +214,7 @@ class Collection {
     }
     
     updateSelectors() {
-        LOG(">>> Collection.updateSelectors() <span class='codepath'>./model.js</span>");
+        LOG(">>> Collection.updateSelectors() <span class='tag'>./model.js</span>");
         document.getElementById("years").innerHTML = "";
     Array.from(this._years).sort().forEach(year => document.getElementById("years").innerHTML += `<option value="${year}">`);
         document.getElementById("conditions").innerHTML = "";
@@ -496,7 +499,7 @@ class Model {
 }; // Model declaration ends
 
 
-class Filter {
+class SearchFilter {
     constructor() {
         this.models = new Array();
         this.collections = new Set();
@@ -526,6 +529,10 @@ class Filter {
         this.sources.add(source);
     };
     
+    /** 
+    * accepts object of class Model
+    * @param {model} object
+    */
     add_data(model) {
         this.collections.add(model.series);
         this.years.add(model.year);
@@ -535,6 +542,10 @@ class Filter {
         this.models.push(model);
     };
     
+    /** 
+    * expects a string formatted as a CSV line
+    * @param {text} string
+    */
     add(text) { // from csv line
         this.count += 1;
         let csvalues = text.split(",");
