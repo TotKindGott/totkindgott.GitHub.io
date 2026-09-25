@@ -419,7 +419,7 @@ class Model {
     
     make_thumbnail_view() {
         return `
-        <img class="${this.quantity == 0 ? 'grayed' : ''}" src="${this.image_path}" id="thumb_${this.id}" onclick="openPhoto('${this.id}')" />`
+        <img class="${this.quantity == 0 ? 'grayed' : ''}" src="${this.thumbnail}" id="thumb_${this.id}" onclick="openPhoto('${this.id}')" />`
     }; // make_thumbnail_view() ends
     
     generate_image_name() {
@@ -487,7 +487,7 @@ class Model {
     }; // update_image_path() ends
     
     update_thumbnail() {
-        this.thumbnail = "thumb_" + this.image;
+        this.thumbnail = "Images/Thumbnails/" + this.image;
     }; // update_thumbnail() ends
     
     update_images() {
