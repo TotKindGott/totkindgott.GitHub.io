@@ -11,7 +11,7 @@ class SearchTracker {
         this.tag_selector = false;
         this.condition_selector = false;
         this.source_selector = false;
-        NOTE("SearchTracker initialized <span class='tag'>./model.js</span>");
+        NOTE("SearchTracker initialized <span class='tag path'>model.js</span>");
     }
     
     set() {
@@ -116,7 +116,7 @@ class ProgressTracker {
         this.progress_bar.value = 0;
         this.progress = 0;
         this.next = Math.round(this.total / this.steps);
-        NOTE("ProgressTracker initialized <span class='tag'>./model.js</span>");
+        NOTE("ProgressTracker initialized <span class='tag path'>model.js</span>");
     };
     
     update(count) {
@@ -134,7 +134,7 @@ class ProgressTracker {
             this.setProgress(progress_value);
         };
         if (this.count >= this.total) {
-            NOTE(`ProgressTracker status: completed`);
+            NOTE(`ProgressTracker status: <span class="completed">completed</span>`);
         };
         if (this.next > this.total) {
             this.next = this.total;
@@ -159,7 +159,8 @@ class Collection {
     
     constructor() {
         // !TODO: add sorting methods and toggles in setting to switch between sorted and default views
-        LOG(">>> Collection.constructor() <span class='tag'>./model.js</span>");
+        // !TODO: separate model names into own category
+        LOG(">>> Collection.constructor() <span class='tag path'>model.js</span>");
         this.models = new Array();
         this.years = new Array();
         this.series = new Array();
@@ -172,6 +173,7 @@ class Collection {
         this._conditions = new Set();
         this._sources = new Set()
         this.count = 0;
+        this.names = new Array();
     };
     
     add(text) { // from csv line
@@ -182,6 +184,7 @@ class Collection {
         let tag = csvalues[9];
         let condition = csvalues[6];
         let origin = csvalues[7];
+        let name = csvalues[3];
 
         this.models.push(text);
         this._years.add(year);
@@ -199,6 +202,7 @@ class Collection {
         this._sources.add(origin);
         this.sources[origin] ??= new Array();
         this.sources[origin].push(text);
+        this.names.push(name);
     };
     
     search(query="", year="", series="", tag="", condition="", source="") {
@@ -214,7 +218,7 @@ class Collection {
     }
     
     updateSelectors() {
-        LOG(">>> Collection.updateSelectors() <span class='tag'>./model.js</span>");
+        LOG(">>> Collection.updateSelectors() <span class='tag path'>model.js</span>");
         document.getElementById("years").innerHTML = "";
     Array.from(this._years).sort().forEach(year => document.getElementById("years").innerHTML += `<option value="${year}">`);
         document.getElementById("conditions").innerHTML = "";
@@ -561,6 +565,8 @@ class SearchFilter {
         this.tags.add(tag);
         this.conditions.add(condition);
         this.sources.add(origin);
+        
+
     };
     
     clear_filters() {

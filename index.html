@@ -175,9 +175,10 @@
 
     function getPhotoSources(query) {
         // extracts only photos
+        let start = performance.now();
         LOG(">>> getPhotoSources() <span class='tag'>./index.html</span>");
-        NOTE("search query:", query);
-        let cars = new Collection();
+        OPTION(`search query: <span class="selection">${query}</span>`);
+        //let cars = new Collection();
         let csv =  document.getElementById("csv").innerHTML;
         let lines = csv.split("\n");
         let headers = lines.shift();
@@ -195,6 +196,8 @@
             continue;
         };
         } // for loop ends
+        let end = performance.now();
+        NOTE(`getPhotoSources() executed in <span class="tag time">${Number((end - start)/1000).toFixed(2)}s</span>`);
         if (count > 0) {
             SUCCESS("getPhotoSources() run status: OK");
             stopSlideShow();
@@ -204,7 +207,6 @@
         };
         NOTE("updated count:", count);
         updateCount(count);
-
         sidebar.innerHTML = photos;
         NOTE("starting slideshow with", count, "photos");
         startSlideShow(interval = slideInterval, index = 0);

@@ -284,18 +284,23 @@ input.right_button {
 }
 
 #dropdown {
-    display: none;
+    display: grid;
     position: fixed;
     right: 0;
     top: 35px;
     background-color: transparent;
-    width: 39px;
     opacity: 0; /* Or other properties for the animation */
     transition: opacity 0.5s, display 0.5s allow-discrete;
 }
 
+#dropdown.shown {
+    opacity: 1;
+    z-index: 99;
+}
+
 #dropdown > input {
     z-index: 99;
+    margin-right: 15px;
 }
 
 /*.dropdown:hover .dropdown-content {

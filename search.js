@@ -85,8 +85,7 @@ document.addEventListener('click', function(event) {
 function hideDynamics() {
     searchTools.style.opacity = 0;
     searchTools.style.display = "none";
-    extraControls.style.opacity = 0;
-    extraControls.style.display = "none";
+    hideExtraControls();
 }; // hideDynamics function ends
 
 

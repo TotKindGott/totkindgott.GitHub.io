@@ -36,7 +36,7 @@
     <input type="button" id="left_button" />
     <input type="text" id="search_bar" value="" autofocus />
     <input type="button"  id="right_button" />
-    <div id="dropdown">
+    <div id="dropdown" class="shown">
         <input type="button" id="mode_button" />
         <input type="button" id="view_button" />
         <input type="button" id="console_toggle" onclick="toggleConsoleState()" />
@@ -134,22 +134,23 @@ function timed(func) {
         LOG(`>>> ${func.name}() ...`)
         const result = func(...args);
         let end_time = performance.now();
-        NOTE(`${func.name}() executed in ${Number((end_time - start_time)/1000).toFixed(2)} s`);
+        NOTE(`${func.name}() executed in <span class="tag time">${Number((end - start)/1000).toFixed(2)}s</span>`);
         return result;
     };
 };
 
 //const models = new Array();
-let cars = new Collection();
+let cars;
 let unique_results = new Array();
 let results_missing_photo = new Array();
 let tracker = new SearchTracker();
 let search_result = new Array(); // list of objects of type Model
 //var search_term = "Honda";
+let unique_names;
 
 function parseCSV() {
     let start = performance.now();
-    LOG(">>> parseCSV() <span class='tag'>./search.html</span>");
+    LOG(">>> parseCSV() <span class='tag path'>search.html</span>");
     let count = 0;
     let csv =  document.getElementById("csv").innerHTML;
     let models = new Array();
@@ -166,7 +167,7 @@ function parseCSV() {
     };
     SUCCESS(models.length, "models processed");
     let end = performance.now();
-    NOTE(`parseCSV() executed in ${Number((end - start)/1000).toFixed(2)} s`);
+    NOTE(`parseCSV() executed in <span class="tag time">${Number((end - start)/1000).toFixed(2)}s</span>`);
 }; // parseCSV() declaration ends
 
 
@@ -177,11 +178,11 @@ function search() {
     let start = performance.now();
     openMessages();
     
-    LOG(">>> search() <span class='tag'>./search.html</span>");
+    LOG(">>> search() <span class='tag path'>search.html</span>");
             
     let query = document.getElementById("search_bar").value;
     let filter = new SearchFilter();
-    NOTE("SearchFilter initialized <span class='tag'>./model.js</span>");
+    NOTE("SearchFilter initialized <span class='tag path'>model.js</span>");
     let match_count = 0;
     let count = 0;
     let SELECTORS = false;
@@ -197,7 +198,7 @@ function search() {
         SELECTORS = true;
         
         if (_tag) {
-            LOG("tag detected:", _tag);
+            LOG(`tag detected: <span class="selection">${_tag}</span>`);
             search_result = processResults(cars.tags[_tag]);
             //let sub_cars = new Collection();
             //let cars_by_tag = cars.tags[_tag];
@@ -206,11 +207,11 @@ function search() {
             //display(search_result);
             count = search_result.length;
         } else if (_year) {
-            LOG("year detected:", _year);
+            LOG(`year detected: <span class="selection">${_year}</span>`);
             search_result = processResults(cars.years[_year]);
             count = search_result.length;
         } else if (_series) {
-            LOG("series detected:", _series);
+            LOG(`series detected: <span class="selection">${_series}</span>`);
             try {
                 search_result = processResults(cars.series[_series]);
                 count = search_result.length;
@@ -218,11 +219,11 @@ function search() {
                 WARN("Error in search(): error getting value at index", _series);
             }
         } else if (_source) {
-            LOG("source detected:", _source);
+            LOG(`source detected: <span class="selection">${_source}</span>`);
             search_result = processResults(cars.sources[_source]);
             count = search_result.length;
         } else if (_condition) {
-            LOG("condition detected:", _condition);
+            OPTION(`condition detected: <span class="selection">${_condition}</span>`);
             search_result = processResults(cars.conditions[_condition]);
             count = search_result.length;
         } else {
@@ -233,13 +234,13 @@ function search() {
         };
         
     } else {
-        OPTION(`searching for: ${query}`);
+        OPTION(`search query: <span class="selection">${query}</span>`);
     
-    _tag ? OPTION("with tag:", _tag) : void(0);
-    _year ? OPTION("with year:", _year) : void(0);
-    _series ? OPTION("with series:", _series) : void(0);
-    _source ? OPTION("with source:", _source) : void(0);
-    _condition ? OPTION("with condition:", _condition) : void(0);
+    _tag ? OPTION(`tag detected: <span class="selection">${_tag}</span>`) : void(0);
+    _year ? OPTION(`year detected: <span class="selection">${_year}</span>`) : void(0);
+    _series ? OPTION(`series detected: <span class="selection">${_series}</span>`) : void(0);
+    _source ? OPTION(`source detected: <span class="selection">${_source}</span>`) : void(0);
+    _condition ? OPTION(`condition detected: <span class="selection">${_condition}</span>`) : void(0);
     
     //var data = document.getElementById("csv").innerText;
     //var text = data.split("\n");
@@ -293,7 +294,7 @@ function search() {
         setTimeout(prog.reset, 2500);
     }; // if block ends
     
-    NOTE(`search() returned ${count} ${count == 1 ? "item" : "items"}`);
+    NOTE(`search() returned <span class="tag count">${count}</span> ${count == 1 ? "item" : "items"}`);
 
     setActivationEvent();
     _uniques = [...unique_items];
@@ -309,11 +310,12 @@ function search() {
     //SELECTORS == true ? search_result = matches : search_result = _matches;
     //display(search_result);
     let end = performance.now();
-    NOTE(`search() executed in ${Number((end - start)/1000).toFixed(2)} s`);
+    NOTE(`search() executed in <span class="tag time">${Number((end - start)/1000).toFixed(2)}s</span>`);
     count > 0 ? SUCCESS(`search() run status: OK [ ${count} ${count == 1 ? "item" : "items"} ]`) & (CONSOLE_STATE == "" && hideMessages()) & showNotification(`${count} ${count == 1 ? "match found" : "matches found"}`) : ERROR('search() run status: error [ 0 matches ]') & openMessages() & showNotification("no matches found");
     INLINE_ACTION("print details of results", "print_detes(search_result)");
     search_result.length ? display(search_result) : void(0);
     INLINE_ACTION("clear search", "resetSearch()", true);
+    
     WARN("- - - - - - - TEST ZONE - - - - - - -");
     LOG("SearchFilter model count:", filter.models.length);
     LOG("SearchFilter series count:", Array.from(filter.collections).length);
@@ -346,11 +348,11 @@ function match() {
     let _source = sourceSelectorInput.value;
     let _condition = conditionSelectorInput.value;
     
-    _tag ? OPTION("with tag:", _tag) : void(0);
-    _year ? OPTION("with year:", _year) : void(0);
-    _series ? OPTION("with series:", _series) : void(0);
-    _source ? OPTION("with source:", _source) : void(0);
-    _condition ? OPTION("with condition:", _condition) : void(0);
+    _tag ? OPTION(`tag detected: <span class="selection">${_tag}</span>`) : void(0);
+    _year ? OPTION(`year detected: <span class="selection">${_year}</span>`) : void(0);
+    _series ? OPTION(`series detected: <span class="selection">${_series}</span>`) : void(0);
+    _source ? OPTION(`source detected: <span class="selection">${_source}</span>`) : void(0);
+    _condition ? OPTION(`condition detected: <span class="selection">${_condition}</span>`) : void(0);
     
     search_result.forEach(m => {
         if (m.series.toLowerCase().includes(_series.toLowerCase()) && m.tag.toLowerCase().includes(_tag.toLowerCase()) && m.year.toString().includes(_year) && m.condition.toLowerCase().includes(_condition.toLowerCase()) && m.origin.toLowerCase().includes(_source.toLowerCase())) {
@@ -365,13 +367,13 @@ function match() {
     updateCount(matched.length);
     
     let end = performance.now();
-    NOTE(`match() executed in ${Number((end - start)/1000).toFixed(2)} s`);
+    NOTE(`match() executed in <span class="tag time">${Number((end - start)/1000).toFixed(2)}s</span>`);
     matched.length > 0 ? SUCCESS(`match() run status: OK [ ${matched.length} ${matched.length == 1 ? "item" : "items"} ]`) & (CONSOLE_STATE == "" && hideMessages()) : ERROR('match() run status: error [0 matches]') & openMessages();
     
 }; // match() declaration ends
 
 function processResults(models) { // expects a list of strings ( csv lines??? )
-    LOG(">>> processResults()  <span class='tag'>./search.html</span>");
+    LOG(">>> processResults()  <span class='tag path'>search.html</span>");
     let _count = 0;
     let _filter = new SearchFilter();
     let _subcollection = new Collection();
@@ -390,8 +392,8 @@ function processResults(models) { // expects a list of strings ( csv lines??? )
 };
 
 function display(models) {
-    LOG(">>> display() <span class='tag'>./search.html</span>");
-    
+    LOG(">>> display() <span class='tag path'>search.html</span>");
+    let start = performance.now();
     let lines = new Array();
     let images = new Array();
     let count = 0;
@@ -418,25 +420,30 @@ function display(models) {
     //search_result = result;
     filter.apply_filters();
     setActivationEvent();
+    if (result.length < 6) {
+        document.getElementById("item_list").className = "";
+    }
     results_missing_photo = [..._missing_photos].sort();
     if (results_missing_photo[0] == "") {
         results_missing_photo.pop()
     };
     if (results_missing_photo.length > 0) {
-        INLINE_ACTION("items with missing photos: " + results_missing_photo.length, `results_missing_photo.forEach(photo => {
+        INLINE_ACTION("items with missing photos: " + results_missing_photo.length, `TITLE('Items with missing photos'); results_missing_photo.forEach(photo => {
                 CLIP(photo);
             });`);
     };
-    results_missing_photo.forEach(photo => {
-                CLIP(photo);
-            });
+    //results_missing_photo.forEach(photo => {
+                //CLIP(photo);
+            //});
+    let end = performance.now();
+    NOTE(`display() executed in <span class="tag time">${Number((end - start)/1000).toFixed(2)}s</span>`);
     SUCCESS(`display() run status: OK [ ${result.length} ${result.length == 1 ? "item" : "items"} ]`);
 
 }; // display() declaration ends
 
 async function initialSetup() {
-    let init_start = performance.now();
-    LOG(">>> initialSetup() <span class='tag'>./search.html</span>");
+    let start = performance.now();
+    LOG(">>> initialSetup() <span class='tag path'>search.html</span>");
     //checkMode();
     let prog = new ProgressTracker(4, 4);
     await getCSV();
@@ -448,6 +455,7 @@ async function initialSetup() {
     await initializeCollection();
     prog.update(3);
     //searchBar.value == "" ? await initialOptionParse() & showSearchTools() : await search();
+    LOG("checking search parameters");
     searchBar.value == "" ? void(0) : await search();
     try {
         tracker.set();
@@ -467,9 +475,8 @@ conditionSelectorInput.addEventListener("change", match);
 yearSelectorInput.addEventListener("change", match);
 //yearSelectorInput.addEventListener("keyup", search);
 
-
-    let init_end = performance.now();
-    NOTE(`initialSetup() executed in ${Number((init_end - init_start)/1000).toFixed(2)} s`);
+    let end = performance.now();
+    NOTE(`initialSetup() executed in <span class="tag time">${Number((end - start)/1000).toFixed(2)}s</span>`);
     SUCCESS("initialSetup() run status: OK");
     progbar.value = 100;
     
@@ -479,7 +486,7 @@ yearSelectorInput.addEventListener("change", match);
 
 function initializeCollection() {
     let start = performance.now();
-    LOG(">>> initializing Collection() <span class='tag'>./search.html</span>");
+    LOG(">>> initializing Collection() <span class='tag path'>search.html</span>");
     cars = new Collection();
     let csv = document.getElementById("csv").innerHTML;
     let lines = csv.split("\n");
@@ -495,31 +502,45 @@ function initializeCollection() {
     //LOG("updating search selectors");
     cars.updateSelectors();
     //cars.test();
+    getUniqueNames(cars);
     let end = performance.now();
-    NOTE(`initializeCollection() executed in ${Number((end - start)/1000).toFixed(2)} s`);
+    NOTE(`initializeCollection() executed in <span class="tag time">${Number((end - start)/1000).toFixed(2)}s</span>`);
     cars.test();
     
-    INLINE_ACTION("print details of Collection", "print_detes(cars)");
+    INLINE_ACTION("show details of Collection", "print_detes(cars)");
 
 }; // initializeCollection() ends
 
 function print_detes(obj) {
 
-    HIGHLIGHT("Collection breakdown by YEARS")
-    Array.from(obj._years).sort().forEach(year => {NOTE(year + ': ' + obj.years[year].length)});
-       HIGHLIGHT("Collection breakdown by TAGS");
-    Array.from(obj._tags).sort().forEach(tag => {NOTE(tag + ": " + obj.tags[tag].length)});
-    //Array.from(cars._series).sort().forEach(collection => {NOTE(collection + ": " + cars.series[collection].length)});
-       HIGHLIGHT("Collection breakdown by CONDITIONS");
-    Array.from(obj._conditions).sort().forEach(condition => {NOTE(condition + ": " + obj.conditions[condition].length)});
-    HIGHLIGHT("Collection breakdown by SOURCES");
-    Array.from(obj._sources).sort().forEach(source => {NOTE(source + ": " + obj.sources[source].length)});
+    INLINE_ACTION("Collection breakdown by YEARS", "    TITLE('Collection breakdown by YEARS'); Object.keys(cars.years).forEach(year => {ITEM(year + ': ' + cars.years[year].length)});");
+    INLINE_ACTION("Collection breakdown by TAGS", "TITLE('Collection breakdown by TAGS'); Object.keys(cars.tags).sort().forEach(tag => {ITEM(tag + ': ' + cars.tags[tag].length)});");
+    INLINE_ACTION("Collection breakdown by CONDITIONS", "TITLE('Collection breakdown by CONDITIONS'); Object.keys(cars.conditions).sort().forEach(condition => {ITEM(condition + ': ' + cars.conditions[condition].length)});");
+    INLINE_ACTION("Collection breakdown by SOURCES", "TITLE('Collection breakdown by SOURCES'); Object.keys(cars.sources).sort().forEach(source => {ITEM(source + ': ' + cars.sources[source].length)});");
+    INLINE_ACTION("Collection breakdown by SERIES", "TITLE('Collection breakdown by SERIES'); Object.keys(cars.series).sort().forEach(series => {ITEM(series + ': ' + cars.series[series].length)});");
+    INLINE_ACTION("Collection by UNIQUE models",  "TITLE('Collection by UNIQUE models'); unique_names.forEach(name => {ITEM(name)})");
+    //TITLE("Collection breakdown by YEARS");
+    //let last = Array.from(document.getElementById("messages").getElementsByClassName("title")).at(-1);
+    //last.addEventListener("click", () => {
+        //Object.keys(cars.years).forEach(year => {ITEM(year + ': ' + cars.years[year].length)});
+
+    //});
+    //Object.keys(obj.years).forEach(year => {ITEM(year + ': ' + obj.years[year].length)});
+
+       //TITLE("Collection breakdown by TAGS");
+    //Object.keys(obj.tags).sort().forEach(tag => {ITEM(tag + ": " + obj.tags[tag].length)});
+
+       //TITLE("Collection breakdown by CONDITIONS");
+    //Object.keys(obj.conditions).sort().forEach(condition => {ITEM(condition + ": " + obj.conditions[condition].length)});
+    //TITLE("Collection breakdown by SOURCES");
+    //Object.keys(obj.sources).sort().forEach(source => {ITEM(source + ": " + obj.sources[source].length)});
+    //TITLE("Collection breakdown by SERIES");
 };
     
 
 function resetSearch() {
     search_result = new Array();
-    LOG(">>> resetSearch() <span class='tag'>./search.html</span>");
+    LOG(">>> resetSearch() <span class='tag path'>search.html</span>");
     clearSearch();
     if (!isClearOptions) {
         clearOptions();
@@ -543,6 +564,16 @@ document.getElementById("clear_button").addEventListener("click", resetSearch);
 //setTimeout(initialOptionParse, 2500);
 
 //document.getElementById("search_bar").focus();
+
+function getUniqueNames(obj) {
+    NOTE("parsing unique names");
+    let _uniques = new Set();
+    obj.names.forEach(name => {
+        _uniques.add(name);
+    });
+    unique_names = Array.from(_uniques).sort();
+    NOTE("unique names:", unique_names.length);
+};
 
 </script>
     

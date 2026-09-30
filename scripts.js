@@ -45,8 +45,17 @@ function OPTION(...text) {
 };
 
 function NOTE(...text) {
+    DEBUG && console.log(text.join(" "));
     OUTPUT(text.join(" "), "note");
 };
+
+function TITLE(...text) {
+    OUTPUT(text.join(" "), "title");
+}
+
+function ITEM(...text) {
+    OUTPUT(text.join(" "), "item");
+}
 
 function CLIP(...text) {
     OUTPUT(text.join(" "), "clip");
@@ -80,7 +89,7 @@ function INLINE_ACTION(title, action, dangerous=false) {
 
 function checkMode() {
     // checks if dark mode was previously selected
-    LOG(">>> checkMode() <span class='tag'>./scripts.js</span>");
+    LOG(">>> checkMode() <span class='tag path'>scripts.js</span>");
     try {
         if (localStorage.getItem("mode") == "dark") {
             let element = document.body;
@@ -277,7 +286,7 @@ function toggleView() {
 
 function searchModels() {
     // searches through data-index attribute of every carDiv
-    LOG(">>> searchModels() <span class='tag'>./scripts.js</span>");
+    LOG(">>> searchModels() <span class='tag path'>scripts.js</span>");
     let search_query = document.getElementById('search_bar').value;
     search_query = search_query.toLowerCase();
     let carDivs = document.getElementsByClassName('searchable');
@@ -303,7 +312,7 @@ function searchModels() {
 
 
 function clearSearch() {
-    LOG(">>> clearSearch() <span class='tag'>./scripts.js</span>");
+    LOG(">>> clearSearch() <span class='tag path'>scripts.js</span>");
     document.getElementById("search_bar").setAttribute("value", '');
     document.getElementById("search_bar").value = "";
     try {
@@ -347,7 +356,7 @@ function searchFor(search_query) {
 function parseURL() {
     // search by parsing url parameter
     // add ?search= + query at url end
-    LOG(">>> parseURL() <span class='tag'>./scripts.js</span>");
+    LOG(">>> parseURL() <span class='tag path'>scripts.js</span>");
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     if (urlParams.has('search') == true) {
@@ -389,12 +398,13 @@ function loadingSequence() {
 
 function setSearchRedirect() {
     // passes search text as URL arguments to search.html
+    LOG(">>> setSearchRedirect() <span class='tag path'>scripts.js</span>")
     document.getElementById("search_bar").addEventListener("change", function event() {
         let search_query = document.getElementById("search_bar").value;
         let parsing_url = search_url + encodeURI(search_query.toLowerCase());
         window.open(parsing_url, '_self');
         }); // function event ends
-        NOTE(`==> search redirect set to search.html`);
+        NOTE('==> search redirect set to search.html');
 }; // function setSearchRedirect ends
 
 
@@ -432,19 +442,17 @@ function replaceDaysSince() {
 
 function showExtraControls() {
     let extraControls = document.getElementById("dropdown");
-    extraControls.style.display = "block";
-    extraControls.style.opacity = 1;
+    extraControls.className = "shown";
 };
 
 function hideExtraControls() {
     let extraControls = document.getElementById("dropdown");
-    extraControls.style.display = "none";
-    extraControls.style.opacity = 0;
+    extraControls.className = "";
 };
 
 function toggleExtraControls() {
     let extraControls = document.getElementById("dropdown");
-    if (extraControls.style.opacity == 1) {
+    if (extraControls.className == "shown") {
          hideExtraControls();
     } else {
         showExtraControls();
@@ -509,7 +517,7 @@ function toggleConsoleState() {
 const getCSV = async () => {
     try {
         let start = performance.now();
-        LOG(">>> getCSV() <span class='tag'>./scripts.js</span>");
+        LOG(">>> getCSV() <span class='tag path'>scripts.js</span>");
         const res = await fetch(csv_url);
         if (res.status === 200) {
             const data = await res.text();
@@ -518,7 +526,7 @@ const getCSV = async () => {
             NOTE(`fetched ${data.length.toLocaleString("en-US")} characters`);
             //OUTPUT(data.trim());
             let end = performance.now();
-            NOTE(`getCSV() executed in ${Number((end - start)/1000).toFixed(2)} s`);
+            NOTE(`getCSV() executed in <span class="tag time">${Number((end - start)/1000).toFixed(2)}s</span>`);
         } else {
             ERROR(`Error code ${res.status} in fetch(${csv_url})`);
         }; // if / else block ends

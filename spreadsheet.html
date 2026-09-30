@@ -431,7 +431,7 @@
 function parseCSV() {
 
     let start = performance.now();
-    LOG(">>> parseCSV() <span class='tag'>spreadsheet.html</span>");
+    LOG(">>> parseCSV() <span class='tag path'>spreadsheet.html</span>");
     let count = 0;
     let csv =  document.getElementById("csv").innerHTML;
     let models = new Array();
@@ -442,7 +442,7 @@ function parseCSV() {
     lines.forEach(line => {
         if (!line) { // omit on empty
             return;
-        }
+        };
         count += 1;
         try {
             let csvalues = line.split(",");
@@ -489,14 +489,12 @@ function parseCSV() {
             NOTE("line:", line);
             ERROR("error:", error);
             return;
-        };
-        //LOG(line);
-        //LOG(new Model(count, line).make_spreadsheet_line());
-        });
-
-    NOTE(models.length, "models processed");
+        }; // try catch ends
+    }); // for loop ends
+        
     let end = performance.now();
-    NOTE(`parseCSV() executed in ${Number((end - start)/1000).toFixed(2)} s`);
+    //NOTE(models.length + 'models processed');
+    LOG(`parseCSV() executed in <span class='tag time'>${Number((end - start)/1000).toFixed(2)}s</span>`);
     SUCCESS("parseCSV() run status: OK");
     return models.join("\n");
 };
@@ -564,10 +562,11 @@ function hideCardView() {
 
 async function initSpreadsheet() {
     let start = performance.now();
-    LOG(">>> initSpreadsheet() <span class='tag'>spreadsheet.html</span>");
+    LOG(">>> initSpreadsheet() <span class='tag path'>spreadsheet.html</span>");
     await getCSV();
-    document.getElementById("main_table").innerHTML = await parseCSV();
-    toggleFilter();    
+    let rows = await parseCSV();
+    document.getElementById("main_table").innerHTML = rows;
+    //toggleFilter();    
     toggleCol('url'); 
     toggleCol('part'); 
     toggleCol('origin'); 
@@ -576,9 +575,8 @@ async function initSpreadsheet() {
     toggleCol('image');
     toggleCol('note');
     let end = performance.now();
-    NOTE(`initSpreadsheet() executed in ${Number((end - start)/1000).toFixed(2)} s`);
+    NOTE(`initSpreadsheet() executed in <span class="tag time">${Number((end - start)/1000).toFixed(2)}s</span>`);
     SUCCESS("initSpreadsheet() run status: OK");
-    LOG("<hr />");
 }
 
 //openMessages();

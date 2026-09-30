@@ -77,6 +77,27 @@
         opacity: 0.75;
     }
     
+    #messages > p.title {
+        background: white;
+        color: black;
+        font-weight: bold;
+        box-shadow: 0px 3px 5px #333 inset;
+        padding: 5px 0px 3px;
+        text-align: center;
+        border-bottom: 2px solid black;
+        margin-bottom: 0px;
+    }
+    
+    #messages > p.item {
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        color: slategray;
+    }
+    
+    #messages > p.item::before {
+        content: "  ";
+        color: white;
+    }
+    
     #messages > p.inline_action {
         text-align: center;
         color: white;
@@ -102,11 +123,56 @@
     
     #messages > p > span.tag {
         color: silver;
-        font-size: 10px;
         background-color: rgba(255,255,255,0.25);
         padding: 0px 3px;
         border-radius: 3px;
-    } 
+        vertical-align: middle;
+    }
+    
+    #messages > p > span.tag.path {
+        font-size: 10px;
+    }
+    
+    #messages > p > span.tag.count {
+        color: lime;
+        background: transparent;
+        padding: none;
+    }
+    
+    #messages > p > span.tag.path::before {
+        content: "~/";
+        color: white;
+    }
+    
+    #messages > p > span.tag.run::before {
+        content: "> ";
+        color: lime;
+        font-weight: bold;
+    }
+    
+    #messages > p > span.tag.time {
+        background: black;
+        padding: 1px 4px;
+        box-shadow: 0px 0px 3px 1px slategray inset;
+        font-size: 12px;
+        border: 1px solid black;
+        border-radius: 5px;
+    }
+    
+    #messages > p > span.selection {
+        border-radius: 0px;
+        border-bottom: 1px solid #999;
+    }
+    
+    #messages > p > span.completed {
+        background: transparent;
+    }
+    
+    #messages > p > span.completed::after {
+        content: " \2611";
+        font-size: 16px;
+        color: lime;
+    }
 }
 
 @keyframes blinker {
