@@ -86,6 +86,15 @@ function INLINE_ACTION(title, action, dangerous=false) {
     _console.lastChild.scrollIntoView();
 };
 
+function INLINE_BUTTON(title, action, dangerous=false) {
+    let _console = document.getElementById("messages");
+    if (!dangerous) {
+        _console.innerHTML += `<p class="inline_button" onclick="${action}">${title}</p>`;
+    } else {
+        _console.innerHTML += `<p class="inline_button critical" onclick="${action}">${title}</p>`;
+    };
+    _console.lastChild.scrollIntoView();
+};
 
 function checkMode() {
     // checks if dark mode was previously selected
@@ -285,9 +294,10 @@ function toggleView() {
 
 
 function searchModels() {
-    // searches through data-index attribute of every carDiv
+    // searches through data-index attribute of every <div> of class "searchable"
     LOG(">>> searchModels() <span class='tag path'>scripts.js</span>");
     let search_query = document.getElementById('search_bar').value;
+    NOTE("search query:", search_query);
     search_query = search_query.toLowerCase();
     let carDivs = document.getElementsByClassName('searchable');
     for (i = 0; i < carDivs.length; i++) {
