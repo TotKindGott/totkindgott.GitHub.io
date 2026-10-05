@@ -855,8 +855,13 @@ table.stats td.key {
     font-weight: normal;
 }
 
-body.dark-mode table.stats td.key {
+body.dark-mode table.stats td.key,
+#messages > table.stats td.key {
     color: white;
+}
+
+#messages > table.stats {
+    margin-top: 0px;
 }
 
 table.stats td.value {
@@ -2037,7 +2042,8 @@ div#notification {
     width: 100%;
     height: 1px;
     position: fixed;
-    top: 00px;
+    top: 0px;
+    left: 0px;
     z-index: 99;
     font: bold 17px monospace;
     color: yellow;

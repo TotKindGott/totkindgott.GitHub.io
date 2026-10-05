@@ -575,6 +575,106 @@ function getUniqueNames(obj) {
     NOTE("unique names:", unique_names.length);
 };
 
+function testThis() {
+    //WARN("2002 models", cars.years["2002"].length)
+    //WARN("new on card models", cars.conditions["New on card"].length)
+    //WARN("models from Dima", cars.sources["Dima"].length)
+    
+    //WARN("undefined models", Object.entries(cars.years[undefined]))
+    //splitInto(3, Object.keys(cars.years));
+    //splitInto(3, Object.keys(cars.years)).forEach(part => {WARN(">", part)});
+statsHTML();
+
+    //let stats_by_year = Object.keys(cars.years).map(year => [year, cars.years[year].length]);
+
+    //ERROR(Object.keys(stats_by_year))
+    //ERROR(stats_by_year);
+}
+
+function splitInto(columns, list) {
+    let result = new Array();
+    let chunk;
+    let _list = [...list];
+    //LOG("WORKING ON ", list)
+    _list.splice(_list.indexOf('undefined'), 1);
+
+    
+    if (_list.length / columns % 0) {
+        chunk = _list.length / columns;
+    } else {
+        chunk = Math.ceil(_list.length / columns);
+    }
+    //NOTE("original length:", list.length);
+    //NOTE("new list length:", _list.length);
+    //NOTE("column length:", chunk);
+
+    for (var i = 0; i < columns; i++) {
+        result.push(_list.slice(0, chunk));
+        _list.splice(0, chunk);
+        };
+    //NOTE(result);
+    return result;
+}
+
+function reprCols(list, data, name, id) {
+    let _lines = new Array();
+    let column_height = list.at(0).length;
+    //LOG("column height:", column_height)
+    for (var i = 0; i < column_height; i++) {
+        
+        let _line = new Array();
+        list.forEach(l => {
+            let _item = l.shift();
+            if (_item == undefined) {
+                //ERROR("UNDEFINED found");
+            } else if (_item == "") {
+                //WARN("NO YEAR found");
+                _line.push(`<td class="key">    </td> <td class="value">${data[_item].length}</td>`);
+            } else {
+                _line.push(`<td class="key">${_item}</td> <td class="value">${data[_item].length}</td>`);
+            };
+        });
+        _lines.push(`<tr>${_line.join("\t")}</tr>`);
+    };
+    
+    let result = `      <table class="stats" id="${id}" style="">
+       <tbody>
+           <tr class="subheader">
+               <td colspan="6" style="text-align: center;">Models by ${name}</td>
+           </tr>
+           ${_lines.join("\n")}
+        </tbody>
+    </table>`
+
+
+    //for (var i = 0; i < column_height; i++) {
+        //OPTION(_lines.at(i));
+    //};
+    
+    //return result;
+    document.getElementById("messages").innerHTML += result;
+};
+
+function statsHTML() {
+    
+    let start = performance.now();
+    LOG(">>> statsHTML() <span class='tag path'>inventories.html</span>");
+    
+    reprCols(splitInto(3, Object.keys(cars.years)), cars.years, "YEAR", "stats_by_year");
+    
+    reprCols(splitInto(3, Object.keys(cars.tags).sort()), cars.tags, "TAG", "stats_by_tag");
+    
+    reprCols(splitInto(2, Object.keys(cars.conditions).sort()), cars.conditions, "Condition", "stats_by_condition");
+    
+    reprCols(splitInto(2, Object.keys(cars.sources).sort()), cars.sources, "Source", "stats_by_source");
+
+    let end = performance.now();
+    NOTE(`statsHTML() executed in <span class="tag time">${Number((end - start)/1000).toFixed(2)}s</span>`);
+    
+}
+
+INLINE_BUTTON("Collection Statistics".toUpperCase(), "testThis()");
+
 </script>
     
 

@@ -402,19 +402,25 @@ async function setup() {
     
     let start = performance.now();
     LOG(">>> setup() <span class='tag path'>here</span>");
+    let prog = new ProgressTracker(4, 4);
     await getJSON();
+    prog.update(1);
     inventories = await parseJSON();
+    prog.update(2)
     //await breakdown();
     Inv = new Inventory();
     INLINE_ACTION("View inventory logs", "selectCity()");
+    prog.update(3);
     makePageContent();
     //HIGHLIGHT("stores.keys: ", Object.keys(Inv.stores));
-    //HIGHLIGHT("stores.keys: ", Object.entries(Inv.stores["Dollar" Tree"]));
+    //HIGHLIGHT("stores.keys: ", Object.entries(Inv.stores["Dollar Tree"]));
     Inv.update_numbers();
+    prog.update(4)
     //INLINE_ACTION("View stores", "Object.keys(Inv.stores).forEach(store => {HIGHLIGHT(store)})")
     let end = performance.now();
     NOTE(`setup() executed in <span class="tag time">${Number((end - start)/1000).toFixed(2)}s</span>`);
     SUCCESS("setup() run status: OK");
+    setTimeout(prog.reset, 2500);
 };
 
 setup();
@@ -482,13 +488,12 @@ function makePageContent() {
     <input type="button" id="help_button" value="" onclick="location.href='reference.html'" />
     
     <footer id="page_footer">
-        <p>Last update: <a href="updates.html">2026-06-10</a></p>
-        <p>Site design: Konstantin A Kolosov</p>
+        <p>Last update: <a href="updates.html">2026-10-03</a></p>
         <hr />
             <a href="index.html">Home</a>
-            <a href="preview.html">Statistics</a>
-            <a href="treasures.html">Treasures</a>
-            <a href="about.html">About</a>
+            <a href="search.html">Search</a>
+            <a href="spreadsheet.html">Spreadsheet</a>
+            <a href="form.html">Form</a>
     </footer>
     
  

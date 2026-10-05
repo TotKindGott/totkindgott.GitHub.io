@@ -219,17 +219,21 @@ class Collection {
     
     updateSelectors() {
         LOG(">>> Collection.updateSelectors() <span class='tag path'>model.js</span>");
-        document.getElementById("years").innerHTML = "";
-    Array.from(this._years).sort().forEach(year => document.getElementById("years").innerHTML += `<option value="${year}">`);
-        document.getElementById("conditions").innerHTML = "";
-    Array.from(this._conditions).sort().forEach(condition => document.getElementById("conditions").innerHTML += `<option value="${condition}">`);
-        document.getElementById("series").innerHTML = "";
-    Array.from(this._series).sort().forEach(collection => document.getElementById("series").innerHTML += `<option value="${collection}">`);
-        document.getElementById("tags").innerHTML = "";
-    Array.from(this._tags).sort().forEach(tag => document.getElementById("tags").innerHTML += `<option value="${tag}">`);
-        document.getElementById("sources").innerHTML = "";
-    Array.from(this._sources).sort().forEach(source => document.getElementById("sources").innerHTML += `<option value="${source}">`); 
-    NOTE("search selectors updated");
+        try {
+            document.getElementById("years").innerHTML = "";
+        Array.from(this._years).sort().forEach(year => document.getElementById("years").innerHTML += `<option value="${year}">`);
+            document.getElementById("conditions").innerHTML = "";
+        Array.from(this._conditions).sort().forEach(condition => document.getElementById("conditions").innerHTML += `<option value="${condition}">`);
+            document.getElementById("series").innerHTML = "";
+        Array.from(this._series).sort().forEach(collection => document.getElementById("series").innerHTML += `<option value="${collection}">`);
+            document.getElementById("tags").innerHTML = "";
+        Array.from(this._tags).sort().forEach(tag => document.getElementById("tags").innerHTML += `<option value="${tag}">`);
+            document.getElementById("sources").innerHTML = "";
+        Array.from(this._sources).sort().forEach(source => document.getElementById("sources").innerHTML += `<option value="${source}">`); 
+        NOTE("search selectors updated");
+        } catch (error) { // advanced search is not present
+            ERROR("error:", error);
+        };
     };
     
     test() {

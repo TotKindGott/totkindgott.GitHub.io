@@ -14,11 +14,17 @@
 
 <!--optional-->
 
-<body onload="parseURL(); positionFooter(); visibleAll(); addIDs(); makeCollage();">
+<body onload="parseURL(); positionFooter(); visibleAll(); addIDs(); makeCollage(); OUTOFDATEALERT()">
     <script type="text/javascript">
         checkMode();
     </script>
     <script src="search.js" defer></script>
+
+<!-- out-of-flow DOM elements -->
+<progress id="progress_bar" value="0" max="100"></progress>
+<div id="notification"></div>
+<div id="messages" style="display: none"></div>
+<div id="json_data" style="display: none"></div>
 
     <header>  <!-- NAVIGATION -->
 <div id="topbar">
@@ -107,6 +113,12 @@ div#collage > img {
 </style>
 
 <script>
+    function OUTOFDATEALERT() {
+
+        setInterval(() => {showNotification("outdated")}, 2000);
+
+    };
+    
     function toggleCollage() {
         document.getElementById("collage").classList.toggle("shown");
     };
