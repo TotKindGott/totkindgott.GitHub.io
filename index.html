@@ -32,7 +32,7 @@
     <header>  <!-- NAVIGATION -->
 <div id="topbar">
     <input type="button" id="left_button" />
-    <input type="text" id="search_bar" />
+    <input type="text" id="search_bar" onfocus="stopSlideShow()" onblur="startSlieShow()" />
     <input type="button"  id="right_button" />
     <div id="dropdown">
         <input type="button" id="mode_button" />
@@ -226,7 +226,7 @@
 </script>
 
 <div id="horizontal_selector">
-    <span class="input" id="slide_search" onblur="searchForInput()" contenteditable></span>
+    <span class="input" id="slide_search" onfocus="stopSlideShow()"  onblur="startSlideShow(); searchForInput()" contenteditable></span>
     <span onclick="getPhotoSources('glow in the dark')">Glow-in-the-dark</span>
     <span onclick="getPhotoSources('type:fire truck')">Fire trucks</span>
     <span onclick="getPhotoSources('type:motorcycle')">Motorcycles</span>

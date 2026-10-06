@@ -655,10 +655,10 @@ function reprCols(list, data, name, id) {
     document.getElementById("messages").innerHTML += result;
 };
 
-function statsHTML() {
+function statsInConsole() {
     
     let start = performance.now();
-    LOG(">>> statsHTML() <span class='tag path'>inventories.html</span>");
+    LOG(">>> statsInConsole() <span class='tag path'>search.html</span>");
     
     reprCols(splitInto(3, Object.keys(cars.years)), cars.years, "YEAR", "stats_by_year");
     
@@ -669,11 +669,11 @@ function statsHTML() {
     reprCols(splitInto(2, Object.keys(cars.sources).sort()), cars.sources, "Source", "stats_by_source");
 
     let end = performance.now();
-    NOTE(`statsHTML() executed in <span class="tag time">${Number((end - start)/1000).toFixed(2)}s</span>`);
+    NOTE(`\nstatsInConsole() executed in <span class="tag time">${Number((end - start)/1000).toFixed(2)}s</span>`);
     
 }
 
-INLINE_BUTTON("Collection Statistics".toUpperCase(), "testThis()");
+INLINE_BUTTON("Collection Statistics".toUpperCase(), "statsInConsole()");
 
 </script>
     

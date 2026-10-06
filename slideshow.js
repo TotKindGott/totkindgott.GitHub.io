@@ -64,7 +64,7 @@ function startSlideShow(interval = slideInterval, index = slideIndex) {
     
     intervalID = setInterval(nextSlide, interval);
     playState = "on";
-    NOTE("slideshow started");
+    NOTE("slideshow started [ speed", interval, "ms ]");
     toggleStopButton();
     INLINE_ACTION("toggle slideshow on/off", "toggleSlideShow()")
 }; // function scrollShow ends

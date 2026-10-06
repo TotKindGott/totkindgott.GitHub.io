@@ -216,6 +216,8 @@ async function initialSetup() {
 document.body.addEventListener("dblclick", toggleMessages)
 initialSetup()
 
+setTimeout(() => {if (document.getElementById("content").innerText == "") {statsHTML()}}, 1000)
+
 //statsHTML()
     </script>
 
