@@ -27,11 +27,13 @@
 <div id="notification"></div>
 <div id="messages" style="display: none"></div>
 
+
     <script type="text/javascript">
         checkMode();
     </script>
     
     <header>  <!-- NAVIGATION -->
+
 <div id="topbar">
     <input type="button" id="left_button" />
     <input type="text" id="search_bar" value="" autofocus />
@@ -42,7 +44,9 @@
         <input type="button" id="console_toggle" onclick="toggleConsoleState()" />
         <input type="button" id="details_button" />
         <input type="button" id="clear_button" />
+        <input type="button" id="test_button" value="" />
     </div>
+
     <input type="number" name="result counter" value="" disabled="True" id="counter" />
 </div>
 
@@ -62,8 +66,6 @@
     </div>
 </div>
 
-    </header>  <!-- END NAVIGATION -->
-    
     <div id="advanced_search">
 
         <input type="search" list="tags" placeholder="TAG" class="select" id="tags_input">    
@@ -82,6 +84,10 @@
         <datalist id="sources"></datalist>
     
     </div>
+
+    </header>  <!-- END NAVIGATION -->
+    
+
 
     <div id="csv"></div>
     <div id="carousel">
@@ -322,6 +328,7 @@ function search() {
     LOG("SearchFilter source count:", Array.from(filter.sources).length);
     LOG("SearchFilter condition count:", Array.from(filter.conditions).length);
     LOG("SearchFilter year count:", Array.from(filter.years).length);
+
 }; // search() declaration ends
 
 function match() {
@@ -420,7 +427,7 @@ function display(models) {
     //search_result = result;
     filter.apply_filters();
     setActivationEvent();
-    if (result.length < 6) {
+    if (result.length < 7) {
         document.getElementById("item_list").className = "";
     }
     results_missing_photo = [..._missing_photos].sort();
@@ -675,8 +682,67 @@ function statsInConsole() {
 
 INLINE_BUTTON("Collection Statistics".toUpperCase(), "statsInConsole()");
 
+function setFocusOn(id) {
+    
+    let _backoverlay = document.getElementById("backoverlay");
+    if (_backoverlay.className == 'shown') {
+        _backoverlay.className = "";
+        try {
+            let _frontelement = document.getElementById(id);
+            _frontelement.classList.remove("aboveall");
+        } catch (error) {
+            WARN("warning in setFocusOn():", error);
+        }
+    } else {
+        _backoverlay.className = "shown";
+        INLINE_BUTTON("toggle background overlay", "setFocusOn()")
+        try {
+            let _frontelement = document.getElementById(id);
+            LOG("element id:", id, "selected");
+            _frontelement.className = "aboveall";
+            _frontelement.style = "z-index: 999";
+        } catch (error) {
+            ERROR("error in setFocusOn():", error);
+            LOG("no element selected for foreground");
+        }
+    }
+};
+
+document.getElementById("test_button").addEventListener("click", () => {setFocusOn("messages")});
+
 </script>
     
+<style>
+
+    .aboveall {
+        position: inherit;
+        z-index: 999;
+    }
+    
+    #backoverlay {
+        display: none;
+    }
+    
+    #backoverlay.shown {
+        position: fixed;
+        display: block;
+        top: 0; left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 10;
+        background: rgba(0,0,0,0.75);
+    }
+    
+    #none {
+        border-image: linear-gradient(to right, red, orange, yellow, green, blue) 1 1 1 1;
+        border-width: 1px;
+
+    }
+
+</style>
 
 </body>
+
+<div id="backoverlay"></div>
+
 </html>

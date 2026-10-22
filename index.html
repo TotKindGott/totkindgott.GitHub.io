@@ -176,7 +176,7 @@
     function getPhotoSources(query) {
         // extracts only photos
         let start = performance.now();
-        LOG(">>> getPhotoSources() <span class='tag'>./index.html</span>");
+        LOG(">>> getPhotoSources() <span class='tag path'>index.html</span>");
         OPTION(`search query: <span class="selection">${query}</span>`);
         //let cars = new Collection();
         let csv =  document.getElementById("csv").innerHTML;
@@ -213,7 +213,7 @@
     };
 
     function searchForInput() {
-        LOG(">>> searchForInput() ...");
+    LOG(">>> searchForInput() <span class='tag path'>index.html</span>");
         let query = document.getElementById("slide_search").innerText;
         if (!query == "") {
             NOTE("search query:", query);

@@ -155,12 +155,12 @@ input.search_bar:disabled {
     width: 70%;
     display: none;
     background-color: rgba(0,0,0,0.25);
-    border-radius: 10px;
+    border-radius: 0px;
     margin: 0;
     position: fixed;
     top: 38px;
     left: 15%;
-    z-index: 8;
+    z-index: 99;
     box-shadow: 0 0 5px 1px #ffffff;
     opacity: 0; /* Or other properties for the animation */
     transition: opacity 0.5s, display 0.5s allow-discrete;
@@ -294,6 +294,7 @@ input.right_button {
 }
 
 #dropdown.shown {
+    position: fixed;
     opacity: 1;
     z-index: 99;
 }
@@ -444,6 +445,25 @@ input.mode_button {
     margin: 0; 
     margin-right: 18px;
 }
+
+#test_button, .test_button {
+    background-image: url("Images/Icons/newspaper-outline.svg");
+    background-size: 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 24px;
+    width: 24px;
+    position: static;
+    right: 15px;
+    border-radius: 12px;
+    border: 1px solid gray;
+    background-color: #ffffff;
+    margin: 5px auto; 
+    padding: 0;
+    box-shadow: 0 0 5px 1px #ffffff;
+    z-index: 10;
+}
+
 
 #help_button {
     background-image: url("Images/Icons/help-circle-outline.svg");
@@ -2052,7 +2072,7 @@ div#notification {
 }
 
 progress::-webkit-progress-bar {
-  background-color: black;
+  background-color: transparent;
 }
 
 /* Styles the active progress fill value (Chrome, Safari, Edge) */

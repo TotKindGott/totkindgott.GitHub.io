@@ -8,7 +8,7 @@
     <script src="scripts.js"></script>
     <script src="buttons.js" defer></script>
     <script src="console.js" defer></script>
-    <script type="text/javascript" src="model.js" defer></script>
+    <script type="text/javascript" src="model.js"></script>
     <script type="text/javascript" src="collage.js"></script>
     <!--optional-->
     <meta name="format-detection" content="telephone=no" />
@@ -200,23 +200,26 @@ async function initialSetup() {
     let start = performance.now();
     LOG(">>> initialSetup() <span class='tag path'>stats.html</span>");
     //checkMode();
-    //let prog = new ProgressTracker(4, 4);
+    let prog = new ProgressTracker(4, 4);
     await getCSV();
-    //prog.update(1);
+    prog.update(1);
     await parseURL();
-    //prog.update(2);
+    prog.update(2);
     //await parseCSV();
     //await initialOptionParse();
     await initializeCollection();
-    //prog.update(3);
+    prog.update(3);
     await statsHTML();
-    
+    setTimeout(() => {if (document.getElementById("content").innerText == "") {statsHTML(); WARN("retried")}}, 1000);
+    prog.update(4);
+    let end = performance.now();
+    NOTE(`initialSetup() executed in <span class="tag time">${Number((end - start)/1000).toFixed(2)}s</span>`);
 };
 
-document.body.addEventListener("dblclick", toggleMessages)
-initialSetup()
+document.body.addEventListener("dblclick", toggleMessages);
 
-setTimeout(() => {if (document.getElementById("content").innerText == "") {statsHTML()}}, 1000)
+initialSetup();
+
 
 //statsHTML()
     </script>

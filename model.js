@@ -252,6 +252,7 @@ class Model {
 
     constructor(id, csv_line) {
         this.images_directory = "./Images";
+        this.thumbnail_directory = "./Images/Thumbnails";
         const csvalues = csv_line.split(",");
         // headers in order:
         // Collection,Year,Part,Model,Number,Stamp,Condition,Origin,URL,Tags,Quantity,Image,Note
@@ -362,6 +363,10 @@ class Model {
                 <td class="grayed">status:</td>
                 <td>${this.condition}</td>
                 <td colspan=2 class="tag">${this.tag}</td>
+            </tr>
+            <tr>
+                <td class="grayed">record:</td>
+                <td class="grayed" colspan=3>${this.note}</td>
             </tr>
         </table>
     </div>`
@@ -617,4 +622,7 @@ class SearchFilter {
 
     }; // apply() ends
     
+    test() {
+        HIGHLIGHT(`tags: ${Array.from(this.tags).length} | years: ${Array.from(this.years).length} | collections: ${Array.from(this.collections).length} | sources: ${Array.from(this.sources).length} | conditions: ${Array.from(this.conditions).length} | models: ${this.models.length}`);
+    };
 }; // Filter declaration ends
