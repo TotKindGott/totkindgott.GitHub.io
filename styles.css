@@ -159,11 +159,13 @@ input.search_bar:disabled {
     margin: 0;
     position: fixed;
     top: 38px;
+    top: 48px;
     left: 15%;
     z-index: 99;
     box-shadow: 0 0 5px 1px #ffffff;
     opacity: 0; /* Or other properties for the animation */
     transition: opacity 0.5s, display 0.5s allow-discrete;
+    border: 1px solid transparent;
 }
 
 #advanced_search > input.select {

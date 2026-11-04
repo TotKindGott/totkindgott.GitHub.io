@@ -171,6 +171,7 @@ body.dark-mode div#carousel div#item_list {
     div#carousel div#item_list {
         height: min(20vw, 20vh);
         width: 98vw;
+        max-width: 100%;
         margin: 1vw auto;
         padding: 0;
         left: 0;
@@ -186,7 +187,7 @@ body.dark-mode div#carousel div#item_list {
         transition-duration: 0.2s, 0.2s, 1s;
         transition-timing-function: ease-out;
         display: grid;
-        grid-template-columns: repeat(9999, min(18.8vw, 18.8vh));
+        grid-template-columns: repeat(var(--grid-columns, 999), min(18.8vw, 18.8vh));
         grid-auto-rows: min(18.8vw, 18.8vh);
         grid-auto-columns: min(18.8vw, 18.8vh);
         grid-gap: min(1vw, 1vh);

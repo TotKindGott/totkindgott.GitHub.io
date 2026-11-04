@@ -109,31 +109,6 @@
 
 <script>
     
-    class Stats {
-        constructor() {
-            this.tags = new Set();
-            this.years = new Set();
-            this.sources = new Set();
-            this.conditions = new Set();
-        };
-        
-        add_tag(tag) {
-            this.tags.add(tag);
-        };
-        
-        add_year(year) {
-            
-        };
-        
-        add_source(source) {
-            
-        };
-        
-        add_condition(condition) {
-            
-        };
-    }; // class declaration ends
-    
 function timed(func) {
     return function (...args) {
         let start_time = performance.now();
@@ -150,7 +125,8 @@ let cars;
 let unique_results = new Array();
 let results_missing_photo = new Array();
 let tracker = new SearchTracker();
-let search_result = new Array(); // list of objects of type Model
+//let search_result = new Array(); // list of objects of type Model
+let search_result = new Collection();
 //var search_term = "Honda";
 let unique_names;
 
@@ -187,7 +163,8 @@ function search() {
     LOG(">>> search() <span class='tag path'>search.html</span>");
             
     let query = document.getElementById("search_bar").value;
-    let filter = new SearchFilter();
+    ////////// let filter = new SearchFilter();
+    let filter = new Collection();
     NOTE("SearchFilter initialized <span class='tag path'>model.js</span>");
     let match_count = 0;
     let count = 0;
@@ -205,33 +182,56 @@ function search() {
         
         if (_tag) {
             LOG(`tag detected: <span class="selection">${_tag}</span>`);
-            search_result = processResults(cars.tags[_tag]);
+            //search_result = processResults(cars.tags[_tag]);
+            //cars.tags[_tag].forEach(car => {filter.add(car)});
+            try {
+                cars.tags[_tag];
+            search_result.addModels(cars.tags[_tag]);
+            } catch (error) {
+                WARN(_tag, "is not a valid key");
+                Object.keys(cars.tags).forEach(tag => {
+                    if (tag.toLowerCase().includes(_tag.toLowerCase())) {
+                        search_result.addModels(cars.tags[tag])
+                    };
+                });
+                
+                if (search_result.models.length < 1) {
+                    ERROR("error in search() with tag", _tag);
+                    ERROR(error);
+                };
+            };
             //let sub_cars = new Collection();
             //let cars_by_tag = cars.tags[_tag];
             //cars_by_tag.forEach(m => sub_cars.add(m));
             //search_result = cars.tags[_tag];
             //display(search_result);
-            count = search_result.length;
+            //count = search_result.length;
+            count = search_result.models.length;
+            //search_result = filter;
         } else if (_year) {
             LOG(`year detected: <span class="selection">${_year}</span>`);
-            search_result = processResults(cars.years[_year]);
-            count = search_result.length;
+            //search_result = processResults(cars.years[_year]);
+            search_result.addModels(cars.years[_year]);
+            count = search_result.models.length;
         } else if (_series) {
             LOG(`series detected: <span class="selection">${_series}</span>`);
             try {
-                search_result = processResults(cars.series[_series]);
-                count = search_result.length;
+                //search_result = processResults(cars.series[_series]);
+            search_result.addModels(cars.series[_series]);
+                count = search_result.models.length;
             } catch (error) {
                 WARN("Error in search(): error getting value at index", _series);
             }
         } else if (_source) {
             LOG(`source detected: <span class="selection">${_source}</span>`);
-            search_result = processResults(cars.sources[_source]);
-            count = search_result.length;
+            //search_result = processResults(cars.sources[_source]);
+            search_result.addModels(cars.sources[_source]);
+            count = search_result.models.length;
         } else if (_condition) {
             OPTION(`condition detected: <span class="selection">${_condition}</span>`);
-            search_result = processResults(cars.conditions[_condition]);
-            count = search_result.length;
+            //search_result = processResults(cars.conditions[_condition]);
+            search_result.addModels(cars.conditions[_condition]);
+            count = search_result.models.length;
         } else {
             WARN("search(): empty selectors");
             ERROR("Error in search(): no search parameters");
@@ -248,9 +248,6 @@ function search() {
     _source ? OPTION(`source detected: <span class="selection">${_source}</span>`) : void(0);
     _condition ? OPTION(`condition detected: <span class="selection">${_condition}</span>`) : void(0);
     
-    //var data = document.getElementById("csv").innerText;
-    //var text = data.split("\n");
-    //var headers = text.shift();
     var text = cars.models;
     let prog = new ProgressTracker(text.length - 1);
 
@@ -286,7 +283,8 @@ function search() {
                 //lines.push(f);
                 //i = m.make_thumbnail_view();
                 //images.push(i);
-                filter.add_data(m);
+                //////////filter.add_data(m);
+                filter.add(m.csv)
                 //CLIP(m.missing_photo);
                 count += 1;            
                 matches.push(m);
@@ -296,16 +294,17 @@ function search() {
     }; // for loop ends
     //document.getElementById("card_view").innerHTML = lines.join('');
     //document.getElementById("item_list").innerHTML = images.join("");
-        search_result = matches;
+        ////search_result = matches;
+        search_result = filter;
         setTimeout(prog.reset, 2500);
     }; // if block ends
     
     NOTE(`search() returned <span class="tag count">${count}</span> ${count == 1 ? "item" : "items"}`);
-
+    INLINE_BUTTON("Search Breakdown".toUpperCase(), "statsInConsole(search_result)");    
     setActivationEvent();
     _uniques = [...unique_items];
     unique_results = _uniques.sort();
-    INLINE_ACTION("items with unique names: " + unique_results.length, `unique_results.forEach(m => {
+    INLINE_ACTION("items with unique names: " + unique_results.length, `TITLE('Items with unique names'); unique_results.forEach(m => {
                 HIGHLIGHT(m)
             });`
     );
@@ -318,36 +317,36 @@ function search() {
     let end = performance.now();
     NOTE(`search() executed in <span class="tag time">${Number((end - start)/1000).toFixed(2)}s</span>`);
     count > 0 ? SUCCESS(`search() run status: OK [ ${count} ${count == 1 ? "item" : "items"} ]`) & (CONSOLE_STATE == "" && hideMessages()) & showNotification(`${count} ${count == 1 ? "match found" : "matches found"}`) : ERROR('search() run status: error [ 0 matches ]') & openMessages() & showNotification("no matches found");
-    INLINE_ACTION("print details of results", "print_detes(search_result)");
-    search_result.length ? display(search_result) : void(0);
+    //INLINE_ACTION("print details of results", "print_detes(search_result)");
+    /////search_result.length ? display(search_result) : void(0);
+    search_result.models.length ? display(search_result.models) : void(0);
     INLINE_ACTION("clear search", "resetSearch()", true);
-    
-    WARN("- - - - - - - TEST ZONE - - - - - - -");
-    LOG("SearchFilter model count:", filter.models.length);
-    LOG("SearchFilter series count:", Array.from(filter.collections).length);
-    LOG("SearchFilter source count:", Array.from(filter.sources).length);
-    LOG("SearchFilter condition count:", Array.from(filter.conditions).length);
-    LOG("SearchFilter year count:", Array.from(filter.years).length);
+
+    //search_result.test();
+    //WARN("- - - - - - - TEST ZONE - - - - - - -");
+    //LOG("SearchFilter model count:", filter.models.length);
+    //LOG("SearchFilter series count:", Array.from(filter.collections).length);
+    //LOG("SearchFilter source count:", Array.from(filter.sources).length);
+    //LOG("SearchFilter condition count:", Array.from(filter.conditions).length);
+    //LOG("SearchFilter year count:", Array.from(filter.years).length);
 
 }; // search() declaration ends
 
 function match() {
-    
-    if (search_result.length < 1) {
+
+    if (!search_result.models.length) {
         LOG(">>> match() redirecting to search()");
         return search();
-        //return;
     };
-    
+
     NOTE("tracker.compare() state: " + tracker.compare());
     tracker.set();
     let start = performance.now();
     
     //LOG("<hr />");
-    LOG(">>> match() on", search_result.length, "objects from recent search for", searchBar.value);
+    LOG(">>> match() on", search_result.models.length, "objects from recent search for", searchBar.value);
     
-    let matched = new Array();
-    let filter = new SearchFilter();
+    let filter = new Collection();
     
     let _tag = tagSelectorInput.value;
     let _year = yearSelectorInput.value;
@@ -361,38 +360,40 @@ function match() {
     _source ? OPTION(`source detected: <span class="selection">${_source}</span>`) : void(0);
     _condition ? OPTION(`condition detected: <span class="selection">${_condition}</span>`) : void(0);
     
-    search_result.forEach(m => {
+    search_result.models.forEach(m => {
+        m = new Model("", m);
         if (m.series.toLowerCase().includes(_series.toLowerCase()) && m.tag.toLowerCase().includes(_tag.toLowerCase()) && m.year.toString().includes(_year) && m.condition.toLowerCase().includes(_condition.toLowerCase()) && m.origin.toLowerCase().includes(_source.toLowerCase())) {
-            matched.push(m);
-            filter.add_data(m);
+            //matched.push(m);
+            filter.add(m.csv);
         }; // if block ends
     }); // forEach block ends
-    NOTE("match() returned", matched.length,   matched.length == 1 ? "item" : "items");
-    
-    display(matched);
+    search_result = filter;
+    NOTE("match() returned", filter.models.length,   filter.models.length == 1 ? "item" : "items");
+    INLINE_BUTTON("Search Statistics".toUpperCase(), "statsInConsole(search_result)");    
+    display(filter.models);
     //filter.apply_filters();
-    updateCount(matched.length);
+    updateCount(filter.models.length);
     
     let end = performance.now();
     NOTE(`match() executed in <span class="tag time">${Number((end - start)/1000).toFixed(2)}s</span>`);
-    matched.length > 0 ? SUCCESS(`match() run status: OK [ ${matched.length} ${matched.length == 1 ? "item" : "items"} ]`) & (CONSOLE_STATE == "" && hideMessages()) : ERROR('match() run status: error [0 matches]') & openMessages();
+    filter.models.length > 0 ? SUCCESS(`match() run status: OK [ ${filter.models.length} ${filter.models.length == 1 ? "item" : "items"} ]`) & (CONSOLE_STATE == "" && hideMessages()) : ERROR('match() run status: error [0 matches]') & openMessages();
     
 }; // match() declaration ends
 
 function processResults(models) { // expects a list of strings ( csv lines??? )
     LOG(">>> processResults()  <span class='tag path'>search.html</span>");
     let _count = 0;
-    let _filter = new SearchFilter();
+    //let _filter = new SearchFilter();
     let _subcollection = new Collection();
     models.forEach(model => {
         _count += 1;
-        m = new Model(_count, model);
+        //m = new Model(_count, model);
         _subcollection.add(model);
-        _filter.add_data(m)
+        //_filter.add_data(m)
     }); // forEach loop ends
     if (_subcollection.models.length > 0) {
         SUCCESS("processResults() run status: OK");
-        return _filter.models;
+        return _subcollection.models;
     } else {
         ERROR("processResults() run status: ERROR");
     };
@@ -427,13 +428,10 @@ function display(models) {
     //search_result = result;
     filter.apply_filters();
     setActivationEvent();
-    if (result.length < 7) {
-        document.getElementById("item_list").className = "";
-    }
-    results_missing_photo = [..._missing_photos].sort();
-    if (results_missing_photo[0] == "") {
-        results_missing_photo.pop()
-    };
+    results_missing_photo = [..._missing_photos].sort().filter(item => item !== "undefined" && item != undefined && item !== "");
+    //if (results_missing_photo.at(0) == " ") {
+        //results_missing_photo.pop()
+    //};
     if (results_missing_photo.length > 0) {
         INLINE_ACTION("items with missing photos: " + results_missing_photo.length, `TITLE('Items with missing photos'); results_missing_photo.forEach(photo => {
                 CLIP(photo);
@@ -445,6 +443,12 @@ function display(models) {
     let end = performance.now();
     NOTE(`display() executed in <span class="tag time">${Number((end - start)/1000).toFixed(2)}s</span>`);
     SUCCESS(`display() run status: OK [ ${result.length} ${result.length == 1 ? "item" : "items"} ]`);
+    document.getElementById("item_list").style.setProperty("--grid-columns", result.length);
+    openPhoto("0");
+    if (result.length > 5) {
+        //document.getElementById("item_list").className = "";
+        showCollage();
+    };
 
 }; // display() declaration ends
 
@@ -509,7 +513,7 @@ function initializeCollection() {
     //LOG("updating search selectors");
     cars.updateSelectors();
     //cars.test();
-    getUniqueNames(cars);
+    //getUniqueNames(cars);
     let end = performance.now();
     NOTE(`initializeCollection() executed in <span class="tag time">${Number((end - start)/1000).toFixed(2)}s</span>`);
     cars.test();
@@ -520,12 +524,12 @@ function initializeCollection() {
 
 function print_detes(obj) {
 
-    INLINE_ACTION("Collection breakdown by YEARS", "    TITLE('Collection breakdown by YEARS'); Object.keys(cars.years).forEach(year => {ITEM(year + ': ' + cars.years[year].length)});");
+    INLINE_ACTION("Collection breakdown by YEARS", "    TITLE('Collection breakdown by YEARS'); Object.keys(search_result.years).forEach(year => {ITEM(year + ': ' + cars.years[year].length)});");
     INLINE_ACTION("Collection breakdown by TAGS", "TITLE('Collection breakdown by TAGS'); Object.keys(cars.tags).sort().forEach(tag => {ITEM(tag + ': ' + cars.tags[tag].length)});");
     INLINE_ACTION("Collection breakdown by CONDITIONS", "TITLE('Collection breakdown by CONDITIONS'); Object.keys(cars.conditions).sort().forEach(condition => {ITEM(condition + ': ' + cars.conditions[condition].length)});");
     INLINE_ACTION("Collection breakdown by SOURCES", "TITLE('Collection breakdown by SOURCES'); Object.keys(cars.sources).sort().forEach(source => {ITEM(source + ': ' + cars.sources[source].length)});");
     INLINE_ACTION("Collection breakdown by SERIES", "TITLE('Collection breakdown by SERIES'); Object.keys(cars.series).sort().forEach(series => {ITEM(series + ': ' + cars.series[series].length)});");
-    INLINE_ACTION("Collection by UNIQUE models",  "TITLE('Collection by UNIQUE models'); unique_names.forEach(name => {ITEM(name)})");
+    INLINE_ACTION("Collection by UNIQUE models",  "TITLE('Collection by UNIQUE models'); cars.getUniqueNames(); cars.unique_names.forEach(name => {ITEM(name)})");
     //TITLE("Collection breakdown by YEARS");
     //let last = Array.from(document.getElementById("messages").getElementsByClassName("title")).at(-1);
     //last.addEventListener("click", () => {
@@ -601,10 +605,10 @@ statsHTML();
 function splitInto(columns, list) {
     let result = new Array();
     let chunk;
-    let _list = [...list];
+    let _list = [...list].filter(item => item !== "undefined");
+;
     //LOG("WORKING ON ", list)
-    _list.splice(_list.indexOf('undefined'), 1);
-
+    //_list.splice(_list.indexOf('undefined'), 1);
     
     if (_list.length / columns % 0) {
         chunk = _list.length / columns;
@@ -633,9 +637,8 @@ function reprCols(list, data, name, id) {
         list.forEach(l => {
             let _item = l.shift();
             if (_item == undefined) {
-                //ERROR("UNDEFINED found");
+                //ERROR("UNDEFINED found:", _item);
             } else if (_item == "") {
-                //WARN("NO YEAR found");
                 _line.push(`<td class="key">    </td> <td class="value">${data[_item].length}</td>`);
             } else {
                 _line.push(`<td class="key">${_item}</td> <td class="value">${data[_item].length}</td>`);
@@ -662,25 +665,25 @@ function reprCols(list, data, name, id) {
     document.getElementById("messages").innerHTML += result;
 };
 
-function statsInConsole() {
+function statsInConsole(obj) {
     
     let start = performance.now();
     LOG(">>> statsInConsole() <span class='tag path'>search.html</span>");
+
+    reprCols(splitInto(3, Object.keys(obj.years)), obj.years, "YEAR", "stats_by_year");
     
-    reprCols(splitInto(3, Object.keys(cars.years)), cars.years, "YEAR", "stats_by_year");
+    reprCols(splitInto(3, Object.keys(obj.tags).sort()), obj.tags, "TAG", "stats_by_tag");
     
-    reprCols(splitInto(3, Object.keys(cars.tags).sort()), cars.tags, "TAG", "stats_by_tag");
+    reprCols(splitInto(2, Object.keys(obj.conditions).sort()), obj.conditions, "Condition", "stats_by_condition");
     
-    reprCols(splitInto(2, Object.keys(cars.conditions).sort()), cars.conditions, "Condition", "stats_by_condition");
-    
-    reprCols(splitInto(2, Object.keys(cars.sources).sort()), cars.sources, "Source", "stats_by_source");
+    reprCols(splitInto(2, Object.keys(obj.sources).sort()), obj.sources, "Source", "stats_by_source");
 
     let end = performance.now();
     NOTE(`\nstatsInConsole() executed in <span class="tag time">${Number((end - start)/1000).toFixed(2)}s</span>`);
     
-}
+} // statsInConsole() ends
 
-INLINE_BUTTON("Collection Statistics".toUpperCase(), "statsInConsole()");
+INLINE_BUTTON("Collection Statistics".toUpperCase(), "statsInConsole(cars)");
 
 function setFocusOn(id) {
     
@@ -733,13 +736,26 @@ document.getElementById("test_button").addEventListener("click", () => {setFocus
         background: rgba(0,0,0,0.75);
     }
     
-    #none {
+    body.dark-mode #advanced_search,
+    body.dark-mode #advanced_search .full,
+    body.dark-mode #topbar {
         border-image: linear-gradient(to right, red, orange, yellow, green, blue) 1 1 1 1;
-        border-width: 1px;
-
     }
 
+    body.dark-mode #advanced_search .left {
+        border-image: linear-gradient(to right, red, orange, yellow) 1 1 1 1;
+    }
+    
+    body.dark-mode #advanced_search .right {
+        border-image: linear-gradient(to right, yellow, green, blue) 1 1 1 1;
+    }
+    
+
 </style>
+
+<script>
+    //showNotification("test")
+</script>
 
 </body>
 

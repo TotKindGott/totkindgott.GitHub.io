@@ -179,6 +179,8 @@ class Collection {
         this._sources = new Set()
         this.count = 0;
         this.names = new Array();
+        this.unique_names = new Array();
+        this.missing_photos = new Array;
     };
     
     add(text) { // from csv line
@@ -210,17 +212,30 @@ class Collection {
         this.names.push(name);
     };
     
+    addModels(models) { // add multiple
+        console.log("addModels()");
+        models.forEach(model => {
+            this.add(model);
+        });
+    };
+    
     search(query="", year="", series="", tag="", condition="", source="") {
         let priorities = [series, year, tag, source, condition];
     };
     
-    convertToModel() {
-        
-    }
-    
     updateViews() {
-        
-    }
+        display(this.models);
+    };
+    
+    getUniqueNames() {
+        NOTE("parsing unique names");
+        let _uniques = new Set();
+        this.names.forEach(name => {
+        _uniques.add(name);
+        });
+        this.unique_names = Array.from(_uniques).sort();
+        NOTE("unique names:", this.unique_names.length);
+    };
     
     updateSelectors() {
         LOG(">>> Collection.updateSelectors() <span class='tag path'>model.js</span>");
@@ -365,7 +380,7 @@ class Model {
                 <td colspan=2 class="tag">${this.tag}</td>
             </tr>
             <tr>
-                <td class="grayed">record:</td>
+                <td class="grayed">note:</td>
                 <td class="grayed" colspan=3>${this.note}</td>
             </tr>
         </table>
@@ -481,9 +496,9 @@ class Model {
     
     check_image_path() {
         var req = new XMLHttpRequest();
-        req.open('HEAD', encodeURIComponent(this.image_path), false);
+        req.open('GET', encodeURIComponent(this.image_path.replace(/&amp;/g,'&')), false);
         req.send();
-     
+        
         if (req.status == "404") {
             this.missing_photo =             this.image;
             return false;
