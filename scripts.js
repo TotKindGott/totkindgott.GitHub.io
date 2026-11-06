@@ -117,8 +117,11 @@ function checkMode() {
     };
     try {
         if (localStorage.getItem("console") == "open") {
-            consoleKeepOpen();
+            setTimeout(() => {
+                consoleKeepOpen();
             //NOTE("console auto-dismiss: OFF");
+                openMessages();
+            }, 100);
         } else {
             NOTE("console auto-dismiss: ON");
         };

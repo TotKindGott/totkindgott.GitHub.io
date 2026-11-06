@@ -208,7 +208,7 @@ function verticalSwipeActions(elementID, swipeUpAction, swipeDownAction, swipeTh
             setTimeout( () => {
             el = document.getElementsByClassName("color")[0];
         }, 250);
-        console.log(el.id);
+        //console.log(el.id);
         } catch (error) {
            console.log(error);
         };

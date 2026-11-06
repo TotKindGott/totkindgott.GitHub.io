@@ -213,7 +213,6 @@ class Collection {
     };
     
     addModels(models) { // add multiple
-        console.log("addModels()");
         models.forEach(model => {
             this.add(model);
         });
