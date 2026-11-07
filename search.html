@@ -38,7 +38,7 @@
     <input type="button" id="left_button" />
     <input type="text" id="search_bar" value=""  />
     <input type="button"  id="right_button" />
-    <div id="dropdown" class="shown">
+    <div id="dropdown">
         <input type="button" id="mode_button" />
         <input type="button" id="view_button" />
         <input type="button" id="console_toggle" onclick="toggleConsoleState()" />
@@ -644,7 +644,7 @@ function reprCols(list, data, name, id) {
             } else if (_item == "") {
                 _line.push(`<td class="key">    </td> <td class="value">${data[_item].length}</td>`);
             } else {
-                _line.push(`<td class="key" onclick="                document.getElementById('${name.toLowerCase() + "s_input"}').value = '${_item}'; match(); statsInConsole(search_result)">${_item}</td> <td class="value">${data[_item].length}</td>`);
+                _line.push(`<td class="key" onclick="this.classList.add('selected');          document.getElementById('${name.toLowerCase() + "s_input"}').value = '${_item}'; match(); statsInConsole(search_result)">${_item}</td> <td class="value">${data[_item].length}</td>`);
 
             };
         });
@@ -758,6 +758,13 @@ document.getElementById("test_button").addEventListener("click", () => {setFocus
     
     body.dark-mode #advanced_search > input {
         box-shadow: 0px 0px 5px #333 inset;
+    }
+    
+    td.key.selected, td.key:focus {
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-decoration-color: lime;
+        text-underline-offset: 4px;
     }
 
 </style>

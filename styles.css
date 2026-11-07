@@ -84,12 +84,13 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 9;
     width: 100%;
     height: 36px;
     background: rgba(0,0,0,0.75);
     margin: auto;
     /*padding-bottom: 10px;*/
+    isolation: isolate;
+    z-index: 99;
 }
 
 #search_bar {
@@ -266,6 +267,7 @@ input.left_button {
     border-radius: 12px;
     margin: 0; 
     box-shadow: 0 0 5px 1px #ffffff;
+    z-index: 99;
 }
 
 input.right_button {
@@ -290,27 +292,23 @@ input.right_button {
     right: 0;
     top: 35px;
     background-color: transparent;
-    opacity: 0; /* Or other properties for the animation */
-    transition: opacity 0.5s, display 0.5s allow-discrete;
+    /*opacity: 0; /* Or other properties for the animation */
+    /*transition: opacity 0.5s, display 0.5s allow-discrete;*/
     display: none;
 }
 
 #dropdown.shown {
-    position: fixed;
     display: grid;
-    opacity: 1;
     z-index: 99;
 }
 
 #dropdown > input {
-    z-index: 999;
-    margin-right: 15px;
-    opacity: 0;
+
 }
 
 #dropdown.shown > input {
-    z-index: 999;
-    opacity: 1;
+    margin-right: 15px;
+    z-index: 99;
 }
 
 /*.dropdown:hover .dropdown-content {
@@ -780,8 +778,9 @@ details[open] > summary ~ * {
 /* END */
 
 
-body.dark-mode body {
-    background-color: rgba(0,0,0,0.92.5);
+body.dark-mode {
+    /*background-color: rgba(0,0,0,0.925);*/
+    background-color: black;
 }
 
 body.dark-mode #results,

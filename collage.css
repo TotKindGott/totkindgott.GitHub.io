@@ -49,10 +49,13 @@ body.dark-mode div#carousel,
 body.dark-mode div#carousel div#card_view,
 body.dark-mode div#carousel div#card_view div.item_card,
 body.dark-mode div#carousel div#card_view div.item_card div.item_name,
-body.dark-mode div#carousel div#card_view div.item_card div.wrapper,
-body.dark-mode div#carousel div#item_list {
+body.dark-mode div#carousel div#card_view div.item_card div.wrapper {
     color: white;
     background-color: black;
+}
+
+body.dark-mode div#carousel div#item_list.shown {
+    background-color: rgba(0,0,0,0.85);
 }
 
 .details {
