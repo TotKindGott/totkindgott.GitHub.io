@@ -723,6 +723,14 @@ document.getElementById("test_button").addEventListener("click", () => {setFocus
     
 <style>
 
+    card_view {
+        background: linear-gradient(to right, yellow, green, blue);
+        background-image: url("Images/Logos/TH Logo.PNG");
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
     .aboveall {
         position: inherit;
         z-index: 999;
@@ -761,11 +769,17 @@ document.getElementById("test_button").addEventListener("click", () => {setFocus
     }
     
     td.key.selected, td.key:focus {
-        text-decoration: underline;
+        /*text-decoration: underline;
         text-decoration-thickness: 1px;
         text-decoration-color: lime;
-        text-underline-offset: 4px;
+        text-underline-offset: 4px;*/
+        background: linear-gradient(45deg, lime, yellow);
+        background-clip: text;
+        -webkit-background-clip: text; /* Required for Chrome, Safari, and Edge */
+        color: transparent;
+        -webkit-text-fill-color: transparent;
     }
+
 
 </style>
 
