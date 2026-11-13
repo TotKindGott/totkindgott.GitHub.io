@@ -302,12 +302,14 @@ function search() {
     NOTE(`search() returned <span class="tag count">${count}</span> ${count == 1 ? "item" : "items"}`);
     INLINE_BUTTON("Search Breakdown".toUpperCase(), "statsInConsole(search_result)");    
     setActivationEvent();
-    _uniques = [...unique_items];
-    search_result.unique_names = _uniques.sort();
-    INLINE_ACTION("items with unique names: " + _uniques.length, `TITLE('Items with unique names'); search_result.unique_names.forEach(m => {
-                HIGHLIGHT(m)
-            });`
-    );
+    if (unique_items.size) {
+        _uniques = [...unique_items];
+        search_result.unique_names = _uniques.sort();
+        INLINE_ACTION("items with unique names: " + _uniques.length, `TITLE('Items with unique names'); search_result.unique_names.forEach(m => {
+                    HIGHLIGHT(m)
+                });`
+        );
+    };
     //match_count = count;
     //console.timeEnd("timer");
     updateCount(count);
@@ -316,7 +318,7 @@ function search() {
     //display(search_result);
     let end = performance.now();
     NOTE(`search() executed in <span class="tag time">${Number((end - start)/1000).toFixed(2)}s</span>`);
-    count > 0 ? SUCCESS(`search() run status: OK [ ${count} ${count == 1 ? "item" : "items"} ]`) & (CONSOLE_STATE == "" && hideMessages()) & showNotification(`${count} ${count == 1 ? "match found" : "matches found"}`) : ERROR('search() run status: error [ 0 matches ]') & openMessages() & showNotification("no matches found");
+    count > 0 ? SUCCESS(`search() run status: OK [ ${count} ${count == 1 ? "item" : "items"} ]`) & (CONSOLE_STATE == "" && hideMessages()) & showNotification(`${count} ${count == 1 ? "match found" : "matches found"}`) : ERROR('search() run status: error [ 0 matches ]') & openMessages() & showNotification("no matches found") & showError();
     //INLINE_ACTION("print details of results", "print_detes(search_result)");
     /////search_result.length ? display(search_result) : void(0);
     search_result.models.length ? display(search_result.models) : void(0);
@@ -331,6 +333,19 @@ function search() {
     //LOG("SearchFilter year count:", Array.from(filter.years).length);
 
 }; // search() declaration ends
+
+function resetError() {
+    document.body.classList.remove("red");
+    document.getElementById("topbar").classList.remove("red");
+    document.getElementById("notification").classList.remove("red");
+};
+
+function showError() {
+    document.body.classList.add("red");
+    document.getElementById("topbar").classList.add("red");
+    document.getElementById("notification").classList.add("red");
+    setTimeout(resetError, 1000);
+};
 
 function match() {
 

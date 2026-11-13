@@ -121,6 +121,7 @@ div#form_buttons {
     background-color: transparent;
     border-bottom: 1px solid #999;
     padding-bottom: 4px;
+    transition: 0.25s all;
 }
 
 #apply_button {
@@ -133,6 +134,11 @@ body.dark-mode #apply_button {
 
 #reset_button {
     color: red;
+}
+
+#apply_button:focus, 
+#reset_button:focus {
+    transform: translateY(4px);
 }
 
 #form_buttons > #form_search {

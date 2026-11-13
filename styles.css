@@ -57,8 +57,8 @@ html {
 }
 
 body {
-    transition-property: background-color;
-    transition-duration: 0.5s;
+    /*transition-property: background-color;
+    transition-duration: 0.5s;*/
 	background-color: #f7f7f7; 
     /*height: 844;*/
 	padding-left: 10px; 
@@ -72,8 +72,8 @@ body {
 }
 
 .dark-mode {
-    transition-property: background-color;
-    transition-duration: 0.5s;
+    /*transition-property: background-color;
+    transition-duration: 0.5s;*/
     background-color: rgba(0,0,0,0.925);
     color: white;
 }
@@ -579,8 +579,8 @@ body.dark-mode #site_name_part1, body.dark-mode #site_name_part2 {
 }
 
 div {
-    transition-property: background-color;
-    transition-duration: 0.5s;
+    /*transition-property: background-color;
+    transition-duration: 0.5s;*/
 	background-color: #ffffff;
 }
 
@@ -588,8 +588,8 @@ div.float {
 	width: 100%; 
     display: block;
     float: left;
-    transition-property: background-color;
-    transition-duration: 0.5s;
+    /*transition-property: background-color;
+    transition-duration: 0.5s;*/
     background-color: #ffffff:
     margin: auto;
     margin-bottom: 20px;
@@ -633,8 +633,8 @@ summary > h1 {
 	text-decoration-color: #000000;
 	text-decoration-thickness: 2px;
 	text-underline-offset: 3px;
-    transition-property: background-color;
-    transition-duration: 0.5s;
+    /*transition-property: background-color;
+    transition-duration: 0.5s;*/
 	background-color: transparent; 
     padding-top: 5px; 
 	padding-bottom: 5px; 
@@ -786,8 +786,8 @@ body.dark-mode {
 body.dark-mode #results,
 body.dark-mode .searchable,
 body.dark-mode .wrapper {
-    transition-property: background-color;
-    transition-duration: 0.5s;
+    /*transition-property: background-color;
+    transition-duration: 0.5s;*/
     background-color: #000000;
 }
 
@@ -1185,14 +1185,14 @@ body.dark-mode > #frame {
 }
 
 #page_footer > a, #page_footer > p > a {
-    transition-property: color;
-    transition-duration: 0.5s;
+    /*transition-property: color;
+    transition-duration: 0.5s;*/
     color: black;
     font-weight: bolder;
     font-size: 12px;
     text-decoration: none;
     margin: auto;
-    transition-property: background-color;
+    /*transition-property: background-color;*/
     background-color: white;
     text-transform: uppercase;
     border-radius: 10px;
@@ -2045,12 +2045,13 @@ div#csv {
 div#notification {
     display: none;
     background-color: rgba(0,0,0,0.9);
+    background: black;
     width: 100vw;
     height: 35px;
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 99;
+    z-index: 100;
     font: bold 16px monospace;
     color: yellow;
     text-align: center;
@@ -2104,4 +2105,12 @@ div#notification > * {
 .reflective {
     -webkit-box-reflect: below 2px linear-gradient(transparent, rgba(255, 255, 255, 0.3));
     overflow-x: visible;
+}
+
+body.red, div#topbar.red, div#notification.red {
+    /*background: linear-gradient(to right, red, #D70A53,#880808, #C80815, red),
+    linear-gradient(to top, red, #D70A53, #880808, #C80815, red);
+    
+    /*background: linear-gradient(to right, #DC143C, #8B0000);*/
+    background-color: red;
 }

@@ -117,7 +117,7 @@ function checkMode() {
     };
     try {
         if (localStorage.getItem("console") == "open") {
-            setTimeout(() => {
+            setTimeout(() => { // is not yet loaded
                 consoleKeepOpen();
             //NOTE("console auto-dismiss: OFF");
                 openMessages();
