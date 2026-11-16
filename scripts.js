@@ -65,7 +65,7 @@ function TRACK(...text) {
     OUTPUT(text.join(" "), "track")
 }
 
-function OUTPUT(text, alert_type) {
+function OUTPUT(text, alert_type, scroll=true) {
     //setTimeout(() => {document.getElementById("messages").innerHTML += `<p class="${alert_type}" onclick="copy('${text}')">${text}</p><hr />`;
     //document.getElementById("messages").lastChild.scrollIntoView()}, 100);
     if (alert_type == "clip") {
@@ -73,7 +73,9 @@ function OUTPUT(text, alert_type) {
     } else {
     document.getElementById("messages").innerHTML += `<p class="${alert_type}">${text}</p>`;
     };
-    document.getElementById("messages").lastChild.scrollIntoView();
+    if (scroll) {
+        document.getElementById("messages").lastChild.scrollIntoView();
+    };
 };
 
 function INLINE_ACTION(title, action, dangerous=false) {
