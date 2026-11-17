@@ -165,7 +165,7 @@ body.dark-mode #apply_button {
     <datalist id="tags"></datalist>
 
     <label for="series">Series: </label>
-    <input type="text" name="series" id="collection" list="series"  onchange="" />
+    <input type="text" name="series" id="collection" list="series"  onchange="parseYear()" />
     <datalist id="series"></datalist>
 
     <label for="year">Year: </label>
@@ -453,6 +453,20 @@ async function setupForm() {
 };
 
 
+function parseYear() {
+    _series = document.getElementById("collection");
+    _year = document.getElementById("year");
+    try {
+        _num = parseInt(_series.value.split(" ").at(0));
+        if (!isNaN(_num)) {
+            _year.value = _num;
+        } else {
+            _year.value = "";
+        };
+    } catch (error) {
+        ERROR("error in parseYear():", error);
+    };
+};
 
 setupForm();
 

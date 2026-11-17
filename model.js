@@ -135,7 +135,7 @@ class ProgressTracker {
             let step_len = parseInt(this.steps.toString().length);
             let prog_len = parseInt(this.total.toString().length);
             
-            TRACK(`${progress_value.toString().padStart(perc_len, " ")}%   ${this.value.toString().padStart(step_len, " ")}/${this.steps.toString().padStart(step_len, " ")}   count: ${this.count.toString().padStart(prog_len, " ")}   ${this.next ? "next: " + this.next.toString().padStart(prog_len, " ") : ""}`);
+            TRACK(` ${progress_value.toString().padStart(perc_len, " ")}%   ${this.value.toString().padStart(step_len, " ")}/${this.steps.toString().padStart(step_len, " ")}   count: ${this.count.toString().padStart(prog_len, " ")}   ${this.next ? "next: " + this.next.toString().padStart(prog_len, " ") : ""}`);
             this.setProgress(progress_value);
         };
         if (this.count >= this.total) {
